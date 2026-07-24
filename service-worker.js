@@ -1,10 +1,10 @@
-const CACHE_NAME = 'sulbi-jindan-v1';
+const CACHE_NAME = 'sulbi-jindan-v2';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './icon-192.png',
-  './icon-512.png'
+  './icon 192.png',
+  './icon 512.png'
 ];
 
 self.addEventListener('install', (event) => {
