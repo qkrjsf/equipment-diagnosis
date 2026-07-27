@@ -77,6 +77,14 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .inputrow button{background:var(--amber);color:#241605;border:none;padding:0 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;}
 .restart-btn{background:none;border:1px solid var(--border);color:var(--text-muted);padding:7px 12px;border-radius:8px;font-size:12px;cursor:pointer;margin-top:2px;}
 .restart-btn:hover{color:var(--text);}
+.diag-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.feedback-row{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);}
+.feedback-label{font-size:12px;color:var(--text-muted);}
+.feedback-btn{background:none;border:1px solid var(--border);border-radius:7px;padding:4px 9px;font-size:14px;cursor:pointer;line-height:1;}
+.feedback-btn:hover{border-color:var(--amber);}
+.mic-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);width:42px;border-radius:8px;cursor:pointer;font-size:16px;flex:0 0 auto;}
+.mic-btn.recording{background:#4a1616;border-color:#ef5b5b;color:#f5a3a3;animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.55;}}
 
 .admin-toolbar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
 .admin-toolbar button{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:7px;font-size:12.5px;cursor:pointer;}
@@ -136,7 +144,6 @@ textarea.json-editor:focus{outline:none;border-color:var(--amber);}
     <div class="gear-wrap">
       <button id="settingsGear" class="gear-btn" title="설정" aria-label="설정">⚙</button>
       <div class="gear-menu" id="gearMenu">
-        <div class="gear-menu-item" data-target="admin">트리 관리</div>
         <div class="gear-menu-item" data-target="partsadmin">부품 관리</div>
       </div>
     </div>
@@ -156,32 +163,8 @@ textarea.json-editor:focus{outline:none;border-color:var(--amber);}
     <div class="chat" id="chat"></div>
     <div class="inputrow">
       <input id="userInput" type="text" placeholder="예: 화면에 OCT 떴어요, 레벨센서 알람 떴어요" />
+      <button id="micBtn" class="mic-btn" title="음성 입력" type="button">🎤</button>
       <button id="sendBtn">전송</button>
-    </div>
-  </div>
-
-  <div class="panel" id="panel-admin">
-    <div class="hint">
-      질문 노드는 <b>options[].keywords</b>에 사용자가 실제 쓸 법한 단어를 넣어두면 자연어 매칭 정확도가 올라갑니다.
-      매뉴얼 텍스트를 저에게 주시면 이 JSON 형식으로 변환해드릴 수 있어요.
-    </div>
-    <div class="admin-toolbar">
-      <button id="validateBtn">JSON 검증</button>
-      <button id="saveBtn" class="primary">저장 및 적용</button>
-      <button id="exportBtn">JSON 파일로 내보내기</button>
-      <button id="importBtn">JSON 파일 가져오기</button>
-      <input type="file" id="importFile" accept="application/json" style="display:none;">
-    </div>
-    <textarea class="json-editor" id="jsonEditor" spellcheck="false"></textarea>
-    <div id="adminStatus"></div>
-
-    <div style="margin-top:22px;">
-      <div class="hint" style="margin-bottom:8px;"><b>현재 트리 구조 미리보기</b></div>
-      <div class="tree-view" id="treeView"></div>
-    </div>
-
-    <div style="margin-top:22px;">
-      <button id="loadSampleBtn" class="reset-link">초기화</button>
     </div>
   </div>
 
@@ -1553,20 +1536,8 @@ let tree = null;
 let currentNodeId = null;
 let path = [];
 
-function loadTreeFromLocal(){
-  try{
-    const raw = localStorage.getItem('equipment-tree');
-    return raw ? JSON.parse(raw) : null;
-  }catch(e){ return null; }
-}
-function saveTreeToLocal(t){
-  localStorage.setItem('equipment-tree', JSON.stringify(t));
-}
-
 function init(){
-  tree = loadTreeFromLocal() || SAMPLE_TREE;
-  document.getElementById('jsonEditor').value = JSON.stringify(tree, null, 2);
-  renderTreeView();
+  tree = SAMPLE_TREE;
   startDiagnosis();
 }
 
@@ -1596,6 +1567,47 @@ function renderTrace(){
 function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
+function escapeAttr(s){ return escapeHtml(s); }
+
+/* ---------- 진단 결과 공유 ---------- */
+async function shareDiagnosis(cause, solution, ref, btnEl){
+  const text = '[설비 진단 결과]\n원인: ' + cause + '\n조치: ' + solution + '\n참조: ' + ref;
+  if(navigator.share){
+    try{
+      await navigator.share({ title: '설비 진단 결과', text: text });
+      return;
+    }catch(e){
+      // 사용자가 공유를 취소한 경우 등은 조용히 무시
+      if(e && e.name === 'AbortError') return;
+    }
+  }
+  try{
+    await navigator.clipboard.writeText(text);
+    const original = btnEl.textContent;
+    btnEl.textContent = '복사됨!';
+    setTimeout(() => { btnEl.textContent = original; }, 1500);
+  }catch(e){
+    alert(text);
+  }
+}
+
+/* ---------- 피드백 수집 ---------- */
+// 구글 폼을 연결하려면 아래 URL을 실제 폼 주소로 바꾸세요.
+// 비워두면(빈 문자열) 폼으로 이동하지 않고 화면에만 감사 메시지가 표시됩니다.
+const FEEDBACK_FORM_URL = '';
+
+function handleFeedback(btn, node){
+  const row = btn.closest('.feedback-row');
+  const val = btn.getAttribute('data-val');
+  row.innerHTML = '<span class="feedback-label">' + (val === 'up' ? '감사합니다! 👍' : '피드백 감사합니다. 개선에 참고할게요.') + '</span>';
+  if(FEEDBACK_FORM_URL){
+    const url = FEEDBACK_FORM_URL
+      + (FEEDBACK_FORM_URL.includes('?') ? '&' : '?')
+      + 'usp=pp_url&result=' + encodeURIComponent(val)
+      + '&cause=' + encodeURIComponent(node.cause || '');
+    window.open(url, '_blank');
+  }
+}
 
 function addMsg(role, html){
   const chat = document.getElementById('chat');
@@ -1621,6 +1633,7 @@ function askCurrentNode(){
     const imgHtml = (node.image && INVERTER_IMAGES[node.image])
       ? '<div class="drow"><img src="' + INVERTER_IMAGES[node.image] + '" alt="인버터 표시창" style="max-width:160px;border:1px solid var(--border);border-radius:6px;background:#fff;padding:4px;display:block;"/></div>'
       : '';
+    const diagUid = 'diag_' + Date.now();
     const html =
       '<div class="dtitle">진단 결과</div>' +
       imgHtml +
@@ -1628,8 +1641,22 @@ function askCurrentNode(){
       '<div class="drow"><div class="dlabel">조치 방법</div><div class="dval">' + escapeHtml(node.solution) + '</div></div>' +
       '<div class="drow" style="margin-bottom:2px;"><div class="dlabel">참조</div><div class="dval">' + escapeHtml(node.manualRef || '-') + '</div></div>' +
       '<div class="drow" style="margin-bottom:2px;"><div class="dval" style="color:#f0b366;font-size:12.5px;">※ 위 방법대로 진행해도 해결되지 않으면 담당자에게 연락하세요.</div></div>' +
-      '<button class="restart-btn" onclick="startDiagnosis()">새 진단 시작</button>';
-    addMsg('diagnosis', html);
+      '<div class="diag-actions">' +
+        '<button class="restart-btn" onclick="startDiagnosis()">새 진단 시작</button>' +
+        '<button class="restart-btn share-btn" data-cause="' + escapeAttr(node.cause) + '" data-solution="' + escapeAttr(node.solution) + '" data-ref="' + escapeAttr(node.manualRef || '-') + '">공유하기</button>' +
+      '</div>' +
+      '<div class="feedback-row" id="' + diagUid + '">' +
+        '<span class="feedback-label">이 진단이 도움이 되었나요?</span>' +
+        '<button class="feedback-btn" data-uid="' + diagUid + '" data-val="up">👍</button>' +
+        '<button class="feedback-btn" data-uid="' + diagUid + '" data-val="down">👎</button>' +
+      '</div>';
+    const div = addMsg('diagnosis', html);
+    div.querySelector('.share-btn').addEventListener('click', (e) => {
+      shareDiagnosis(node.cause, node.solution, node.manualRef || '-', e.target);
+    });
+    div.querySelectorAll('.feedback-btn').forEach(btn => {
+      btn.addEventListener('click', () => handleFeedback(btn, node));
+    });
     return;
   }
   const optsHtml = '<div class="options">' + node.options.map((o, i) =>
@@ -1741,54 +1768,6 @@ function localMatch(node, userText){
   return { matched_index: top[0].i };
 }
 
-function renderTreeView(){
-  const view = document.getElementById('treeView');
-  if(!tree || !tree.nodes){ view.textContent = '트리 데이터 없음'; return; }
-  const lines = [];
-  const visited = new Set();
-  function walk(id, depth){
-    if(visited.has(id)){ lines.push('  '.repeat(depth) + '↳ (' + id + ' - 이미 표시됨)'); return; }
-    visited.add(id);
-    const n = tree.nodes[id];
-    if(!n){ lines.push('  '.repeat(depth) + '[' + id + '] (누락된 노드)'); return; }
-    if(n.type === 'diagnosis'){
-      lines.push('  '.repeat(depth) + '◆ [' + id + '] 진단: ' + n.cause);
-    } else {
-      lines.push('  '.repeat(depth) + '● [' + id + '] ' + n.question);
-      (n.options||[]).forEach(o => {
-        lines.push('  '.repeat(depth+1) + '- ' + o.label + '  →  ' + o.next);
-        walk(o.next, depth+2);
-      });
-    }
-  }
-  walk(tree.root, 0);
-  view.textContent = lines.join('\n');
-}
-
-function validateTree(t){
-  if(!t.root || !t.nodes || !t.nodes[t.root]) return '루트 노드(root)가 없거나 nodes에 존재하지 않습니다.';
-  for(const id in t.nodes){
-    const n = t.nodes[id];
-    if(n.type === 'question'){
-      if(!n.question) return '노드 "' + id + '"에 question이 없습니다.';
-      if(!n.options || !n.options.length) return '노드 "' + id + '"에 options가 없습니다.';
-      for(const o of n.options){
-        if(!t.nodes[o.next]) return '노드 "' + id + '"의 선택지 "' + o.label + '"가 존재하지 않는 노드(' + o.next + ')를 가리킵니다.';
-      }
-    } else if(n.type === 'diagnosis'){
-      if(!n.cause || !n.solution) return '진단 노드 "' + id + '"에 cause 또는 solution이 없습니다.';
-    } else {
-      return '노드 "' + id + '"의 type이 question/diagnosis가 아닙니다.';
-    }
-  }
-  return null;
-}
-
-function showAdminStatus(msg, ok){
-  const el = document.getElementById('adminStatus');
-  el.innerHTML = '<div class="status-msg ' + (ok?'ok':'err') + '">' + escapeHtml(msg) + '</div>';
-}
-
 document.querySelectorAll('.tab').forEach(t => {
   t.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
@@ -1824,74 +1803,45 @@ document.addEventListener('click', (e) => {
 document.getElementById('sendBtn').addEventListener('click', () => handleFreeText(document.getElementById('userInput').value));
 document.getElementById('userInput').addEventListener('keydown', e => { if(e.key === 'Enter') handleFreeText(e.target.value); });
 
-document.getElementById('loadSampleBtn').addEventListener('click', () => {
-  const ok = confirm('초기화하면 현재 저장된 트리 데이터가 기본값으로 되돌아갑니다. 계속할까요?');
-  if(!ok) return;
-  localStorage.removeItem('equipment-tree');
-  document.getElementById('jsonEditor').value = JSON.stringify(SAMPLE_TREE, null, 2);
-  showAdminStatus('기본 트리로 초기화되었습니다. "저장 및 적용"을 눌러 반영하세요.', true);
-});
-
-document.getElementById('validateBtn').addEventListener('click', () => {
-  try{
-    const parsed = JSON.parse(document.getElementById('jsonEditor').value);
-    const err = validateTree(parsed);
-    if(err) showAdminStatus(err, false);
-    else showAdminStatus('검증 통과: 노드 ' + Object.keys(parsed.nodes).length + '개, 구조 이상 없음.', true);
-  }catch(e){
-    showAdminStatus('JSON 파싱 오류: ' + e.message, false);
+/* ---------- 음성 입력 ---------- */
+(function initVoiceInput(){
+  const micBtn = document.getElementById('micBtn');
+  const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SpeechRecognitionCtor){
+    micBtn.style.display = 'none';
+    return;
   }
-});
+  const recognition = new SpeechRecognitionCtor();
+  recognition.lang = 'ko-KR';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+  let listening = false;
 
-document.getElementById('saveBtn').addEventListener('click', () => {
-  try{
-    const parsed = JSON.parse(document.getElementById('jsonEditor').value);
-    const err = validateTree(parsed);
-    if(err){ showAdminStatus(err, false); return; }
-    tree = parsed;
-    saveTreeToLocal(tree);
-    renderTreeView();
-    showAdminStatus('이 브라우저에 저장되었습니다. "진단하기" 탭에서 새 트리로 진단할 수 있습니다.', true);
-    startDiagnosis();
-  }catch(e){
-    showAdminStatus('저장 실패: ' + e.message, false);
-  }
-});
+  recognition.addEventListener('result', (e) => {
+    const text = e.results[0][0].transcript;
+    document.getElementById('userInput').value = text;
+  });
+  recognition.addEventListener('end', () => {
+    listening = false;
+    micBtn.classList.remove('recording');
+  });
+  recognition.addEventListener('error', () => {
+    listening = false;
+    micBtn.classList.remove('recording');
+  });
 
-document.getElementById('exportBtn').addEventListener('click', () => {
-  try{
-    const parsed = JSON.parse(document.getElementById('jsonEditor').value);
-    const blob = new Blob([JSON.stringify(parsed, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'equipment-tree.json';
-    a.click();
-    URL.revokeObjectURL(url);
-  }catch(e){
-    showAdminStatus('내보내기 실패: JSON 형식을 확인해주세요.', false);
-  }
-});
-
-document.getElementById('importBtn').addEventListener('click', () => document.getElementById('importFile').click());
-document.getElementById('importFile').addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    try{
-      const parsed = JSON.parse(reader.result);
-      const err = validateTree(parsed);
-      if(err){ showAdminStatus(err, false); return; }
-      document.getElementById('jsonEditor').value = JSON.stringify(parsed, null, 2);
-      showAdminStatus('파일을 불러왔습니다. "저장 및 적용"을 눌러 반영하세요.', true);
-    }catch(err){
-      showAdminStatus('파일 파싱 오류: ' + err.message, false);
+  micBtn.addEventListener('click', () => {
+    if(listening){
+      recognition.stop();
+      return;
     }
-  };
-  reader.readAsText(file);
-  e.target.value = '';
-});
+    try{
+      recognition.start();
+      listening = true;
+      micBtn.classList.add('recording');
+    }catch(e){}
+  });
+})();
 
 /* ---------- 부품 조회 ---------- */
 let partsData = [];
