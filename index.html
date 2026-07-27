@@ -29,14 +29,7 @@
 body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR', sans-serif;min-height:100vh;}
 .app{max-width:760px;margin:0 auto;padding:28px 20px 60px;}
 
-.header{margin-bottom:20px;position:relative;padding-right:44px;}
-.gear-wrap{position:absolute;top:0;right:0;}
-.gear-btn{width:32px;height:32px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text-muted);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.gear-btn:hover{color:var(--amber);border-color:var(--amber);}
-.gear-menu{position:absolute;top:38px;right:0;background:var(--surface2);border:1px solid var(--border);border-radius:8px;min-width:120px;display:none;flex-direction:column;overflow:hidden;z-index:10;}
-.gear-menu.open{display:flex;}
-.gear-menu-item{padding:9px 13px;font-size:12.5px;color:var(--text);cursor:pointer;white-space:nowrap;}
-.gear-menu-item:hover{background:var(--surface);color:var(--amber);}
+.header{margin-bottom:20px;position:relative;}
 .reset-link{background:none;border:none;color:var(--text-muted);font-size:11.5px;text-decoration:underline;cursor:pointer;padding:0;}
 .reset-link:hover{color:#f5a3a3;}
 .header h1{font-size:19px;font-weight:700;margin:0;letter-spacing:-0.2px;}
@@ -141,12 +134,6 @@ textarea.json-editor:focus{outline:none;border-color:var(--amber);}
 <div class="app">
 
   <div class="header">
-    <div class="gear-wrap">
-      <button id="settingsGear" class="gear-btn" title="설정" aria-label="설정">⚙</button>
-      <div class="gear-menu" id="gearMenu">
-        <div class="gear-menu-item" data-target="partsadmin">부품 관리</div>
-      </div>
-    </div>
     <h1>설비 진단 어시스턴트</h1>
     <div class="sub">자연어 질문 → 사내 정의 진단 트리 기반 원인 안내 (오프라인 동작, 서버/API 비용 없음)</div>
     <span class="badge-free">무료 · 로컬 실행 · 데이터는 이 브라우저에만 저장 · v11</span>
@@ -166,39 +153,6 @@ textarea.json-editor:focus{outline:none;border-color:var(--amber);}
       <button id="micBtn" class="mic-btn" title="음성 입력" type="button">🎤</button>
       <button id="sendBtn">전송</button>
     </div>
-  </div>
-
-  <div class="panel" id="panel-partsadmin">
-    <div class="hint">여기서 등록한 부품은 "부품 조회" 탭에서 검색해볼 수 있습니다.</div>
-
-    <div class="part-form">
-      <div class="part-form-row">
-        <input type="text" id="partName" placeholder="부품명 (예: 리데나)" class="part-input" />
-      </div>
-      <div class="part-form-row">
-        <textarea id="partDesc" placeholder="설명 (예: POL 펌프 압력 씰. 마모 시 압력 미발생 원인이 됨)" class="part-textarea"></textarea>
-      </div>
-      <div class="part-form-row part-form-photo">
-        <label for="partPhoto" class="photo-label">사진 선택</label>
-        <input type="file" id="partPhoto" accept="image/*" style="display:none;" />
-        <span id="partPhotoName" class="photo-filename">선택된 사진 없음</span>
-        <img id="partPhotoPreview" style="display:none;" />
-      </div>
-      <button id="addPartBtn" class="primary-btn">+ 부품 등록</button>
-    </div>
-
-    <div class="parts-search">
-      <input type="text" id="partsSearchAdmin" placeholder="등록된 부품 검색 (삭제하려면 여기서 찾기)..." />
-    </div>
-
-    <div class="parts-grid" id="partsGridAdmin"></div>
-
-    <div class="admin-toolbar" style="margin-top:14px;">
-      <button id="exportPartsBtn">부품 데이터 내보내기</button>
-      <button id="importPartsBtn">부품 데이터 가져오기</button>
-      <input type="file" id="importPartsFile" accept="application/json" style="display:none;">
-    </div>
-    <div id="partsStatus"></div>
   </div>
 
   <div class="panel" id="panel-parts">
@@ -1777,29 +1731,6 @@ document.querySelectorAll('.tab').forEach(t => {
   });
 });
 
-function switchToPanel(panelId){
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
-  document.getElementById('panel-' + panelId).classList.add('active');
-}
-
-document.getElementById('settingsGear').addEventListener('click', (e) => {
-  e.stopPropagation();
-  document.getElementById('gearMenu').classList.toggle('open');
-});
-document.querySelectorAll('.gear-menu-item').forEach(item => {
-  item.addEventListener('click', () => {
-    switchToPanel(item.getAttribute('data-target'));
-    document.getElementById('gearMenu').classList.remove('open');
-  });
-});
-document.addEventListener('click', (e) => {
-  const menu = document.getElementById('gearMenu');
-  if(!menu.contains(e.target) && e.target.id !== 'settingsGear'){
-    menu.classList.remove('open');
-  }
-});
-
 document.getElementById('sendBtn').addEventListener('click', () => handleFreeText(document.getElementById('userInput').value));
 document.getElementById('userInput').addEventListener('keydown', e => { if(e.key === 'Enter') handleFreeText(e.target.value); });
 
@@ -1858,19 +1789,13 @@ function savePartsToLocal(){
 }
 
 function renderParts(filter){
-  renderPartsInto('partsGrid', filter, false);
-}
-function renderPartsAdmin(filter){
-  renderPartsInto('partsGridAdmin', filter, true);
-}
-function renderPartsInto(gridId, filter, showDelete){
-  const grid = document.getElementById(gridId);
+  const grid = document.getElementById('partsGrid');
   const f = (filter || '').toLowerCase().trim();
   const list = partsData.filter(p =>
     !f || p.name.toLowerCase().includes(f) || (p.desc||'').toLowerCase().includes(f)
   );
   if(list.length === 0){
-    grid.innerHTML = '<div class="parts-empty">등록된 부품이 없습니다' + (showDelete ? '. 위에서 부품을 등록해보세요.' : '.') + '</div>';
+    grid.innerHTML = '<div class="parts-empty">등록된 부품이 없습니다.</div>';
     return;
   }
   grid.innerHTML = list.map(p => `
@@ -1879,95 +1804,14 @@ function renderPartsInto(gridId, filter, showDelete){
       <div class="part-card-body">
         <div class="part-card-name">${escapeHtml(p.name)}</div>
         <div class="part-card-desc">${escapeHtml(p.desc||'')}</div>
-        ${showDelete ? '<button class="part-card-del" data-id="'+p.id+'">삭제</button>' : ''}
       </div>
     </div>
   `).join('');
-  if(showDelete){
-    grid.querySelectorAll('.part-card-del').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-id');
-        partsData = partsData.filter(p => String(p.id) !== id);
-        savePartsToLocal();
-        renderPartsAdmin(document.getElementById('partsSearchAdmin').value);
-        renderParts(document.getElementById('partsSearch').value);
-      });
-    });
-  }
 }
 
-document.getElementById('partPhoto').addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    pendingPhoto = reader.result;
-    document.getElementById('partPhotoName').textContent = file.name;
-    const prev = document.getElementById('partPhotoPreview');
-    prev.src = pendingPhoto;
-    prev.style.display = 'inline-block';
-  };
-  reader.readAsDataURL(file);
-});
-
-document.getElementById('addPartBtn').addEventListener('click', () => {
-  const name = document.getElementById('partName').value.trim();
-  const desc = document.getElementById('partDesc').value.trim();
-  const statusEl = document.getElementById('partsStatus');
-  if(!name){
-    statusEl.innerHTML = '<div class="status-msg err">부품명을 입력해주세요.</div>';
-    return;
-  }
-  partsData.push({ id: Date.now(), name, desc, photo: pendingPhoto || null });
-  savePartsToLocal();
-  document.getElementById('partName').value = '';
-  document.getElementById('partDesc').value = '';
-  document.getElementById('partPhoto').value = '';
-  document.getElementById('partPhotoName').textContent = '선택된 사진 없음';
-  document.getElementById('partPhotoPreview').style.display = 'none';
-  pendingPhoto = null;
-  statusEl.innerHTML = '<div class="status-msg ok">"' + escapeHtml(name) + '" 등록되었습니다.</div>';
-  renderPartsAdmin(document.getElementById('partsSearchAdmin').value);
-  renderParts(document.getElementById('partsSearch').value);
-});
-
 document.getElementById('partsSearch').addEventListener('input', (e) => renderParts(e.target.value));
-document.getElementById('partsSearchAdmin').addEventListener('input', (e) => renderPartsAdmin(e.target.value));
-
-document.getElementById('exportPartsBtn').addEventListener('click', () => {
-  const blob = new Blob([JSON.stringify(partsData, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'equipment-parts.json';
-  a.click();
-  URL.revokeObjectURL(url);
-});
-
-document.getElementById('importPartsBtn').addEventListener('click', () => document.getElementById('importPartsFile').click());
-document.getElementById('importPartsFile').addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    try{
-      const parsed = JSON.parse(reader.result);
-      if(!Array.isArray(parsed)) throw new Error('부품 데이터는 배열 형식이어야 합니다.');
-      partsData = parsed;
-      savePartsToLocal();
-      renderPartsAdmin('');
-      renderParts('');
-      document.getElementById('partsStatus').innerHTML = '<div class="status-msg ok">부품 데이터를 불러왔습니다 (' + parsed.length + '개).</div>';
-    }catch(err){
-      document.getElementById('partsStatus').innerHTML = '<div class="status-msg err">파일 파싱 오류: ' + escapeHtml(err.message) + '</div>';
-    }
-  };
-  reader.readAsText(file);
-  e.target.value = '';
-});
 
 partsData = loadPartsFromLocal();
-renderPartsAdmin('');
 renderParts('');
 
 /* ---------- 에러코드 검색 ---------- */
