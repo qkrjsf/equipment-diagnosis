@@ -6,7 +6,7 @@
 <title>설비 진단 어시스턴트</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#10151b">
-<link rel="apple-touch-icon" href="icon 192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="설비진단">
@@ -851,7 +851,7 @@ const SAMPLE_TREE = {
         },
         {
           "label": "작동함",
-          "next": "n_relife_2",
+          "next": "n_relife_reach",
           "keywords": [
             "작동함",
             "켜짐"
@@ -862,34 +862,34 @@ const SAMPLE_TREE = {
     "d_relife_relay": {
       "type": "diagnosis",
       "cause": "릴레이 이상",
-      "solution": "릴레이 점검",
+      "solution": "릴레이 점검 및 교체",
       "manualRef": "재가동 시 솔레노이드 자체가 안 켜지는 경우"
     },
     "n_relife_2": {
       "type": "question",
-      "question": "설정압력(예: 150bar) 도달 시 솔레노이드 밸브가 OFF 되나요?",
+      "question": "설정압력 도달 시 솔레노이드 밸브가 OFF 되나요?",
       "options": [
         {
-          "label": "정상적으로 OFF 됨",
+          "label": "예",
           "next": "d_relife_usage",
           "keywords": [
             "OFF됨",
-            "정상"
+            "예"
           ]
         },
         {
-          "label": "계속 ON (안 꺼짐)",
+          "label": "아니오",
           "next": "n_relife_3",
           "keywords": [
-            "ON",
-            "안꺼짐"
+            "안꺼짐",
+            "계속ON"
           ]
         }
       ]
     },
     "d_relife_usage": {
       "type": "diagnosis",
-      "cause": "유압 사용량 증가로 압력 도달 지연",
+      "cause": "유압 사용량 증가 또는 유압오일 성능 저하",
       "solution": "설정압력 10~20bar 상향 조정, 또는 유압오일 교체",
       "manualRef": "20초 이내 설정압력 미도달 시 발생하는 에러"
     },
@@ -915,8 +915,8 @@ const SAMPLE_TREE = {
     },
     "d_relife_valve": {
       "type": "diagnosis",
-      "cause": "압력밸브(솔레노이드 하단) 설정 어긋남",
-      "solution": "압력밸브 조절해서 압력스위치가 설정압력에 정상 작동하도록 재조정",
+      "cause": "압력밸브(솔레노이드 하단) 설정 불량",
+      "solution": "압력밸브 재조정",
       "manualRef": ""
     },
     "d_relife_switch": {
@@ -1384,6 +1384,163 @@ const SAMPLE_TREE = {
       "cause": "특정 스텝에서 프로그램 정지 (에러코드 없음)",
       "solution": "해당 프로그램 위치 점검 후, 원위치로 복귀시키고 재가동",
       "manualRef": ""
+    },
+    "n_relife_symptom": {
+      "type": "question",
+      "question": "증상이 어떤가요?",
+      "options": [
+        {
+          "label": "설정압력 도달 후 솔레노이드가 안 꺼짐",
+          "next": "n_relife_2",
+          "keywords": [
+            "안꺼짐",
+            "계속ON"
+          ]
+        },
+        {
+          "label": "압력 자체가 안 걸림 / 약함",
+          "next": "n_relife_pressure_check",
+          "keywords": [
+            "압력안걸림",
+            "압력약함",
+            "압력안오름"
+          ]
+        }
+      ]
+    },
+    "n_relife_pressure_check": {
+      "type": "question",
+      "question": "모터를 OFF한 상태에서 솔레노이드를 수동으로 눌렀을 때 스프링 느낌이 나나요?",
+      "options": [
+        {
+          "label": "스프링 느낌 있음 (솔레노이드 정상)",
+          "next": "n_relife_clean",
+          "keywords": [
+            "스프링느낌있음",
+            "정상"
+          ]
+        },
+        {
+          "label": "스프링 느낌 없음 / 뻑뻑함",
+          "next": "d_relife_solenoid_bad",
+          "keywords": [
+            "스프링느낌없음",
+            "뻑뻑함"
+          ]
+        }
+      ]
+    },
+    "n_relife_clean": {
+      "type": "question",
+      "question": "솔레노이드 하단에 있는 릴리프밸브를 청소해주세요. 청소 후 압력이 정상적으로 걸리나요?",
+      "options": [
+        {
+          "label": "정상적으로 걸림",
+          "next": "d_relife_clean_ok",
+          "keywords": [
+            "정상",
+            "걸림"
+          ]
+        },
+        {
+          "label": "그래도 압력이 안 걸림",
+          "next": "d_relife_pump_bad",
+          "keywords": [
+            "안걸림",
+            "그래도안됨"
+          ]
+        }
+      ]
+    },
+    "d_relife_clean_ok": {
+      "type": "diagnosis",
+      "cause": "릴리프밸브 이물질 또는 밸브 고착",
+      "solution": "릴리프밸브 청소 완료",
+      "manualRef": ""
+    },
+    "d_relife_pump_bad": {
+      "type": "diagnosis",
+      "cause": "릴리프밸브 청소 후에도 압력이 형성되지 않음 - 펌프 자체 불량",
+      "solution": "펌프 교체",
+      "manualRef": ""
+    },
+    "d_relife_solenoid_bad": {
+      "type": "diagnosis",
+      "cause": "솔레노이드 밸브 자체 불량 (수동 작동 시 스프링 느낌 없음)",
+      "solution": "솔레노이드 밸브 청소 및 교체",
+      "manualRef": ""
+    },
+    "n_relife_spring_check": {
+      "type": "question",
+      "question": "모터 OFF 후, 솔레노이드를 수동으로 눌렀을 때 스프링 느낌이 나나요? (솔레노이드 정상 여부 판단)",
+      "options": [
+        {
+          "label": "정상 (스프링 느낌 있음)",
+          "next": "n_relife_clean_check",
+          "keywords": [
+            "정상",
+            "스프링느낌있음"
+          ]
+        },
+        {
+          "label": "비정상 (스프링 느낌 없음)",
+          "next": "d_relife_solenoid_bad",
+          "keywords": [
+            "비정상",
+            "스프링느낌없음"
+          ]
+        }
+      ]
+    },
+    "n_relife_clean_check": {
+      "type": "question",
+      "question": "릴리프밸브를 청소한 후 압력이 발생하나요?",
+      "options": [
+        {
+          "label": "압력 발생함 (정상)",
+          "next": "d_relife_clean_ok",
+          "keywords": [
+            "압력발생",
+            "정상"
+          ]
+        },
+        {
+          "label": "여전히 압력 발생 안함",
+          "next": "d_relife_pump_replace",
+          "keywords": [
+            "여전히안됨",
+            "압력없음"
+          ]
+        }
+      ]
+    },
+    "d_relife_pump_replace": {
+      "type": "diagnosis",
+      "cause": "유압펌프 성능 저하 또는 펌프 불량",
+      "solution": "유압펌프 점검 및 교체",
+      "manualRef": ""
+    },
+    "n_relife_reach": {
+      "type": "question",
+      "question": "설정압력(예: 150bar)에 도달하나요?",
+      "options": [
+        {
+          "label": "예",
+          "next": "n_relife_2",
+          "keywords": [
+            "도달함",
+            "예"
+          ]
+        },
+        {
+          "label": "아니오 (압력이 발생하지 않음)",
+          "next": "n_relife_spring_check",
+          "keywords": [
+            "도달안함",
+            "압력미발생"
+          ]
+        }
+      ]
     }
   }
 };
