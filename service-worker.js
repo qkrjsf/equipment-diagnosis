@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sulbi-jindan-v7';
+const CACHE_NAME = 'sulbi-jindan-v9';
 const ASSETS = [
   './',
   './index.html',
@@ -21,6 +21,12 @@ self.addEventListener('activate', (event) => {
     )
   );
   self.clients.claim();
+});
+
+self.addEventListener('message', (event) => {
+  if(event.data === 'GET_VERSION' && event.ports && event.ports[0]){
+    event.ports[0].postMessage(CACHE_NAME);
+  }
 });
 
 self.addEventListener('fetch', (event) => {
