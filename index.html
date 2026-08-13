@@ -56,6 +56,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .chat{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
 .msg{max-width:88%;padding:11px 14px;border-radius:10px;font-size:14px;line-height:1.55;}
 .msg.bot{background:var(--surface);border:1px solid var(--border);align-self:flex-start;border-top-left-radius:2px;}
+.q-note{background:var(--surface2);border-left:2px solid var(--amber);border-radius:4px;padding:8px 10px;margin-bottom:10px;font-size:12px;color:var(--text-muted);line-height:1.6;}
 .msg.user{background:var(--surface2);border:1px solid var(--border);align-self:flex-end;border-top-right-radius:2px;color:var(--text);}
 .msg.diagnosis{background:var(--teal-dim);border:1px solid #1f5c53;align-self:flex-start;border-top-left-radius:2px;max-width:100%;}
 .msg.diagnosis .dtitle{color:var(--teal);font-weight:700;font-size:12px;letter-spacing:0.3px;margin-bottom:8px;font-family:'IBM Plex Mono',monospace;}
@@ -190,68 +191,23 @@ const SAMPLE_TREE = {
   "nodes": {
     "n_root": {
       "type": "question",
-      "question": "화면(HMI/제어기)에 어떤 에러 문구가 떴나요?",
+      "question": "어떤 문제가 있으신가요?",
       "options": [
         {
-          "label": "레벨센서 이상 (Level Sensor Fault)",
-          "next": "n_level_type",
+          "label": "화면(HMI/제어기)에 에러 문구가 떴어요",
+          "next": "n_error_type",
           "keywords": [
-            "레벨센서",
-            "level sensor",
-            "탱크센서"
+            "에러",
+            "알람",
+            "문구"
           ]
         },
         {
-          "label": "모터 과부하 (Moter Fault)",
-          "next": "n_motor_type",
+          "label": "에러 문구 없이 이런 증상이 있어요",
+          "next": "n_symptom_type",
           "keywords": [
-            "모터",
-            "moter fault",
-            "과부하"
-          ]
-        },
-        {
-          "label": "펌프 인버터 에러 (Pump Fault)",
-          "next": "n_pump_type",
-          "keywords": [
-            "펌프",
-            "pump fault",
-            "인버터"
-          ]
-        },
-        {
-          "label": "고압 압력 (High Pressure)",
-          "next": "n_highp_type",
-          "keywords": [
-            "고압",
-            "high pressure"
-          ]
-        },
-        {
-          "label": "유압 릴리프 이상 (HYD' Relife Fault)",
-          "next": "n_relife_1",
-          "keywords": [
-            "relife",
-            "릴리프",
-            "유압압력"
-          ]
-        },
-        {
-          "label": "피스톤 센서 이상 (Clean/Injection Sensor Fault)",
-          "next": "n_piston_type",
-          "keywords": [
-            "피스톤",
-            "sensor fault",
-            "클리닝",
-            "인젝션"
-          ]
-        },
-        {
-          "label": "로봇 에러 (Robot Fault)",
-          "next": "n_robot_type",
-          "keywords": [
-            "로봇",
-            "robot fault"
+            "에러없음",
+            "증상"
           ]
         }
       ]
@@ -798,7 +754,8 @@ const SAMPLE_TREE = {
             "켜짐"
           ]
         }
-      ]
+      ],
+      "note": "[진단 기준]\nHYD' Relief Fault는 압력 유지 불량을 직접 감지하는 알람이 아닙니다.\n유압 솔레노이드 작동 후 20초 이내 설정압력에 도달하여 압력스위치가 작동해야 정상입니다.\n20초 이내 압력스위치가 작동하지 않으면 이 에러가 발생합니다.\n20초 이내 정상적으로 압력스위치가 작동한 후 압력이 떨어지는 경우에는 이 에러가 발생하지 않을 수 있습니다.\n운전 중 압력이 지속적으로 떨어지는 현상은 별도의 「유압 압력 유지 불량」 진단 트리에서 다룹니다."
     },
     "d_relife_relay": {
       "type": "diagnosis",
@@ -1482,6 +1439,221 @@ const SAMPLE_TREE = {
           ]
         }
       ]
+    },
+    "n_leak_1": {
+      "type": "question",
+      "note": "클리닝피스톤/인젝션피스톤 A·B포트는 항상 동시에 잠급니다 (한쪽만 잠그지 않음).",
+      "question": "클리닝피스톤 A/B 밸브를 잠급니다. 압력이 떨어지나요?",
+      "options": [
+        {
+          "label": "떨어지지 않음 (유지됨)",
+          "next": "d_leak_mixinghead",
+          "keywords": [
+            "유지됨",
+            "안떨어짐"
+          ]
+        },
+        {
+          "label": "떨어짐",
+          "next": "n_leak_2",
+          "keywords": [
+            "떨어짐"
+          ]
+        }
+      ]
+    },
+    "n_leak_2": {
+      "type": "question",
+      "question": "인젝션피스톤 A/B 밸브도 추가로 잠급니다. 그래도 압력이 떨어지나요?",
+      "options": [
+        {
+          "label": "압력이 유지됨 (안 떨어짐)",
+          "next": "d_leak_mixinghead",
+          "keywords": [
+            "유지됨"
+          ]
+        },
+        {
+          "label": "그래도 압력 유지 안됨 (계속 떨어짐)",
+          "next": "n_leak_3",
+          "keywords": [
+            "계속떨어짐"
+          ]
+        }
+      ]
+    },
+    "d_leak_mixinghead": {
+      "type": "diagnosis",
+      "cause": "믹싱헤드 피스톤 씰 손상으로 인한 압력 누설",
+      "solution": "믹싱헤드 교체",
+      "manualRef": "피스톤 밸브를 잠갔을 때 압력이 유지되면 믹싱헤드 내부 씰 손상이 원인"
+    },
+    "n_leak_3": {
+      "type": "question",
+      "question": "밸브를 원상복구하고 어큐뮬레이터를 교체합니다 (노후화/과사용이 가장 흔한 원인). 압력이 유지되나요?",
+      "options": [
+        {
+          "label": "유지됨",
+          "next": "d_leak_accum_ok",
+          "keywords": [
+            "유지됨"
+          ]
+        },
+        {
+          "label": "유지 안됨",
+          "next": "n_leak_4",
+          "keywords": [
+            "유지안됨"
+          ]
+        }
+      ]
+    },
+    "d_leak_accum_ok": {
+      "type": "diagnosis",
+      "cause": "어큐뮬레이터 노후화 또는 과사용으로 인한 압력 유지 불량",
+      "solution": "어큐뮬레이터 교체로 해결 완료",
+      "manualRef": ""
+    },
+    "n_leak_4": {
+      "type": "question",
+      "question": "릴리프밸브 세트(체크밸브 포함)를 교체합니다. 압력이 유지되나요?",
+      "options": [
+        {
+          "label": "유지됨",
+          "next": "d_leak_relief_ok",
+          "keywords": [
+            "유지됨"
+          ]
+        },
+        {
+          "label": "유지 안됨",
+          "next": "n_leak_5",
+          "keywords": [
+            "유지안됨"
+          ]
+        }
+      ]
+    },
+    "d_leak_relief_ok": {
+      "type": "diagnosis",
+      "cause": "릴리프밸브 세트(체크밸브 포함) 불량으로 인한 압력 유지 불량",
+      "solution": "릴리프밸브 세트 교체로 해결 완료",
+      "manualRef": ""
+    },
+    "n_leak_5": {
+      "type": "question",
+      "question": "블록의 P·T 포트를 막고(호스/니플로 채움) 운전 시 압력이 유지되는지 점검합니다.",
+      "options": [
+        {
+          "label": "유지됨",
+          "next": "d_leak_solenoid",
+          "keywords": [
+            "유지됨"
+          ]
+        },
+        {
+          "label": "유지 안됨",
+          "next": "d_leak_mainblock",
+          "keywords": [
+            "유지안됨"
+          ]
+        }
+      ]
+    },
+    "d_leak_solenoid": {
+      "type": "diagnosis",
+      "cause": "클리닝/인젝션 작동 솔레노이드 밸브 또는 블록 문제 가능성",
+      "solution": "해당 솔레노이드 밸브 및 블록 점검",
+      "manualRef": "P·T포트 막았을 때 압력 유지되면 포트 쪽이 아닌 솔레노이드/블록 계통 문제로 판단"
+    },
+    "d_leak_mainblock": {
+      "type": "diagnosis",
+      "cause": "메인 블록 불량",
+      "solution": "메인 블록 교체 권장",
+      "manualRef": "P·T포트를 막아도 압력 유지 안되면 메인 블록 자체 불량"
+    },
+    "n_error_type": {
+      "type": "question",
+      "question": "화면(HMI/제어기)에 어떤 에러 문구가 떴나요?",
+      "options": [
+        {
+          "label": "레벨센서 이상 (Level Sensor Fault)",
+          "next": "n_level_type",
+          "keywords": [
+            "레벨센서",
+            "level sensor",
+            "탱크센서"
+          ]
+        },
+        {
+          "label": "모터 과부하 (Moter Fault)",
+          "next": "n_motor_type",
+          "keywords": [
+            "모터",
+            "moter fault",
+            "과부하"
+          ]
+        },
+        {
+          "label": "펌프 인버터 에러 (Pump Fault)",
+          "next": "n_pump_type",
+          "keywords": [
+            "펌프",
+            "pump fault",
+            "인버터"
+          ]
+        },
+        {
+          "label": "고압 압력 (High Pressure)",
+          "next": "n_highp_type",
+          "keywords": [
+            "고압",
+            "high pressure"
+          ]
+        },
+        {
+          "label": "유압 릴리프 이상 (HYD' Relife Fault)",
+          "next": "n_relife_1",
+          "keywords": [
+            "relife",
+            "릴리프",
+            "유압압력"
+          ]
+        },
+        {
+          "label": "피스톤 센서 이상 (Clean/Injection Sensor Fault)",
+          "next": "n_piston_type",
+          "keywords": [
+            "피스톤",
+            "sensor fault",
+            "클리닝",
+            "인젝션"
+          ]
+        },
+        {
+          "label": "로봇 에러 (Robot Fault)",
+          "next": "n_robot_type",
+          "keywords": [
+            "로봇",
+            "robot fault"
+          ]
+        }
+      ]
+    },
+    "n_symptom_type": {
+      "type": "question",
+      "question": "어떤 증상인가요?",
+      "options": [
+        {
+          "label": "유압 압력 유지 불량 (운전 중 압력이 계속 떨어짐)",
+          "next": "n_leak_1",
+          "keywords": [
+            "압력유지",
+            "압력떨어짐",
+            "압력저하"
+          ]
+        }
+      ]
     }
   }
 };
@@ -1620,7 +1792,10 @@ function askCurrentNode(){
   const optsHtml = '<div class="options">' + node.options.map((o, i) =>
     '<button class="opt-btn" data-idx="' + i + '">' + escapeHtml(o.label) + '</button>'
   ).join('') + '</div>';
-  const div = addMsg('bot', escapeHtml(node.question) + optsHtml);
+  const noteHtml = node.note
+    ? '<div class="q-note">' + escapeHtml(node.note).replace(/\n/g, '<br>') + '</div>'
+    : '';
+  const div = addMsg('bot', noteHtml + escapeHtml(node.question) + optsHtml);
   div.querySelectorAll('.opt-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.getAttribute('data-idx'));
