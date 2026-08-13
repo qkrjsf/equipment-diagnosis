@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>설비 진단 어시스턴트</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#10151b">
+<meta name="theme-color" content="#faf6f0">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -14,18 +14,22 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
 :root{
-  --bg:#10151b;
-  --surface:#1a222b;
-  --surface2:#212b36;
-  --border:#2a3541;
-  --text:#e7edf3;
-  --text-muted:#8493a3;
-  --amber:#ff9f1c;
-  --amber-dim:#4a3416;
-  --teal:#2ec4b6;
-  --teal-dim:#123f3a;
+  --bg:#faf6f0;
+  --surface:#ffffff;
+  --surface2:#f3ede2;
+  --border:#e8ddc9;
+  --text:#2b2520;
+  --text-muted:#8a7d68;
+  --amber:#d9730d;
+  --amber-dim:#f6e2c8;
+  --result:#a15c1f;
+  --result-dim:#f2e3d1;
+  --danger:#b23a2e;
+  --danger-dim:#f6dcd6;
 }
 *{box-sizing:border-box;}
+html{font-size:100%;}
+html.font-large{font-size:118%;}
 body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR', sans-serif;min-height:100vh;}
 .app{max-width:760px;margin:0 auto;padding:28px 20px 60px;}
 .app-footer{text-align:center;color:var(--text-muted);font-size:11px;margin-top:36px;letter-spacing:0.3px;line-height:1.7;}
@@ -34,11 +38,14 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .lang-switch{position:absolute;top:0;left:0;display:flex;gap:4px;}
 .lang-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);font-size:11px;padding:5px 10px;border-radius:7px;cursor:pointer;}
 .lang-btn.active{background:var(--amber-dim);border-color:var(--amber);color:var(--amber);font-weight:700;}
-.update-btn{position:absolute;top:0;right:0;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);font-size:11.5px;padding:6px 10px;border-radius:8px;cursor:not-allowed;white-space:nowrap;}
+.header-tools{position:absolute;top:0;right:0;display:flex;gap:6px;align-items:center;}
+.update-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);font-size:11.5px;padding:6px 10px;border-radius:8px;cursor:not-allowed;white-space:nowrap;}
 .update-btn.available{background:var(--amber-dim);border-color:var(--amber);color:var(--amber);cursor:pointer;animation:pulse 1.4s infinite;}
 .update-btn:disabled{opacity:0.7;}
+.fontsize-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);font-size:12px;font-weight:700;width:30px;height:30px;border-radius:8px;cursor:pointer;}
+.fontsize-btn.active{background:var(--amber-dim);border-color:var(--amber);color:var(--amber);}
 .reset-link{background:none;border:none;color:var(--text-muted);font-size:11.5px;text-decoration:underline;cursor:pointer;padding:0;}
-.reset-link:hover{color:#f5a3a3;}
+.reset-link:hover{color:var(--danger);}
 .header h1{font-size:19px;font-weight:700;margin:0;letter-spacing:-0.2px;}
 .header .sub{font-size:12px;color:var(--text-muted);margin-top:4px;}
 
@@ -48,10 +55,14 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .panel{display:none;}
 .panel.active{display:block;}
 
-.trace{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-bottom:18px;min-height:20px;}
+.trace-row{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.back-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);font-size:12px;padding:6px 11px;border-radius:8px;cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.back-btn:hover:not(:disabled){border-color:var(--amber);color:var(--amber);}
+.back-btn:disabled{opacity:0.4;cursor:default;}
+.trace{display:flex;flex-wrap:wrap;align-items:center;gap:0;min-height:20px;flex:1;}
 .trace-node{display:flex;align-items:center;}
 .trace-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0;}
-.trace-dot.done{background:var(--teal);}
+.trace-dot.done{background:var(--result);}
 .trace-line{width:16px;height:1px;background:var(--border);}
 .trace-label{font-size:11px;color:var(--text-muted);margin:0 6px;white-space:nowrap;font-family:'IBM Plex Mono', monospace;}
 
@@ -60,25 +71,29 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .msg.bot{background:var(--surface);border:1px solid var(--border);align-self:flex-start;border-top-left-radius:2px;}
 .q-note{background:var(--surface2);border-left:2px solid var(--amber);border-radius:4px;padding:8px 10px;margin-bottom:10px;font-size:12px;color:var(--text-muted);line-height:1.6;}
 .msg.user{background:var(--surface2);border:1px solid var(--border);align-self:flex-end;border-top-right-radius:2px;color:var(--text);}
-.msg.diagnosis{background:var(--teal-dim);border:1px solid #1f5c53;align-self:flex-start;border-top-left-radius:2px;max-width:100%;}
-.msg.diagnosis .dtitle{color:var(--teal);font-weight:700;font-size:12px;letter-spacing:0.3px;margin-bottom:8px;font-family:'IBM Plex Mono',monospace;}
+.msg.diagnosis{background:var(--result-dim);border:1px solid #ddbd8e;align-self:flex-start;border-top-left-radius:2px;max-width:100%;}
+.msg.diagnosis .dtitle{color:var(--result);font-weight:700;font-size:12px;letter-spacing:0.3px;margin-bottom:8px;font-family:'IBM Plex Mono',monospace;}
 .msg.diagnosis .drow{margin-bottom:8px;}
-.msg.diagnosis .dlabel{font-size:11px;color:#8fd4cb;margin-bottom:2px;}
+.msg.diagnosis .dlabel{font-size:11px;color:var(--result);margin-bottom:2px;}
 .msg.diagnosis .dval{font-size:14px;}
-.msg.clarify{background:var(--amber-dim);border:1px solid #6b4c1a;align-self:flex-start;border-top-left-radius:2px;}
+.msg.clarify{background:var(--amber-dim);border:1px solid #e3b374;align-self:flex-start;border-top-left-radius:2px;}
+.warn-text{color:var(--danger);font-size:12.5px;}
 
 .options{display:flex;flex-direction:column;gap:6px;margin-top:4px;}
 .opt-btn{text-align:left;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-size:13.5px;cursor:pointer;font-family:inherit;}
 .opt-btn:hover{border-color:var(--amber);color:var(--amber);}
+.opt-btn:disabled{opacity:0.55;cursor:default;}
+.opt-btn:disabled:hover{border-color:var(--border);color:var(--text);}
+.opt-btn.selected{border-color:var(--amber);background:var(--amber-dim);color:var(--amber);font-weight:700;opacity:1;}
 
 .inputrow{display:flex;gap:8px;position:sticky;bottom:0;background:var(--bg);padding-top:8px;}
 .inputrow input{flex:1;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:11px 13px;border-radius:8px;font-size:14px;font-family:inherit;}
 .inputrow input:focus{outline:none;border-color:var(--amber);}
-.inputrow button{background:var(--amber);color:#241605;border:none;padding:0 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;}
+.inputrow button{background:var(--amber);color:#fff8f0;border:none;padding:0 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;}
 .restart-btn{background:none;border:1px solid var(--border);color:var(--text-muted);padding:7px 12px;border-radius:8px;font-size:12px;cursor:pointer;margin-top:2px;}
 .restart-btn:hover{color:var(--text);}
 .diag-actions{display:flex;gap:8px;flex-wrap:wrap;}
-.feedback-row{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);}
+.feedback-row{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.08);}
 .feedback-label{font-size:12px;color:var(--text-muted);}
 .feedback-btn{background:none;border:1px solid var(--border);border-radius:7px;padding:4px 9px;font-size:14px;cursor:pointer;line-height:1;}
 .feedback-btn:hover{border-color:var(--amber);}
@@ -87,16 +102,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .admin-toolbar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
 .admin-toolbar button{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:7px;font-size:12.5px;cursor:pointer;}
 .admin-toolbar button:hover{border-color:var(--amber);}
-.admin-toolbar button.primary{background:var(--amber);color:#241605;border:none;font-weight:700;}
-
-.tree-view{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:16px;font-size:12.5px;line-height:1.9;font-family:'IBM Plex Mono',monospace;max-height:320px;overflow-y:auto;white-space:pre-wrap;color:#b7c2cd;}
-
-textarea.json-editor{width:100%;min-height:360px;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;resize:vertical;}
-textarea.json-editor:focus{outline:none;border-color:var(--amber);}
-
-.status-msg{font-size:12.5px;padding:8px 12px;border-radius:7px;margin-top:10px;}
-.status-msg.ok{background:var(--teal-dim);color:#8fd4cb;}
-.status-msg.err{background:#4a1616;color:#f5a3a3;}
+.admin-toolbar button.primary{background:var(--amber);color:#fff8f0;border:none;font-weight:700;}
 
 .hint{font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:14px;}
 .hint b{color:var(--text);}
@@ -110,7 +116,7 @@ textarea.json-editor:focus{outline:none;border-color:var(--amber);}
 .photo-label:hover{border-color:var(--amber);}
 .photo-filename{font-size:12px;color:var(--text-muted);}
 #partPhotoPreview{max-height:60px;border-radius:6px;border:1px solid var(--border);}
-.primary-btn{background:var(--amber);color:#241605;border:none;padding:10px 16px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;align-self:flex-start;}
+.primary-btn{background:var(--amber);color:#fff8f0;border:none;padding:10px 16px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;align-self:flex-start;}
 
 .parts-search{margin-bottom:14px;}
 .parts-search input{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:10px 13px;border-radius:8px;font-size:14px;font-family:inherit;}
@@ -118,13 +124,13 @@ textarea.json-editor:focus{outline:none;border-color:var(--amber);}
 
 .parts-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));gap:12px;}
 .part-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
-.part-card img{width:100%;height:110px;object-fit:cover;background:#0b0f13;}
-.part-card .noimg{width:100%;height:110px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:11px;background:#0b0f13;}
+.part-card img{width:100%;height:110px;object-fit:cover;background:var(--surface2);}
+.part-card .noimg{width:100%;height:110px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:11px;background:var(--surface2);}
 .part-card-body{padding:10px 11px;flex:1;display:flex;flex-direction:column;gap:5px;}
 .part-card-name{font-size:13.5px;font-weight:700;color:var(--text);}
 .part-card-desc{font-size:12px;color:var(--text-muted);line-height:1.5;flex:1;}
-.part-card-del{align-self:flex-end;background:none;border:none;color:#8493a3;font-size:11px;cursor:pointer;padding:2px 4px;}
-.part-card-del:hover{color:var(--danger, #ef5b5b);}
+.part-card-del{align-self:flex-end;background:none;border:none;color:var(--text-muted);font-size:11px;cursor:pointer;padding:2px 4px;}
+.part-card-del:hover{color:var(--danger);}
 .parts-empty{color:var(--text-muted);font-size:13px;padding:20px 4px;}
 
 .code-results{display:flex;flex-direction:column;gap:8px;max-height:60vh;overflow-y:auto;}
@@ -143,7 +149,11 @@ textarea.json-editor:focus{outline:none;border-color:var(--amber);}
       <button class="lang-btn active" data-lang="ko">한국어</button>
       <button class="lang-btn" data-lang="en">English</button>
     </div>
-    <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
+    <div class="header-tools">
+      <button id="fontDecBtn" class="fontsize-btn" title="글자 작게">가-</button>
+      <button id="fontIncBtn" class="fontsize-btn" title="글자 크게">가+</button>
+      <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
+    </div>
     <h1 data-i18n="title">설비 진단 어시스턴트</h1>
     <div class="sub" data-i18n="subtitle">자연어 질문 → 사내 정의 진단 트리 기반 원인 안내 (오프라인 동작, 서버/API 비용 없음)</div>
   </div>
@@ -155,7 +165,10 @@ textarea.json-editor:focus{outline:none;border-color:var(--amber);}
   </div>
 
   <div class="panel active" id="panel-chat">
-    <div class="trace" id="trace"></div>
+    <div class="trace-row">
+      <button id="backBtn" class="back-btn" disabled data-i18n="backBtn">← 이전 질문</button>
+      <div class="trace" id="trace"></div>
+    </div>
     <div class="chat" id="chat"></div>
     <div class="inputrow">
       <input id="userInput" type="text" data-i18n-placeholder="chatPlaceholder" placeholder="예: 화면에 OCT 떴어요, 레벨센서 알람 떴어요" />
@@ -3710,6 +3723,7 @@ const UI_STRINGS = {
     diagEnded: "진단이 이미 종료되었습니다. \"새 진단 시작\"을 눌러주세요.",
     clarifyDefault: "정확히 어떤 상황인지 아래 선택지에서 골라주시겠어요? 등록된 키워드와 잘 맞지 않는 것 같아요.",
     searchIntro: "관련된 항목을 찾았어요. 해당하는 걸 골라주세요:",
+    backBtn: "← 이전 질문",
     manualCodePrompt: "팬던트에 표시된 정확한 에러 코드를 입력해주세요. (예: E0231, W0012)",
     manualCodeBtn: "조회",
     manualCodeNotFound: "해당 코드를 찾을 수 없습니다. 코드 표기를 다시 확인하시거나, \"에러코드 검색\" 탭에서 키워드로 찾아보세요. 그래도 안 나오면 담당자에게 문의해주세요.",
@@ -3747,6 +3761,7 @@ const UI_STRINGS = {
     diagEnded: "The diagnosis has already ended. Please press \"Start New Diagnosis\".",
     clarifyDefault: "Could you pick the option below that best matches your situation? It didn't quite match a known keyword.",
     searchIntro: "I found some related topics. Please pick the one that matches:",
+    backBtn: "← Previous question",
     manualCodePrompt: "Please enter the exact error code shown on the pendant. (e.g. E0231, W0012)",
     manualCodeBtn: "Look up",
     manualCodeNotFound: "That code could not be found. Please double-check the code, or search by keyword in the \"Error Code Search\" tab. If it's still not found, contact your supervisor.",
@@ -3818,6 +3833,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 let tree = null;
 let currentNodeId = null;
 let path = [];
+let historyStack = [];
 
 function init(){
   tree = (LANG === 'ko') ? TREE_KO : TREE_EN;
@@ -3834,10 +3850,46 @@ function init(){
 function startDiagnosis(){
   currentNodeId = tree.root;
   path = [];
+  historyStack = [];
+  updateBackBtn();
   document.getElementById('chat').innerHTML = '';
   renderTrace();
   askCurrentNode();
 }
+
+function updateBackBtn(){
+  document.getElementById('backBtn').disabled = historyStack.length === 0;
+}
+
+function goBack(){
+  if(historyStack.length === 0) return;
+  const prev = historyStack.pop();
+  currentNodeId = prev.nodeId;
+  path = path.slice(0, prev.pathLen);
+  updateBackBtn();
+  renderTrace();
+  askCurrentNode();
+}
+document.getElementById('backBtn').addEventListener('click', goBack);
+
+/* ---------- 글자 크기 조절 ---------- */
+function applyFontSize(size){
+  document.documentElement.classList.toggle('font-large', size === 'large');
+  document.getElementById('fontIncBtn').classList.toggle('active', size === 'large');
+  document.getElementById('fontDecBtn').classList.toggle('active', size !== 'large');
+}
+let fontSize = localStorage.getItem('app-fontsize') || 'normal';
+applyFontSize(fontSize);
+document.getElementById('fontIncBtn').addEventListener('click', () => {
+  fontSize = 'large';
+  localStorage.setItem('app-fontsize', fontSize);
+  applyFontSize(fontSize);
+});
+document.getElementById('fontDecBtn').addEventListener('click', () => {
+  fontSize = 'normal';
+  localStorage.setItem('app-fontsize', fontSize);
+  applyFontSize(fontSize);
+});
 
 function renderTrace(){
   const el = document.getElementById('trace');
@@ -3930,7 +3982,7 @@ function askCurrentNode(){
       '<div class="drow"><div class="dlabel">' + escapeHtml(t('diagCause')) + '</div><div class="dval">' + escapeHtml(node.cause) + '</div></div>' +
       '<div class="drow"><div class="dlabel">' + escapeHtml(t('diagSolution')) + '</div><div class="dval">' + escapeHtml(node.solution) + '</div></div>' +
       '<div class="drow" style="margin-bottom:2px;"><div class="dlabel">' + escapeHtml(t('diagRef')) + '</div><div class="dval">' + escapeHtml(node.manualRef || '-') + '</div></div>' +
-      '<div class="drow" style="margin-bottom:2px;"><div class="dval" style="color:#f0b366;font-size:12.5px;">' + escapeHtml(t('diagContact')) + '</div></div>' +
+      '<div class="drow" style="margin-bottom:2px;"><div class="dval warn-text">' + escapeHtml(t('diagContact')) + '</div></div>' +
       '<div class="diag-actions">' +
         '<button class="restart-btn" onclick="startDiagnosis()">' + escapeHtml(t('restart')) + '</button>' +
         '<button class="restart-btn share-btn" data-cause="' + escapeAttr(node.cause) + '" data-solution="' + escapeAttr(node.solution) + '" data-ref="' + escapeAttr(node.manualRef || '-') + '">' + escapeHtml(t('share')) + '</button>' +
@@ -3958,13 +4010,26 @@ function askCurrentNode(){
   const div = addMsg('bot', noteHtml + escapeHtml(node.question) + optsHtml);
   div.querySelectorAll('.opt-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      if(btn.disabled) return;
+      lockOptionGroup(btn);
       const idx = parseInt(btn.getAttribute('data-idx'));
       handleAnswer(node.options[idx].label, node.options[idx].next);
     });
   });
 }
 
+function lockOptionGroup(clickedBtn){
+  const group = clickedBtn.closest('.options');
+  if(!group) return;
+  group.querySelectorAll('.opt-btn').forEach(b => {
+    b.disabled = true;
+    b.classList.toggle('selected', b === clickedBtn);
+  });
+}
+
 function handleAnswer(labelText, nextId){
+  historyStack.push({ nodeId: currentNodeId, pathLen: path.length });
+  updateBackBtn();
   addMsg('user', escapeHtml(labelText));
   path.push(labelText);
   currentNodeId = nextId;
@@ -4149,6 +4214,10 @@ function renderSearchResults(results){
   const div = addMsg('bot', introHtml);
   div.querySelectorAll('.opt-btn').forEach((btn, i) => {
     btn.addEventListener('click', () => {
+      if(btn.disabled) return;
+      lockOptionGroup(btn);
+      historyStack.push({ nodeId: currentNodeId, pathLen: path.length });
+      updateBackBtn();
       addMsg('user', escapeHtml(results[i].label));
       path = [];
       currentNodeId = results[i].next;
@@ -4230,7 +4299,7 @@ function renderManualCodeLookup(){
         '<div class="dtitle">' + escapeHtml(t('diagTitle')) + '</div>' +
         '<div class="drow"><div class="dlabel">코드</div><div class="dval">' + escapeHtml(code) + ' (' + escapeHtml(info.cat) + ')</div></div>' +
         '<div class="drow" style="margin-bottom:2px;"><div class="dlabel">내용</div><div class="dval">' + escapeHtml(info.desc) + '</div></div>' +
-        '<div class="drow" style="margin-bottom:2px;"><div class="dval" style="color:#f0b366;font-size:12.5px;">' + escapeHtml(t('diagContact')) + '</div></div>' +
+        '<div class="drow" style="margin-bottom:2px;"><div class="dval warn-text">' + escapeHtml(t('diagContact')) + '</div></div>' +
         '<button class="restart-btn" onclick="startDiagnosis()">' + escapeHtml(t('restart')) + '</button>';
       addMsg('diagnosis', html2);
     } else {
@@ -4358,12 +4427,26 @@ function getRemoteVersion(){
     .catch(() => null);
 }
 
-async function checkForUpdate(){
+async function checkForUpdate(retryLeft){
+  if(retryLeft === undefined) retryLeft = 2;
   updateBtn.disabled = true;
   updateBtn.classList.remove('available');
   updateBtn.textContent = t('updChecking');
   const [active, remote] = await Promise.all([getActiveVersion(), getRemoteVersion()]);
+
+  if(active === null && retryLeft > 0){
+    // 아직 이 화면을 제어하는 서비스워커를 확인 못한 상태 - 최신이라고 섣불리 판단하지 않고 잠시 후 재시도
+    setTimeout(() => checkForUpdate(retryLeft - 1), 1500);
+    return;
+  }
+
   if(remote && active && remote !== active){
+    updateBtn.disabled = false;
+    updateBtn.classList.add('available');
+    updateBtn.textContent = t('updAvailable');
+    updateBtn.title = t('updTitleAvailable');
+  } else if(active === null){
+    // 재시도 후에도 확인 불가 - "최신"이라고 잘못 표시하지 않고, 눌러서 직접 갱신할 수 있게 활성화
     updateBtn.disabled = false;
     updateBtn.classList.add('available');
     updateBtn.textContent = t('updAvailable');
