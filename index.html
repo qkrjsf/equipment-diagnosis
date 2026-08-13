@@ -1584,8 +1584,354 @@ const TREE_KO = {
             "압력떨어짐",
             "압력저하"
           ]
+        },
+        {
+          "label": "발포금형 작동 이상 (상형/클램프)",
+          "next": "n_foam_type",
+          "keywords": [
+            "발포금형",
+            "상형",
+            "클램프",
+            "금형"
+          ]
         }
       ]
+    },
+    "n_foam_type": {
+      "type": "question",
+      "question": "발포금형 어떤 타입인가요?",
+      "options": [
+        {
+          "label": "실린더타입",
+          "next": "n_foam_cyl_root",
+          "keywords": [
+            "실린더타입"
+          ]
+        },
+        {
+          "label": "캐리어타입",
+          "next": "d_foam_carrier_notready",
+          "keywords": [
+            "캐리어타입"
+          ]
+        },
+        {
+          "label": "직발포타입",
+          "next": "d_foam_direct_notready",
+          "keywords": [
+            "직발포타입"
+          ]
+        }
+      ]
+    },
+    "d_foam_carrier_notready": {
+      "type": "diagnosis",
+      "cause": "캐리어타입 진단 트리 준비 중",
+      "solution": "아직 진단 트리가 준비되지 않았습니다. 담당자에게 문의하거나 추후 업데이트를 기다려주세요.",
+      "manualRef": ""
+    },
+    "d_foam_direct_notready": {
+      "type": "diagnosis",
+      "cause": "직발포타입 진단 트리 준비 중",
+      "solution": "아직 진단 트리가 준비되지 않았습니다. 담당자에게 문의하거나 추후 업데이트를 기다려주세요.",
+      "manualRef": ""
+    },
+    "n_foam_cyl_root": {
+      "type": "question",
+      "question": "상형에 문제가 있나요, 클램프에 문제가 있나요?",
+      "options": [
+        {
+          "label": "상형 문제",
+          "next": "n_foam_cyl_upper",
+          "keywords": [
+            "상형"
+          ]
+        },
+        {
+          "label": "클램프 문제",
+          "next": "n_foam_cyl_clamp",
+          "keywords": [
+            "클램프"
+          ]
+        }
+      ]
+    },
+    "n_foam_cyl_upper": {
+      "type": "question",
+      "question": "상형이 닫히지 않나요, 열리지 않나요?",
+      "options": [
+        {
+          "label": "닫히지 않음",
+          "next": "n_foam_cyl_close1",
+          "keywords": [
+            "안닫힘",
+            "닫히지않음"
+          ]
+        },
+        {
+          "label": "열리지 않음",
+          "next": "d_foam_cyl_open",
+          "keywords": [
+            "안열림",
+            "열리지않음"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_open": {
+      "type": "diagnosis",
+      "cause": "상형이 열리지 않음 - 실린더/힌지 계통 이상",
+      "solution": "실린더 및 힌지 점검",
+      "manualRef": "열림 동작은 근접센서 1개가 한 번만 작동해 솔레노이드 방향을 바꾸는 단순한 구조라, 닫힘 쪽보다 원인이 단순하며 주로 기계적 요인(실린더/힌지)입니다."
+    },
+    "n_foam_cyl_close1": {
+      "type": "question",
+      "question": "공압 솔레노이드 밸브를 수동으로 작동시켜보세요. 작동되나요?",
+      "options": [
+        {
+          "label": "작동된다",
+          "next": "n_foam_cyl_close2",
+          "keywords": [
+            "작동됨"
+          ]
+        },
+        {
+          "label": "작동되지 않는다",
+          "next": "n_foam_cyl_close_sound",
+          "keywords": [
+            "작동안됨"
+          ]
+        }
+      ]
+    },
+    "n_foam_cyl_close2": {
+      "type": "question",
+      "note": "포토센서는 4가닥 선(갈색/파랑/흑색/흰색)으로 구성됩니다. 갈색·파랑은 전원(24~220V 겸용), 흑색·흰색은 접점(흰색=공통선, 흑색=IO)이며 한 선이라도 단선되면 오작동할 수 있습니다. 하루 약 200회 접점 개폐로 마모가 빠르고, 작업자 발에 걸려 단선되는 경우도 흔합니다.",
+      "question": "포토센서 접점을 변경한 후, 솔레노이드 밸브 램프가 점등되나요?",
+      "options": [
+        {
+          "label": "점등됨",
+          "next": "d_foam_cyl_photo_ok",
+          "keywords": [
+            "점등됨"
+          ]
+        },
+        {
+          "label": "점등 안됨",
+          "next": "d_foam_cyl_photo_bad",
+          "keywords": [
+            "점등안됨"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_photo_ok": {
+      "type": "diagnosis",
+      "cause": "포토센서는 정상 - 솔레노이드 코일 불량 의심",
+      "solution": "솔레노이드 코일 교체",
+      "manualRef": ""
+    },
+    "d_foam_cyl_photo_bad": {
+      "type": "diagnosis",
+      "cause": "포토센서 불량 (램프 미점등)",
+      "solution": "포토센서 교체",
+      "manualRef": ""
+    },
+    "n_foam_cyl_close_sound": {
+      "type": "question",
+      "question": "솔레노이드 밸브 작동음이 있나요?",
+      "options": [
+        {
+          "label": "작동음 있음",
+          "next": "d_foam_cyl_cylinder",
+          "keywords": [
+            "작동음있음"
+          ]
+        },
+        {
+          "label": "작동음 없음",
+          "next": "n_foam_cyl_close_lamp",
+          "keywords": [
+            "작동음없음"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_cylinder": {
+      "type": "diagnosis",
+      "cause": "실린더 또는 힌지 이상",
+      "solution": "실린더 / 힌지 점검",
+      "manualRef": ""
+    },
+    "n_foam_cyl_close_lamp": {
+      "type": "question",
+      "question": "열림(OPEN) 솔레노이드 밸브에 전기가 들어오나요? (램프로 확인)",
+      "options": [
+        {
+          "label": "전기 들어옴",
+          "next": "d_foam_cyl_open_sensor",
+          "keywords": [
+            "전기들어옴"
+          ]
+        },
+        {
+          "label": "전기 안 들어옴",
+          "next": "d_foam_cyl_valve_replace",
+          "keywords": [
+            "전기안들어옴"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_open_sensor": {
+      "type": "diagnosis",
+      "cause": "열림(OPEN) 근접센서 접점 고착 - 접점이 눌러붙으면 포토센서가 정상 작동해도 상형이 닫히지 않을 수 있음",
+      "solution": "열림 근접센서 교체",
+      "manualRef": "하루 약 200회 개폐로 접점 마모가 빠른 부품입니다."
+    },
+    "d_foam_cyl_valve_replace": {
+      "type": "diagnosis",
+      "cause": "솔레노이드 밸브 불량",
+      "solution": "솔레노이드 밸브 교체",
+      "manualRef": ""
+    },
+    "n_foam_cyl_clamp": {
+      "type": "question",
+      "question": "상형은 닫혔는데 클램프가 안 닫히나요, 아니면 근접센서 감지 후 클램프가 안 열리나요?",
+      "options": [
+        {
+          "label": "클램프가 안 닫힘",
+          "next": "n_foam_cyl_mecha1",
+          "keywords": [
+            "클램프안닫힘"
+          ]
+        },
+        {
+          "label": "클램프가 안 열림",
+          "next": "n_foam_cyl_clamp_open1",
+          "keywords": [
+            "클램프안열림"
+          ]
+        }
+      ]
+    },
+    "n_foam_cyl_mecha1": {
+      "type": "question",
+      "note": "상형이 닫히면 하형에 있는 매카니칼 밸브가 눌리면서 클램프 실린더로 에어압력이 들어가는 구조입니다. 클램프가 안 닫히는 건 이 밸브가 '안 눌렸거나' 또는 '고장난' 경우뿐입니다.",
+      "question": "매카니칼 밸브 상태를 확인해주세요.",
+      "options": [
+        {
+          "label": "밸브 노후 또는 고장",
+          "next": "d_foam_cyl_mecha_broken",
+          "keywords": [
+            "노후",
+            "고장"
+          ]
+        },
+        {
+          "label": "밸브가 안 눌림 (정위치 아님)",
+          "next": "n_foam_cyl_mecha2",
+          "keywords": [
+            "안눌림"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_mecha_broken": {
+      "type": "diagnosis",
+      "cause": "매카니칼 밸브 노후 또는 고장",
+      "solution": "매카니칼 밸브 교체",
+      "manualRef": ""
+    },
+    "n_foam_cyl_mecha2": {
+      "type": "question",
+      "question": "밸브가 안 눌리는 원인이 무엇인가요? (현장에서 직접 확인)",
+      "options": [
+        {
+          "label": "상형이 완전히 안 닫힘 (합형 불량)",
+          "next": "d_foam_cyl_mecha_align",
+          "keywords": [
+            "합형불량"
+          ]
+        },
+        {
+          "label": "밸브 고정 볼트 파손 등으로 위치 이탈",
+          "next": "d_foam_cyl_mecha_bolt",
+          "keywords": [
+            "볼트파손"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_mecha_align": {
+      "type": "diagnosis",
+      "cause": "상형-하형 합형이 맞지 않아 매카니칼 밸브가 정위치까지 눌리지 않음",
+      "solution": "상형/하형 합형 상태 점검 및 조정",
+      "manualRef": ""
+    },
+    "d_foam_cyl_mecha_bolt": {
+      "type": "diagnosis",
+      "cause": "밸브 고정 볼트 파손 등으로 밸브 위치가 틀어짐",
+      "solution": "밸브 위치 재조정, 고정 볼트 교체",
+      "manualRef": ""
+    },
+    "n_foam_cyl_clamp_open1": {
+      "type": "question",
+      "question": "솔레노이드 밸브를 수동으로 작동시켜보세요. 클램프가 열리나요?",
+      "options": [
+        {
+          "label": "수동 작동 시 열림",
+          "next": "d_foam_cyl_clamp_sensor",
+          "keywords": [
+            "수동열림"
+          ]
+        },
+        {
+          "label": "수동 작동해도 안 열림",
+          "next": "n_foam_cyl_clamp_open2",
+          "keywords": [
+            "수동안열림"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_clamp_sensor": {
+      "type": "diagnosis",
+      "cause": "솔레노이드 밸브는 정상 - 근접센서 불량",
+      "solution": "근접센서 교체",
+      "manualRef": ""
+    },
+    "n_foam_cyl_clamp_open2": {
+      "type": "question",
+      "question": "솔레노이드 밸브 램프를 확인해주세요. 닫힘 방향 램프가 점등되나요?",
+      "options": [
+        {
+          "label": "닫힘 방향 램프 점등",
+          "next": "d_foam_cyl_clamp_photo",
+          "keywords": [
+            "점등"
+          ]
+        },
+        {
+          "label": "램프 미점등",
+          "next": "d_foam_cyl_clamp_valve",
+          "keywords": [
+            "미점등"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_clamp_photo": {
+      "type": "diagnosis",
+      "cause": "포토센서 불량",
+      "solution": "포토센서 교체",
+      "manualRef": ""
+    },
+    "d_foam_cyl_clamp_valve": {
+      "type": "diagnosis",
+      "cause": "솔레노이드 밸브 불량",
+      "solution": "솔레노이드 밸브 교체",
+      "manualRef": ""
     }
   }
 };
@@ -2983,8 +3329,352 @@ const TREE_EN = {
             "압력떨어짐",
             "압력저하"
           ]
+        },
+        {
+          "label": "Foam mold malfunction (upper mold / clamp)",
+          "next": "n_foam_type",
+          "keywords": [
+            "foam mold",
+            "upper mold",
+            "clamp",
+            "mold"
+          ]
         }
       ]
+    },
+    "n_foam_type": {
+      "type": "question",
+      "question": "Which type of foam mold is it?",
+      "options": [
+        {
+          "label": "Cylinder type",
+          "next": "n_foam_cyl_root",
+          "keywords": [
+            "cylinder type"
+          ]
+        },
+        {
+          "label": "Carrier type",
+          "next": "d_foam_carrier_notready",
+          "keywords": [
+            "carrier type"
+          ]
+        },
+        {
+          "label": "Direct foam type",
+          "next": "d_foam_direct_notready",
+          "keywords": [
+            "direct foam type"
+          ]
+        }
+      ]
+    },
+    "d_foam_carrier_notready": {
+      "type": "diagnosis",
+      "cause": "Diagnostic tree for the carrier type is still being prepared",
+      "solution": "A diagnostic tree is not available yet. Please contact your supervisor or wait for a future update.",
+      "manualRef": ""
+    },
+    "d_foam_direct_notready": {
+      "type": "diagnosis",
+      "cause": "Diagnostic tree for the direct foam type is still being prepared",
+      "solution": "A diagnostic tree is not available yet. Please contact your supervisor or wait for a future update.",
+      "manualRef": ""
+    },
+    "n_foam_cyl_root": {
+      "type": "question",
+      "question": "Is the problem with the upper mold or the clamp?",
+      "options": [
+        {
+          "label": "Upper mold problem",
+          "next": "n_foam_cyl_upper",
+          "keywords": [
+            "upper mold"
+          ]
+        },
+        {
+          "label": "Clamp problem",
+          "next": "n_foam_cyl_clamp",
+          "keywords": [
+            "clamp"
+          ]
+        }
+      ]
+    },
+    "n_foam_cyl_upper": {
+      "type": "question",
+      "question": "Does the upper mold fail to close, or fail to open?",
+      "options": [
+        {
+          "label": "Fails to close",
+          "next": "n_foam_cyl_close1",
+          "keywords": [
+            "fails to close"
+          ]
+        },
+        {
+          "label": "Fails to open",
+          "next": "d_foam_cyl_open",
+          "keywords": [
+            "fails to open"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_open": {
+      "type": "diagnosis",
+      "cause": "Upper mold fails to open - cylinder/hinge system issue",
+      "solution": "Inspect the cylinder and hinge",
+      "manualRef": "The opening motion only requires a single proximity sensor to fire once to switch the solenoid direction, so it's a simpler mechanism than closing and the cause is usually mechanical (cylinder/hinge)."
+    },
+    "n_foam_cyl_close1": {
+      "type": "question",
+      "question": "Manually operate the pneumatic solenoid valve. Does it move?",
+      "options": [
+        {
+          "label": "It moves",
+          "next": "n_foam_cyl_close2",
+          "keywords": [
+            "it moves"
+          ]
+        },
+        {
+          "label": "It does not move",
+          "next": "n_foam_cyl_close_sound",
+          "keywords": [
+            "does not move"
+          ]
+        }
+      ]
+    },
+    "n_foam_cyl_close2": {
+      "type": "question",
+      "note": "The photo sensor has 4 wires (brown/blue/black/white). Brown and blue are power (dual-rated 24-220V), black and white are the contact signal (white = common, black = I/O). If even one wire breaks, it can malfunction. With about 200 open/close cycles per day, wear is fast, and it's also common for wires to be snagged and broken by a worker's foot.",
+      "question": "After changing the photo sensor contact, does the solenoid valve lamp light up?",
+      "options": [
+        {
+          "label": "Lights up",
+          "next": "d_foam_cyl_photo_ok",
+          "keywords": [
+            "lights up"
+          ]
+        },
+        {
+          "label": "Does not light up",
+          "next": "d_foam_cyl_photo_bad",
+          "keywords": [
+            "does not light up"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_photo_ok": {
+      "type": "diagnosis",
+      "cause": "Photo sensor is normal - suspect a faulty solenoid coil",
+      "solution": "Replace the solenoid coil",
+      "manualRef": ""
+    },
+    "d_foam_cyl_photo_bad": {
+      "type": "diagnosis",
+      "cause": "Photo sensor is faulty (lamp does not light up)",
+      "solution": "Replace the photo sensor",
+      "manualRef": ""
+    },
+    "n_foam_cyl_close_sound": {
+      "type": "question",
+      "question": "Is there an operating sound from the solenoid valve?",
+      "options": [
+        {
+          "label": "There is a sound",
+          "next": "d_foam_cyl_cylinder",
+          "keywords": [
+            "there is a sound"
+          ]
+        },
+        {
+          "label": "No sound",
+          "next": "n_foam_cyl_close_lamp",
+          "keywords": [
+            "no sound"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_cylinder": {
+      "type": "diagnosis",
+      "cause": "Cylinder or hinge problem",
+      "solution": "Inspect the cylinder / hinge",
+      "manualRef": ""
+    },
+    "n_foam_cyl_close_lamp": {
+      "type": "question",
+      "question": "Does the OPEN solenoid valve receive power? (check the lamp)",
+      "options": [
+        {
+          "label": "Power is present",
+          "next": "d_foam_cyl_open_sensor",
+          "keywords": [
+            "power is present"
+          ]
+        },
+        {
+          "label": "No power",
+          "next": "d_foam_cyl_valve_replace",
+          "keywords": [
+            "no power"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_open_sensor": {
+      "type": "diagnosis",
+      "cause": "OPEN proximity sensor contact is stuck - if the contact stays closed, the upper mold may fail to close even if the photo sensor works normally",
+      "solution": "Replace the OPEN proximity sensor",
+      "manualRef": "This part wears out quickly, given about 200 open/close cycles per day."
+    },
+    "d_foam_cyl_valve_replace": {
+      "type": "diagnosis",
+      "cause": "Solenoid valve is faulty",
+      "solution": "Replace the solenoid valve",
+      "manualRef": ""
+    },
+    "n_foam_cyl_clamp": {
+      "type": "question",
+      "question": "Does the clamp fail to close after the upper mold has closed, or does the clamp fail to open after proximity sensor detection?",
+      "options": [
+        {
+          "label": "Clamp fails to close",
+          "next": "n_foam_cyl_mecha1",
+          "keywords": [
+            "clamp fails to close"
+          ]
+        },
+        {
+          "label": "Clamp fails to open",
+          "next": "n_foam_cyl_clamp_open1",
+          "keywords": [
+            "clamp fails to open"
+          ]
+        }
+      ]
+    },
+    "n_foam_cyl_mecha1": {
+      "type": "question",
+      "note": "When the upper mold closes, it presses the mechanical valve on the lower mold, which sends air pressure to the clamp cylinder. The clamp failing to close can only be caused by this valve either 'not being pressed' or 'being broken.'",
+      "question": "Please check the condition of the mechanical valve.",
+      "options": [
+        {
+          "label": "Valve is worn out or broken",
+          "next": "d_foam_cyl_mecha_broken",
+          "keywords": [
+            "worn out",
+            "broken"
+          ]
+        },
+        {
+          "label": "Valve is not being pressed (out of position)",
+          "next": "n_foam_cyl_mecha2",
+          "keywords": [
+            "not pressed"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_mecha_broken": {
+      "type": "diagnosis",
+      "cause": "Mechanical valve worn out or broken",
+      "solution": "Replace the mechanical valve",
+      "manualRef": ""
+    },
+    "n_foam_cyl_mecha2": {
+      "type": "question",
+      "question": "What is causing the valve not to be pressed? (check on site directly)",
+      "options": [
+        {
+          "label": "Upper mold doesn't close fully (mold alignment issue)",
+          "next": "d_foam_cyl_mecha_align",
+          "keywords": [
+            "alignment"
+          ]
+        },
+        {
+          "label": "Valve mounting bolt broken, causing it to shift out of position",
+          "next": "d_foam_cyl_mecha_bolt",
+          "keywords": [
+            "bolt broken"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_mecha_align": {
+      "type": "diagnosis",
+      "cause": "The upper and lower molds are not aligning properly, so the mechanical valve isn't pressed into position",
+      "solution": "Inspect and adjust the upper/lower mold alignment",
+      "manualRef": ""
+    },
+    "d_foam_cyl_mecha_bolt": {
+      "type": "diagnosis",
+      "cause": "Valve mounting bolt broken or similar, causing the valve to shift out of position",
+      "solution": "Readjust the valve position and replace the mounting bolt",
+      "manualRef": ""
+    },
+    "n_foam_cyl_clamp_open1": {
+      "type": "question",
+      "question": "Manually operate the solenoid valve. Does the clamp open?",
+      "options": [
+        {
+          "label": "Opens with manual operation",
+          "next": "d_foam_cyl_clamp_sensor",
+          "keywords": [
+            "opens manually"
+          ]
+        },
+        {
+          "label": "Still does not open with manual operation",
+          "next": "n_foam_cyl_clamp_open2",
+          "keywords": [
+            "does not open manually"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_clamp_sensor": {
+      "type": "diagnosis",
+      "cause": "Solenoid valve is normal - faulty proximity sensor",
+      "solution": "Replace the proximity sensor",
+      "manualRef": ""
+    },
+    "n_foam_cyl_clamp_open2": {
+      "type": "question",
+      "question": "Check the solenoid valve lamp. Does the CLOSE-direction lamp light up?",
+      "options": [
+        {
+          "label": "CLOSE-direction lamp lights up",
+          "next": "d_foam_cyl_clamp_photo",
+          "keywords": [
+            "lights up"
+          ]
+        },
+        {
+          "label": "Lamp does not light up",
+          "next": "d_foam_cyl_clamp_valve",
+          "keywords": [
+            "does not light up"
+          ]
+        }
+      ]
+    },
+    "d_foam_cyl_clamp_photo": {
+      "type": "diagnosis",
+      "cause": "Photo sensor is faulty",
+      "solution": "Replace the photo sensor",
+      "manualRef": ""
+    },
+    "d_foam_cyl_clamp_valve": {
+      "type": "diagnosis",
+      "cause": "Solenoid valve is faulty",
+      "solution": "Replace the solenoid valve",
+      "manualRef": ""
     }
   }
 };
@@ -3019,6 +3709,7 @@ const UI_STRINGS = {
     feedbackDown: "피드백 감사합니다. 개선에 참고할게요.",
     diagEnded: "진단이 이미 종료되었습니다. \"새 진단 시작\"을 눌러주세요.",
     clarifyDefault: "정확히 어떤 상황인지 아래 선택지에서 골라주시겠어요? 등록된 키워드와 잘 맞지 않는 것 같아요.",
+    searchIntro: "관련된 항목을 찾았어요. 해당하는 걸 골라주세요:",
     manualCodePrompt: "팬던트에 표시된 정확한 에러 코드를 입력해주세요. (예: E0231, W0012)",
     manualCodeBtn: "조회",
     manualCodeNotFound: "해당 코드를 찾을 수 없습니다. 코드 표기를 다시 확인하시거나, \"에러코드 검색\" 탭에서 키워드로 찾아보세요. 그래도 안 나오면 담당자에게 문의해주세요.",
@@ -3055,6 +3746,7 @@ const UI_STRINGS = {
     feedbackDown: "Thanks for the feedback, we'll use it to improve.",
     diagEnded: "The diagnosis has already ended. Please press \"Start New Diagnosis\".",
     clarifyDefault: "Could you pick the option below that best matches your situation? It didn't quite match a known keyword.",
+    searchIntro: "I found some related topics. Please pick the one that matches:",
     manualCodePrompt: "Please enter the exact error code shown on the pendant. (e.g. E0231, W0012)",
     manualCodeBtn: "Look up",
     manualCodeNotFound: "That code could not be found. Please double-check the code, or search by keyword in the \"Error Code Search\" tab. If it's still not found, contact your supervisor.",
@@ -3376,12 +4068,17 @@ function handleFreeText(text){
     currentNodeId = opt.next;
     renderTrace();
     askCurrentNode();
-  } else {
-    const list = OFFTOPIC_RESPONSES[LANG] || OFFTOPIC_RESPONSES.ko;
-    const msg = list[Math.floor(Math.random() * list.length)];
-    addMsg('clarify', escapeHtml(msg));
-    askCurrentNode();
+    return;
   }
+  const searchResults = globalSearchTree(text);
+  if(searchResults.length > 0){
+    renderSearchResults(searchResults);
+    return;
+  }
+  const list = OFFTOPIC_RESPONSES[LANG] || OFFTOPIC_RESPONSES.ko;
+  const msg = list[Math.floor(Math.random() * list.length)];
+  addMsg('clarify', escapeHtml(msg));
+  askCurrentNode();
 }
 
 function localMatch(node, userText){
@@ -3400,6 +4097,65 @@ function localMatch(node, userText){
   const top = scores.map((s, i) => ({ s, i })).filter(x => x.s === max);
   if(top.length > 1) return { matched_index: null };
   return { matched_index: top[0].i };
+}
+
+/* ---------- 전역 키워드 검색 (카테고리 단위, 느슨한 매칭) ---------- */
+function getCategoryEntries(){
+  // 검색 대상: 메인 메뉴 및 2차 메뉴에 있는 "카테고리 선택지"들
+  const entryNodeIds = ['n_root', 'n_error_type', 'n_symptom_type'];
+  const entries = [];
+  entryNodeIds.forEach(nid => {
+    const n = tree.nodes[nid];
+    if(!n || n.type !== 'question') return;
+    n.options.forEach(o => {
+      entries.push({ label: o.label, next: o.next, keywords: (o.keywords || []).concat([o.label]) });
+    });
+  });
+  return entries;
+}
+
+function globalSearchTree(userText){
+  const q = userText.toLowerCase().replace(/\s/g, '');
+  if(q.length < 1) return [];
+  const entries = getCategoryEntries();
+  const scored = [];
+  entries.forEach(entry => {
+    let score = 0;
+    entry.keywords.forEach(k => {
+      const kk = String(k).toLowerCase().replace(/\s/g, '');
+      if(kk.length < 1) return;
+      if(kk.includes(q) || q.includes(kk)) score++;
+    });
+    if(score > 0) scored.push({ label: entry.label, next: entry.next, score });
+  });
+  scored.sort((a, b) => b.score - a.score);
+  // 중복 제거 (같은 next로 여러 번 잡히는 경우)
+  const seen = new Set();
+  const result = [];
+  for(const s of scored){
+    if(seen.has(s.next)) continue;
+    seen.add(s.next);
+    result.push(s);
+    if(result.length >= 6) break;
+  }
+  return result;
+}
+
+function renderSearchResults(results){
+  const introHtml = '<div>' + escapeHtml(t('searchIntro')) + '</div>' +
+    '<div class="options">' + results.map((r, i) =>
+      '<button class="opt-btn" data-idx="' + i + '">' + escapeHtml(r.label) + '</button>'
+    ).join('') + '</div>';
+  const div = addMsg('bot', introHtml);
+  div.querySelectorAll('.opt-btn').forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      addMsg('user', escapeHtml(results[i].label));
+      path = [];
+      currentNodeId = results[i].next;
+      renderTrace();
+      askCurrentNode();
+    });
+  });
 }
 
 document.querySelectorAll('.tab').forEach(tabEl => {
