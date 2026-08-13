@@ -29,7 +29,7 @@
 }
 *{box-sizing:border-box;}
 html{font-size:100%;}
-html.font-large{font-size:118%;}
+.app.font-large{zoom:1.18;}
 body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR', sans-serif;min-height:100vh;}
 .app{max-width:760px;margin:0 auto;padding:28px 20px 60px;}
 .app-footer{text-align:center;color:var(--text-muted);font-size:11px;margin-top:36px;letter-spacing:0.3px;line-height:1.7;}
@@ -3874,7 +3874,7 @@ document.getElementById('backBtn').addEventListener('click', goBack);
 
 /* ---------- 글자 크기 조절 ---------- */
 function applyFontSize(size){
-  document.documentElement.classList.toggle('font-large', size === 'large');
+  document.querySelector('.app').classList.toggle('font-large', size === 'large');
   document.getElementById('fontIncBtn').classList.toggle('active', size === 'large');
   document.getElementById('fontDecBtn').classList.toggle('active', size !== 'large');
 }
@@ -4398,7 +4398,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
