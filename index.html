@@ -3939,6 +3939,25 @@ async function shareDiagnosis(cause, solution, ref, btnEl){
 // 비워두면(빈 문자열) 폼으로 이동하지 않고 화면에만 감사 메시지가 표시됩니다.
 const FEEDBACK_FORM_URL = '';
 
+/* ---------- 진단 이력 자동 기록 (구글 시트) ---------- */
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycby0Snn9jdux4FLHWlY2iTHrU-fSVvx0XtF5YAoWuhJ_nY_NMpeyPQFOgY4n8WA9r_ty/exec';
+
+function logDiagnosisToSheet(category, cause, solution){
+  if(!GOOGLE_SHEET_URL) return;
+  try{
+    fetch(GOOGLE_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify({
+        lang: LANG,
+        category: category || '',
+        cause: cause || '',
+        solution: solution || ''
+      })
+    }).catch(() => {});
+  }catch(e){}
+}
+
 function handleFeedback(btn, node){
   const row = btn.closest('.feedback-row');
   const val = btn.getAttribute('data-val');
@@ -3994,6 +4013,7 @@ function askCurrentNode(){
         '<button class="feedback-btn" data-uid="' + diagUid + '" data-val="down">👎</button>' +
       '</div>';
     const div = addMsg('diagnosis', html);
+    logDiagnosisToSheet(path.join(' > '), node.cause, node.solution);
     div.querySelector('.share-btn').addEventListener('click', (e) => {
       shareDiagnosis(node.cause, node.solution, node.manualRef || '-', e.target);
     });
@@ -4303,6 +4323,7 @@ function renderManualCodeLookup(){
         '<div class="drow" style="margin-bottom:2px;"><div class="dval warn-text">' + escapeHtml(t('diagContact')) + '</div></div>' +
         '<button class="restart-btn" onclick="startDiagnosis()">' + escapeHtml(t('restart')) + '</button>';
       addMsg('diagnosis', html2);
+      logDiagnosisToSheet('manual code: ' + code, info.desc, t('diagContact'));
     } else {
       addMsg('clarify', escapeHtml(t('manualCodeNotFound')));
       const html3 = '<button class="restart-btn" onclick="startDiagnosis()">' + escapeHtml(t('restart')) + '</button>';
@@ -4399,7 +4420,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v24', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v25', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
