@@ -4420,7 +4420,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v25', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v26', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
@@ -4501,6 +4501,13 @@ updateBtn.addEventListener('click', async () => {
 window.addEventListener('load', () => {
   setTimeout(checkForUpdate, 1500);
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    // 새 서비스워커가 실제로 이 화면을 넘겨받은 시점 - 표시를 다시 정확히 갱신
+    setTimeout(checkForUpdate, 500);
+  });
+}
 </script>
 </body>
 </html>
