@@ -123,8 +123,11 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .parts-search input{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:10px 13px;border-radius:8px;font-size:14px;font-family:inherit;}
 .parts-search input:focus{outline:none;border-color:var(--amber);}
 
-.cat-chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:12px;-webkit-overflow-scrolling:touch;}
-.cat-chips::-webkit-scrollbar{height:4px;}
+.cat-chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;margin-bottom:12px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.cat-chips::-webkit-scrollbar{height:7px;}
+.cat-chips::-webkit-scrollbar-track{background:transparent;}
+.cat-chips::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+.cat-chips::-webkit-scrollbar-thumb:hover{background:var(--text-muted);}
 .cat-chip{flex:0 0 auto;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);padding:7px 13px;border-radius:20px;font-size:12.5px;cursor:pointer;white-space:nowrap;}
 .cat-chip.active{background:var(--amber);border-color:var(--amber);color:#fff8f0;font-weight:700;}
 
@@ -4323,6 +4326,17 @@ function renderCategoryChips(){
   });
 }
 
+// PC에서 마우스 휠(세로)로도 카테고리 칩을 좌우로 넘길 수 있게
+(function enableWheelHorizontalScroll(){
+  const chipBox = document.getElementById('catChips');
+  chipBox.addEventListener('wheel', (e) => {
+    if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+      chipBox.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  }, { passive: false });
+})();
+
 function renderParts(filter){
   const grid = document.getElementById('partsGrid');
   const f = (filter || '').toLowerCase().trim();
@@ -4489,7 +4503,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v29', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v30', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
