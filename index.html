@@ -4541,6 +4541,8 @@ function renderParts(filter){
     const photo = driveImageUrl(p['사진링크']);
     const stockLabel = LANG === 'ko' ? '재고' : 'Stock';
     const repairLabel = LANG === 'ko' ? '수리중' : 'In repair';
+    const repairable = isTruthyRepair(p['수리가능여부']);
+    const repairableLabel = LANG === 'ko' ? '수리가능' : 'Repairable';
     return `
     <div class="part-card">
       ${photo ? '<img src="'+photo+'" alt="'+escapeHtml(p['제품규격']||'')+'" loading="lazy"/>' : '<div class="noimg">' + (LANG==='ko'?'사진 없음':'No photo') + '</div>'}
@@ -4550,6 +4552,7 @@ function renderParts(filter){
         <div class="stock-row">
           <span class="stock-badge ${low?'low':'ok'}">${stockLabel} ${stock}</span>
           ${repairing > 0 ? '<span class="stock-badge repairing">' + repairLabel + ' ' + repairing + '</span>' : ''}
+          ${repairable ? '<span class="stock-badge repairing">🔧 ' + repairableLabel + '</span>' : ''}
         </div>
       </div>
     </div>`;
@@ -4681,7 +4684,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v34', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v35', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
