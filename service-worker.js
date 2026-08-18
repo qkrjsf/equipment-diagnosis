@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sulbi-jindan-v28';
+const CACHE_NAME = 'sulbi-jindan-v29';
 const ASSETS = [
   './index.html',
   './manifest.json',
@@ -40,6 +40,13 @@ self.addEventListener('message', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
+
+  // 우리 사이트가 아닌 외부 도메인 요청(구글시트 API, 구글드라이브 이미지 등)은
+  // 캐싱/가로채기 전혀 하지 않고 그대로 네트워크로 흘려보냄 - 항상 최신 데이터 보장
+  if (new URL(req.url).origin !== self.location.origin) {
+    return;
+  }
+
   const isHTML = req.mode === 'navigate' || (req.headers.get('accept') || '').includes('text/html');
 
   if (isHTML) {
