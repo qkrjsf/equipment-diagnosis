@@ -3751,7 +3751,16 @@ const UI_STRINGS = {
     updUpdating: "↻ 업데이트 중...",
     updTitleChecking: "업데이트 확인 중...",
     updTitleAvailable: "새 버전이 있습니다. 눌러서 업데이트하세요.",
-    updTitleLatest: "최신 버전을 사용 중입니다."
+    updTitleLatest: "최신 버전을 사용 중입니다.",
+    usagePrompt: "이 진단에서 부품을 사용하셨나요?",
+    usageYes: "예, 사용했어요",
+    usageNo: "아니오",
+    usageNoDone: "알겠습니다. 확인 감사합니다.",
+    usageSearchPrompt: "사용한 부품을 검색해서 선택해주세요.",
+    usageSearchPlaceholder: "부품명, 규격으로 검색...",
+    usageSubmit: "등록",
+    usageDone: "\"{name}\" {qty}개 사용 등록 완료했습니다.",
+    repairReminder: "\ud83d\udd27 \"{name}\"은(는) 수리 가능 품목이라 수리이력에 자동 등록했어요. 오늘 안으로 수리업체에 보내주세요!"
   },
   en: {
     title: "Equipment Diagnosis Assistant",
@@ -3789,7 +3798,16 @@ const UI_STRINGS = {
     updUpdating: "\u21bb Updating...",
     updTitleChecking: "Checking for updates...",
     updTitleAvailable: "A new version is available. Tap to update.",
-    updTitleLatest: "You're using the latest version."
+    updTitleLatest: "You're using the latest version.",
+    usagePrompt: "Did you use a part for this diagnosis?",
+    usageYes: "Yes, I used one",
+    usageNo: "No",
+    usageNoDone: "Got it, thanks for confirming.",
+    usageSearchPrompt: "Search for the part you used and select it.",
+    usageSearchPlaceholder: "Search by part name or spec...",
+    usageSubmit: "Register",
+    usageDone: "Registered {qty} unit(s) of \"{name}\" as used.",
+    repairReminder: "\ud83d\udd27 \"{name}\" is repairable, so it's been auto-logged to the repair history. Please send it to the repair vendor today!"
   }
 };
 
@@ -3975,6 +3993,116 @@ function logDiagnosisToSheet(category, cause, solution){
   }catch(e){}
 }
 
+/* ---------- 진단 완료 후 부품 사용 등록 흐름 ---------- */
+function isTruthyRepair(v){
+  if(v === true) return true;
+  const s = String(v || '').trim().toUpperCase();
+  return s === 'TRUE' || s === 'O' || s === '예' || s === 'Y' || s === 'YES' || s === '1';
+}
+
+function logUsageToSheet(category, spec, qty){
+  if(!GOOGLE_SHEET_URL) return;
+  try{
+    fetch(GOOGLE_SHEET_URL, {
+      method: 'POST', mode: 'no-cors',
+      body: JSON.stringify({ type: 'usage', category: category || '', spec: spec || '', qty: qty || 1, location: '', memo: '' })
+    }).catch(() => {});
+  }catch(e){}
+}
+
+function logRepairOutToSheet(category, spec, qty){
+  if(!GOOGLE_SHEET_URL) return;
+  try{
+    fetch(GOOGLE_SHEET_URL, {
+      method: 'POST', mode: 'no-cors',
+      body: JSON.stringify({ type: 'repair_out', category: category || '', spec: spec || '', qty: qty || 1, vendor: '', memo: '' })
+    }).catch(() => {});
+  }catch(e){}
+}
+
+function renderUsagePrompt(){
+  const html =
+    escapeHtml(t('usagePrompt')) +
+    '<div class="options">' +
+    '<button class="opt-btn" id="usageYesBtn">' + escapeHtml(t('usageYes')) + '</button>' +
+    '<button class="opt-btn" id="usageNoBtn">' + escapeHtml(t('usageNo')) + '</button>' +
+    '</div>';
+  const div = addMsg('bot', html);
+  const yesBtn = div.querySelector('#usageYesBtn');
+  const noBtn = div.querySelector('#usageNoBtn');
+  yesBtn.addEventListener('click', () => {
+    if(yesBtn.disabled) return;
+    lockOptionGroup(yesBtn);
+    renderPartUsageSearch();
+  });
+  noBtn.addEventListener('click', () => {
+    if(noBtn.disabled) return;
+    lockOptionGroup(noBtn);
+    addMsg('bot', escapeHtml(t('usageNoDone')));
+  });
+}
+
+function renderPartUsageSearch(){
+  const html =
+    '<div style="margin-bottom:8px;">' + escapeHtml(t('usageSearchPrompt')) + '</div>' +
+    '<input type="text" id="usagePartSearch" placeholder="' + escapeAttr(t('usageSearchPlaceholder')) + '" style="width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-size:13.5px;" />' +
+    '<div id="usagePartResults" class="options" style="margin-top:8px;"></div>';
+  const div = addMsg('bot', html);
+  const input = div.querySelector('#usagePartSearch');
+  const results = div.querySelector('#usagePartResults');
+  function doSearch(q){
+    const f = q.toLowerCase().trim();
+    if(!f){ results.innerHTML = ''; return; }
+    const matches = partsData.filter(p =>
+      (p['제품형태']||'').toLowerCase().includes(f) ||
+      (p['제품규격']||'').toLowerCase().includes(f) ||
+      (p['제품구분']||'').toLowerCase().includes(f)
+    ).slice(0, 8);
+    results.innerHTML = matches.map((p, i) =>
+      '<button class="opt-btn" data-idx="' + i + '">' + escapeHtml(p['제품형태'] || p['제품규격'] || '') + ' — ' + escapeHtml(p['제품규격'] || '') + '</button>'
+    ).join('');
+    results.querySelectorAll('.opt-btn').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        if(btn.disabled) return;
+        input.disabled = true;
+        results.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+        renderPartUsageQty(matches[i]);
+      });
+    });
+  }
+  input.addEventListener('input', () => doSearch(input.value));
+}
+
+function renderPartUsageQty(part){
+  const label = (part['제품형태'] || part['제품규격'] || '') + ' (' + (part['제품규격'] || '') + ')';
+  const html =
+    '<div style="margin-bottom:8px;"><b>' + escapeHtml(label) + '</b></div>' +
+    '<div style="display:flex;gap:8px;align-items:center;">' +
+    '<input type="number" id="usageQtyInput" min="1" value="1" style="width:80px;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
+    '<button class="opt-btn" id="usageSubmitBtn" style="flex:0 0 auto;">' + escapeHtml(t('usageSubmit')) + '</button>' +
+    '</div>';
+  const div = addMsg('bot', html);
+  const btn = div.querySelector('#usageSubmitBtn');
+  btn.addEventListener('click', () => {
+    if(btn.disabled) return;
+    const qty = parseInt(div.querySelector('#usageQtyInput').value) || 1;
+    btn.disabled = true;
+    div.querySelector('#usageQtyInput').disabled = true;
+    submitPartUsage(part, qty);
+  });
+}
+
+function submitPartUsage(part, qty){
+  const name = part['제품형태'] || part['제품규격'] || '';
+  logUsageToSheet(part['제품구분'], part['제품규격'], qty);
+  addMsg('diagnosis', '<div class="dval">' + escapeHtml(t('usageDone').replace('{qty}', qty).replace('{name}', name)) + '</div>');
+
+  if(isTruthyRepair(part['수리가능여부'])){
+    logRepairOutToSheet(part['제품구분'], part['제품규격'], qty);
+    addMsg('clarify', escapeHtml(t('repairReminder').replace('{name}', name)));
+  }
+}
+
 function handleFeedback(btn, node){
   const row = btn.closest('.feedback-row');
   const val = btn.getAttribute('data-val');
@@ -4031,6 +4159,7 @@ function askCurrentNode(){
       '</div>';
     const div = addMsg('diagnosis', html);
     logDiagnosisToSheet(path.join(' > '), node.cause, node.solution);
+    renderUsagePrompt();
     div.querySelector('.share-btn').addEventListener('click', (e) => {
       shareDiagnosis(node.cause, node.solution, node.manualRef || '-', e.target);
     });
@@ -4407,6 +4536,7 @@ function renderManualCodeLookup(){
         '<button class="restart-btn" onclick="startDiagnosis()">' + escapeHtml(t('restart')) + '</button>';
       addMsg('diagnosis', html2);
       logDiagnosisToSheet('manual code: ' + code, info.desc, t('diagContact'));
+      renderUsagePrompt();
     } else {
       addMsg('clarify', escapeHtml(t('manualCodeNotFound')));
       const html3 = '<button class="restart-btn" onclick="startDiagnosis()">' + escapeHtml(t('restart')) + '</button>';
@@ -4503,7 +4633,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v31', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v32', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 

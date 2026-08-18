@@ -21,10 +21,11 @@ function doPost(e) {
       data.memo || ''
     ]);
   } else if (data.type === 'repair_out') {
-    // 수리 출고 등록 (입고일시는 비워둠 = 수리중)
+    // 수리 출고 등록 (입고일시는 비워둠 = 수리중), 출고일은 시간 없이 날짜만 기록
     const sheet = ss.getSheetByName(SHEET_REPAIR);
+    const today = Utilities.formatDate(new Date(), Session.getScriptTimeZone() || 'Asia/Seoul', 'yyyy-MM-dd');
     sheet.appendRow([
-      new Date(),
+      today,
       data.category || '',
       data.spec || '',
       data.vendor || '',
