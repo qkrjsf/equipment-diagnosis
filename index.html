@@ -3759,6 +3759,11 @@ const UI_STRINGS = {
     usageSearchPrompt: "사용한 부품을 검색해서 선택해주세요.",
     usageSearchPlaceholder: "부품명, 규격으로 검색...",
     usageSubmit: "등록",
+    usageQtyLabel: "수량",
+    usageLocationLabel: "사용처",
+    usageLocationPlaceholder: "예: 1호기, 발포기A (선택)",
+    usageMemoLabel: "메모",
+    usageMemoPlaceholder: "참고사항 (선택)",
     usageDone: "\"{name}\" {qty}개 사용 등록 완료했습니다.",
     repairReminder: "\ud83d\udd27 \"{name}\"은(는) 수리 가능 품목이라 수리이력에 자동 등록했어요. 오늘 안으로 수리업체에 보내주세요!"
   },
@@ -3806,6 +3811,11 @@ const UI_STRINGS = {
     usageSearchPrompt: "Search for the part you used and select it.",
     usageSearchPlaceholder: "Search by part name or spec...",
     usageSubmit: "Register",
+    usageQtyLabel: "Qty",
+    usageLocationLabel: "Location",
+    usageLocationPlaceholder: "e.g. Line 1, Foam machine A (optional)",
+    usageMemoLabel: "Memo",
+    usageMemoPlaceholder: "Notes (optional)",
     usageDone: "Registered {qty} unit(s) of \"{name}\" as used.",
     repairReminder: "\ud83d\udd27 \"{name}\" is repairable, so it's been auto-logged to the repair history. Please send it to the repair vendor today!"
   }
@@ -4000,12 +4010,12 @@ function isTruthyRepair(v){
   return s === 'TRUE' || s === 'O' || s === '예' || s === 'Y' || s === 'YES' || s === '1';
 }
 
-function logUsageToSheet(category, spec, qty){
+function logUsageToSheet(category, spec, qty, location, memo){
   if(!GOOGLE_SHEET_URL) return;
   try{
     fetch(GOOGLE_SHEET_URL, {
       method: 'POST', mode: 'no-cors',
-      body: JSON.stringify({ type: 'usage', category: category || '', spec: spec || '', qty: qty || 1, location: '', memo: '' })
+      body: JSON.stringify({ type: 'usage', category: category || '', spec: spec || '', qty: qty || 1, location: location || '', memo: memo || '' })
     }).catch(() => {});
   }catch(e){}
 }
@@ -4077,24 +4087,37 @@ function renderPartUsageQty(part){
   const label = (part['제품형태'] || part['제품규격'] || '') + ' (' + (part['제품규격'] || '') + ')';
   const html =
     '<div style="margin-bottom:8px;"><b>' + escapeHtml(label) + '</b></div>' +
+    '<div style="display:flex;flex-direction:column;gap:8px;">' +
     '<div style="display:flex;gap:8px;align-items:center;">' +
+    '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageQtyLabel')) + '</label>' +
     '<input type="number" id="usageQtyInput" min="1" value="1" style="width:80px;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
-    '<button class="opt-btn" id="usageSubmitBtn" style="flex:0 0 auto;">' + escapeHtml(t('usageSubmit')) + '</button>' +
+    '</div>' +
+    '<div style="display:flex;gap:8px;align-items:center;">' +
+    '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageLocationLabel')) + '</label>' +
+    '<input type="text" id="usageLocationInput" placeholder="' + escapeAttr(t('usageLocationPlaceholder')) + '" style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
+    '</div>' +
+    '<div style="display:flex;gap:8px;align-items:center;">' +
+    '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageMemoLabel')) + '</label>' +
+    '<input type="text" id="usageMemoInput" placeholder="' + escapeAttr(t('usageMemoPlaceholder')) + '" style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
+    '</div>' +
+    '<button class="opt-btn" id="usageSubmitBtn" style="align-self:flex-start;">' + escapeHtml(t('usageSubmit')) + '</button>' +
     '</div>';
   const div = addMsg('bot', html);
   const btn = div.querySelector('#usageSubmitBtn');
   btn.addEventListener('click', () => {
     if(btn.disabled) return;
     const qty = parseInt(div.querySelector('#usageQtyInput').value) || 1;
+    const location = div.querySelector('#usageLocationInput').value.trim();
+    const memo = div.querySelector('#usageMemoInput').value.trim();
     btn.disabled = true;
-    div.querySelector('#usageQtyInput').disabled = true;
-    submitPartUsage(part, qty);
+    div.querySelectorAll('input').forEach(el => el.disabled = true);
+    submitPartUsage(part, qty, location, memo);
   });
 }
 
-function submitPartUsage(part, qty){
+function submitPartUsage(part, qty, location, memo){
   const name = part['제품형태'] || part['제품규격'] || '';
-  logUsageToSheet(part['제품구분'], part['제품규격'], qty);
+  logUsageToSheet(part['제품구분'], part['제품규격'], qty, location, memo);
   addMsg('diagnosis', '<div class="dval">' + escapeHtml(t('usageDone').replace('{qty}', qty).replace('{name}', name)) + '</div>');
 
   if(isTruthyRepair(part['수리가능여부'])){
@@ -4633,7 +4656,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v32', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v33', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
