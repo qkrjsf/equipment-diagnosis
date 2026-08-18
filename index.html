@@ -123,7 +123,17 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .parts-search input{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:10px 13px;border-radius:8px;font-size:14px;font-family:inherit;}
 .parts-search input:focus{outline:none;border-color:var(--amber);}
 
+.cat-chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:12px;-webkit-overflow-scrolling:touch;}
+.cat-chips::-webkit-scrollbar{height:4px;}
+.cat-chip{flex:0 0 auto;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);padding:7px 13px;border-radius:20px;font-size:12.5px;cursor:pointer;white-space:nowrap;}
+.cat-chip.active{background:var(--amber);border-color:var(--amber);color:#fff8f0;font-weight:700;}
+
 .parts-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));gap:12px;}
+.stock-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px;}
+.stock-badge{font-size:11px;padding:2px 7px;border-radius:5px;font-weight:700;}
+.stock-badge.ok{background:var(--result-dim);color:var(--result);}
+.stock-badge.low{background:var(--danger-dim);color:var(--danger);}
+.stock-badge.repairing{background:var(--amber-dim);color:var(--amber);}
 .part-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
 .part-card img{width:100%;height:110px;object-fit:cover;background:var(--surface2);}
 .part-card .noimg{width:100%;height:110px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:11px;background:var(--surface2);}
@@ -178,12 +188,15 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
   </div>
 
   <div class="panel" id="panel-parts">
-    <div class="hint" data-i18n="partsHint">등록된 부품을 검색해서 사진과 설명을 확인할 수 있습니다.</div>
+    <div class="hint" data-i18n="partsHint">부품구분·규격으로 찾아보거나, 이름으로 검색해서 재고 현황을 확인할 수 있습니다.</div>
 
     <div class="parts-search">
-      <input type="text" id="partsSearch" data-i18n-placeholder="partsSearchPlaceholder" placeholder="부품명 또는 설명으로 검색..." />
+      <input type="text" id="partsSearch" data-i18n-placeholder="partsSearchPlaceholder" placeholder="제품구분·규격·비고로 검색..." />
     </div>
 
+    <div class="cat-chips" id="catChips"></div>
+
+    <div id="partsStatusMsg" class="parts-empty" style="display:none;"></div>
     <div class="parts-grid" id="partsGrid"></div>
   </div>
 
@@ -3707,8 +3720,8 @@ const UI_STRINGS = {
     tabCodeSearch: "에러코드 검색",
     chatPlaceholder: "예: 화면에 OCT 떴어요, 레벨센서 알람 떴어요",
     send: "전송",
-    partsHint: "등록된 부품을 검색해서 사진과 설명을 확인할 수 있습니다.",
-    partsSearchPlaceholder: "부품명 또는 설명으로 검색...",
+    partsHint: "부품구분·규격으로 찾아보거나, 이름으로 검색해서 재고 현황을 확인할 수 있습니다.",
+    partsSearchPlaceholder: "제품구분·규격·비고로 검색...",
     partsEmpty: "등록된 부품이 없습니다.",
     diagTitle: "진단 결과",
     diagCause: "원인",
@@ -3745,8 +3758,8 @@ const UI_STRINGS = {
     tabCodeSearch: "Error Code Search",
     chatPlaceholder: "e.g. OCT appeared on screen, level sensor alarm went off",
     send: "Send",
-    partsHint: "Search registered parts to view photos and descriptions.",
-    partsSearchPlaceholder: "Search by part name or description...",
+    partsHint: "Browse by category/spec, or search by name to check inventory status.",
+    partsSearchPlaceholder: "Search by category, spec, or notes...",
     partsEmpty: "No parts registered yet.",
     diagTitle: "Diagnosis Result",
     diagCause: "Cause",
@@ -3818,6 +3831,7 @@ function setLanguage(lang){
 
   tree = (lang === 'ko') ? TREE_KO : TREE_EN;
   startDiagnosis();
+  renderCategoryChips();
   renderParts(document.getElementById('partsSearch').value || '');
 }
 
@@ -4260,45 +4274,100 @@ document.querySelectorAll('.tab').forEach(tabEl => {
 document.getElementById('sendBtn').addEventListener('click', () => handleFreeText(document.getElementById('userInput').value));
 document.getElementById('userInput').addEventListener('keydown', e => { if(e.key === 'Enter') handleFreeText(e.target.value); });
 
-/* ---------- 부품 조회 ---------- */
+/* ---------- 부품 조회 (구글시트 재고현황 연동) ---------- */
 let partsData = [];
-let pendingPhoto = null;
+let activeCategory = '__all__';
 
-function loadPartsFromLocal(){
-  try{
-    const raw = localStorage.getItem('equipment-parts');
-    return raw ? JSON.parse(raw) : [];
-  }catch(e){ return []; }
+function driveImageUrl(link){
+  if(!link) return '';
+  const m = String(link).match(/[-\w]{25,}/);
+  if(m){
+    return 'https://drive.google.com/uc?export=view&id=' + m[0];
+  }
+  return link;
 }
-function savePartsToLocal(){
-  localStorage.setItem('equipment-parts', JSON.stringify(partsData));
+
+async function loadPartsFromSheet(){
+  const grid = document.getElementById('partsGrid');
+  const statusEl = document.getElementById('partsStatusMsg');
+  statusEl.style.display = 'block';
+  statusEl.textContent = LANG === 'ko' ? '재고 데이터를 불러오는 중입니다...' : 'Loading inventory data...';
+  grid.innerHTML = '';
+  try{
+    const res = await fetch(GOOGLE_SHEET_URL + '?type=stock');
+    const data = await res.json();
+    partsData = Array.isArray(data) ? data : [];
+    statusEl.style.display = 'none';
+  }catch(e){
+    statusEl.textContent = LANG === 'ko'
+      ? '재고 데이터를 불러오지 못했습니다. 네트워크 연결을 확인해주세요.'
+      : 'Could not load inventory data. Please check your network connection.';
+  }
+  renderCategoryChips();
+  renderParts(document.getElementById('partsSearch').value || '');
+}
+
+function renderCategoryChips(){
+  const chipBox = document.getElementById('catChips');
+  const cats = Array.from(new Set(partsData.map(p => p['제품구분']).filter(Boolean))).sort();
+  const allLabel = LANG === 'ko' ? '전체' : 'All';
+  const html = ['<button class="cat-chip' + (activeCategory === '__all__' ? ' active' : '') + '" data-cat="__all__">' + allLabel + '</button>']
+    .concat(cats.map(c => '<button class="cat-chip' + (activeCategory === c ? ' active' : '') + '" data-cat="' + escapeAttr(c) + '">' + escapeHtml(c) + '</button>'));
+  chipBox.innerHTML = html.join('');
+  chipBox.querySelectorAll('.cat-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeCategory = btn.getAttribute('data-cat');
+      renderCategoryChips();
+      renderParts(document.getElementById('partsSearch').value || '');
+    });
+  });
 }
 
 function renderParts(filter){
   const grid = document.getElementById('partsGrid');
   const f = (filter || '').toLowerCase().trim();
-  const list = partsData.filter(p =>
-    !f || p.name.toLowerCase().includes(f) || (p.desc||'').toLowerCase().includes(f)
-  );
+  let list = partsData;
+  if(activeCategory !== '__all__'){
+    list = list.filter(p => p['제품구분'] === activeCategory);
+  }
+  if(f){
+    list = list.filter(p =>
+      (p['제품구분']||'').toLowerCase().includes(f) ||
+      (p['제품형태']||'').toLowerCase().includes(f) ||
+      (p['제품규격']||'').toLowerCase().includes(f) ||
+      (p['비고']||'').toLowerCase().includes(f)
+    );
+  }
   if(list.length === 0){
     grid.innerHTML = '<div class="parts-empty">' + escapeHtml(t('partsEmpty')) + '</div>';
     return;
   }
-  grid.innerHTML = list.map(p => `
+  grid.innerHTML = list.map(p => {
+    const stock = Number(p['현재고']) || 0;
+    const minStock = Number(p['최소보유수량']) || 0;
+    const repairing = Number(p['수리중수량']) || 0;
+    const low = stock < minStock;
+    const photo = driveImageUrl(p['사진링크']);
+    const stockLabel = LANG === 'ko' ? '재고' : 'Stock';
+    const repairLabel = LANG === 'ko' ? '수리중' : 'In repair';
+    return `
     <div class="part-card">
-      ${p.photo ? '<img src="'+p.photo+'" alt="'+escapeHtml(p.name)+'"/>' : '<div class="noimg">사진 없음</div>'}
+      ${photo ? '<img src="'+photo+'" alt="'+escapeHtml(p['제품규격']||'')+'" loading="lazy"/>' : '<div class="noimg">' + (LANG==='ko'?'사진 없음':'No photo') + '</div>'}
       <div class="part-card-body">
-        <div class="part-card-name">${escapeHtml(p.name)}</div>
-        <div class="part-card-desc">${escapeHtml(p.desc||'')}</div>
+        <div class="part-card-name">${escapeHtml(p['제품형태'] || p['제품규격'] || '')}</div>
+        <div class="part-card-desc">${escapeHtml(p['제품규격']||'')}</div>
+        <div class="stock-row">
+          <span class="stock-badge ${low?'low':'ok'}">${stockLabel} ${stock}</span>
+          ${repairing > 0 ? '<span class="stock-badge repairing">' + repairLabel + ' ' + repairing + '</span>' : ''}
+        </div>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 document.getElementById('partsSearch').addEventListener('input', (e) => renderParts(e.target.value));
 
-partsData = loadPartsFromLocal();
-renderParts('');
+loadPartsFromSheet();
 
 /* ---------- 에러코드 검색 ---------- */
 function renderManualCodeLookup(){
@@ -4420,7 +4489,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v26', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v27', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
