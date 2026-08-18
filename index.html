@@ -4294,7 +4294,7 @@ async function loadPartsFromSheet(){
   statusEl.textContent = LANG === 'ko' ? '재고 데이터를 불러오는 중입니다...' : 'Loading inventory data...';
   grid.innerHTML = '';
   try{
-    const res = await fetch(GOOGLE_SHEET_URL + '?type=stock');
+    const res = await fetch(GOOGLE_SHEET_URL + '?type=stock&t=' + Date.now(), { cache: 'no-store' });
     const data = await res.json();
     partsData = Array.isArray(data) ? data : [];
     statusEl.style.display = 'none';
@@ -4489,7 +4489,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v27', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v28', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
