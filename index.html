@@ -170,8 +170,8 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
       <button class="lang-btn" data-lang="en">English</button>
     </div>
     <div class="header-tools">
-      <button id="fontDecBtn" class="fontsize-btn" title="글자 작게">가-</button>
-      <button id="fontIncBtn" class="fontsize-btn" title="글자 크게">가+</button>
+      <button id="fontDecBtn" class="fontsize-btn" title="글자 작게">-</button>
+      <button id="fontIncBtn" class="fontsize-btn" title="글자 크게">+</button>
       <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
     </div>
     <h1 data-i18n="title">설비 진단 어시스턴트</h1>
@@ -3773,6 +3773,11 @@ const UI_STRINGS = {
     popupConfirm: "확인했어요",
     usageCancel: "취소",
     usageRegisterBtn: "+ 사용 등록",
+    usageWorkerLabel: "담당자",
+    usageWorkerPlaceholder: "이름 입력",
+    locationPickerTitle: "사용처 선택",
+    locationManualPlaceholder: "목록에 없으면 직접 입력",
+    locationManualUse: "이걸로",
     usageDone: "\"{name}\" {qty}개 사용 등록 완료했습니다.",
     repairReminder: "\ud83d\udd27 \"{name}\"은(는) 수리 가능 품목이라 수리이력에 자동 등록했어요. 오늘 안으로 수리업체에 보내주세요!"
   },
@@ -3828,6 +3833,11 @@ const UI_STRINGS = {
     popupConfirm: "Got it",
     usageCancel: "Cancel",
     usageRegisterBtn: "+ Log usage",
+    usageWorkerLabel: "Worker",
+    usageWorkerPlaceholder: "Enter name",
+    locationPickerTitle: "Select location",
+    locationManualPlaceholder: "Not in the list? Type it",
+    locationManualUse: "Use this",
     usageDone: "Registered {qty} unit(s) of \"{name}\" as used.",
     repairReminder: "\ud83d\udd27 \"{name}\" is repairable, so it's been auto-logged to the repair history. Please send it to the repair vendor today!"
   }
@@ -4019,7 +4029,6 @@ function logDiagnosisToSheet(category, cause, solution){
       method: 'POST',
       mode: 'no-cors',
       body: JSON.stringify({
-        lang: LANG,
         category: category || '',
         cause: cause || '',
         solution: solution || ''
@@ -4035,22 +4044,22 @@ function isTruthyRepair(v){
   return s === 'TRUE' || s === 'O' || s === '예' || s === 'Y' || s === 'YES' || s === '1';
 }
 
-function logUsageToSheet(category, spec, qty, location, memo){
+function logUsageToSheet(category, spec, qty, location, memo, worker){
   if(!GOOGLE_SHEET_URL) return;
   try{
     fetch(GOOGLE_SHEET_URL, {
       method: 'POST', mode: 'no-cors',
-      body: JSON.stringify({ type: 'usage', category: category || '', spec: spec || '', qty: qty || 1, location: location || '', memo: memo || '' })
+      body: JSON.stringify({ type: 'usage', category: category || '', spec: spec || '', qty: qty || 1, location: location || '', memo: memo || '', worker: worker || '' })
     }).catch(() => {});
   }catch(e){}
 }
 
-function logRepairOutToSheet(category, spec, qty){
+function logRepairOutToSheet(category, spec, qty, vendor){
   if(!GOOGLE_SHEET_URL) return;
   try{
     fetch(GOOGLE_SHEET_URL, {
       method: 'POST', mode: 'no-cors',
-      body: JSON.stringify({ type: 'repair_out', category: category || '', spec: spec || '', qty: qty || 1, vendor: '', memo: '' })
+      body: JSON.stringify({ type: 'repair_out', category: category || '', spec: spec || '', qty: qty || 1, vendor: vendor || '', memo: '' })
     }).catch(() => {});
   }catch(e){}
 }
@@ -4119,7 +4128,11 @@ function renderPartUsageQty(part){
     '</div>' +
     '<div style="display:flex;gap:8px;align-items:center;">' +
     '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageLocationLabel')) + '</label>' +
-    '<input type="text" id="usageLocationInput" placeholder="' + escapeAttr(t('usageLocationPlaceholder')) + '" style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
+    makeLocationInputHtml('usageLocationInput') +
+    '</div>' +
+    '<div style="display:flex;gap:8px;align-items:center;">' +
+    '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageWorkerLabel')) + '</label>' +
+    '<input type="text" id="usageWorkerInput" placeholder="' + escapeAttr(t('usageWorkerPlaceholder')) + '" style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
     '</div>' +
     '<div style="display:flex;gap:8px;align-items:center;">' +
     '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageMemoLabel')) + '</label>' +
@@ -4128,29 +4141,79 @@ function renderPartUsageQty(part){
     '<button class="opt-btn" id="usageSubmitBtn" style="align-self:flex-start;">' + escapeHtml(t('usageSubmit')) + '</button>' +
     '</div>';
   const div = addMsg('bot', html);
+  const locInput = div.querySelector('#usageLocationInput');
+  locInput.addEventListener('click', () => showLocationPicker(v => { locInput.value = v; }));
   const btn = div.querySelector('#usageSubmitBtn');
   btn.addEventListener('click', () => {
     if(btn.disabled) return;
     const qty = parseInt(div.querySelector('#usageQtyInput').value) || 1;
     const location = div.querySelector('#usageLocationInput').value.trim();
+    const worker = div.querySelector('#usageWorkerInput').value.trim();
     const memo = div.querySelector('#usageMemoInput').value.trim();
     btn.disabled = true;
     div.querySelectorAll('input').forEach(el => el.disabled = true);
-    submitPartUsage(part, qty, location, memo);
+    submitPartUsage(part, qty, location, memo, worker);
   });
 }
 
-function submitPartUsage(part, qty, location, memo){
+function submitPartUsage(part, qty, location, memo, worker){
   const name = part['제품형태'] || part['제품규격'] || '';
-  logUsageToSheet(part['제품구분'], part['제품규격'], qty, location, memo);
+  logUsageToSheet(part['제품구분'], part['제품규격'], qty, location, memo, worker);
   addMsg('diagnosis', '<div class="dval">' + escapeHtml(t('usageDone').replace('{qty}', qty).replace('{name}', name)) + '</div>');
 
   if(isTruthyRepair(part['수리가능여부'])){
-    logRepairOutToSheet(part['제품구분'], part['제품규격'], qty);
+    logRepairOutToSheet(part['제품구분'], part['제품규격'], qty, part['거래처']);
     const msg = t('repairReminder').replace('{name}', name);
     addMsg('clarify', escapeHtml(msg));
     showRepairPopup(msg);
   }
+}
+
+const LOCATION_LIST = [
+  '1F-1호기','1F-2호기','1F-3호기','1F-4호기','1F-5호기','1F-6호기','1F-7호기','1F-8호기','1F-9호기','1F-10호기','1F-11호기',
+  '2F-1호기','2F-2호기','2F-3호기','2F-4호기','2F-5호기','2F-6호기','2F-7호기',
+  '1라인 성형프레스','1라인 트리밍프레스','2라인 성형프레스','2라인 트리밍프레스',
+  '3라인 성형프레스','3라인 트리밍프레스','4라인 성형프레스','4라인 트리밍프레스',
+  '150TON 프레스','100TON 프레스','기타'
+];
+
+function showLocationPicker(onSelect){
+  const overlay = document.createElement('div');
+  overlay.className = 'repair-popup-overlay';
+  overlay.innerHTML =
+    '<div class="repair-popup" style="max-width:340px;text-align:left;max-height:80vh;display:flex;flex-direction:column;">' +
+      '<div style="font-weight:700;font-size:14px;margin-bottom:10px;">' + escapeHtml(t('locationPickerTitle')) + '</div>' +
+      '<div style="display:flex;gap:6px;margin-bottom:10px;">' +
+        '<input type="text" id="locManualInput" placeholder="' + escapeAttr(t('locationManualPlaceholder')) + '" style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:8px;font-size:13px;" />' +
+        '<button class="opt-btn" id="locManualBtn" style="flex:0 0 auto;">' + escapeHtml(t('locationManualUse')) + '</button>' +
+      '</div>' +
+      '<div class="options" id="locList" style="overflow-y:auto;max-height:50vh;"></div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  const close = () => overlay.remove();
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) close(); });
+
+  const listEl = overlay.querySelector('#locList');
+  listEl.innerHTML = LOCATION_LIST.map((loc, i) => '<button class="opt-btn" data-idx="' + i + '">' + escapeHtml(loc) + '</button>').join('');
+  listEl.querySelectorAll('.opt-btn').forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      onSelect(LOCATION_LIST[i]);
+      close();
+    });
+  });
+
+  const manualBtn = overlay.querySelector('#locManualBtn');
+  const manualInput = overlay.querySelector('#locManualInput');
+  manualBtn.addEventListener('click', () => {
+    const v = manualInput.value.trim();
+    if(!v) return;
+    onSelect(v);
+    close();
+  });
+}
+
+function makeLocationInputHtml(id){
+  return '<input type="text" id="' + id + '" readonly placeholder="' + escapeAttr(t('usageLocationPlaceholder')) + '" style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;cursor:pointer;" />';
 }
 
 function showIconPopup(icon, message){
@@ -4184,7 +4247,11 @@ function showUsageModal(part){
         '</div>' +
         '<div style="display:flex;gap:8px;align-items:center;">' +
           '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageLocationLabel')) + '</label>' +
-          '<input type="text" id="modalLocationInput" placeholder="' + escapeAttr(t('usageLocationPlaceholder')) + '" style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
+          makeLocationInputHtml('modalLocationInput') +
+        '</div>' +
+        '<div style="display:flex;gap:8px;align-items:center;">' +
+          '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageWorkerLabel')) + '</label>' +
+          '<input type="text" id="modalWorkerInput" placeholder="' + escapeAttr(t('usageWorkerPlaceholder')) + '" style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
         '</div>' +
         '<div style="display:flex;gap:8px;align-items:center;">' +
           '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageMemoLabel')) + '</label>' +
@@ -4198,18 +4265,21 @@ function showUsageModal(part){
     '</div>';
   document.body.appendChild(overlay);
   const close = () => overlay.remove();
+  const modalLocInput = overlay.querySelector('#modalLocationInput');
+  modalLocInput.addEventListener('click', () => showLocationPicker(v => { modalLocInput.value = v; }));
   overlay.querySelector('#modalCancelBtn').addEventListener('click', close);
   overlay.addEventListener('click', (e) => { if(e.target === overlay) close(); });
   overlay.querySelector('#modalSubmitBtn').addEventListener('click', () => {
     const qty = parseInt(overlay.querySelector('#modalQtyInput').value) || 1;
     const location = overlay.querySelector('#modalLocationInput').value.trim();
+    const worker = overlay.querySelector('#modalWorkerInput').value.trim();
     const memo = overlay.querySelector('#modalMemoInput').value.trim();
     close();
     const name = part['제품형태'] || part['제품규격'] || '';
-    logUsageToSheet(part['제품구분'], part['제품규격'], qty, location, memo);
+    logUsageToSheet(part['제품구분'], part['제품규격'], qty, location, memo, worker);
     showIconPopup('\u2705', t('usageDone').replace('{qty}', qty).replace('{name}', name));
     if(isTruthyRepair(part['수리가능여부'])){
-      logRepairOutToSheet(part['제품구분'], part['제품규격'], qty);
+      logRepairOutToSheet(part['제품구분'], part['제품규격'], qty, part['거래처']);
       setTimeout(() => showRepairPopup(t('repairReminder').replace('{name}', name)), 300);
     }
   });
@@ -4758,7 +4828,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v36', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v37', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
