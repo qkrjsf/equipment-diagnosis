@@ -207,6 +207,8 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 
     <div id="partsStatusMsg" class="parts-empty" style="display:none;"></div>
     <div class="parts-grid" id="partsGrid"></div>
+
+    <button id="usageRegisterFixedBtn" class="primary-btn" style="width:100%;margin-top:16px;text-align:center;">+ <span data-i18n="usageRegisterBtn2">부품 사용 등록</span></button>
   </div>
 
   <div class="panel" id="panel-codesearch">
@@ -3778,6 +3780,16 @@ const UI_STRINGS = {
     locationPickerTitle: "사용처 선택",
     locationManualPlaceholder: "목록에 없으면 직접 입력",
     locationManualUse: "이걸로",
+    partDetailBtn: "상세설명",
+    usageRegisterBtn2: "부품 사용 등록",
+    detailCategory: "제품구분",
+    detailForm: "제품형태",
+    detailSpec: "제품규격",
+    detailVendor: "거래처",
+    detailNote: "비고",
+    detailStock: "현재고",
+    detailMinStock: "최소보유수량",
+    detailRepairable: "수리가능",
     usageDone: "\"{name}\" {qty}개 사용 등록 완료했습니다.",
     repairReminder: "\ud83d\udd27 \"{name}\"은(는) 수리 가능 품목이라 수리이력에 자동 등록했어요. 오늘 안으로 수리업체에 보내주세요!"
   },
@@ -3838,6 +3850,16 @@ const UI_STRINGS = {
     locationPickerTitle: "Select location",
     locationManualPlaceholder: "Not in the list? Type it",
     locationManualUse: "Use this",
+    partDetailBtn: "Details",
+    usageRegisterBtn2: "Log Part Usage",
+    detailCategory: "Category",
+    detailForm: "Type",
+    detailSpec: "Spec",
+    detailVendor: "Vendor",
+    detailNote: "Notes",
+    detailStock: "Stock",
+    detailMinStock: "Min. Stock",
+    detailRepairable: "Repairable",
     usageDone: "Registered {qty} unit(s) of \"{name}\" as used.",
     repairReminder: "\ud83d\udd27 \"{name}\" is repairable, so it's been auto-logged to the repair history. Please send it to the repair vendor today!"
   }
@@ -4233,6 +4255,75 @@ function showIconPopup(icon, message){
 function showRepairPopup(message){ showIconPopup('\u{1F527}', message); }
 
 /* ---------- 부품 조회 탭에서 바로 사용 등록 ---------- */
+function showUsageSearchModal(){
+  const overlay = document.createElement('div');
+  overlay.className = 'repair-popup-overlay';
+  overlay.innerHTML =
+    '<div class="repair-popup" style="max-width:340px;text-align:left;max-height:80vh;display:flex;flex-direction:column;">' +
+      '<div style="font-weight:700;font-size:14px;margin-bottom:10px;">' + escapeHtml(t('usageSearchPrompt')) + '</div>' +
+      '<input type="text" id="usageSearchModalInput" placeholder="' + escapeAttr(t('usageSearchPlaceholder')) + '" style="width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-size:13.5px;margin-bottom:10px;" />' +
+      '<div class="options" id="usageSearchModalResults" style="overflow-y:auto;max-height:50vh;"></div>' +
+      '<button class="restart-btn" id="usageSearchModalCancel" style="margin-top:12px;align-self:flex-start;">' + escapeHtml(t('usageCancel')) + '</button>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  const close = () => overlay.remove();
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) close(); });
+  overlay.querySelector('#usageSearchModalCancel').addEventListener('click', close);
+
+  const input = overlay.querySelector('#usageSearchModalInput');
+  const results = overlay.querySelector('#usageSearchModalResults');
+  function doSearch(q){
+    const f = q.toLowerCase().trim();
+    if(!f){ results.innerHTML = ''; return; }
+    const matches = partsData.filter(p =>
+      (p['제품형태']||'').toLowerCase().includes(f) ||
+      (p['제품규격']||'').toLowerCase().includes(f) ||
+      (p['제품구분']||'').toLowerCase().includes(f)
+    ).slice(0, 10);
+    results.innerHTML = matches.map((p, i) =>
+      '<button class="opt-btn" data-idx="' + i + '">' + escapeHtml(p['제품형태'] || p['제품규격'] || '') + ' — ' + escapeHtml(p['제품규격'] || '') + '</button>'
+    ).join('');
+    results.querySelectorAll('.opt-btn').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        close();
+        showUsageModal(matches[i]);
+      });
+    });
+  }
+  input.addEventListener('input', () => doSearch(input.value));
+  input.focus();
+}
+
+function showPartDetail(part){
+  const rows = [
+    [t('detailCategory'), part['제품구분']],
+    [t('detailForm'), part['제품형태']],
+    [t('detailSpec'), part['제품규격']],
+    [t('detailVendor'), part['거래처']],
+    [t('detailNote'), part['비고']],
+    [t('detailStock'), part['현재고']],
+    [t('detailMinStock'), part['최소보유수량']],
+    [t('detailRepairable'), isTruthyRepair(part['수리가능여부']) ? (LANG==='ko'?'가능':'Yes') : (LANG==='ko'?'불가':'No')]
+  ].filter(([label, val]) => val !== undefined && val !== null && String(val).trim() !== '');
+
+  const photo = driveImageUrl(part['사진링크']);
+  const overlay = document.createElement('div');
+  overlay.className = 'repair-popup-overlay';
+  overlay.innerHTML =
+    '<div class="repair-popup" style="max-width:340px;text-align:left;">' +
+      (photo ? '<img src="'+photo+'" style="width:100%;border-radius:8px;margin-bottom:12px;" />' : '') +
+      '<div style="font-weight:700;font-size:15px;margin-bottom:10px;">' + escapeHtml(part['제품형태'] || part['제품규격'] || '') + '</div>' +
+      rows.map(([label, val]) =>
+        '<div style="display:flex;gap:8px;font-size:12.5px;margin-bottom:6px;"><span style="color:var(--text-muted);width:72px;flex:0 0 auto;">' + escapeHtml(label) + '</span><span>' + escapeHtml(String(val)) + '</span></div>'
+      ).join('') +
+      '<button class="repair-popup-btn" id="detailCloseBtn" style="width:100%;margin-top:10px;">' + escapeHtml(t('popupConfirm')) + '</button>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  const close = () => overlay.remove();
+  overlay.querySelector('#detailCloseBtn').addEventListener('click', close);
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) close(); });
+}
+
 function showUsageModal(part){
   const label = (part['제품형태'] || part['제품규격'] || '') + ' (' + (part['제품규격'] || '') + ')';
   const overlay = document.createElement('div');
@@ -4693,19 +4784,20 @@ function renderParts(filter){
           ${repairing > 0 ? '<span class="stock-badge repairing">' + repairLabel + ' ' + repairing + '</span>' : ''}
           ${repairable ? '<span class="stock-badge repairing">🔧 ' + repairableLabel + '</span>' : ''}
         </div>
-        <button class="restart-btn use-register-btn" data-idx="${i}" style="margin-top:8px;width:100%;text-align:center;">${escapeHtml(t('usageRegisterBtn'))}</button>
+        <button class="restart-btn part-detail-btn" data-idx="${i}" style="margin-top:8px;width:100%;text-align:center;">${escapeHtml(t('partDetailBtn'))}</button>
       </div>
     </div>`;
   }).join('');
-  grid.querySelectorAll('.use-register-btn').forEach(btn => {
+  grid.querySelectorAll('.part-detail-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.getAttribute('data-idx'));
-      showUsageModal(list[idx]);
+      showPartDetail(list[idx]);
     });
   });
 }
 
 document.getElementById('partsSearch').addEventListener('input', (e) => renderParts(e.target.value));
+document.getElementById('usageRegisterFixedBtn').addEventListener('click', () => showUsageSearchModal());
 
 loadPartsFromSheet();
 
@@ -4830,7 +4922,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v38', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v39', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
