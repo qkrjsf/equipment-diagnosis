@@ -154,7 +154,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .code-card .cdesc{font-size:12.5px;color:var(--text);margin-top:4px;line-height:1.5;}
 .code-results-count{font-size:11.5px;color:var(--text-muted);margin-bottom:8px;}
 .repair-popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:1000;padding:24px;}
-.repair-popup{background:var(--surface);border:2px solid var(--amber);border-radius:14px;padding:24px 20px;max-width:320px;text-align:center;box-shadow:0 12px 32px rgba(0,0,0,0.25);animation:popupIn 0.2s ease-out;}
+.repair-popup{background:var(--surface);border:2px solid var(--amber);border-radius:14px;padding:24px 20px;max-width:320px;text-align:center;box-shadow:0 12px 32px rgba(0,0,0,0.25);animation:popupIn 0.2s ease-out;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .repair-popup-icon{font-size:34px;margin-bottom:10px;}
 .repair-popup-msg{font-size:14px;line-height:1.6;color:var(--text);margin-bottom:18px;}
 .repair-popup-btn{background:var(--amber);color:#fff8f0;border:none;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13.5px;cursor:pointer;}
@@ -5017,7 +5017,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v42', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v43', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
