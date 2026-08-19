@@ -4597,9 +4597,11 @@ let activeCategory = '__all__';
 
 function driveImageUrl(link){
   if(!link) return '';
-  const m = String(link).match(/[-\w]{25,}/);
+  const s = String(link);
+  if(s.indexOf('lh3.googleusercontent.com') !== -1) return s;
+  const m = s.match(/[-\w]{25,}/);
   if(m){
-    return 'https://drive.google.com/uc?export=view&id=' + m[0];
+    return 'https://lh3.googleusercontent.com/d/' + m[0] + '=s800';
   }
   return link;
 }
@@ -4828,7 +4830,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v37', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v38', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
