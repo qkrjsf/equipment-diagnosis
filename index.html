@@ -53,6 +53,22 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
 .tabs{display:flex;gap:2px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:3px;margin-bottom:20px;}
 .tab{flex:1;text-align:center;padding:9px 0;font-size:13px;font-weight:500;color:var(--text-muted);border-radius:6px;cursor:pointer;user-select:none;}
 .tab.active{background:var(--surface2);color:var(--amber);}
+@media (max-width:420px){.tab{font-size:12px;}}
+.tab{word-break:keep-all;}
+.msds-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.msds-tbtn{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);font-size:12px;padding:6px 11px;border-radius:8px;cursor:pointer;font-family:inherit;}
+.msds-tbtn:hover{border-color:var(--amber);color:var(--amber);}
+.msds-count{font-size:12px;color:var(--text-muted);margin-left:auto;}
+.msds-list{display:flex;flex-direction:column;gap:8px;}
+.msds-row{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 13px;cursor:pointer;}
+.msds-row.sel{border-color:var(--amber);background:var(--amber-dim);}
+.msds-row input[type=checkbox]{width:20px;height:20px;margin-top:1px;flex:0 0 auto;accent-color:var(--amber);cursor:pointer;}
+.msds-name{font-size:14px;font-weight:700;color:var(--text);word-break:break-word;}
+.msds-meta{font-size:12px;color:var(--text-muted);margin-top:3px;line-height:1.5;}
+.msds-tag{display:inline-block;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:0 6px;margin-right:6px;font-size:11px;color:var(--text);}
+.msds-dlbar{position:sticky;bottom:0;padding:12px 0 4px;margin-top:10px;background:linear-gradient(to top,var(--bg) 70%,rgba(250,246,240,0));}
+.msds-dlbtn{width:100%;padding:13px 0;font-size:14.5px;}
+.msds-dlbtn:disabled{opacity:.45;cursor:not-allowed;}
 .panel{display:none;}
 .panel.active{display:block;}
 
@@ -182,6 +198,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
     <div class="tab active" data-tab="chat" data-i18n="tabChat">진단하기</div>
     <div class="tab" data-tab="parts" data-i18n="tabParts">부품 조회</div>
     <div class="tab" data-tab="register" data-i18n="tabRegister">부품 등록</div>
+    <div class="tab" data-tab="msds" data-i18n="tabMsds">MSDS</div>
     <div class="tab" data-tab="codesearch" id="codesearchTab" data-i18n="tabCodeSearch">에러코드 검색</div>
   </div>
 
@@ -220,6 +237,29 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',
     <div class="cat-chips" id="catChipsReg"></div>
 
     <div class="parts-grid" id="partsGridReg"></div>
+  </div>
+
+  <div class="panel" id="panel-msds">
+    <div class="hint" data-i18n="msdsHint">필요한 MSDS를 선택해서 내려받을 수 있습니다. 다운로드할 때 비밀번호가 필요합니다.</div>
+
+    <div class="parts-search">
+      <input type="text" id="msdsSearch" data-i18n-placeholder="msdsSearchPlaceholder" placeholder="제품명·제조사로 검색..." />
+    </div>
+
+    <div class="cat-chips" id="msdsChips"></div>
+
+    <div class="msds-toolbar">
+      <button class="msds-tbtn" id="msdsSelectAll" data-i18n="msdsSelectAll">전체 선택</button>
+      <button class="msds-tbtn" id="msdsClearAll" data-i18n="msdsClearAll">선택 해제</button>
+      <span class="msds-count" id="msdsCount"></span>
+    </div>
+
+    <div id="msdsStatusMsg" class="parts-empty" style="display:none;"></div>
+    <div class="msds-list" id="msdsList"></div>
+
+    <div class="msds-dlbar">
+      <button class="repair-popup-btn msds-dlbtn" id="msdsDownloadBtn" disabled>선택 다운로드</button>
+    </div>
   </div>
 
   <div class="panel" id="panel-codesearch">
@@ -3740,6 +3780,33 @@ const UI_STRINGS = {
     tabChat: "진단하기",
     tabParts: "부품 조회",
     tabRegister: "부품 등록",
+    tabMsds: "MSDS",
+    msdsHint: "필요한 MSDS를 선택해서 내려받을 수 있습니다. 다운로드할 때 비밀번호가 필요합니다.",
+    msdsSearchPlaceholder: "제품명·제조사로 검색...",
+    msdsAll: "전체",
+    msdsSelectAll: "전체 선택",
+    msdsClearAll: "선택 해제",
+    msdsCount: "{n}개 선택",
+    msdsDownload: "선택 다운로드",
+    msdsDownloadN: "선택 다운로드 ({n})",
+    msdsEmpty: "등록된 MSDS가 없습니다.",
+    msdsLoading: "MSDS 목록을 불러오는 중입니다...",
+    msdsLoadFail: "MSDS 목록을 불러오지 못했습니다. 네트워크 연결을 확인해주세요.",
+    msdsRev: "개정",
+    msdsPwTitle: "MSDS 다운로드",
+    msdsPwSub: "{n}개 파일 선택됨",
+    msdsPwLabel: "비밀번호",
+    msdsNameLabel: "이름",
+    msdsNamePlaceholder: "이름 입력",
+    msdsConfirm: "다운로드",
+    msdsNeedFields: "이름과 비밀번호를 입력해주세요.",
+    msdsWrongPw: "비밀번호가 올바르지 않습니다. (남은 시도 {n}회)",
+    msdsLocked: "비밀번호 오류가 반복되어 잠시 잠겼습니다. 10분 뒤에 다시 시도해주세요.",
+    msdsNotConfigured: "비밀번호가 설정되지 않아 다운로드할 수 없습니다. 관리자에게 문의해주세요.",
+    msdsNotFound: "선택한 파일을 찾을 수 없습니다. 목록을 새로고침해주세요.",
+    msdsServerErr: "다운로드 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+    msdsWorking: "다운로드 준비 중...",
+    msdsDone: "다운로드를 시작했습니다. ({n}개)",
     tabCodeSearch: "에러코드 검색",
     registerHint: "사용한 부품을 눌러서 바로 사용 등록할 수 있습니다.",
     chatPlaceholder: "예: 화면에 OCT 떴어요, 레벨센서 알람 떴어요",
@@ -3812,6 +3879,33 @@ const UI_STRINGS = {
     tabChat: "Diagnose",
     tabParts: "Parts Lookup",
     tabRegister: "Log Parts",
+    tabMsds: "MSDS",
+    msdsHint: "Select the MSDS files you need and download them. A password is required to download.",
+    msdsSearchPlaceholder: "Search by product or maker...",
+    msdsAll: "All",
+    msdsSelectAll: "Select all",
+    msdsClearAll: "Clear",
+    msdsCount: "{n} selected",
+    msdsDownload: "Download selected",
+    msdsDownloadN: "Download selected ({n})",
+    msdsEmpty: "No MSDS registered yet.",
+    msdsLoading: "Loading MSDS list...",
+    msdsLoadFail: "Could not load the MSDS list. Please check your network connection.",
+    msdsRev: "Rev.",
+    msdsPwTitle: "Download MSDS",
+    msdsPwSub: "{n} file(s) selected",
+    msdsPwLabel: "Password",
+    msdsNameLabel: "Name",
+    msdsNamePlaceholder: "Enter name",
+    msdsConfirm: "Download",
+    msdsNeedFields: "Please enter your name and the password.",
+    msdsWrongPw: "Incorrect password. ({n} attempts left)",
+    msdsLocked: "Too many failed attempts. Please try again in 10 minutes.",
+    msdsNotConfigured: "The password is not set up, so downloads are unavailable. Please contact the administrator.",
+    msdsNotFound: "The selected file could not be found. Please refresh the list.",
+    msdsServerErr: "An error occurred while downloading. Please try again shortly.",
+    msdsWorking: "Preparing download...",
+    msdsDone: "Download started. ({n} file(s))",
     tabCodeSearch: "Error Code Search",
     registerHint: "Tap a part below to log its usage right away.",
     chatPlaceholder: "e.g. OCT appeared on screen, level sensor alarm went off",
@@ -3925,6 +4019,7 @@ function setLanguage(lang){
   renderParts(document.getElementById('partsSearch').value || '');
   renderCategoryChipsReg();
   renderPartsReg(document.getElementById('partsSearchReg').value || '');
+  renderMsds();
 }
 
 function switchToPanel(panelId){
@@ -4699,6 +4794,202 @@ document.querySelectorAll('.tab').forEach(tabEl => {
 document.getElementById('sendBtn').addEventListener('click', () => handleFreeText(document.getElementById('userInput').value));
 document.getElementById('userInput').addEventListener('keydown', e => { if(e.key === 'Enter') handleFreeText(e.target.value); });
 
+
+/* ---------- MSDS (구글시트 MSDS 탭 + 비밀번호 확인 후 다운로드) ---------- */
+let msdsData = [];
+let msdsLoaded = false;
+let msdsLoading = false;
+let msdsCat = '__all__';
+const msdsSelected = new Set();
+const MSDS_CAT_ORDER = ['POL', 'MDI', '기타'];
+
+async function loadMsds(force){
+  if(msdsLoading || (msdsLoaded && !force)) return;
+  msdsLoading = true;
+  const statusEl = document.getElementById('msdsStatusMsg');
+  statusEl.style.display = 'block';
+  statusEl.textContent = t('msdsLoading');
+  try{
+    const res = await fetch(GOOGLE_SHEET_URL + '?type=msds&t=' + Date.now(), { cache: 'no-store' });
+    const data = await res.json();
+    msdsData = Array.isArray(data) ? data : [];
+    msdsLoaded = true;
+    statusEl.style.display = 'none';
+  }catch(e){
+    statusEl.textContent = t('msdsLoadFail');
+  }
+  msdsLoading = false;
+  renderMsds();
+}
+
+function msdsVisible(){
+  const q = (document.getElementById('msdsSearch').value || '').trim().toLowerCase();
+  return msdsData.filter(m => {
+    if(msdsCat !== '__all__' && m.cat !== msdsCat) return false;
+    if(!q) return true;
+    return (m.name + ' ' + m.maker + ' ' + m.cat + ' ' + m.note).toLowerCase().indexOf(q) !== -1;
+  });
+}
+
+function renderMsdsChips(){
+  const box = document.getElementById('msdsChips');
+  const present = Array.from(new Set(msdsData.map(m => m.cat).filter(Boolean)));
+  const cats = MSDS_CAT_ORDER.filter(c => present.indexOf(c) !== -1)
+    .concat(present.filter(c => MSDS_CAT_ORDER.indexOf(c) === -1).sort());
+  if(msdsCat !== '__all__' && cats.indexOf(msdsCat) === -1) msdsCat = '__all__';
+  const html = ['<button class="cat-chip' + (msdsCat === '__all__' ? ' active' : '') + '" data-cat="__all__">' + escapeHtml(t('msdsAll')) + '</button>']
+    .concat(cats.map(c => '<button class="cat-chip' + (msdsCat === c ? ' active' : '') + '" data-cat="' + escapeAttr(c) + '">' + escapeHtml(c) + '</button>'));
+  box.innerHTML = html.join('');
+  box.querySelectorAll('.cat-chip').forEach(b => b.addEventListener('click', () => {
+    msdsCat = b.getAttribute('data-cat');
+    renderMsds();
+  }));
+}
+
+function updateMsdsFooter(){
+  const n = msdsSelected.size;
+  document.getElementById('msdsCount').textContent = n ? t('msdsCount').replace('{n}', n) : '';
+  const btn = document.getElementById('msdsDownloadBtn');
+  btn.disabled = n === 0;
+  btn.textContent = n ? t('msdsDownloadN').replace('{n}', n) : t('msdsDownload');
+}
+
+function renderMsds(){
+  renderMsdsChips();
+  const list = document.getElementById('msdsList');
+  const vis = msdsVisible();
+  if(msdsLoaded && vis.length === 0){
+    list.innerHTML = '<div class="parts-empty">' + escapeHtml(t('msdsEmpty')) + '</div>';
+  } else {
+    list.innerHTML = vis.map(m => {
+      const sel = msdsSelected.has(m.id);
+      const meta = [];
+      if(m.cat) meta.push('<span class="msds-tag">' + escapeHtml(m.cat) + '</span>');
+      if(m.maker) meta.push(escapeHtml(m.maker));
+      if(m.date) meta.push(escapeHtml(t('msdsRev')) + ' ' + escapeHtml(m.date));
+      return '<label class="msds-row' + (sel ? ' sel' : '') + '" data-id="' + escapeAttr(m.id) + '">' +
+        '<input type="checkbox"' + (sel ? ' checked' : '') + ' />' +
+        '<div><div class="msds-name">' + escapeHtml(m.name) + '</div>' +
+        '<div class="msds-meta">' + meta.join(' ') + (m.note ? '<br>' + escapeHtml(m.note) : '') + '</div></div>' +
+      '</label>';
+    }).join('');
+    list.querySelectorAll('.msds-row').forEach(row => {
+      const cb = row.querySelector('input');
+      cb.addEventListener('change', () => {
+        const id = row.getAttribute('data-id');
+        if(cb.checked) msdsSelected.add(id); else msdsSelected.delete(id);
+        row.classList.toggle('sel', cb.checked);
+        updateMsdsFooter();
+      });
+    });
+  }
+  updateMsdsFooter();
+}
+
+function b64ToBlob(b64, mime){
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for(let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new Blob([bytes], { type: mime });
+}
+
+function saveBlob(blob, filename){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+
+function showMsdsDownloadModal(){
+  const ids = Array.from(msdsSelected);
+  if(!ids.length) return;
+  let savedName = '';
+  try{ savedName = localStorage.getItem('msds-worker') || ''; }catch(e){}
+  const overlay = document.createElement('div');
+  overlay.className = 'repair-popup-overlay';
+  overlay.innerHTML =
+    '<div class="repair-popup" style="max-width:340px;text-align:left;">' +
+      '<div style="font-weight:700;font-size:14.5px;">' + escapeHtml(t('msdsPwTitle')) + '</div>' +
+      '<div style="font-size:12px;color:var(--text-muted);margin:4px 0 14px;">' + escapeHtml(t('msdsPwSub').replace('{n}', ids.length)) + '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:10px;">' +
+        '<div style="display:flex;gap:8px;align-items:center;">' +
+          '<label style="font-size:12px;color:var(--text-muted);width:64px;flex:0 0 auto;">' + escapeHtml(t('msdsNameLabel')) + '</label>' +
+          '<input type="text" id="msdsNameInput" value="' + escapeAttr(savedName) + '" placeholder="' + escapeAttr(t('msdsNamePlaceholder')) + '" style="flex:1;min-width:0;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
+        '</div>' +
+        '<div style="display:flex;gap:8px;align-items:center;">' +
+          '<label style="font-size:12px;color:var(--text-muted);width:64px;flex:0 0 auto;">' + escapeHtml(t('msdsPwLabel')) + '</label>' +
+          '<input type="password" id="msdsPwInput" autocomplete="off" style="flex:1;min-width:0;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
+        '</div>' +
+      '</div>' +
+      '<div id="msdsPwMsg" style="font-size:12.5px;color:var(--danger);min-height:18px;margin-top:10px;"></div>' +
+      '<div style="display:flex;gap:8px;margin-top:8px;">' +
+        '<button class="repair-popup-btn" id="msdsPwSubmit" style="flex:1;">' + escapeHtml(t('msdsConfirm')) + '</button>' +
+        '<button class="restart-btn" id="msdsPwCancel" style="flex:0 0 auto;">' + escapeHtml(t('usageCancel')) + '</button>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  const close = () => overlay.remove();
+  const msgEl = overlay.querySelector('#msdsPwMsg');
+  const submit = overlay.querySelector('#msdsPwSubmit');
+  const nameEl = overlay.querySelector('#msdsNameInput');
+  const pwEl = overlay.querySelector('#msdsPwInput');
+  overlay.querySelector('#msdsPwCancel').addEventListener('click', close);
+  (savedName ? pwEl : nameEl).focus();
+
+  const doSubmit = async () => {
+    const worker = nameEl.value.trim();
+    const password = pwEl.value;
+    if(!worker || !password){ msgEl.textContent = t('msdsNeedFields'); return; }
+    msgEl.style.color = 'var(--text-muted)';
+    msgEl.textContent = t('msdsWorking');
+    submit.disabled = true;
+    try{ localStorage.setItem('msds-worker', worker); }catch(e){}
+    try{
+      // text/plain → 사전요청(preflight) 없이 전송되고 응답도 읽을 수 있음
+      const res = await fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ type: 'msds_download', password: password, ids: ids, worker: worker })
+      });
+      const r = await res.json();
+      if(r && r.ok){
+        saveBlob(b64ToBlob(r.data, r.mime), r.filename);
+        close();
+        showIconPopup('✅', t('msdsDone').replace('{n}', r.count));
+        return;
+      }
+      msgEl.style.color = 'var(--danger)';
+      const err = r && r.error;
+      if(err === 'wrong_password') msgEl.textContent = t('msdsWrongPw').replace('{n}', r.remaining);
+      else if(err === 'locked') msgEl.textContent = t('msdsLocked');
+      else if(err === 'not_configured') msgEl.textContent = t('msdsNotConfigured');
+      else if(err === 'not_found' || err === 'no_selection') msgEl.textContent = t('msdsNotFound');
+      else msgEl.textContent = t('msdsServerErr');
+      pwEl.value = '';
+      pwEl.focus();
+    }catch(e){
+      msgEl.style.color = 'var(--danger)';
+      msgEl.textContent = t('msdsServerErr');
+    }
+    submit.disabled = false;
+  };
+  submit.addEventListener('click', doSubmit);
+  pwEl.addEventListener('keydown', e => { if(e.key === 'Enter') doSubmit(); });
+}
+
+document.getElementById('msdsSearch').addEventListener('input', renderMsds);
+document.getElementById('msdsSelectAll').addEventListener('click', () => {
+  msdsVisible().forEach(m => msdsSelected.add(m.id));
+  renderMsds();
+});
+document.getElementById('msdsClearAll').addEventListener('click', () => {
+  msdsSelected.clear();
+  renderMsds();
+});
+document.getElementById('msdsDownloadBtn').addEventListener('click', showMsdsDownloadModal);
+document.querySelector('.tab[data-tab="msds"]').addEventListener('click', () => { loadMsds(!msdsLoaded && !msdsLoading); });
+
 /* ---------- 부품 조회 (구글시트 재고현황 연동) ---------- */
 let partsData = [];
 let activeCategory = '__all__';
@@ -5017,7 +5308,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v43', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v44', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
