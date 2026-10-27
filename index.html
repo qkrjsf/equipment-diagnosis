@@ -35,7 +35,8 @@
 *{box-sizing:border-box;}
 html{font-size:100%;}
 body{margin:0;background:var(--bg);color:var(--text);font-family:'IBM Plex Sans KR','Noto Sans KR',sans-serif;min-height:100vh;}
-.app{max-width:1100px;margin:0 auto;padding:24px 32px 48px;}
+.app{max-width:1760px;margin:0;padding:24px 32px 48px;}
+#panel-chat,#panel-codesearch{max-width:960px;}
 .app-footer{text-align:center;color:var(--text-muted);font-size:11px;margin-top:36px;letter-spacing:0.3px;line-height:1.7;}
 
 .lang-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);font-size:13px;padding:8px 16px;border-radius:8px;cursor:pointer;font-family:inherit;}
@@ -208,7 +209,7 @@ body.update-ready .tab.more .dot{display:inline-block;}
 .kpi-l{font-size:12.5px;color:var(--text-muted);}
 .kpi-v{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600;line-height:1.2;}
 .kpi-v small{font-family:inherit;font-size:13px;font-weight:400;color:var(--text-muted);margin-left:4px;}
-.home-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px;align-items:start;}
+.home-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:16px;align-items:start;}
 .home-cols .card{margin-bottom:0;}
 .lrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--border);}
 .lrow:first-of-type{border-top:0;}
@@ -326,7 +327,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
     </div>
     <div class="home-cols">
       <section class="card"><h3 data-i18n="homeLowH">재고 부족 부품</h3><div id="homeLow"></div></section>
-      <div>
+      <div style="display:contents">
         <section class="card"><h3 data-i18n="homeRecentH">최근 진단</h3><div id="homeRecent"></div></section>
         <section class="card" id="homeCodesCard"><h3 data-i18n="homeCodesH">최근 찾은 에러코드</h3><div id="homeCodes" class="chip-row"></div></section>
       </div>
