@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <title>설비 허브</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1E2833">
@@ -336,7 +336,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v45</span></div>
+    <div class="sb-foot"><span id="verLabel">v46</span></div>
   </nav>
 
   <div class="content">
@@ -519,7 +519,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v45</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v46</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -4034,6 +4034,7 @@ const UI_STRINGS = {
     tabParts: "부품 조회",
     tabRegister: "부품 등록",
     tabHome: "홈",
+    fbRate: "요청이 너무 많습니다. 잠시 후 다시 시도해주세요.",
     msdsLinesLabel: "호기", msdsNone: "미지정", msdsCommon: "전 호기 공통", msdsMoreN: "외 {n}",
     dfBtn: "💬 의견 보내기", dfTitle: "이 진단에 대한 의견", dfSub: "진단 결과가 실제와 달랐다면 어떻게 달랐는지 적어 주세요. 진단 내용과 함께 담당자에게 전달됩니다.",
     dfCat1: "원인이 달라요", dfCat2: "조치 방법이 달라요", dfCat3: "내용 추가 필요", dfCat4: "기타",
@@ -4164,6 +4165,7 @@ const UI_STRINGS = {
     tabParts: "Parts Lookup",
     tabRegister: "Log Parts",
     tabHome: "Home",
+    fbRate: "Too many requests. Please try again in a moment.",
     msdsLinesLabel: "Line", msdsNone: "Unassigned", msdsCommon: "All lines", msdsMoreN: "+{n}",
     dfBtn: "💬 Send feedback", dfTitle: "Feedback on this diagnosis", dfSub: "If the result did not match reality, tell us how. It is sent to the admin together with the diagnosis.",
     dfCat1: "Cause is different", dfCat2: "Fix is different", dfCat3: "Needs more info", dfCat4: "Other",
@@ -4831,10 +4833,31 @@ function showUsageModal(part){
   });
 }
 
-function handleFeedback(btn, node){
+function logRatingToSheet(val, info){
+  if(!GOOGLE_SHEET_URL || !info) return;
+  try{
+    fetch(GOOGLE_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify({
+        type: 'diag_rating',
+        rating: val,
+        nodeId: info.nodeId || '',
+        path: info.pathStr || '',
+        cause: info.cause || '',
+        version: (document.getElementById('verLabel').textContent || ''),
+        device: window.matchMedia('(max-width:899px)').matches ? '폰' : 'PC'
+      })
+    }).catch(() => {});
+  }catch(e){}
+}
+
+function handleFeedback(btn, node, info){
   const row = btn.closest('.feedback-row');
   const val = btn.getAttribute('data-val');
   row.innerHTML = '<span class="feedback-label">' + (val === 'up' ? t('feedbackUp') : t('feedbackDown')) + '</span>';
+  logRatingToSheet(val, info);
+  if(val === 'down' && info){ setTimeout(() => showDiagFeedbackModal(info), 250); }
   if(FEEDBACK_FORM_URL){
     const url = FEEDBACK_FORM_URL
       + (FEEDBACK_FORM_URL.includes('?') ? '&' : '?')
@@ -4891,12 +4914,13 @@ function askCurrentNode(){
     const div = addMsg('diagnosis', html);
     logDiagnosisToSheet(path.join(' > '), node.cause, node.solution);
     renderUsagePrompt();
-    div.querySelector('.diag-fb-btn').addEventListener('click', () => showDiagFeedbackModal({ nodeId: diagNodeId, pathStr: diagPathStr, cause: node.cause, solution: node.solution, ref: node.manualRef || '-' }));
+    const diagInfo = { nodeId: diagNodeId, pathStr: diagPathStr, cause: node.cause, solution: node.solution, ref: node.manualRef || '-' };
+    div.querySelector('.diag-fb-btn').addEventListener('click', () => showDiagFeedbackModal(diagInfo));
     div.querySelector('.share-btn').addEventListener('click', (e) => {
       shareDiagnosis(node.cause, node.solution, node.manualRef || '-', e.target);
     });
     div.querySelectorAll('.feedback-btn').forEach(btn => {
-      btn.addEventListener('click', () => handleFeedback(btn, node));
+      btn.addEventListener('click', () => handleFeedback(btn, node, diagInfo));
     });
     return;
   }
@@ -5159,12 +5183,19 @@ async function loadMsds(force){
   const statusEl = document.getElementById('msdsStatusMsg');
   statusEl.style.display = 'block';
   statusEl.textContent = t('msdsLoading');
+  if(!msdsData.length){
+    try{
+      const c = JSON.parse(localStorage.getItem('cache-msds') || 'null');
+      if(c && Array.isArray(c.d) && c.d.length){ msdsData = c.d; renderMsds(); }
+    }catch(e){}
+  }
   try{
     const res = await fetch(GOOGLE_SHEET_URL + '?type=msds&t=' + Date.now(), { cache: 'no-store' });
     const data = await res.json();
     msdsData = Array.isArray(data) ? data : [];
     msdsLoaded = true;
     statusEl.style.display = 'none';
+    try{ localStorage.setItem('cache-msds', JSON.stringify({ t: Date.now(), d: msdsData })); }catch(e){}
   }catch(e){
     statusEl.textContent = t('msdsLoadFail');
   }
@@ -5417,18 +5448,37 @@ function driveImageUrl(link){
 async function loadPartsFromSheet(){
   const grid = document.getElementById('partsGrid');
   const statusEl = document.getElementById('partsStatusMsg');
-  statusEl.style.display = 'block';
-  statusEl.textContent = LANG === 'ko' ? '재고 데이터를 불러오는 중입니다...' : 'Loading inventory data...';
-  grid.innerHTML = '';
+  let usedCache = false;
+  if(!partsData.length){
+    try{
+      const c = JSON.parse(localStorage.getItem('cache-stock') || 'null');
+      if(c && Array.isArray(c.d) && c.d.length){ partsData = c.d; usedCache = true; }
+    }catch(e){}
+  }
+  if(usedCache){
+    statusEl.style.display = 'none';
+    renderCategoryChips();
+    renderParts(document.getElementById('partsSearch').value || '');
+    renderCategoryChipsReg();
+    renderPartsReg(document.getElementById('partsSearchReg').value || '');
+    renderHome();
+  } else {
+    statusEl.style.display = 'block';
+    statusEl.textContent = LANG === 'ko' ? '재고 데이터를 불러오는 중입니다...' : 'Loading inventory data...';
+    grid.innerHTML = '';
+  }
   try{
     const res = await fetch(GOOGLE_SHEET_URL + '?type=stock&t=' + Date.now(), { cache: 'no-store' });
     const data = await res.json();
     partsData = Array.isArray(data) ? data : [];
     statusEl.style.display = 'none';
+    try{ localStorage.setItem('cache-stock', JSON.stringify({ t: Date.now(), d: partsData })); }catch(e){}
   }catch(e){
-    statusEl.textContent = LANG === 'ko'
+    statusEl.style.display = 'block';
+    statusEl.textContent = (LANG === 'ko'
       ? '재고 데이터를 불러오지 못했습니다. 네트워크 연결을 확인해주세요.'
-      : 'Could not load inventory data. Please check your network connection.';
+      : 'Could not load inventory data. Please check your network connection.')
+      + (usedCache ? (LANG === 'ko' ? ' (마지막으로 저장된 데이터를 표시 중)' : ' (showing last saved data)') : '');
   }
   renderCategoryChips();
   renderParts(document.getElementById('partsSearch').value || '');
@@ -5878,11 +5928,11 @@ document.getElementById('fbSend').addEventListener('click', async () => {
       })
     });
     const data = await res.json();
-    if(!data || !data.ok) throw new Error('fail');
+    if(!data || !data.ok){ const er = new Error('fail'); er.code = data && data.error; throw er; }
     ta.value = '';
     fbShow('ok', t('fbDone'));
   }catch(e){
-    fbShow('err', t('fbFail'));
+    fbShow('err', e && e.code === 'rate_limited' ? t('fbRate') : t('fbFail'));
   }
   btn.disabled = false;
   btn.classList.remove('is-busy');
@@ -5978,12 +6028,12 @@ function showDiagFeedbackModal(info){
         })
       });
       const data = await res.json();
-      if(!data || !data.ok) throw new Error('fail');
+      if(!data || !data.ok){ const er = new Error('fail'); er.code = data && data.error; throw er; }
       close();
       showIconPopup('✅', t('fbDone'));
       return;
     }catch(e){
-      show('err', t('fbFail'));
+      show('err', e && e.code === 'rate_limited' ? t('fbRate') : t('fbFail'));
     }
     send.disabled = false; send.classList.remove('is-busy'); send.textContent = t('fbSend');
     ta.disabled = false; nameEl.disabled = false;
@@ -6003,7 +6053,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v45', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v46', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 

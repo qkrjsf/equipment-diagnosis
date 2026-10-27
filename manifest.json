@@ -1,13 +1,13 @@
 {
   "id": "./",
-  "name": "설비 진단 어시스턴트",
-  "short_name": "설비진단",
-  "description": "사내 설비 에러코드/고장 진단 어시스턴트",
+  "name": "설비 허브",
+  "short_name": "설비 허브",
+  "description": "사내 설비 진단, 부품 재고, MSDS, 에러코드를 한곳에서 조회하는 설비 허브",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#faf6f0",
-  "theme_color": "#faf6f0",
+  "background_color": "#EEF1F4",
+  "theme_color": "#1E2833",
   "orientation": "portrait-primary",
   "lang": "ko",
   "icons": [
