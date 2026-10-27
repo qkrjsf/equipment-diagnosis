@@ -54,6 +54,9 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'IBM Plex Sans 
 .msds-row input[type=checkbox]{width:20px;height:20px;margin-top:1px;flex:0 0 auto;accent-color:var(--amber);cursor:pointer;}
 .msds-name{font-size:14px;font-weight:700;color:var(--text);word-break:break-word;}
 .msds-meta{font-size:12px;color:var(--text-muted);margin-top:3px;line-height:1.5;}
+.msds-line{display:inline-block;background:#E5EDFF;border:1px solid #C9D8FF;border-radius:5px;padding:0 6px;margin:0 4px 0 0;font-size:11px;color:#1D4ED8;}
+.msds-line.common{background:#E1F3E8;border-color:#BFE3CC;color:#146C43;}
+.chip-label{flex:0 0 auto;align-self:center;font-size:12px;color:var(--text-muted);margin-right:2px;}
 .msds-tag{display:inline-block;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:0 6px;margin-right:6px;font-size:11px;color:var(--text);}
 .msds-dlbar{position:sticky;bottom:0;padding:12px 0 4px;margin-top:10px;background:linear-gradient(to top,var(--bg) 70%,rgba(238,241,244,0));}
 .msds-dlbtn{width:100%;padding:13px 0;font-size:14.5px;}
@@ -136,18 +139,46 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'IBM Plex Sans 
 .cat-chip{flex:0 0 auto;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);padding:7px 13px;border-radius:20px;font-size:12.5px;cursor:pointer;white-space:nowrap;}
 .cat-chip.active{background:var(--amber);border-color:var(--amber);color:#fff8f0;font-weight:700;}
 
-.parts-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));gap:12px;}
+.parts-grid{display:grid;grid-template-columns:repeat(var(--pcols,2),minmax(0,1fr));gap:12px;}
+.parts-grid.cols-1{--pcols:1;}
+.parts-grid.cols-2{--pcols:2;}
+.parts-grid.cols-4{--pcols:4;}
+.parts-grid>.parts-empty{grid-column:1 / -1;}
+.view-row{display:flex;justify-content:flex-end;margin:-4px 0 10px;}
+.view-toggle{display:inline-flex;gap:2px;padding:3px;background:var(--surface);border:1px solid var(--border);border-radius:9px;}
+.vt-btn{position:relative;display:flex;align-items:center;justify-content:center;width:38px;height:32px;border:0;border-radius:7px;background:transparent;color:var(--text-muted);cursor:pointer;padding:0;}
+.vt-btn:hover{background:var(--surface2);color:var(--text);}
+.vt-btn.active{background:var(--amber-dim);color:var(--amber);}
+.vt-btn:focus-visible{outline:2px solid var(--amber);outline-offset:1px;}
+.vt-btn::after{content:attr(data-tip);position:absolute;top:calc(100% + 8px);right:0;white-space:nowrap;background:var(--slate);color:#fff;font-size:12px;font-weight:500;line-height:1;padding:7px 10px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .12s;z-index:30;}
+.vt-btn:hover::after,.vt-btn:focus-visible::after{opacity:1;}
 .stock-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px;}
 .stock-badge{font-size:11px;padding:2px 7px;border-radius:5px;font-weight:700;}
 .stock-badge.ok{background:var(--result-dim);color:var(--result);}
 .stock-badge.low{background:var(--danger-dim);color:var(--danger);}
 .stock-badge.repairing{background:var(--amber-dim);color:var(--amber);}
 .part-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
-.part-card img{width:100%;height:110px;object-fit:cover;background:var(--surface2);}
-.part-card .noimg{width:100%;height:110px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:11px;background:var(--surface2);}
+.part-card img{display:block;width:100%;height:auto;aspect-ratio:4/3;max-height:260px;object-fit:cover;background:var(--surface2);}
+.part-card .noimg{width:100%;height:auto;aspect-ratio:4/3;max-height:260px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:11px;background:var(--surface2);}
 .part-card-body{padding:10px 11px;flex:1;display:flex;flex-direction:column;gap:5px;}
-.part-card-name{font-size:13.5px;font-weight:700;color:var(--text);}
-.part-card-desc{font-size:12px;color:var(--text-muted);line-height:1.5;flex:1;}
+.part-card-name{font-size:13.5px;font-weight:700;color:var(--text);overflow-wrap:anywhere;}
+.part-card-desc{font-size:12px;color:var(--text-muted);line-height:1.5;flex:1;overflow-wrap:anywhere;}
+.part-card{min-width:0;}
+.parts-grid.cols-1 .part-card{flex-direction:row;align-items:stretch;}
+.parts-grid.cols-1 .part-card img,.parts-grid.cols-1 .part-card .noimg{flex:0 0 auto;width:clamp(110px,26%,220px);height:auto;aspect-ratio:1/1;max-height:none;align-self:center;}
+.parts-grid.cols-1 .part-card-body{padding:14px 16px;justify-content:center;}
+.parts-grid.cols-1 .part-card-name{font-size:15px;}
+.parts-grid.cols-1 .part-card-desc{font-size:13px;flex:0 0 auto;}
+.parts-grid.cols-1 .part-detail-btn{width:auto !important;align-self:flex-start;padding:7px 18px;}
+@media (max-width:899px){
+  .parts-grid.cols-4{gap:6px;}
+  .parts-grid.cols-4 .part-card-body{padding:6px;gap:3px;}
+  .parts-grid.cols-4 .part-card-name{font-size:11px;}
+  .parts-grid.cols-4 .part-card-desc{display:none;}
+  .parts-grid.cols-4 .stock-badge{font-size:10px;padding:1px 4px;}
+  .parts-grid.cols-4 .part-detail-btn{font-size:10.5px;padding:5px 2px;}
+  .parts-grid.cols-4 .part-card .noimg{font-size:10px;}
+}
 .part-card-del{align-self:flex-end;background:none;border:none;color:var(--text-muted);font-size:11px;cursor:pointer;padding:2px 4px;}
 .part-card-del:hover{color:var(--danger);}
 .parts-empty{color:var(--text-muted);font-size:13px;padding:20px 4px;}
@@ -242,7 +273,12 @@ body.update-ready .tab.more .dot{display:inline-block;}
 .fb-line label{display:block;font-size:12.5px;color:var(--text-muted);margin-bottom:4px;}
 .fb-name{display:block;width:100%;font:inherit;font-size:14px;padding:10px 12px;border:1px solid #B8C2CD;border-radius:8px;background:#fff;color:var(--text);}
 .fb-send{flex:0 1 auto;font-family:inherit;font-size:14px;font-weight:700;padding:11px 22px;border:0;border-radius:8px;background:var(--amber);color:#fff;cursor:pointer;overflow-wrap:anywhere;}
-.fb-send:disabled{opacity:.55;cursor:default;}
+.fb-send:disabled,.repair-popup-btn:disabled{background:#B8C2CD !important;color:#fff !important;opacity:1 !important;cursor:not-allowed !important;box-shadow:none;}
+.is-busy::before{content:"";display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px;border:2px solid rgba(255,255,255,.55);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.df-box{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:12.5px;line-height:1.55;margin:4px 0 12px;max-height:9em;overflow:auto;overflow-wrap:anywhere;}
+.df-box b{color:var(--text-muted);font-weight:600;}
+.diag-fb-btn{border-color:var(--amber);color:var(--amber);}
 .fb-msg{margin-top:10px;font-size:13px;line-height:1.55;padding:10px 12px;border-radius:8px;overflow-wrap:anywhere;}
 .fb-msg.ok{background:#E1F3E8;color:#146C43;}
 .fb-msg.err{background:var(--danger-dim);color:var(--danger);}
@@ -360,6 +396,8 @@ html:not([lang="ko"]) #moreCode{display:none;}
       <input type="text" id="partsSearch" data-i18n-placeholder="partsSearchPlaceholder" placeholder="제품구분·규격·비고로 검색..." />
     </div>
 
+    <div class="view-row"><div class="view-toggle" role="group" aria-label="보기"><button type="button" class="vt-btn" data-cols="1" aria-label="1개씩 보기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/></svg></button><button type="button" class="vt-btn" data-cols="2" aria-label="2개씩 보기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="8" height="14" rx="1.5"/><rect x="13" y="5" width="8" height="14" rx="1.5"/></svg></button><button type="button" class="vt-btn" data-cols="4" aria-label="4개씩 보기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="4" height="14" rx="1"/><rect x="7.4" y="5" width="4" height="14" rx="1"/><rect x="12.8" y="5" width="4" height="14" rx="1"/><rect x="18" y="5" width="4" height="14" rx="1"/></svg></button></div></div>
+
     <div class="cat-chips" id="catChips"></div>
 
     <div id="partsStatusMsg" class="parts-empty" style="display:none;"></div>
@@ -373,6 +411,8 @@ html:not([lang="ko"]) #moreCode{display:none;}
     <div class="parts-search">
       <input type="text" id="partsSearchReg" data-i18n-placeholder="partsSearchPlaceholder" placeholder="제품구분·규격·비고로 검색..." />
     </div>
+
+    <div class="view-row"><div class="view-toggle" role="group" aria-label="보기"><button type="button" class="vt-btn" data-cols="1" aria-label="1개씩 보기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/></svg></button><button type="button" class="vt-btn" data-cols="2" aria-label="2개씩 보기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="8" height="14" rx="1.5"/><rect x="13" y="5" width="8" height="14" rx="1.5"/></svg></button><button type="button" class="vt-btn" data-cols="4" aria-label="4개씩 보기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="4" height="14" rx="1"/><rect x="7.4" y="5" width="4" height="14" rx="1"/><rect x="12.8" y="5" width="4" height="14" rx="1"/><rect x="18" y="5" width="4" height="14" rx="1"/></svg></button></div></div>
 
     <div class="cat-chips" id="catChipsReg"></div>
 
@@ -388,6 +428,10 @@ html:not([lang="ko"]) #moreCode{display:none;}
     </div>
 
     <div class="cat-chips" id="msdsChips"></div>
+    <div id="msdsLineWrap" style="display:none;">
+      <div class="cat-chips" id="msdsFloorChips" style="margin-bottom:6px;"></div>
+      <div class="cat-chips" id="msdsLineChips" style="display:none;"></div>
+    </div>
 
     <div class="msds-toolbar">
       <button class="msds-tbtn" id="msdsSelectAll" data-i18n="msdsSelectAll">전체 선택</button>
@@ -3990,6 +4034,11 @@ const UI_STRINGS = {
     tabParts: "부품 조회",
     tabRegister: "부품 등록",
     tabHome: "홈",
+    msdsLinesLabel: "호기", msdsNone: "미지정", msdsCommon: "전 호기 공통", msdsMoreN: "외 {n}",
+    dfBtn: "💬 의견 보내기", dfTitle: "이 진단에 대한 의견", dfSub: "진단 결과가 실제와 달랐다면 어떻게 달랐는지 적어 주세요. 진단 내용과 함께 담당자에게 전달됩니다.",
+    dfCat1: "원인이 달라요", dfCat2: "조치 방법이 달라요", dfCat3: "내용 추가 필요", dfCat4: "기타",
+    dfPh: "예) 실제로는 필터 막힘이 원인이었고, 필터 교체 후 해결됐습니다", dfCancel: "닫기",
+    viewTip1: "1개씩 보기", viewTip2: "2개씩 보기", viewTip4: "4개씩 보기",
     tabChatS: "진단",
     tabPartsS: "부품",
     tabMore: "더보기",
@@ -4115,6 +4164,11 @@ const UI_STRINGS = {
     tabParts: "Parts Lookup",
     tabRegister: "Log Parts",
     tabHome: "Home",
+    msdsLinesLabel: "Line", msdsNone: "Unassigned", msdsCommon: "All lines", msdsMoreN: "+{n}",
+    dfBtn: "💬 Send feedback", dfTitle: "Feedback on this diagnosis", dfSub: "If the result did not match reality, tell us how. It is sent to the admin together with the diagnosis.",
+    dfCat1: "Cause is different", dfCat2: "Fix is different", dfCat3: "Needs more info", dfCat4: "Other",
+    dfPh: "e.g. The real cause was a clogged filter and replacing it solved the problem", dfCancel: "Close",
+    viewTip1: "1 per row", viewTip2: "2 per row", viewTip4: "4 per row",
     tabChatS: "Diagnose",
     tabPartsS: "Parts",
     tabMore: "More",
@@ -4283,6 +4337,7 @@ function setLanguage(lang){
   renderMsds();
   renderHome();
   renderFbChips();
+  applyPartsCols();
   if(document.getElementById('panel-search').classList.contains('active')) renderGlobalResults(document.getElementById('gsearch').value.trim());
 }
 
@@ -4814,6 +4869,8 @@ function askCurrentNode(){
       ? '<div class="drow"><img src="' + INVERTER_IMAGES[node.image] + '" alt="inverter display" style="max-width:160px;border:1px solid var(--border);border-radius:6px;background:#fff;padding:4px;display:block;"/></div>'
       : '';
     const diagUid = 'diag_' + Date.now();
+    const diagPathStr = path.join(' > ');
+    const diagNodeId = currentNodeId;
     const html =
       '<div class="dtitle">' + escapeHtml(t('diagTitle')) + '</div>' +
       imgHtml +
@@ -4823,6 +4880,7 @@ function askCurrentNode(){
       '<div class="drow" style="margin-bottom:2px;"><div class="dval warn-text">' + escapeHtml(t('diagContact')) + '</div></div>' +
       '<div class="diag-actions">' +
         '<button class="restart-btn" onclick="startDiagnosis()">' + escapeHtml(t('restart')) + '</button>' +
+        '<button class="restart-btn diag-fb-btn">' + escapeHtml(t('dfBtn')) + '</button>' +
         '<button class="restart-btn share-btn" data-cause="' + escapeAttr(node.cause) + '" data-solution="' + escapeAttr(node.solution) + '" data-ref="' + escapeAttr(node.manualRef || '-') + '">' + escapeHtml(t('share')) + '</button>' +
       '</div>' +
       '<div class="feedback-row" id="' + diagUid + '">' +
@@ -4833,6 +4891,7 @@ function askCurrentNode(){
     const div = addMsg('diagnosis', html);
     logDiagnosisToSheet(path.join(' > '), node.cause, node.solution);
     renderUsagePrompt();
+    div.querySelector('.diag-fb-btn').addEventListener('click', () => showDiagFeedbackModal({ nodeId: diagNodeId, pathStr: diagPathStr, cause: node.cause, solution: node.solution, ref: node.manualRef || '-' }));
     div.querySelector('.share-btn').addEventListener('click', (e) => {
       shareDiagnosis(node.cause, node.solution, node.manualRef || '-', e.target);
     });
@@ -5089,6 +5148,8 @@ let msdsData = [];
 let msdsLoaded = false;
 let msdsLoading = false;
 let msdsCat = '__all__';
+let msdsFloor = '__all__';   // '__all__' | '1F' | '2F' | '__none__'
+let msdsLine = '__all__';    // '__all__' | 호기 이름
 const msdsSelected = new Set();
 const MSDS_CAT_ORDER = ['POL', 'MDI', '기타'];
 
@@ -5111,13 +5172,63 @@ async function loadMsds(force){
   renderMsds();
 }
 
+function msdsIsCommon(m){ return (m.lines || []).some(l => l.indexOf('공통') !== -1); }
+function msdsLinePass(m){
+  if(msdsFloor === '__all__') return true;
+  const L = m.lines || [];
+  if(msdsFloor === '__none__') return L.length === 0;
+  if(msdsIsCommon(m)) return true;               // 전 호기 공통 원료는 어느 호기에서든 보임
+  if(msdsLine !== '__all__') return L.indexOf(msdsLine) !== -1;
+  return L.some(l => l.indexOf(msdsFloor + '-') === 0);
+}
 function msdsVisible(){
   const q = (document.getElementById('msdsSearch').value || '').trim().toLowerCase();
   return msdsData.filter(m => {
     if(msdsCat !== '__all__' && m.cat !== msdsCat) return false;
+    if(!msdsLinePass(m)) return false;
     if(!q) return true;
-    return (m.name + ' ' + m.maker + ' ' + m.cat + ' ' + m.note).toLowerCase().indexOf(q) !== -1;
+    return (m.name + ' ' + m.maker + ' ' + m.cat + ' ' + m.note + ' ' + (m.lines || []).join(' ')).toLowerCase().indexOf(q) !== -1;
   });
+}
+function lineNum(n){ const m = String(n).match(/^(\d+)F-(\d+)/); return m ? Number(m[1]) * 1000 + Number(m[2]) : 1e9; }
+function renderMsdsLineChips(){
+  const wrap = document.getElementById('msdsLineWrap');
+  const hasAny = msdsData.some(m => (m.lines || []).length > 0);
+  wrap.style.display = hasAny ? '' : 'none';
+  if(!hasAny){ msdsFloor = '__all__'; msdsLine = '__all__'; return; }
+  const chip = (attr, val, label, on) => '<button class="cat-chip' + (on ? ' active' : '') + '" data-' + attr + '="' + escapeAttr(val) + '">' + escapeHtml(label) + '</button>';
+  const floorBox = document.getElementById('msdsFloorChips');
+  floorBox.innerHTML = '<span class="chip-label">' + escapeHtml(t('msdsLinesLabel')) + '</span>' + [
+    chip('floor', '__all__', t('msdsAll'), msdsFloor === '__all__'),
+    chip('floor', '1F', '1F', msdsFloor === '1F'),
+    chip('floor', '2F', '2F', msdsFloor === '2F'),
+    chip('floor', '__none__', t('msdsNone'), msdsFloor === '__none__')
+  ].join('');
+  floorBox.querySelectorAll('[data-floor]').forEach(b => b.addEventListener('click', () => {
+    msdsFloor = b.getAttribute('data-floor'); msdsLine = '__all__'; renderMsds();
+  }));
+  const lineBox = document.getElementById('msdsLineChips');
+  if(msdsFloor === '1F' || msdsFloor === '2F'){
+    const names = Array.from(new Set([].concat.apply([], msdsData.map(m => m.lines || []))))
+      .filter(l => l.indexOf(msdsFloor + '-') === 0).sort((a, b) => lineNum(a) - lineNum(b));
+    lineBox.style.display = '';
+    lineBox.innerHTML = [chip('line', '__all__', msdsFloor + ' ' + t('msdsAll'), msdsLine === '__all__')]
+      .concat(names.map(n => chip('line', n, n.replace('호기', ''), msdsLine === n))).join('');
+    lineBox.querySelectorAll('[data-line]').forEach(b => b.addEventListener('click', () => {
+      msdsLine = b.getAttribute('data-line'); renderMsds();
+    }));
+  } else {
+    lineBox.style.display = 'none';
+    lineBox.innerHTML = '';
+  }
+}
+function msdsLineTags(m){
+  const L = m.lines || [];
+  if(!L.length) return '';
+  if(msdsIsCommon(m)) return '<span class="msds-line common">' + escapeHtml(t('msdsCommon')) + '</span>';
+  const short = L.slice().sort((a, b) => lineNum(a) - lineNum(b)).map(l => l.replace('호기', ''));
+  const shown = short.slice(0, 3).map(l => '<span class="msds-line">' + escapeHtml(l) + '</span>').join('');
+  return shown + (short.length > 3 ? '<span class="msds-line">' + escapeHtml(t('msdsMoreN').replace('{n}', short.length - 3)) + '</span>' : '');
 }
 
 function renderMsdsChips(){
@@ -5145,6 +5256,7 @@ function updateMsdsFooter(){
 
 function renderMsds(){
   renderMsdsChips();
+  renderMsdsLineChips();
   const list = document.getElementById('msdsList');
   const vis = msdsVisible();
   if(msdsLoaded && vis.length === 0){
@@ -5156,10 +5268,11 @@ function renderMsds(){
       if(m.cat) meta.push('<span class="msds-tag">' + escapeHtml(m.cat) + '</span>');
       if(m.maker) meta.push(escapeHtml(m.maker));
       if(m.date) meta.push(escapeHtml(t('msdsRev')) + ' ' + escapeHtml(m.date));
+      const lineTags = msdsLineTags(m);
       return '<label class="msds-row' + (sel ? ' sel' : '') + '" data-id="' + escapeAttr(m.id) + '">' +
         '<input type="checkbox"' + (sel ? ' checked' : '') + ' />' +
         '<div><div class="msds-name">' + escapeHtml(m.name) + '</div>' +
-        '<div class="msds-meta">' + meta.join(' ') + (m.note ? '<br>' + escapeHtml(m.note) : '') + '</div></div>' +
+        '<div class="msds-meta">' + meta.join(' ') + (lineTags ? '<br>' + lineTags : '') + (m.note ? '<br>' + escapeHtml(m.note) : '') + '</div></div>' +
       '</label>';
     }).join('');
     list.querySelectorAll('.msds-row').forEach(row => {
@@ -5230,9 +5343,13 @@ function showMsdsDownloadModal(){
     const worker = nameEl.value.trim();
     const password = pwEl.value;
     if(!worker || !password){ msgEl.textContent = t('msdsNeedFields'); return; }
+    if(submit.disabled) return;
     msgEl.style.color = 'var(--text-muted)';
     msgEl.textContent = t('msdsWorking');
     submit.disabled = true;
+    submit.classList.add('is-busy');
+    submit.textContent = t('msdsWorking');
+    nameEl.disabled = true; pwEl.disabled = true;
     try{ localStorage.setItem('msds-worker', worker); }catch(e){}
     try{
       // text/plain → 사전요청(preflight) 없이 전송되고 응답도 읽을 수 있음
@@ -5256,15 +5373,18 @@ function showMsdsDownloadModal(){
       else if(err === 'not_found' || err === 'no_selection') msgEl.textContent = t('msdsNotFound');
       else msgEl.textContent = t('msdsServerErr');
       pwEl.value = '';
-      pwEl.focus();
     }catch(e){
       msgEl.style.color = 'var(--danger)';
       msgEl.textContent = t('msdsServerErr');
     }
     submit.disabled = false;
+    submit.classList.remove('is-busy');
+    submit.textContent = t('msdsConfirm');
+    nameEl.disabled = false; pwEl.disabled = false;
+    pwEl.focus();
   };
   submit.addEventListener('click', doSubmit);
-  pwEl.addEventListener('keydown', e => { if(e.key === 'Enter') doSubmit(); });
+  pwEl.addEventListener('keydown', e => { if(e.key === 'Enter' && !submit.disabled) doSubmit(); });
 }
 
 document.getElementById('msdsSearch').addEventListener('input', renderMsds);
@@ -5702,7 +5822,7 @@ function renderGlobalResults(q){
   sec(t('gsParts'), ph.length, ph.slice(0, LIM).map(p =>
     '<div class="gs-item" data-gs="part" data-v="' + escapeAttr(p['제품규격']||'') + '"><div class="lrow-main"><div class="lrow-t">' + escapeHtml(p['제품규격']||'') + '</div><div class="lrow-s">' + escapeHtml(p['제품구분']||'') + (p['제품형태'] ? ' · ' + escapeHtml(p['제품형태']) : '') + '</div></div>' +
     '<div class="lrow-n">' + (Number(p['현재고'])||0) + '<small> / ' + (Number(p['최소보유수량'])||0) + '</small></div></div>'));
-  const mh = msdsData.filter(m => [m.name, m.maker, m.cat, m.note].join(' ').toLowerCase().includes(ql));
+  const mh = msdsData.filter(m => [m.name, m.maker, m.cat, m.note, (m.lines || []).join(' ')].join(' ').toLowerCase().includes(ql));
   sec(t('gsMsds'), mh.length, mh.slice(0, LIM).map(m =>
     '<div class="gs-item" data-gs="msds" data-v="' + escapeAttr(m.name||'') + '"><div class="lrow-main"><div class="lrow-t">' + escapeHtml(m.name||'') + '</div><div class="lrow-s">' + escapeHtml(m.maker||'') + (m.cat ? ' · ' + escapeHtml(m.cat) : '') + '</div></div></div>'));
   box.innerHTML = html || '<div class="empty-note">' + escapeHtml(t('gsNone')) + '</div>';
@@ -5741,6 +5861,7 @@ document.getElementById('fbSend').addEventListener('click', async () => {
   if(!msg){ fbShow('err', t('fbEmpty')); return; }
   const nameInp = document.getElementById('fbName');
   btn.disabled = true;
+  btn.classList.add('is-busy');
   btn.textContent = t('fbSending');
   try{
     try{ if(nameInp.value.trim()) localStorage.setItem('msds-worker', nameInp.value.trim()); }catch(e){}
@@ -5764,10 +5885,110 @@ document.getElementById('fbSend').addEventListener('click', async () => {
     fbShow('err', t('fbFail'));
   }
   btn.disabled = false;
+  btn.classList.remove('is-busy');
   btn.textContent = t('fbSend');
 });
 try{ document.getElementById('fbName').value = localStorage.getItem('msds-worker') || ''; }catch(e){}
 renderFbChips();
+
+/* ---------- 부품 카드 보기 (1개씩 / 2개씩 / 4개씩) ---------- */
+let partsCols = (function(){
+  try{ const v = Number(localStorage.getItem('parts-cols')); if(v === 1 || v === 2 || v === 4) return v; }catch(e){}
+  return window.matchMedia('(max-width:899px)').matches ? 2 : 4;
+})();
+function applyPartsCols(){
+  ['partsGrid', 'partsGridReg'].forEach(id => {
+    const g = document.getElementById(id);
+    g.classList.remove('cols-1', 'cols-2', 'cols-4');
+    g.classList.add('cols-' + partsCols);
+  });
+  document.querySelectorAll('.vt-btn').forEach(b => {
+    const n = Number(b.getAttribute('data-cols'));
+    b.classList.toggle('active', n === partsCols);
+    b.setAttribute('aria-pressed', n === partsCols ? 'true' : 'false');
+    b.setAttribute('data-tip', t('viewTip' + n));
+    b.setAttribute('aria-label', t('viewTip' + n));
+  });
+}
+document.querySelectorAll('.vt-btn').forEach(b => b.addEventListener('click', () => {
+  partsCols = Number(b.getAttribute('data-cols'));
+  try{ localStorage.setItem('parts-cols', String(partsCols)); }catch(e){}
+  applyPartsCols();
+}));
+applyPartsCols();
+
+/* ---------- 진단 결과에 대한 의견 (진단 내용과 함께 '진단의견' 탭에 저장) ---------- */
+const DF_CATS_KO = ['원인이 달라요', '조치 방법이 달라요', '내용 추가 필요', '기타'];
+function showDiagFeedbackModal(info){
+  let savedName = '';
+  try{ savedName = localStorage.getItem('msds-worker') || ''; }catch(e){}
+  let cat = 0;
+  const overlay = document.createElement('div');
+  overlay.className = 'repair-popup-overlay';
+  overlay.innerHTML =
+    '<div class="repair-popup" style="max-width:480px;width:100%;text-align:left;">' +
+      '<div style="font-weight:700;font-size:15px;">' + escapeHtml(t('dfTitle')) + '</div>' +
+      '<div style="font-size:12.5px;color:var(--text-muted);margin:4px 0 10px;line-height:1.55;">' + escapeHtml(t('dfSub')) + '</div>' +
+      '<div class="df-box"><b>' + escapeHtml(t('diagCause')) + '</b> ' + escapeHtml(info.cause) + '<br><b>' + escapeHtml(t('diagSolution')) + '</b> ' + escapeHtml(info.solution) + '</div>' +
+      '<div class="fb-chips" id="dfChips"></div>' +
+      '<textarea id="dfText" class="fb-text" rows="5" maxlength="2000" placeholder="' + escapeAttr(t('dfPh')) + '"></textarea>' +
+      '<div class="fb-line"><div><label for="dfName">' + escapeHtml(t('fbName')) + '</label><input id="dfName" class="fb-name" type="text" maxlength="30" value="' + escapeAttr(savedName) + '" placeholder="' + escapeAttr(t('fbNamePh')) + '"></div></div>' +
+      '<div id="dfMsg" class="fb-msg" style="display:none"></div>' +
+      '<div style="display:flex;gap:8px;margin-top:12px;">' +
+        '<button class="repair-popup-btn" id="dfSend" style="flex:1;">' + escapeHtml(t('fbSend')) + '</button>' +
+        '<button class="restart-btn" id="dfCancel" style="flex:0 0 auto;margin-top:0;">' + escapeHtml(t('dfCancel')) + '</button>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  const close = () => overlay.remove();
+  const chips = overlay.querySelector('#dfChips');
+  const renderChips = () => {
+    chips.innerHTML = [1,2,3,4].map((n, i) => '<button type="button" class="fb-chip' + (i === cat ? ' active' : '') + '" data-c="' + i + '">' + escapeHtml(t('dfCat' + n)) + '</button>').join('');
+    chips.querySelectorAll('[data-c]').forEach(b => b.addEventListener('click', () => { cat = Number(b.getAttribute('data-c')); renderChips(); }));
+  };
+  renderChips();
+  const ta = overlay.querySelector('#dfText'), nameEl = overlay.querySelector('#dfName');
+  const msg = overlay.querySelector('#dfMsg'), send = overlay.querySelector('#dfSend');
+  const show = (kind, text) => { msg.className = 'fb-msg ' + kind; msg.textContent = text; msg.style.display = 'block'; };
+  overlay.querySelector('#dfCancel').addEventListener('click', close);
+  ta.focus();
+  send.addEventListener('click', async () => {
+    if(send.disabled) return;
+    const text = ta.value.trim();
+    if(!text){ show('err', t('fbEmpty')); return; }
+    send.disabled = true; send.classList.add('is-busy'); send.textContent = t('fbSending');
+    ta.disabled = true; nameEl.disabled = true;
+    try{
+      try{ if(nameEl.value.trim()) localStorage.setItem('msds-worker', nameEl.value.trim()); }catch(e){}
+      const res = await fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          type: 'diag_feedback',
+          category: DF_CATS_KO[cat],
+          message: text,
+          name: nameEl.value.trim(),
+          nodeId: info.nodeId || '',
+          path: info.pathStr || '',
+          cause: info.cause || '',
+          solution: info.solution || '',
+          ref: info.ref || '',
+          version: (document.getElementById('verLabel').textContent || ''),
+          device: window.matchMedia('(max-width:899px)').matches ? '폰' : 'PC'
+        })
+      });
+      const data = await res.json();
+      if(!data || !data.ok) throw new Error('fail');
+      close();
+      showIconPopup('✅', t('fbDone'));
+      return;
+    }catch(e){
+      show('err', t('fbFail'));
+    }
+    send.disabled = false; send.classList.remove('is-busy'); send.textContent = t('fbSend');
+    ta.disabled = false; nameEl.disabled = false;
+  });
+}
 
 /* ---------- 업데이트 표시 ---------- */
 (function(){
