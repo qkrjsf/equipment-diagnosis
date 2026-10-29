@@ -270,7 +270,7 @@ body.update-ready .tab.more .dot{display:inline-block;}
 .kpi-l{font-size:12.5px;color:var(--text-muted);}
 .kpi-v{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600;line-height:1.2;}
 .kpi-v small{font-family:inherit;font-size:13px;font-weight:400;color:var(--text-muted);margin-left:4px;}
-.home-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:16px;align-items:start;}
+.home-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:16px;align-items:stretch;}
 .home-cols .card{margin-bottom:0;}
 .lrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--border);}
 .lrow:first-of-type{border-top:0;}
@@ -394,6 +394,33 @@ html:not([lang="ko"]) #moreCode{display:none;}
   .eq-row.single .v{grid-column:1 / -1;}
   .eq-top .eq-no{font-size:22px;}
 }
+/* ===== 홈 질문 입력칸 ===== */
+.ask-box{margin-bottom:16px;padding:14px 16px;}
+.ask-row{display:flex;gap:8px;}
+.ask-row input{flex:1;min-width:0;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:11px 13px;border-radius:8px;font-size:14px;font-family:inherit;}
+.ask-row input:focus{outline:none;border-color:var(--amber);}
+.ask-row button{flex:0 0 auto;background:var(--amber);color:#fff8f0;border:none;padding:0 20px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;}
+.ask-chips{margin-top:10px;}
+#askOut:not(:empty){margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
+.ask-q{font-size:12.5px;color:var(--text-muted);margin-bottom:10px;}
+.ask-q::before{content:"Q. ";font-weight:700;color:var(--amber);}
+.ask-msg{font-size:13px;margin:2px 0 10px;line-height:1.6;}
+.ask-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:10px;}
+.ask-grid.one{grid-template-columns:minmax(0,520px);}
+.ask-blk{border:1px solid var(--border);border-radius:8px;padding:10px 12px;background:var(--surface2);min-width:0;margin-bottom:8px;}
+.ask-grid .ask-blk{margin-bottom:0;}
+.ask-blk-h{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.ask-blk-h b{font-size:14px;}
+.ask-more{margin-left:auto;background:none;border:none;color:var(--amber);font-size:12px;font-weight:600;cursor:pointer;padding:2px 4px;font-family:inherit;}
+.ask-more:hover{text-decoration:underline;}
+.ask-ln{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:8px;font-size:13px;padding:3px 0;}
+.ask-ln .l{color:var(--text-muted);}
+.ask-ln .v{overflow-wrap:anywhere;font-weight:600;}
+.ask-empty{color:#A7B0BB;font-weight:400;}
+.ask-hint{font-size:12px;color:var(--text-muted);margin-top:10px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.ask-hint .ask-more{margin-left:0;}
+.ask-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;color:var(--text-muted);margin-top:12px;}
+@media (max-width:560px){ .ask-ln{grid-template-columns:minmax(0,38%) minmax(0,1fr);} }
 </style>
 </head>
 <body>
@@ -409,7 +436,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v51</span></div>
+    <div class="sb-foot"><span id="verLabel">v52</span></div>
   </nav>
 
   <div class="content">
@@ -423,6 +450,14 @@ html:not([lang="ko"]) #moreCode{display:none;}
 
   <div class="panel active" id="panel-home">
     <h1 class="page-title" data-i18n="homeTitle">EMQ</h1>
+    <section class="card ask-box">
+      <form id="askForm" class="ask-row" autocomplete="off">
+        <input id="askInput" type="text" data-i18n-placeholder="askPh" placeholder="예) 1F-1호기 믹싱헤드 뭐야?" aria-label="질문하기" enterkeyhint="search">
+        <button type="submit" data-i18n="askBtn">질문</button>
+      </form>
+      <div id="askChips" class="chip-row ask-chips"></div>
+      <div id="askOut" aria-live="polite"></div>
+    </section>
     <div class="home-tiles">
       <button type="button" class="tile primary" data-goto="chat"><b data-i18n="tileDiag">진단 시작</b><span data-i18n="tileDiagS">증상으로 원인 찾기</span></button>
       <button type="button" class="tile" data-goto="register"><b data-i18n="tileUse">부품 사용 등록</b><span data-i18n="tileUseS">바로 기록하기</span></button>
@@ -602,7 +637,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v51</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v52</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -4139,6 +4174,16 @@ const UI_STRINGS = {
     eqNoSheet: "구글 시트에 '설비' 탭이 없습니다. 탭 이름을 확인해주세요.", eqOffline: "(오프라인 - 마지막으로 저장된 데이터를 표시 중)", eqNone: "표시할 설비가 없습니다.",
     eqBack: "← 목록", eqPrev: "이전", eqNext: "다음",
     eqSecBasic: "기본 정보", eqSecHead: "믹싱헤드", eqSecDrive: "모터·펌프", eqSecHeat: "온도·가열", eqSecMeas: "액츄에이터·필터·계측", eqSecValve: "솔밸브", eqSecTurn: "턴테이블", eqSecEtc: "기타", eqSecNote: "비고",
+
+    askPh: "예) 1F-1호기 믹싱헤드 뭐야?", askBtn: "질문",
+    askEx1: "1F-1호기 믹싱헤드 뭐야?", askEx2: "전 호기 원료펌프 알려줘", askEx3: "저압 설비는?", askEx4: "DHV1014 쓰는 호기?",
+    askLoading: "찾는 중...", askNoData: "설비 사양을 불러오지 못했습니다. 설비 사양 메뉴를 한 번 열어 확인해주세요.", askEmpty: "미입력", askDetail: "상세 ›", askClose: "닫기",
+    askNote: "설비 사양표에서 찾아 답합니다. 표에 없는 내용은 답할 수 없어요.",
+    askNotAvail: "{x}은(는) 아직 입력 전이라 조회할 수 없습니다. (현재 {floors} 설비만 조회됩니다)", askNoUnit: "{x}에 해당하는 호기가 없습니다. 아래에서 골라주세요.",
+    askAllNote: "호기를 정하지 않아 전 호기를 보여드립니다.", askSomeMissing: "찾지 못한 호기: {x}",
+    askValueH: "'{v}'이(가) 들어간 호기: {n}대", askTypeH: "{ty} 설비: {n}대", askMsdsH: "{no}에서 쓰는 MSDS", askMsdsNoUnit: "어느 호기의 MSDS인지 알려주세요. 예) 1F-1호기 MSDS 또는",
+    askUnknown: "무슨 뜻인지 잘 모르겠어요. 호기와 항목을 함께 물어봐 주세요. 예) 1F-1호기 원료펌프 POL, 전 호기 믹싱헤드, 저압 설비는?",
+    askFaultHint: "고장이나 에러는 진단하기에서 원인을 찾을 수 있어요.", askDiagBtn: "진단하기", askSearchBtn: "통합검색으로 찾기",
     eqMsdsH: "이 호기에서 쓰는 MSDS", eqMsdsNone: "{no}에 등록된 MSDS가 없습니다. (MSDS 시트의 사용설비 칸에 호기를 추가하면 여기에 표시됩니다)", eqMsdsCommon: "전 호기 공통",
     kpiLow: "재고 부족", kpiRepair: "수리 중", kpiTotal: "등록 부품", unitKind: "종", unitEa: "개",
     homeLowH: "재고 부족 부품", homeRecentH: "최근 진단", homeCodesH: "최근 찾은 에러코드",
@@ -4276,6 +4321,16 @@ const UI_STRINGS = {
     eqNoSheet: "The 'Equipment' tab was not found in the Google Sheet. Please check the tab name.", eqOffline: "(Offline - showing last saved data)", eqNone: "No equipment to show.",
     eqBack: "← List", eqPrev: "Prev", eqNext: "Next",
     eqSecBasic: "Basic info", eqSecHead: "Mixing head", eqSecDrive: "Motors & pumps", eqSecHeat: "Temperature & heating", eqSecMeas: "Actuators, filters & gauges", eqSecValve: "Solenoid valves", eqSecTurn: "Turntable", eqSecEtc: "Other", eqSecNote: "Note",
+
+    askPh: "e.g. What is the mixing head on 1F-1?", askBtn: "Ask",
+    askEx1: "What is the mixing head on 1F-1?", askEx2: "Material pump of all units", askEx3: "Which units are low-pressure?", askEx4: "Which units use DHV1014?",
+    askLoading: "Searching...", askNoData: "Could not load equipment specs. Please open the Equipment specs menu once to check.", askEmpty: "Not entered", askDetail: "Details ›", askClose: "Close",
+    askNote: "Answers come from the equipment spec sheet. Anything not in the sheet cannot be answered.",
+    askNotAvail: "{x} has not been entered yet. (Only {floors} units are available for now.)", askNoUnit: "No unit matches {x}. Please pick one below.",
+    askAllNote: "No unit was given, so all units are shown.", askSomeMissing: "Not found: {x}",
+    askValueH: "Units with '{v}': {n}", askTypeH: "{ty} units: {n}", askMsdsH: "MSDS used on {no}", askMsdsNoUnit: "Tell me which unit. e.g. 1F-1 MSDS, or",
+    askUnknown: "I did not understand. Please ask with a unit and an item. e.g. 1F-1 material pump POL, mixing head of all units, which units are low-pressure?",
+    askFaultHint: "For faults or errors, use Diagnose to find the cause.", askDiagBtn: "Diagnose", askSearchBtn: "Try search",
     eqMsdsH: "MSDS used on this unit", eqMsdsNone: "No MSDS registered for {no}. (Add the unit in the 'unit' column of the MSDS sheet to show it here.)", eqMsdsCommon: "Common to all units",
     kpiLow: "Low stock", kpiRepair: "In repair", kpiTotal: "Registered parts", unitKind: "kinds", unitEa: "pcs",
     homeLowH: "Low-stock parts", homeRecentH: "Recent diagnoses", homeCodesH: "Recent error codes",
@@ -4433,6 +4488,7 @@ function setLanguage(lang){
   renderPartsReg(document.getElementById('partsSearchReg').value || '');
   renderMsds();
   renderEquip();
+  renderAskChips();
   renderHome();
   renderFbChips();
   applyPartsCols();
@@ -6234,7 +6290,12 @@ const EQ_EN = {
 function eqLabel(s){
   if(LANG === 'ko') return s;
   const k = s.replace(/액[추튜]에이터/, '액츄에이터');
-  return EQ_EN[k] || EQ_EN[s] || s;
+  if(EQ_EN[k] || EQ_EN[s]) return EQ_EN[k] || EQ_EN[s];
+  let m = k.match(/^(.+?)\s*(ISO|MDI|POL)$/i);
+  if(m && EQ_EN[m[1]]) return EQ_EN[m[1]] + ' ' + m[2].toUpperCase();
+  m = k.match(/^(ISO|MDI|POL)\s*(.+)$/i);
+  if(m && EQ_EN[m[2]]) return EQ_EN[m[2]] + ' ' + m[1].toUpperCase();
+  return s;
 }
 const EQ_GROUPS = [
   { id:'basic',  re:/^(구입처|온조기)$/ },
@@ -6446,12 +6507,241 @@ document.getElementById('panel-equip').addEventListener('click', e => {
   if(ms){ const nm = ms.getAttribute('data-msds'); showPanel('msds'); const i = document.getElementById('msdsSearch'); i.value = nm; renderMsds(); return; }
 });
 
+/* ---------- 질문 답변: 설비 사양표에서 찾아 답하는 규칙 해석형 (외부 AI 없음) ---------- */
+// 구체적인 항목 이름 (먼저 검사)
+const ASK_ITEMS_1 = [
+  { re:/믹싱\s*(헤드|해드)|mixing\s*head/i, h:/^믹싱헤드/ },
+  { re:/노즐|nozzle/i, h:/^노즐/ },
+  { re:/원료\s*펌프|material\s*pump/i, h:/^원료펌프/ },
+  { re:/이송\s*펌프|transfer\s*pump/i, h:/^이송펌프/ },
+  { re:/유압\s*펌프|hydraulic\s*pump/i, h:/^유압펌프/ },
+  { re:/믹싱\s*모터|mixing\s*motor/i, h:/^믹싱모터/ },
+  { re:/유압\s*모터|모터\s*유압|hydraulic\s*motor/i, h:/^모터\s*유압/ },
+  { re:/히터|heater|가열봉/i, h:/^히터봉/ },
+  { re:/온도\s*센서|temp\w*\s*sensor|pt\s*100/i, h:/^온도센서/ },
+  { re:/온조기|temp\w*\s*controller/i, h:/^온조기$/ },
+  { re:/열\s*교환기|heat\s*exchanger/i, h:/^열교환기/ },
+  { re:/액[츄추튜]\s*에이터|actuator/i, h:/^액[츄추튜]에이터/ },
+  { re:/필터|filter/i, h:/필터/ },
+  { re:/압력\s*계|pressure\s*gauge|게이지/i, h:/압력계/ },
+  { re:/릴리프|relief/i, h:/^릴리프밸브/ },
+  { re:/플로우\s*메[타터]|유량\s*계|flow\s*meter/i, h:/^플로우메타/ },
+  { re:/차징|charging/i, h:/^유압솔밸브/ },
+  { re:/인젝션|injection/i, h:/^인젝션솔밸브|^인젝/ },
+  { re:/클린|clean/i, h:/^클린솔밸브/ },
+  { re:/턴\s*테이블|turntable/i, h:/턴테이블/ },
+  { re:/구입처|구매처|거래처|supplier|vendor/i, h:/^구입처/ },
+  { re:/비고|메모|remark/i, h:/^비고/ }
+];
+// 넓은 말 (구체적인 항목이 없을 때만)
+const ASK_ITEMS_2 = [
+  { re:/솔\s*밸브|솔레노이드|solenoid/i, h:/솔밸브/ },
+  { re:/밸브|valve/i, h:/밸브/ },
+  { re:/펌프|pump/i, h:/펌프/ },
+  { re:/모터|motor/i, h:/^(모터|믹싱모터)/ },
+  { re:/유압|hydraulic/i, h:/유압/ },
+  { re:/제조사|제조업체|메이커|maker|manufacturer/i, h:/^믹싱헤드\(제조사\)/ },
+  { re:/모델|model/i, h:/^믹싱헤드\(모델\)/ },
+  { re:/헤드|head/i, h:/^믹싱헤드/ },
+  { re:/가열|온도|temperature/i, h:/^(히터봉|온도센서|열교환기|온조기)/ },
+  { re:/발포기\s*형식|형식|type/i, h:/^발포기\s*형식/ }
+];
+const ASK_ALL_RE = /전\s*호기|모든\s*호기|전체\s*호기|호기별|각\s*호기|모든\s*설비|전\s*설비|all\s*units|every\s*unit|each\s*unit/i;
+const ASK_FULL_RE = /사양|스펙|전체|정보|spec|overview|summary/i;
+const ASK_MSDS_RE = /msds|엠에스디에스|원료\s*(목록|리스트)|사용\s*(하는|중인)?\s*(원료|약품)|chemical/i;
+const ASK_FAULT_RE = /에러|고장|알람|경보|안\s*돼|안됨|누유|소음|진동|error|alarm|fault|trouble|broken/i;
+
+function askUnitKey(no){ const m = String(no).match(/^(\d+)\s*F\s*-\s*(\d+)/i); return m ? { f: Number(m[1]), n: Number(m[2]) } : null; }
+
+function askParseUnits(q){
+  const units = [];
+  let rest = q;
+  const re1 = /(\d{1,2})\s*(?:F|층)\s*[-_ ]?\s*(\d{1,2})\s*(?:호기|호|번)?/gi;
+  rest = rest.replace(re1, (all, f, n) => { units.push({ f: Number(f), n: Number(n), text: all.trim() }); return ' '; });
+  const re2 = /(\d{1,2})\s*(?:호기|호(?![가-힣]))/g;
+  rest = rest.replace(re2, (all, n) => { units.push({ f: null, n: Number(n), text: all.trim() }); return ' '; });
+  return { units, rest };
+}
+
+function askParse(qRaw){
+  const q = String(qRaw || '').trim();
+  const out = { q, units: [], headers: [], items: [], side: null, all: false, full: false, msds: false, type: null, fault: false, tokens: [] };
+  if(!q) return out;
+  const pu = askParseUnits(q);
+  out.fault = ASK_FAULT_RE.test(q);
+  out.msds = ASK_MSDS_RE.test(q);
+  out.all = ASK_ALL_RE.test(q);
+  out.full = ASK_FULL_RE.test(pu.rest) && !/펌프|모터|밸브|헤드|필터|히터/.test(pu.rest);
+  const sideP = /\bPOL\b|폴\b|폴리올/i.test(pu.rest), sideI = /\bISO\b|\bMDI\b|아이소|이소시/i.test(pu.rest);
+  out.side = (sideP && !sideI) ? 'POL' : ((sideI && !sideP) ? 'ISO' : null);
+  const ty = pu.rest.match(/고압|저압/); if(ty) out.type = ty[0];
+  // 항목 찾기: 구체적인 것 먼저, 없으면 넓은 말
+  let hits = ASK_ITEMS_1.filter(it => it.re.test(pu.rest));
+  if(!hits.length) hits = ASK_ITEMS_2.filter(it => it.re.test(pu.rest));
+  // 넓은 말 안에서도 겹치는 것은 더 구체적인 것만 (밸브 vs 솔밸브)
+  if(hits.length > 1 && hits.some(h => h.h.source === '솔밸브')) hits = hits.filter(h => h.h.source !== '밸브');
+  const idxs = [];
+  hits.forEach(it => equipHeaders.forEach((h, i) => {
+    if(i === 0 || !it.h.test(h) || idxs.indexOf(i) >= 0) return;
+    if(/턴테이블/.test(h) && !/턴테이블/.test(it.h.source)) return;   // 턴테이블은 직접 물었을 때만
+    idxs.push(i);
+  }));
+  // ISO/POL 한쪽만 물었으면 반대쪽 제거 (한쪽만 남는 경우에만)
+  if(out.side){
+    const keep = idxs.filter(i => { const h = equipHeaders[i]; const isP = /POL/i.test(h), isI = /ISO|MDI/i.test(h); return out.side === 'POL' ? !isI || isP : !isP || isI; });
+    if(keep.length) { idxs.length = 0; keep.forEach(i => idxs.push(i)); }
+  }
+  out.headers = idxs.sort((a, b) => a - b);
+  out.units = pu.units;
+  // 값 검색용 토큰 (예: DHV1014, A2VK12CC)
+  const stop = /^(ISO|POL|MDI|MSDS|PT100)$/i;
+  (pu.rest.match(/[A-Za-z][A-Za-z0-9\-\.\/]*\d[A-Za-z0-9\-\.\/]*|\d[A-Za-z0-9\-\.\/]*[A-Za-z][A-Za-z0-9\-\.\/]*/g) || []).forEach(tk => { if(tk.length >= 3 && !stop.test(tk)) out.tokens.push(tk); });
+  return out;
+}
+
+function askNormVal(s){ return String(s).toUpperCase().replace(/\s+/g, ''); }
+function askFmt(tpl, o){ return String(tpl).replace(/\{(\w+)\}/g, (m, k) => (o[k] != null ? o[k] : m)); }
+
+// 질문을 해석해서 "답" 구조로 반환 (화면 그리기와 분리 - 시험하기 쉽게)
+function askAnswer(qRaw){
+  const p = askParse(qRaw);
+  const rows = equipVisibleRows();
+  const res = { p, kind: 'unknown', blocks: [], note: '', list: [] };
+  if(!p.q) return res;
+  if(!rows.length){ res.kind = 'noData'; return res; }
+  // 호기 찾기
+  const matched = [], missing = [], notAvail = [];
+  p.units.forEach(u => {
+    const floorOk = u.f == null || !EQUIP_FLOORS.length || EQUIP_FLOORS.some(x => Number(String(x).replace(/\D/g, '')) === u.f);
+    if(!floorOk){ notAvail.push(u.text); return; }
+    const hit = rows.filter(r => { const k = askUnitKey(eqNo(r)); return k && k.n === u.n && (u.f == null || k.f === u.f); });
+    if(!hit.length) missing.push(u.text); else hit.forEach(r => { if(matched.indexOf(r) < 0) matched.push(r); });
+  });
+  if(p.units.length && !matched.length){
+    res.kind = notAvail.length && !missing.length ? 'notAvail' : 'noUnit';
+    res.list = rows.map(eqNo); res.note = (notAvail.concat(missing)).join(', ');
+    return res;
+  }
+  const rowBlock = (r, idxs) => ({ no: eqNo(r), type: eqV(r, /^발포기\s*형식$/), lines: idxs.map(i => ({ label: equipHeaders[i], value: String(r[i] == null ? '' : r[i]).trim() })) });
+  const SUMMARY = [/^믹싱헤드\(제조사\)/, /^믹싱헤드\(모델\)/, /^원료펌프\s*(ISO|MDI)$/i, /^원료펌프\s*POL$/i, /^이송펌프\s*(ISO|MDI)$/i, /^이송펌프\s*POL$/i, /^온조기$/, /^구입처$/];
+  const summaryIdx = () => SUMMARY.map(re => eqIdx(re)).filter(i => i >= 0);
+  if(matched.length){
+    if(p.msds){ res.kind = 'msds'; res.blocks = matched.map(r => ({ no: eqNo(r), ms: eqMsdsFor(eqNo(r)) })); return res; }
+    if(p.headers.length){ res.kind = 'items'; res.blocks = matched.map(r => rowBlock(r, p.headers)); }
+    else { res.kind = 'full'; res.blocks = matched.map(r => rowBlock(r, summaryIdx())); }
+    if(missing.length || notAvail.length) res.note = missing.concat(notAvail).join(', ');
+    return res;
+  }
+  // 호기 없이: 값 검색 (모델명 등)
+  if(p.tokens.length){
+    const hits = [];
+    rows.forEach(r => p.tokens.forEach(tk => {
+      const key = askNormVal(tk);
+      equipHeaders.forEach((h, i) => { if(i > 0 && askNormVal(r[i]).indexOf(key) >= 0) hits.push({ no: eqNo(r), label: h, value: String(r[i]).trim(), tk: tk }); });
+    }));
+    if(hits.length){ res.kind = 'value'; res.list = hits; res.note = p.tokens[0]; return res; }
+  }
+  // 호기 없이: 고압/저압 목록
+  if(p.type && !p.headers.length){
+    const list = rows.filter(r => eqV(r, /^발포기\s*형식$/).indexOf(p.type) >= 0);
+    res.kind = 'typeList'; res.note = p.type; res.blocks = list.map(r => rowBlock(r, summaryIdx().slice(0, 3))); return res;
+  }
+  // 호기 없이: 항목만 → 전 호기
+  if(p.headers.length){
+    res.kind = 'items'; res.all = true;
+    let rs = rows;
+    if(p.type) rs = rows.filter(r => eqV(r, /^발포기\s*형식$/).indexOf(p.type) >= 0);
+    res.blocks = rs.map(r => rowBlock(r, p.headers)); res.note = p.all ? '' : 'noUnitGiven'; return res;
+  }
+  if(p.all || p.full){ res.kind = 'full'; res.all = true; res.blocks = rows.map(r => rowBlock(r, summaryIdx())); return res; }
+  if(p.msds){ res.kind = 'msdsNoUnit'; return res; }
+  res.kind = 'unknown';
+  return res;
+}
+
+function askValText(v){ return v ? escapeHtml(v) : '<span class="ask-empty">' + escapeHtml(t('askEmpty')) + '</span>'; }
+function askBlockHtml(b){
+  const badge = b.type ? ' <span class="eq-badge ' + (b.type.indexOf('고압') >= 0 ? 'hp' : (b.type.indexOf('저압') >= 0 ? 'lp' : '')) + '">' + escapeHtml(b.type) + '</span>' : '';
+  return '<div class="ask-blk"><div class="ask-blk-h"><b>' + escapeHtml(b.no) + '</b>' + badge +
+    '<button type="button" class="ask-more" data-eq="' + escapeAttr(b.no) + '">' + escapeHtml(t('askDetail')) + '</button></div>' +
+    b.lines.map(l => '<div class="ask-ln"><span class="l">' + escapeHtml(eqLabel(l.label)) + '</span><span class="v">' + askValText(l.value) + '</span></div>').join('') + '</div>';
+}
+function askRender(res){
+  const p = res.p; let html = '';
+  const fault = p.fault ? '<div class="ask-hint">' + escapeHtml(t('askFaultHint')) + ' <button type="button" class="ask-more" data-goto="chat">' + escapeHtml(t('askDiagBtn')) + '</button></div>' : '';
+  switch(res.kind){
+    case 'msdsNoUnit': html = '<div class="ask-msg">' + escapeHtml(t('askMsdsNoUnit')) + ' <button type="button" class="ask-more" data-goto="msds">' + escapeHtml(t('tileMsds')) + '</button></div>'; break;
+    case 'noData': html = '<div class="ask-msg">' + escapeHtml(t('askNoData')) + '</div>'; break;
+    case 'notAvail': html = '<div class="ask-msg">' + escapeHtml(askFmt(t('askNotAvail'), { x: res.note, floors: EQUIP_FLOORS.join(', ') })) + '</div>'; break;
+    case 'noUnit': html = '<div class="ask-msg">' + escapeHtml(askFmt(t('askNoUnit'), { x: res.note })) + '</div><div class="chip-row ask-chips">' +
+        res.list.map(n => '<button type="button" class="cat-chip" data-eq="' + escapeAttr(n) + '">' + escapeHtml(n) + '</button>').join('') + '</div>'; break;
+    case 'msds':
+      html = res.blocks.map(b => {
+        const all = b.ms.own.concat(b.ms.common);
+        return '<div class="ask-blk"><div class="ask-blk-h"><b>' + escapeHtml(askFmt(t('askMsdsH'), { no: b.no })) + '</b><button type="button" class="ask-more" data-eq="' + escapeAttr(b.no) + '">' + escapeHtml(t('askDetail')) + '</button></div>' +
+          (all.length ? b.ms.own.map(eqMsdsItem).join('') + (b.ms.common.length ? '<div class="eq-sub">' + escapeHtml(t('eqMsdsCommon')) + '</div>' + b.ms.common.map(eqMsdsItem).join('') : '')
+                      : '<div class="ask-ln"><span class="ask-empty">' + escapeHtml(askFmt(t('eqMsdsNone'), { no: b.no })) + '</span></div>') + '</div>';
+      }).join(''); break;
+    case 'value': {
+      const by = {}; res.list.forEach(h => { (by[h.no] = by[h.no] || []).push(h); });
+      html = '<div class="ask-msg">' + escapeHtml(askFmt(t('askValueH'), { v: res.note, n: Object.keys(by).length })) + '</div>' +
+        Object.keys(by).map(no => askBlockHtml({ no: no, type: '', lines: by[no].map(h => ({ label: h.label, value: h.value })) })).join(''); break; }
+    case 'typeList':
+      html = '<div class="ask-msg">' + escapeHtml(askFmt(t('askTypeH'), { ty: res.note, n: res.blocks.length })) + '</div>' +
+        (res.blocks.length ? '<div class="ask-grid">' + res.blocks.map(askBlockHtml).join('') + '</div>' : ''); break;
+    case 'items': case 'full':
+      html = (res.note === 'noUnitGiven' ? '<div class="ask-msg">' + escapeHtml(t('askAllNote')) + '</div>' : '') +
+        (res.note && res.note !== 'noUnitGiven' ? '<div class="ask-msg">' + escapeHtml(askFmt(t('askSomeMissing'), { x: res.note })) + '</div>' : '') +
+        '<div class="ask-grid' + (res.blocks.length === 1 ? ' one' : '') + '">' + res.blocks.map(askBlockHtml).join('') + '</div>'; break;
+    default:
+      html = '<div class="ask-msg">' + escapeHtml(t('askUnknown')) + '</div>' +
+        '<div class="ask-hint"><button type="button" class="ask-more" data-gsearch="' + escapeAttr(p.q) + '">' + escapeHtml(t('askSearchBtn')) + '</button> <button type="button" class="ask-more" data-goto="chat">' + escapeHtml(t('askDiagBtn')) + '</button></div>';
+  }
+  return html + (res.kind === 'unknown' ? '' : fault);
+}
+
+function renderAskChips(){
+  const box = document.getElementById('askChips');
+  if(!box) return;
+  box.innerHTML = [t('askEx1'), t('askEx2'), t('askEx3'), t('askEx4')].map(x => '<button type="button" class="cat-chip" data-ask="' + escapeAttr(x) + '">' + escapeHtml(x) + '</button>').join('');
+}
+renderAskChips();
+
+let askBusy = false;
+async function askSubmit(q){
+  q = String(q || '').trim();
+  const out = document.getElementById('askOut');
+  if(!q){ out.innerHTML = ''; return; }
+  if(askBusy) return;
+  askBusy = true;
+  out.innerHTML = '<div class="ask-msg">' + escapeHtml(t('askLoading')) + '</div>';
+  try{
+    if(!equipRows.length) await loadEquip();
+    if(ASK_MSDS_RE.test(q) && !msdsLoaded && !msdsLoading) await loadMsds(true);
+    const res = askAnswer(q);
+    out.innerHTML = '<div class="ask-q">' + escapeHtml(q) + '</div>' + askRender(res) +
+      '<div class="ask-foot"><span>' + escapeHtml(t('askNote')) + '</span><button type="button" class="ask-more" id="askClear">' + escapeHtml(t('askClose')) + '</button></div>';
+  } finally { askBusy = false; }
+}
+document.getElementById('askForm').addEventListener('submit', e => { e.preventDefault(); askSubmit(document.getElementById('askInput').value); });
+document.getElementById('panel-home').addEventListener('click', e => {
+  const ex = e.target.closest('[data-ask]');
+  if(ex){ const q = ex.getAttribute('data-ask'); document.getElementById('askInput').value = q; askSubmit(q); return; }
+  const eqb = e.target.closest('#askOut [data-eq]');
+  if(eqb){ openEquip(eqb.getAttribute('data-eq')); return; }
+  const ms = e.target.closest('#askOut .eq-msds-item');
+  if(ms){ const nm = ms.getAttribute('data-msds'); showPanel('msds'); const i = document.getElementById('msdsSearch'); i.value = nm; renderMsds(); return; }
+  const gs = e.target.closest('#askOut [data-gsearch]');
+  if(gs){ const g = document.getElementById('gsearch'); g.value = gs.getAttribute('data-gsearch'); runGlobalSearch(); return; }
+  if(e.target.closest('#askClear')){ document.getElementById('askOut').innerHTML = ''; document.getElementById('askInput').value = ''; }
+});
+
 init();
 </script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v51', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v52', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
