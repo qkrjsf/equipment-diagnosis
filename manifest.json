@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "설비 허브",
-  "short_name": "설비 허브",
-  "description": "사내 설비 진단, 부품 재고, MSDS, 에러코드를 한곳에서 조회하는 설비 허브",
+  "name": "EMQ",
+  "short_name": "EMQ",
+  "description": "사내 설비 진단, 부품 재고, MSDS, 에러코드를 한곳에서 조회하는 설비 관리 앱",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-<title>설비 허브</title>
+<title>EMQ</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1E2833">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="설비 허브">
+<meta name="apple-mobile-web-app-title" content="EMQ">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
@@ -204,7 +204,10 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'IBM Plex Sans 
 .repair-popup-btn{background:var(--amber);color:#fff8f0;border:none;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13.5px;cursor:pointer;}
 @keyframes popupIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
 
-/* ===== 설비 허브 셸 (PC 사이드바 / 폰 하단 탭) ===== */
+/* ===== EMQ 브랜드 글꼴 (영문 대문자·숫자만 담은 서브셋, 오프라인에서도 동일하게 표시) ===== */
+@font-face{font-family:'EMQ Brand';font-weight:700;font-style:normal;font-display:swap;src:url(data:font/woff2;base64,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) format('woff2');}
+#panel-home>.page-title{font-family:'EMQ Brand','Saira Semi Condensed','Arial Narrow',sans-serif;font-size:34px;font-weight:700;letter-spacing:1px;}
+/* ===== 앱 셸 (PC 사이드바 / 폰 하단 탭) ===== */
 html{-webkit-text-size-adjust:100%;}
 .tabs{position:fixed;z-index:60;background:var(--slate);color:var(--nav);display:flex;}
 .tab{display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;user-select:none;color:var(--nav);min-width:0;}
@@ -219,7 +222,7 @@ html{-webkit-text-size-adjust:100%;}
 .brand{padding:0 10px 18px;display:flex;align-items:center;gap:11px;}
 .logo-mark{display:block;flex:0 0 auto;border-radius:22%;object-fit:cover;}
 .brand .logo-mark{width:40px;height:40px;}
-.brand-name{font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.2px;}
+.brand-name{font-family:'EMQ Brand','Saira Semi Condensed','Arial Narrow',sans-serif;font-size:27px;font-weight:700;color:#fff;letter-spacing:0.8px;line-height:1.05;}
 .brand-sub{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.6px;color:#9AA7B5;}
 .sb-foot{margin-top:auto;padding:14px 10px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AA7B5;}
 .tab .dot{display:none;width:8px;height:8px;border-radius:50%;background:#F59A52;flex:0 0 auto;}
@@ -323,9 +326,9 @@ html:not([lang="ko"]) #moreCode{display:none;}
   .tab .dot{position:absolute;top:4px;right:calc(50% - 18px);}
   .content{padding-bottom:calc(var(--navh) + env(safe-area-inset-bottom));}
   .topbar{padding:calc(12px + env(safe-area-inset-top)) 16px 12px;background:var(--slate);border-bottom:0;flex-direction:column;align-items:stretch;gap:10px;}
-  .tb-brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:19px;font-weight:700;letter-spacing:-0.2px;}
+  .tb-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:'EMQ Brand','Saira Semi Condensed','Arial Narrow',sans-serif;font-size:27px;font-weight:700;letter-spacing:0.8px;line-height:1.05;}
   .tb-brand .logo-mark{width:36px;height:36px;}
-  .tb-brand small{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:400;letter-spacing:1.4px;color:#9AA7B5;}
+  .tb-brand small{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:400;letter-spacing:1.4px;line-height:1.3;color:#9AA7B5;}
   .gsearch{background:#fff;border-color:#fff;border-radius:10px;height:44px;}
   .app{padding:16px 16px 28px;}
   .page-title{font-size:19px;}
@@ -338,7 +341,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
 <body>
 <div class="shell">
   <nav class="tabs" aria-label="주 메뉴">
-    <div class="brand"><img class="logo-mark" src="icon-192.png" alt="" width="40" height="40"><div><div class="brand-name" data-i18n="title">설비 허브</div><div class="brand-sub">EQUIPMENT HUB</div></div></div>
+    <div class="brand"><img class="logo-mark" src="icon-192.png" alt="" width="40" height="40"><div><div class="brand-name" data-i18n="title">EMQ</div><div class="brand-sub">EQUIPMENT HUB</div></div></div>
     <div class="tab active" data-tab="home" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span data-i18n="tabHome">홈</span></div>
     <div class="tab" data-tab="chat" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span class="lbl-f" data-i18n="tabChat">진단하기</span><span class="lbl-s" data-i18n="tabChatS">진단</span></div>
     <div class="tab" data-tab="parts" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg><span class="lbl-f" data-i18n="tabParts">부품 조회</span><span class="lbl-s" data-i18n="tabPartsS">부품</span></div>
@@ -347,12 +350,12 @@ html:not([lang="ko"]) #moreCode{display:none;}
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v47</span></div>
+    <div class="sb-foot"><span id="verLabel">v48</span></div>
   </nav>
 
   <div class="content">
   <div class="topbar">
-    <div class="tb-brand"><img class="logo-mark" src="icon-192.png" alt="" width="36" height="36"><div class="tb-txt"><span data-i18n="title">설비 허브</span><small>EQUIPMENT HUB</small></div></div>
+    <div class="tb-brand"><img class="logo-mark" src="icon-192.png" alt="" width="36" height="36"><div class="tb-txt"><span data-i18n="title">EMQ</span><small>EQUIPMENT HUB</small></div></div>
     <label for="gsearch" style="position:absolute;left:-9999px" data-i18n="gsearchLabel">통합 검색</label>
     <div class="gsearch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6877" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"/><path d="M21 21l-4.3-4.3"/></svg><input id="gsearch" type="search" autocomplete="off" data-i18n-placeholder="gsearchPh" placeholder="에러코드·부품·MSDS 검색"></div>
   </div>
@@ -360,7 +363,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
   <div class="app">
 
   <div class="panel active" id="panel-home">
-    <h1 class="page-title" data-i18n="homeTitle">설비 허브</h1>
+    <h1 class="page-title" data-i18n="homeTitle">EMQ</h1>
     <div class="home-tiles">
       <button type="button" class="tile primary" data-goto="chat"><b data-i18n="tileDiag">진단 시작</b><span data-i18n="tileDiagS">증상으로 원인 찾기</span></button>
       <button type="button" class="tile" data-goto="register"><b data-i18n="tileUse">부품 사용 등록</b><span data-i18n="tileUseS">바로 기록하기</span></button>
@@ -530,7 +533,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v47</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v48</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -4039,7 +4042,7 @@ let ERROR_CODE_DB = {"E0001": {"cat": "종합이상 에러", "desc": "정전검�
 /* ---------- 다국어 (i18n) ---------- */
 const UI_STRINGS = {
   ko: {
-    title: "설비 허브",
+    title: "EMQ",
     subtitle: "자연어 질문 → 사내 정의 진단 트리 기반 원인 안내 (오프라인 동작, 서버/API 비용 없음)",
     tabChat: "진단하기",
     tabParts: "부품 조회",
@@ -4057,7 +4060,7 @@ const UI_STRINGS = {
     tabSettings: "설정",
     gsearchLabel: "통합 검색",
     gsearchPh: "에러코드·부품·MSDS 검색",
-    homeTitle: "설비 허브",
+    homeTitle: "EMQ",
     tileDiag: "진단 시작", tileDiagS: "증상으로 원인 찾기",
     tileUse: "부품 사용 등록", tileUseS: "바로 기록하기",
     tileMsds: "MSDS 받기", tileMsdsS: "여러 개 선택 가능",
@@ -4170,7 +4173,7 @@ const UI_STRINGS = {
     repairReminder: "\ud83d\udd27 \"{name}\"은(는) 수리 가능 품목이라 수리이력에 자동 등록했어요. 오늘 안으로 수리업체에 보내주세요!"
   },
   en: {
-    title: "Equipment Hub",
+    title: "EMQ",
     subtitle: "Natural language questions → cause guidance based on company-defined diagnostic trees (works offline, no server/API cost)",
     tabChat: "Diagnose",
     tabParts: "Parts Lookup",
@@ -4188,7 +4191,7 @@ const UI_STRINGS = {
     tabSettings: "Settings",
     gsearchLabel: "Search all",
     gsearchPh: "Search codes, parts, MSDS",
-    homeTitle: "Equipment Hub",
+    homeTitle: "EMQ",
     tileDiag: "Start diagnosis", tileDiagS: "Find the cause from symptoms",
     tileUse: "Log part usage", tileUseS: "Record right away",
     tileMsds: "Get MSDS", tileMsdsS: "Multi-select supported",
@@ -6064,7 +6067,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v47', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v48', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
