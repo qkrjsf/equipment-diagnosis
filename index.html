@@ -240,7 +240,7 @@ html{-webkit-text-size-adjust:100%;}
 .logo-mark{display:block;flex:0 0 auto;border-radius:22%;object-fit:cover;}
 .brand .logo-mark{width:40px;height:40px;}
 .brand-name{font-family:'EMQ Brand','Saira Semi Condensed','Arial Narrow',sans-serif;font-size:27px;font-weight:700;color:#fff;letter-spacing:0.8px;line-height:1.05;}
-.brand-sub{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.6px;color:#9AA7B5;}
+.brand-sub{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.9px;color:#9AA7B5;white-space:nowrap;}
 .sb-foot{margin-top:auto;padding:14px 10px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AA7B5;}
 .tab .dot{display:none;width:8px;height:8px;border-radius:50%;background:#F59A52;flex:0 0 auto;}
 body.update-ready .tab[data-tab="settings"] .dot{display:inline-block;}
@@ -351,7 +351,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
   .topbar{padding:calc(12px + env(safe-area-inset-top)) 16px 12px;background:var(--slate);border-bottom:0;flex-direction:column;align-items:stretch;gap:10px;}
   .tb-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:'EMQ Brand','Saira Semi Condensed','Arial Narrow',sans-serif;font-size:27px;font-weight:700;letter-spacing:0.8px;line-height:1.05;}
   .tb-brand .logo-mark{width:36px;height:36px;}
-  .tb-brand small{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:400;letter-spacing:1.4px;line-height:1.3;color:#9AA7B5;}
+  .tb-brand small{display:block;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:400;letter-spacing:0.9px;line-height:1.3;color:#9AA7B5;}
   .gsearch{background:#fff;border-color:#fff;border-radius:10px;height:44px;}
   .app{padding:16px 16px 28px;}
   .page-title{font-size:19px;}
@@ -432,7 +432,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
 <body>
 <div class="shell">
   <nav class="tabs" aria-label="주 메뉴">
-    <div class="brand"><img class="logo-mark" src="icon-192.png" alt="" width="40" height="40"><div><div class="brand-name" data-i18n="title">EMQ</div><div class="brand-sub">EQUIPMENT HUB</div></div></div>
+    <div class="brand"><img class="logo-mark" src="icon-192.png" alt="" width="40" height="40"><div><div class="brand-name" data-i18n="title">EMQ</div><div class="brand-sub">EQUIPMENT MASTER QUERY</div></div></div>
     <div class="tab active" data-tab="home" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span data-i18n="tabHome">홈</span></div>
     <div class="tab" data-tab="chat" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span class="lbl-f" data-i18n="tabChat">진단하기</span><span class="lbl-s" data-i18n="tabChatS">진단</span></div>
     <div class="tab" data-tab="equip" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M9 20V9"/></svg><span data-i18n="tabEquip">설비 사양</span></div>
@@ -442,12 +442,12 @@ html:not([lang="ko"]) #moreCode{display:none;}
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v53</span></div>
+    <div class="sb-foot"><span id="verLabel">v54</span></div>
   </nav>
 
   <div class="content">
   <div class="topbar">
-    <div class="tb-brand"><img class="logo-mark" src="icon-192.png" alt="" width="36" height="36"><div class="tb-txt"><span data-i18n="title">EMQ</span><small>EQUIPMENT HUB</small></div></div>
+    <div class="tb-brand"><img class="logo-mark" src="icon-192.png" alt="" width="36" height="36"><div class="tb-txt"><span data-i18n="title">EMQ</span><small>EQUIPMENT MASTER QUERY</small></div></div>
     <label for="gsearch" style="position:absolute;left:-9999px" data-i18n="gsearchLabel">통합 검색</label>
     <div class="gsearch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6877" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"/><path d="M21 21l-4.3-4.3"/></svg><input id="gsearch" type="search" autocomplete="off" data-i18n-placeholder="gsearchPh" placeholder="에러코드·부품·MSDS 검색"></div>
   </div>
@@ -643,7 +643,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v53</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v54</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -6323,8 +6323,8 @@ function showDiagFeedbackModal(info){
 renderHome();
 
 /* ---------- 설비 사양 (구글 시트 '설비' 탭 → 호기별 카드) ---------- */
-// 지금은 1층만 표시합니다. 2층 입력이 끝나면 ['1F','2F'] 로, 전부 보려면 [] 로 바꾸면 됩니다.
-const EQUIP_FLOORS = ['1F'];
+// 1층·2층을 표시합니다. 전부 보려면 [] 로 바꾸면 됩니다.
+const EQUIP_FLOORS = ['1F', '2F'];
 let equipHeaders = [];
 let equipRows = [];        // 각 행 = 문자열 배열 (equipHeaders 순서)
 let equipLoaded = false, equipLoading = false, equipErr = '';
@@ -6796,7 +6796,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v53', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v54', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
