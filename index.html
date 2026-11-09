@@ -279,6 +279,14 @@ body.update-ready .tab.more .dot{display:inline-block;}
 .pump-sub{font-size:12px;color:var(--text-muted);margin-top:4px;}
 .pump-err{display:none;margin-top:10px;padding:8px 10px;border-radius:8px;background:#FDECEA;color:#9B1C1C;font-size:13px;}
 .pump-warn{margin:0 0 10px;padding:8px 10px;border-radius:8px;background:#FFF4DB;color:#7A4B00;font-size:12.5px;line-height:1.5;}
+.pump-base{display:flex;align-items:center;gap:6px;padding:10px 12px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);font-size:13.5px;margin-bottom:6px;}
+.px-results{display:flex;flex-direction:column;gap:4px;margin-top:6px;}
+.px-hit{text-align:left;font-family:inherit;font-size:13px;min-height:44px;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;}
+.px-hit.on{border-color:var(--amber);background:var(--surface2);}
+.px-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--border);}
+.px-name{flex:1;min-width:0;font-size:13px;}
+.px-won{min-width:70px;text-align:right;font-size:12.5px;}
+.px-del{width:36px;height:36px;border-radius:18px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:18px;cursor:pointer;}
 .pump-chk{display:flex;align-items:center;gap:8px;min-height:40px;font-size:13.5px;}
 .pump-qty{width:64px;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:7px;border-radius:8px;font-family:'IBM Plex Mono',monospace;text-align:right;}
 .pump-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
@@ -473,7 +481,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v58</span></div>
+    <div class="sb-foot"><span id="verLabel">v59</span></div>
   </nav>
 
   <div class="content">
@@ -617,12 +625,12 @@ html:not([lang="ko"]) #moreCode{display:none;}
 
   <div class="panel" id="panel-pump">
     <h1 class="page-title" data-i18n="tabPump">펌프 수리 (A2VK)</h1>
-    <div class="hint" data-i18n="pumpHint">교체는 [부품 사용 등록]에서 "A2VK12CC"를 선택해 등록합니다. 수리 완료는 이 화면에서 기록합니다.</div>
+    <div class="hint" data-i18n="pumpHint">교체는 [부품 사용 등록]에서 "A2VK12CC"를 선택해 등록합니다. 수리 완료는 이 화면에서 기록합니다. 모든 금액은 부가세 별도입니다.</div>
     <div id="pumpTabs" class="ptabs">
       <button type="button" class="ptab on" data-pt="status" data-i18n="pumpT1">현황</button>
       <button type="button" class="ptab" data-pt="queue" data-i18n="pumpT2">수리 대기·완료</button>
       <button type="button" class="ptab" data-pt="hist" data-i18n="pumpT3">수리 이력</button>
-      <button type="button" class="ptab" data-pt="kit" data-i18n="pumpT4">수리 부품 재고</button>
+      <button type="button" class="ptab" data-pt="kit" data-i18n="pumpT4">수리 부품 목록</button>
     </div>
     <div id="pumpBody"></div>
   </div>
@@ -687,7 +695,7 @@ html:not([lang="ko"]) #moreCode{display:none;}
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v58</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v59</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -4219,7 +4227,7 @@ const UI_STRINGS = {
     tileUse: "부품 사용 등록", tileUseS: "바로 기록하기",
     tileMsds: "MSDS 받기", tileMsdsS: "여러 개 선택 가능",
     tileParts: "부품 조회", tilePartsS: "재고와 규격 확인",
-    tabPump: "펌프 수리 (A2VK)", pumpHint: "교체는 [부품 사용 등록]에서 \"A2VK12CC\"를 선택해 등록합니다. 수리 완료는 이 화면에서 기록합니다.", pumpT1: "현황", pumpT2: "수리 대기·완료", pumpT3: "수리 이력", pumpT4: "수리 부품 재고",
+    tabPump: "펌프 수리 (A2VK)", pumpHint: "교체는 [부품 사용 등록]에서 \"A2VK12CC\"를 선택해 등록합니다. 수리 완료는 이 화면에서 기록합니다. 모든 금액은 부가세 별도입니다.", pumpT1: "현황", pumpT2: "수리 대기·완료", pumpT3: "수리 이력", pumpT4: "수리 부품 목록",
     tabEquip: "설비 사양", tileEq: "설비 사양", tileEqS: "호기별 사양 보기", gsEquip: "설비",
     eqHint: "호기를 누르면 사양서가 열립니다.", eqLoading: "설비 사양을 불러오는 중...", eqLoadFail: "설비 사양을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.",
     eqNoSheet: "구글 시트에 '설비' 탭이 없습니다. 탭 이름을 확인해주세요.", eqOffline: "(오프라인 - 마지막으로 저장된 데이터를 표시 중)", eqNone: "표시할 설비가 없습니다.",
@@ -4367,7 +4375,7 @@ const UI_STRINGS = {
     tileUse: "Log part usage", tileUseS: "Record right away",
     tileMsds: "Get MSDS", tileMsdsS: "Multi-select supported",
     tileParts: "Parts lookup", tilePartsS: "Stock and specs",
-    tabPump: "Pump repair (A2VK)", pumpHint: "Register swaps via Parts usage by choosing \"A2VK12CC\". Record repair completion here.", pumpT1: "Status", pumpT2: "Queue / done", pumpT3: "History", pumpT4: "Repair parts",
+    tabPump: "Pump repair (A2VK)", pumpHint: "Register swaps via Parts usage by choosing \"A2VK12CC\". Record repair completion here. All amounts exclude VAT.", pumpT1: "Status", pumpT2: "Queue / done", pumpT3: "History", pumpT4: "Part list",
     tabEquip: "Equipment specs", tileEq: "Equipment specs", tileEqS: "Specs by unit", gsEquip: "Equipment",
     eqHint: "Tap a unit to open its spec sheet.", eqLoading: "Loading equipment specs...", eqLoadFail: "Could not load equipment specs. Please try again shortly.",
     eqNoSheet: "The 'Equipment' tab was not found in the Google Sheet. Please check the tab name.", eqOffline: "(Offline - showing last saved data)", eqNone: "No equipment to show.",
@@ -5111,11 +5119,22 @@ function showUsageModal(part){
 /* ===== A2VK12CC 펌프 관리 ===== */
 const PUMP_SPARE_SPEC = 'A2VK12CC';
 const PUMP_REPAIRER = '김대연';
-const PUMP_BASE_COST = 235360, PUMP_SAND_COST = 80000;
+const PUMP_BASE_COST = 235360, PUMP_SAND_COST = 80000;   // 부가세 별도
 const PUMP_REASONS = [['베어링 소음','Bearing noise'],['압력 저하','Low pressure'],['누유','Oil leak'],['유량 불량','Flow problem'],['기타','Other']];
-const PUMP_KINDS = [['내부 베어링 세트','Inner bearing set'],['+ 실린더·플레이트','+ Cylinder/plate'],['메인축·베어링','Main shaft/bearing'],['하우징 전체','Whole housing'],['세라믹 베어링','Ceramic bearing']];
+// 모든 금액은 부가세 별도. 환율은 기본값 없음(수리마다 직접 입력) — 달러 금액은 환율 없이도 따로 기록한다
+const PUMP_BASE_SET = '내부 베어링 세트 교환';
+// 필수(O) 교체 항목 13종 — 모든 수리에 자동 포함 (수량은 1회 수리 시 기준, "1 or 2"는 1로 표기)
+const PUMP_BASE_PARTS = [['6305 깊은홈 베어링 (메인 축)',1],['7305 앵글 컨택트 베어링 (메인 축)',2],['16006 베어링 (스웨벨 하우징)',2],['6301 베어링 (유량 핸들 축)',2],['플렌지 O링 (압력 플랜지)',4],['플러그 O링',4],['4. square ring (압력플랜지)',1],['12. gasket (메인하우징)',1],['36. shaft seal ring (유량조절핸들 리데나, 1~2)',1],['42. gasket (하우징 뚜껑)',1],['X. gasket (유량조절핸들 커버, 1~2)',1],['V. teflon seal ring (압력축 끝단)',2],['Q. L-packing ring (메인샤프트 전단)',1]];
+function pumpBaseListHtml(){ return '<div class="pump-sub" style="margin-top:4px">' + PUMP_BASE_PARTS.map(x => escapeHtml(x[0]) + ' ×' + x[1]).join('<br>') + '</div>'; }
+// [번호, 영문명, 한글명, 구성수량, 단가(USD)]  (Gelan A2VK 12cc 부품 견적서 2025-03-21)
+const PUMP_CATALOG = [
+['1','front cover','프론트 커버',1,19],['2','spacer ring','스페이서 링',1,5],['3','shaft seal ring','샤프트 씰 링 (메인축)',2,8.5],['4','square ring','스퀘어 링',1,3],['5','seal bush','씰 부시',1,12],['6','retaining ring','리테이닝 링',1,6],['7','shim','심',1,1],['8','Flange (high pressure)','고압 플랜지',1,48],['9','safety valve','세이프티 밸브',1,120],['10','Flange (low pressure)','저압 플랜지',1,15],['11','flange housing','플랜지 하우징',1,320],['12','gasket','가스켓',1,4.5],['13','ball bearing','볼 베어링(깊은홈)',1,12],['14','spacer bush','스페이서 부시',1,6],['15','angular ball bearing','앵글 컨택트 베어링',2,22],['16','running bush','러닝 부시',1,38],['17','bearing','베어링',2,11],['18','shaft key','샤프트 키',1,1],
+['19G','shaft Gelan-type','샤프트 (Gelan형)',1,215],['19R','shaft Rexroth-type','샤프트 (Rexroth형)',1,260],['20G','seal bush Gelan (5.5mm)','씰 부시 (Gelan, 5.5mm)',2,9],['20R','seal bush Rexroth (4.0mm)','씰 부시 (Rexroth, 4.0mm)',2,9],['21','slide ring','슬라이드 링',1,9],['22','pin','핀',1,4.5],['23','swivel housing','스웨벨 하우징',1,195],['24G','retaining plate, Gelan','리테이닝 플레이트 (Gelan)',1,23],['24R','retaining plate, Rexroth','리테이닝 플레이트 (Rexroth)',1,68],
+['25','piston','피스톤',7,24],['26','center pin','센터 핀',1,16],['27','cylinder','실린더',1,136.5],['28','control plate (R)','컨트롤 플레이트',1,95],['29','port plate','포트 플레이트',1,45],['30','housing','하우징',1,320],['31','bush','부시',1,4],['32','cover','커버',1,14.5],['33','handwheel','핸드휠',1,53],['34','handle','핸들',1,5],['35','running bush','러닝 부시 (핸들)',1,14],['36','shaft seal ring','샤프트 씰 링 (유량조절핸들)',2,8.5],['37','spacer ring','스페이서 링',1,5],['38','cover','커버',1,22],['39','bearing','베어링',1,5],['40','spacer ring','스페이서 링',1,4],['41','cover','커버',1,13.5],['42','gasket','가스켓 (하우징 뚜껑)',1,3],['43','ring nut','링 너트',2,6.5],['44','control head','컨트롤 헤드',1,62.5],['45','nut','너트',2,13],['46','shaft key','샤프트 키',1,0.6],['47','cup spring','컵 스프링',4,1.6],['48','guide disc','가이드 디스크',1,12.5],['49','spindle','스핀들',1,48],
+['IND','indicator','인디케이터',1,58],['Q','L-packing ring','L 패킹 링',1,3.5],['V','teflon seal ring','테프론 씰 링',2,1.5],['X','gasket','가스켓',1,1.5]
+];
 const PUMP_TESTS = [['이상 없음','OK'],['소음','Noise'],['압력 부족','Low pressure']];
-let pumpParts = [], pumpRows = [], pumpLoaded = false, pumpLoading = false, pumpErr = '';
+let pumpRows = [], pumpLoaded = false, pumpLoading = false, pumpErr = '';
 let pumpTab = 'status', pumpSelId = null, pumpFilter = { year:'', line:'' };
 let pumpForm = null;
 function PP(ko, en){ return LANG === 'ko' ? ko : en; }
@@ -5181,14 +5200,14 @@ async function loadPump(){
   if(pumpLoading) return;
   pumpLoading = true;
   if(!pumpLoaded){
-    try{ const c = JSON.parse(localStorage.getItem('cache-pump') || 'null'); if(c && Array.isArray(c.d)){ pumpRows = c.d; pumpParts = Array.isArray(c.p) ? c.p : []; renderPump(); } }catch(e){}
+    try{ const c = JSON.parse(localStorage.getItem('cache-pump') || 'null'); if(c && Array.isArray(c.d)){ pumpRows = c.d; renderPump(); } }catch(e){}
   }
   try{
     const res = await fetch(GOOGLE_SHEET_URL + '?type=pump&t=' + Date.now(), { cache:'no-store' });
     const data = await res.json();
     if(data && data.ok && Array.isArray(data.rows)){
-      pumpRows = data.rows; pumpParts = Array.isArray(data.parts) ? data.parts : []; pumpLoaded = true; pumpErr = '';
-      try{ localStorage.setItem('cache-pump', JSON.stringify({ t:Date.now(), d:pumpRows, p:pumpParts })); }catch(e){}
+      pumpRows = data.rows; pumpLoaded = true; pumpErr = '';
+      try{ localStorage.setItem('cache-pump', JSON.stringify({ t:Date.now(), d:pumpRows })); }catch(e){}
     } else pumpErr = (data && data.error) || 'bad_response';
   }catch(e){ pumpErr = pumpRows.length ? 'offline' : 'fail'; }
   pumpLoading = false;
@@ -5201,19 +5220,18 @@ async function pumpRefreshAll(){
 /* ---- 교체 등록 창 (부품 사용 등록에서 호출) ---- */
 function showPumpSwapModal(part){
   const lines = LOCATION_LIST.filter(x => /^[12]F-\d+호기$/.test(x));
-  const saved = (function(){ try{ return localStorage.getItem('msds-worker') || ''; }catch(e){ return ''; } })();
   const st = Number(part['현재고']) || 0;
   const ov = document.createElement('div');
   ov.className = 'repair-popup-overlay';
   const chips = (arr, name) => arr.map((x, i) => '<button type="button" class="pchip" data-pg="' + name + '" data-v="' + escapeAttr(x[0]) + '">' + escapeHtml(PP(x[0], x[1])) + '</button>').join('');
   ov.innerHTML = '<div class="repair-popup pump-pop" role="dialog" aria-modal="true">' +
     '<div style="font-weight:700;font-size:15px;">' + escapeHtml(PP('A2VK12CC 펌프 교체', 'A2VK12CC pump swap')) + '</div>' +
-    '<div class="pump-sub">' + escapeHtml(PP('예비 재고', 'Spare stock')) + ' <b>' + st + '</b> → <b>' + Math.max(0, st - 1) + '</b> · ' + escapeHtml(PP('수리 대기 +1', 'Awaiting repair +1')) + '</div>' +
+    '<div class="pump-sub">' + escapeHtml(PP('재고', 'Stock')) + ' <b>' + st + '</b> → <b>' + Math.max(0, st - 1) + '</b> · ' + escapeHtml(PP('수리 대기 +1', 'Awaiting repair +1')) + '</div>' +
     '<label class="pump-l">' + escapeHtml(PP('교체한 호기', 'Unit')) + '</label>' +
     '<select id="pwLine" class="pump-in"><option value="">' + escapeHtml(PP('선택', 'Select')) + '</option>' + lines.map(x => '<option>' + escapeHtml(x) + '</option>').join('') + '</select>' +
     '<label class="pump-l">' + escapeHtml(PP('고장 사유', 'Reason')) + '</label><div class="pchips">' + chips(PUMP_REASONS, 'reason') + '</div>' +
     '<label class="pump-l">' + escapeHtml(PP('설치 원료', 'Material')) + '</label><div class="pchips">' + chips([['POL','POL'],['MDI','MDI']], 'mat') + '</div>' +
-    '<label class="pump-l">' + escapeHtml(t('usageWorkerLabel')) + '</label><input id="pwWorker" class="pump-in" type="text" value="' + escapeAttr(saved) + '" placeholder="' + escapeAttr(t('usageWorkerPlaceholder')) + '">' +
+    '<label class="pump-l">' + escapeHtml(t('usageWorkerLabel')) + '</label><input id="pwWorker" class="pump-in" type="text" placeholder="' + escapeAttr(t('usageWorkerPlaceholder')) + '">' +
     '<label class="pump-l">' + escapeHtml(t('usageMemoLabel')) + '</label><input id="pwMemo" class="pump-in" type="text" maxlength="100" placeholder="' + escapeAttr(t('usageMemoPlaceholder')) + '">' +
     '<div id="pwErr" class="pump-err" style="display:none"></div>' +
     '<div style="display:flex;gap:8px;margin-top:14px;"><button class="repair-popup-btn" id="pwOk" style="flex:1;">' + escapeHtml(PP('교체 등록', 'Register swap')) + '</button><button class="restart-btn" id="pwNo">' + escapeHtml(t('usageCancel')) + '</button></div></div>';
@@ -5240,7 +5258,6 @@ function showPumpSwapModal(part){
     try{
       const r = await pumpPost({ type:'pump_swap', line, worker, reason: sel.reason, material: sel.mat, memo: ov.querySelector('#pwMemo').value.trim() });
       if(!r || !r.ok){ btn.disabled = false; btn.textContent = PP('교체 등록', 'Register swap'); return err(pumpErrMsg(r && r.error)); }
-      try{ localStorage.setItem('msds-worker', worker); }catch(e){}
       close();
       showIconPopup('✅', PP(line + ' 펌프 교체를 등록했습니다.' + (r.life !== '' && r.life != null ? ' (직전 수명 ' + r.life + '일)' : '') + ' 수리 대기에 추가되었습니다.', 'Swap registered for ' + line + '. Added to the repair queue.'));
       pumpRefreshAll();
@@ -5261,7 +5278,7 @@ function renderPump(){
   if(pumpTab === 'status') h += pumpStatusHtml();
   else if(pumpTab === 'queue') h += pumpQueueHtml();
   else if(pumpTab === 'hist') h += pumpHistHtml();
-  else h += pumpKitHtml();
+  else h += pumpCatalogHtml();
   root.innerHTML = h;
 }
 function pumpStatusHtml(){
@@ -5271,7 +5288,7 @@ function pumpStatusHtml(){
   const spareN = sp ? (Number(sp['현재고']) || 0) : null;
   const cards = [
     [PP('설치 중', 'Installed'), inst.total || (equipRows.length ? 0 : '–'), PP('대', 'pcs')],
-    [PP('예비 펌프 재고', 'Spare pumps'), spareN == null ? '–' : spareN, PP('대', 'pcs')],
+    [PP('펌프 재고', 'Pumps in stock'), spareN == null ? '–' : spareN, PP('대', 'pcs')],
     [PP('수리 대기', 'Awaiting repair'), pend.length, PP('대', 'pcs')],
     [PP('올해 수리 완료', 'Repaired ' + yr), doneY, PP('건', '')]
   ];
@@ -5290,15 +5307,11 @@ function pumpStatusHtml(){
     h += '</tbody></table></div>';
   }
   h += '</div>';
-  const low = pumpParts.filter(p => p.min > 0 && p.stock < p.min);
-  if(low.length) h += '<div class="card"><h3>' + escapeHtml(PP('수리 부품 재고 부족', 'Low repair-part stock')) + '</h3>' + low.map(x => '<div class="lrow"><div class="lrow-main"><div class="lrow-t">' + escapeHtml(x.name) + '</div></div><div class="lrow-n" style="color:var(--danger)">' + x.stock + '<small> / ' + x.min + '</small></div></div>').join('') + '</div>';
   return h;
 }
 function pumpQueueHtml(){
   const pend = pumpPending();
-  const sp = pumpSpare(); const repN = sp ? (Number(sp['수리중수량']) || 0) : 0;
-  let h = '<div class="card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><h3 style="margin:0;flex:1">' + escapeHtml(PP('수리 대기', 'Awaiting repair')) + ' · ' + pend.length + '</h3><button type="button" class="restart-btn" data-pi-open>' + escapeHtml(PP('+ 기존 건 가져오기', '+ Import existing')) + '</button></div>';
-  if(sp && repN > pend.length) h += '<div class="pump-warn">' + escapeHtml(PP('부품 조회에는 수리 중이 ' + repN + '대인데 이 목록에는 ' + pend.length + '대입니다. 이 화면을 만들기 전에 사용 등록한 건은 [+ 기존 건 가져오기]로 호기를 지정해 추가하세요.', 'Parts lookup shows ' + repN + ' in repair but this list has ' + pend.length + '. Add older ones with [+ Import existing].')) + '</div>';
+  let h = '<div class="card"><h3>' + escapeHtml(PP('수리 대기', 'Awaiting repair')) + ' · ' + pend.length + '</h3>';
   if(!pend.length) h += '<div class="empty-note">' + escapeHtml(PP('수리 대기 중인 펌프가 없습니다. 교체는 [부품 사용 등록]에서 "A2VK12CC"를 선택해 등록합니다.', 'No pumps waiting. Register swaps via Parts usage → "A2VK12CC".')) + '</div>';
   else h += pend.map(r => {
     const on = r['접수번호'] === pumpSelId;
@@ -5309,34 +5322,70 @@ function pumpQueueHtml(){
   if(sel) h += pumpFormHtml(sel);
   return h;
 }
-function pumpCostAuto(){
-  const f = pumpForm; if(!f) return 0;
-  return (f.kinds.has(PUMP_KINDS[0][0]) ? PUMP_BASE_COST : 0) + (f.sanding ? PUMP_SAND_COST : 0);
+
+function pumpCat(id){ return PUMP_CATALOG.find(c => c[0] === id); }
+
+function pumpUsd(){ return Math.round(pumpForm.extras.reduce((t, x) => { const c = pumpCat(x.id); return t + (c ? x.qty * c[4] : 0); }, 0) * 100) / 100; }
+function pumpRate(){ const r = Number(pumpForm.rate); return isFinite(r) && r > 0 ? r : 0; }
+function pumpExtraCost(){ return Math.round(pumpUsd() * pumpRate()); }
+function pumpCostAuto(){ return PUMP_BASE_COST + (pumpForm.sanding ? PUMP_SAND_COST : 0) + pumpExtraCost(); }
+const fmtUsd = n => '$' + (Number(n) || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+function pumpCostTotal(){ return Math.max(0, pumpCostAuto() + (pumpForm.adjust || 0)); }
+function pumpExtrasHtml(){
+  const f = pumpForm;
+  if(!f.extras.length) return '<div class="pump-sub">' + escapeHtml(PP('추가로 교체한 부품이 없으면 비워 두세요.', 'Leave empty if no extra parts were replaced.')) + '</div>';
+  return f.extras.map((x, i) => { const c = pumpCat(x.id); const usd = Math.round(x.qty * c[4] * 100) / 100;
+    return '<div class="px-row"><div class="px-name"><span class="mono"><b>' + escapeHtml(c[0]) + '</b></span> ' + escapeHtml(c[2]) + '<div class="pump-sub">' + escapeHtml(c[1]) + ' · $' + c[4] + '</div></div>' +
+      '<input type="number" class="pump-qty pf-xq" min="1" max="99" data-xi="' + i + '" value="' + x.qty + '"><div class="mono px-won">' + fmtUsd(usd) + '</div>' +
+      '<button type="button" class="px-del" data-xr="' + i + '" aria-label="' + escapeAttr(PP('삭제', 'Remove')) + '">×</button></div>'; }).join('');
 }
+
+function pumpBreakHtml(){
+  const f = pumpForm, usd = pumpUsd(), rate = pumpRate(), adj = f.adjust || 0;
+  let t = escapeHtml(PP('기본 세트', 'Base set')) + ' ' + fmtWon(PUMP_BASE_COST) + (f.sanding ? ' + ' + escapeHtml(PP('샌딩·착색', 'Sand/color')) + ' ' + fmtWon(PUMP_SAND_COST) : '');
+  if(usd) t += ' + ' + escapeHtml(PP('달러 부품', 'USD parts')) + ' ' + fmtUsd(usd) + (rate ? ' × ' + fmtWon(rate) + ' = ' + fmtWon(Math.round(usd * rate)) : ' <span style="color:var(--danger)">(' + escapeHtml(PP('환율을 입력하면 원화에 합산됩니다', 'enter the rate to add to KRW total')) + ')</span>');
+  if(adj) t += ' ' + (adj > 0 ? '+ ' : '− ') + escapeHtml(PP('직접 조정', 'Adjust')) + ' ' + fmtWon(Math.abs(adj));
+  return t;
+}
+function pumpUpdateForm(){
+  const e = document.getElementById('pfExtras'); if(e) e.innerHTML = pumpExtrasHtml();
+  const c = document.getElementById('pfCost'); if(c) c.value = pumpCostTotal();
+  const b = document.getElementById('pfBreak'); if(b) b.innerHTML = pumpBreakHtml();
+  const u = document.getElementById('pfUsd'); if(u) u.textContent = fmtUsd(pumpUsd());
+}
+function pumpSearchHtml(q){
+  q = String(q || '').trim().toLowerCase();
+  if(!q) return '';
+  const sc = c => { const id = c[0].toLowerCase(); if(id === q) return 0; if(id.indexOf(q) === 0) return 1; if((c[1] + ' ' + c[2]).toLowerCase().indexOf(q) !== -1) return 2; return 9; };
+  const hits = PUMP_CATALOG.map(c => [sc(c), c]).filter(x => x[0] < 9).sort((a, b) => a[0] - b[0]);
+  if(!hits.length) return '<div class="pump-sub">' + escapeHtml(PP('검색 결과가 없습니다.', 'No match.')) + '</div>';
+  return hits.slice(0, 8).map(x => { const c = x[1]; const added = pumpForm.extras.some(e => e.id === c[0]);
+    return '<button type="button" class="px-hit' + (added ? ' on' : '') + '" data-xa="' + escapeAttr(c[0]) + '"><span class="mono"><b>' + escapeHtml(c[0]) + '</b></span> ' + escapeHtml(c[2]) + ' <span class="pump-sub">' + escapeHtml(c[1]) + ' · ' + c[3] + PP('개', 'pcs') + ' · $' + c[4] + '</span>' + (added ? ' ✓' : '') + '</button>'; }).join('') +
+    (hits.length > 8 ? '<div class="pump-sub">' + escapeHtml(PP('외 ' + (hits.length - 8) + '건 — 검색어를 더 입력하세요.', (hits.length - 8) + ' more — refine your search.')) + '</div>' : '');
+}
+
 function pumpFormHtml(sel){
   const f = pumpForm;
   let h = '<div class="card" id="pumpForm"><h3>' + escapeHtml(PP('수리 완료 기록', 'Repair completion')) + ' · ' + escapeHtml(sel['탈거호기']) + '</h3>';
-  h += '<div class="pump-l">' + escapeHtml(PP('수리 내용', 'Work done')) + '</div><div class="pchips">' + PUMP_KINDS.map(k => '<button type="button" class="pchip' + (f.kinds.has(k[0]) ? ' on' : '') + '" data-pk="' + escapeAttr(k[0]) + '">' + escapeHtml(PP(k[0], k[1])) + '</button>').join('') + '</div>';
-  h += '<label class="pump-chk"><input type="checkbox" id="pfSand"' + (f.sanding ? ' checked' : '') + '> ' + escapeHtml(PP('샌딩·착색 포함', 'Sanding & coloring')) + ' <span class="mono">+' + fmtWon(PUMP_SAND_COST) + '</span></label>';
-  h += '<div class="pump-l">' + escapeHtml(PP('사용 부품 (저장 시 수리 부품 재고에서 차감)', 'Parts used (deducted from repair-part stock)')) + '</div><div class="ptable-wrap"><table class="ptable"><tbody>';
-  if(!f.parts.length) h += '<tr><td class="pump-sub">' + escapeHtml(PP('수리 부품이 없습니다. [수리 부품 재고] 탭에서 추가하세요.', 'No parts. Add them in the Repair parts tab.')) + '</td></tr>';
-  f.parts.forEach((p, i) => {
-    h += '<tr><td><div class="mono"><b>' + escapeHtml(p.name) + '</b></div><div class="pump-sub">' + escapeHtml(p.pos || '') + ' · ' + escapeHtml(PP('재고', 'Stock')) + ' ' + p.stock + '</div></td>' +
-      '<td style="text-align:right"><input type="number" class="pump-qty" min="0" max="99" data-pi="' + i + '" value="' + p.qty + '"></td></tr>';
-  });
-  h += '</tbody></table></div>';
+  h += '<details class="pump-base" style="display:block"><summary style="display:flex;align-items:center;gap:6px;cursor:pointer"><b>' + escapeHtml(PP(PUMP_BASE_SET, 'Inner bearing set replacement')) + '</b> <span class="pump-sub">' + escapeHtml(PP('(필수 ' + PUMP_BASE_PARTS.length + '종 자동 포함)', '(' + PUMP_BASE_PARTS.length + ' required parts, auto)')) + '</span><span class="mono" style="margin-left:auto">' + fmtWon(PUMP_BASE_COST) + '</span></summary>' + pumpBaseListHtml() + '</details>';
+  h += '<label class="pump-chk"><input type="checkbox" id="pfSand"' + (f.sanding ? ' checked' : '') + '> ' + escapeHtml(PP('샌딩·착색 포함 (급한 수리는 해제)', 'Sanding & coloring (uncheck if rushed)')) + ' <span class="mono" style="margin-left:auto">+' + fmtWon(PUMP_SAND_COST) + '</span></label>';
+  h += '<div class="pump-l">' + escapeHtml(PP('추가로 교체한 부품 (번호·이름 검색)', 'Extra parts replaced (search by no./name)')) + '</div>';
+  h += '<input id="pfSearch" class="pump-in" type="search" autocomplete="off" placeholder="' + escapeAttr(PP('예: 27, cylinder, 실린더', 'e.g. 27, cylinder')) + '"><div id="pfResults" class="px-results"></div>';
+  h += '<div id="pfExtras" style="margin-top:6px">' + pumpExtrasHtml() + '</div>';
   h += '<div class="pump-l">' + escapeHtml(PP('시험 결과', 'Test result')) + '</div><div class="pchips">' + PUMP_TESTS.map(k => '<button type="button" class="pchip' + (f.test === k[0] ? ' on' : '') + '" data-pt2="' + escapeAttr(k[0]) + '">' + escapeHtml(PP(k[0], k[1])) + '</button>').join('') + '</div>';
-  h += '<div class="pump-l">' + escapeHtml(PP('수리비 (원)', 'Cost (KRW)')) + '</div><input id="pfCost" class="pump-in" type="number" min="0" value="' + (f.cost == null ? pumpCostAuto() : f.cost) + '">';
+  h += '<div class="pump-l">' + escapeHtml(PP('달러 부품 합계 / 적용 환율 (원/USD)', 'USD parts total / exchange rate (KRW per USD)')) + '</div><div style="display:flex;align-items:center;gap:10px"><span class="mono" id="pfUsd" style="min-width:80px;font-weight:700">' + fmtUsd(pumpUsd()) + '</span><input id="pfRate" class="pump-in" type="number" min="0" step="0.01" inputmode="decimal" placeholder="' + escapeAttr(PP('환율 입력', 'Enter rate')) + '" value="' + escapeAttr(f.rate) + '"></div>';
+  h += '<div class="pump-l">' + escapeHtml(PP('수리비 (원화 합계, 부가세 별도)', 'Cost (KRW total, excl. VAT)')) + '</div><input id="pfCost" class="pump-in" type="number" min="0" value="' + pumpCostTotal() + '">';
+  h += '<div id="pfBreak" class="pump-sub" style="margin-top:4px">' + pumpBreakHtml() + '</div>';
   h += '<div class="pump-l">' + escapeHtml(PP('메모', 'Memo')) + '</div><input id="pfMemo" class="pump-in" type="text" maxlength="100" value="' + escapeAttr(f.memo) + '">';
   h += '<div class="pump-sub" style="margin-top:8px">' + escapeHtml(PP('수리자', 'Repairer')) + ': <b>' + escapeHtml(PUMP_REPAIRER) + '</b></div>';
   h += '<div id="pfErr" class="pump-err" style="display:none"></div>';
-  h += '<div style="display:flex;gap:8px;margin-top:12px;"><button class="repair-popup-btn" id="pfOk" style="flex:1;">' + escapeHtml(PP('수리 완료 → 예비 재고로', 'Done → back to spare stock')) + '</button><button class="restart-btn" id="pfCancel">' + escapeHtml(PP('교체 취소', 'Cancel swap')) + '</button></div></div>';
+  h += '<div style="display:flex;gap:8px;margin-top:12px;"><button class="repair-popup-btn" id="pfOk" style="flex:1;">' + escapeHtml(PP('수리 완료 → 재고로', 'Done → back to stock')) + '</button><button class="restart-btn" id="pfCancel">' + escapeHtml(PP('교체 취소', 'Cancel swap')) + '</button></div></div>';
   return h;
 }
+
 function pumpOpenForm(id){
   pumpSelId = id;
-  pumpForm = { kinds:new Set([PUMP_KINDS[0][0]]), sanding:false, test:PUMP_TESTS[0][0], cost:null, memo:'',
-    parts: pumpParts.map(k => ({ name:k.name, pos:k.pos, qty:k.kit, stock:k.stock })) };
+  pumpForm = { sanding:true, test:PUMP_TESTS[0][0], adjust:0, memo:'', extras:[], rate:'' };
   renderPump();
   const el = document.getElementById('pumpForm'); if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
 }
@@ -5349,127 +5398,45 @@ function pumpHistHtml(){
   const lns = Array.from(new Set(all.map(r => r['탈거호기']))).sort();
   const rows = pumpHistRows();
   const cost = rows.reduce((s, r) => s + (Number(r['수리비']) || 0), 0);
+  const usdT = rows.reduce((s, r) => s + (Number(r['USD부품비']) || 0), 0);
   let h = '<div class="pump-filters"><select id="phYear" class="pump-in"><option value="">' + escapeHtml(PP('전체 연도', 'All years')) + '</option>' + years.map(y => '<option' + (pumpFilter.year === y ? ' selected' : '') + '>' + y + '</option>').join('') + '</select>' +
     '<select id="phLine" class="pump-in"><option value="">' + escapeHtml(PP('전체 호기', 'All units')) + '</option>' + lns.map(y => '<option' + (pumpFilter.line === y ? ' selected' : '') + '>' + escapeHtml(y) + '</option>').join('') + '</select>' +
     '<button type="button" class="restart-btn" id="phCsv">' + escapeHtml(PP('CSV 내려받기', 'Download CSV')) + '</button></div>';
-  h += '<div class="pump-cards"><div class="pump-card"><div class="pc-l">' + escapeHtml(PP('수리 건수', 'Repairs')) + '</div><div class="pc-v">' + rows.length + '</div></div><div class="pump-card"><div class="pc-l">' + escapeHtml(PP('수리비 합계', 'Total cost')) + '</div><div class="pc-v">' + fmtWon(cost) + '<small> ' + PP('원', 'KRW') + '</small></div></div></div>';
+  h += '<div class="pump-cards"><div class="pump-card"><div class="pc-l">' + escapeHtml(PP('수리 건수', 'Repairs')) + '</div><div class="pc-v">' + rows.length + '</div></div><div class="pump-card"><div class="pc-l">' + escapeHtml(PP('수리비 합계 (부가세 별도)', 'Total cost (excl. VAT)')) + '</div><div class="pc-v">' + fmtWon(cost) + '<small> ' + PP('원', 'KRW') + '</small></div></div><div class="pump-card"><div class="pc-l">' + escapeHtml(PP('달러 부품비 합계', 'USD parts total')) + '</div><div class="pc-v">' + fmtUsd(usdT) + '</div></div></div>';
   if(!rows.length) return h + '<div class="empty-note">' + escapeHtml(PP('수리 이력이 없습니다.', 'No repair history.')) + '</div>';
-  h += '<div class="card" style="padding:6px 0"><div class="ptable-wrap"><table class="ptable"><thead><tr><th>' + PP('수리일', 'Date') + '</th><th>' + PP('호기', 'Unit') + '</th><th>' + PP('수리 내용', 'Work') + '</th><th>' + PP('수명', 'Life') + '</th><th style="text-align:right">' + PP('수리비', 'Cost') + '</th><th>' + PP('원료', 'Mat.') + '</th><th>' + PP('시험', 'Test') + '</th></tr></thead><tbody>';
+  h += '<div class="card" style="padding:6px 0"><div class="ptable-wrap"><table class="ptable"><thead><tr><th>' + PP('수리일', 'Date') + '</th><th>' + PP('호기', 'Unit') + '</th><th>' + PP('수리 내용', 'Work') + '</th><th>' + PP('수명', 'Life') + '</th><th style="text-align:right">' + PP('수리비(원, VAT별도)', 'Cost (KRW, excl. VAT)') + '</th><th style="text-align:right">' + PP('달러 부품', 'USD parts') + '</th><th>' + PP('원료', 'Mat.') + '</th><th>' + PP('시험', 'Test') + '</th></tr></thead><tbody>';
   rows.forEach(r => {
-    h += '<tr><td class="mono">' + escapeHtml(String(r['수리일시']).slice(0, 10)) + '</td><td class="mono"><b>' + escapeHtml(r['탈거호기']) + '</b></td><td>' + escapeHtml(r['수리내용'] || '') + (r['샌딩착색'] ? ' / ' + PP('샌딩,착색', 'sand/color') : '') + '</td><td class="mono">' + (r['직전수명(일)'] === '' ? '–' : escapeHtml(String(r['직전수명(일)'])) + PP('일', 'd')) + '</td><td class="mono" style="text-align:right">' + fmtWon(r['수리비']) + '</td><td>' + escapeHtml(r['설치원료'] || '–') + '</td><td>' + escapeHtml(r['시험결과'] || '') + '</td></tr>';
+    h += '<tr><td class="mono">' + escapeHtml(String(r['수리일시']).slice(0, 10)) + '</td><td class="mono"><b>' + escapeHtml(r['탈거호기']) + '</b></td><td>' + escapeHtml(r['수리내용'] || '') + (r['샌딩착색'] ? ' / ' + PP('샌딩,착색', 'sand/color') : '') + '</td><td class="mono">' + (r['직전수명(일)'] === '' ? '–' : escapeHtml(String(r['직전수명(일)'])) + PP('일', 'd')) + '</td><td class="mono" style="text-align:right">' + fmtWon(r['수리비']) + '</td><td class="mono" style="text-align:right">' + (Number(r['USD부품비']) ? fmtUsd(r['USD부품비']) + (Number(r['적용환율']) ? '<div class="pump-sub">@' + fmtWon(r['적용환율']) + '</div>' : '') : '–') + '</td><td>' + escapeHtml(r['설치원료'] || '–') + '</td><td>' + escapeHtml(r['시험결과'] || '') + '</td></tr>';
   });
   return h + '</tbody></table></div></div>';
 }
 function pumpCsv(){
   const rows = pumpHistRows();
-  const head = ['접수번호','접수일시','탈거호기','고장사유','교체자','설치원료','직전수명(일)','수리일시','수리내용','샌딩착색','사용부품','수리비','시험결과','수리자','메모'];
+  const head = ['접수번호','접수일시','탈거호기','고장사유','교체자','설치원료','직전수명(일)','수리일시','수리내용','샌딩착색','사용부품','수리비','USD부품비','적용환율','시험결과','수리자','메모'];
   const q = v => { let s = String(v == null ? '' : v); if(/^[=+\-@]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
-  const csv = '﻿' + [head.map(q).join(',')].concat(rows.map(r => head.map(h => q(r[h])).join(','))).join('\r\n');
+  const csv = '﻿' + [head.map(h => q(h === '수리비' ? '수리비(원,부가세별도)' : (h === 'USD부품비' ? '달러부품비(USD)' : h))).join(',')].concat(rows.map(r => head.map(h => q(r[h])).join(','))).join('\r\n');
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([csv], { type:'text/csv;charset=utf-8' }));
   a.download = 'A2VK_pump_repairs.csv';
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 2000);
 }
-function pumpKitHtml(){
-  let h = '<div class="card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><h3 style="margin:0;flex:1">' + escapeHtml(PP('수리 부품 재고', 'Repair parts stock')) + '</h3><button type="button" class="restart-btn" data-pp-add>' + escapeHtml(PP('+ 부품 추가', '+ Add part')) + '</button></div>';
-  h += '<div class="pump-sub" style="margin:0 0 8px">' + escapeHtml(PP('부품 조회와 별도로 이 화면에서만 관리합니다. 수리 완료를 저장하면 사용 수량만큼 자동 차감됩니다.', 'Managed only here (separate from Parts lookup). Deducted automatically on repair completion.')) + '</div>';
-  if(!pumpParts.length) h += '<div class="empty-note">' + escapeHtml(pumpLoaded ? PP('등록된 부품이 없습니다.', 'No parts yet.') : PP('불러오는 중...', 'Loading...')) + '</div>';
-  else {
-    h += '<div class="ptable-wrap"><table class="ptable"><thead><tr><th>' + PP('부품', 'Part') + '</th><th>' + PP('위치', 'Position') + '</th><th style="text-align:right">' + PP('재고', 'Stock') + '</th><th style="text-align:right">' + PP('최소', 'Min') + '</th><th style="text-align:right">' + PP('1대당', 'Per pump') + '</th><th></th></tr></thead><tbody>';
-    pumpParts.forEach((p, i) => {
-      const low = p.min > 0 && p.stock < p.min;
-      h += '<tr><td class="mono"><b>' + escapeHtml(p.name) + '</b></td><td>' + escapeHtml(p.pos) + '</td><td class="mono" style="text-align:right' + (low ? ';color:var(--danger);font-weight:700' : '') + '">' + p.stock + '</td><td class="mono" style="text-align:right">' + p.min + '</td><td class="mono" style="text-align:right">' + p.kit + '</td>' +
-        '<td style="white-space:nowrap;text-align:right"><button type="button" class="pchip" style="min-height:34px" data-pp-in="' + i + '">' + escapeHtml(PP('입고', 'Add')) + '</button> <button type="button" class="pchip" style="min-height:34px" data-pp-adj="' + i + '">' + escapeHtml(PP('조정', 'Set')) + '</button> <button type="button" class="pchip" style="min-height:34px" data-pp-edit="' + i + '">' + escapeHtml(PP('수정', 'Edit')) + '</button></td></tr>';
-    });
-    h += '</tbody></table></div>';
-  }
-  h += '<div class="pump-sub" style="margin-top:8px">' + escapeHtml(PP('기본 수리비 ' + fmtWon(PUMP_BASE_COST) + '원, 샌딩·착색 +' + fmtWon(PUMP_SAND_COST) + '원. "1대당"은 수리 완료 화면의 기본 사용 수량입니다.', 'Base cost ' + fmtWon(PUMP_BASE_COST) + ', sanding/coloring +' + fmtWon(PUMP_SAND_COST) + '. "Per pump" is the default qty on the completion form.')) + '</div></div>';
+
+function pumpCatalogHtml(){
+  let h = '<div class="card"><h3>' + escapeHtml(PP('수리 부품 목록 (A2VK 12cc)', 'Part list (A2VK 12cc)')) + '</h3>';
+  h += '<div class="pump-sub" style="margin:0 0 8px">' + escapeHtml(PP('Gelan 부품 견적서(2025-03-21) 기준, 단가는 달러(USD)입니다. 수리 완료 화면에서 번호로 검색해 추가하고, 환율을 입력하면 원화로 합산됩니다.', 'Per Gelan quotation (2025-03-21), unit prices in USD. Add parts on the completion form and enter the rate to convert.')) + '</div>';
+  h += '<details class="pump-base" style="display:block;margin-bottom:8px"><summary style="cursor:pointer"><b>' + escapeHtml(PP('기본 세트 — 모든 수리에 필수 교체', 'Base set — replaced in every repair')) + '</b> <span class="mono" style="float:right">' + fmtWon(PUMP_BASE_COST) + '</span></summary>' + pumpBaseListHtml() + '</details>';
+  h += '<input id="pcSearch" class="pump-in" type="search" autocomplete="off" placeholder="' + escapeAttr(PP('번호 또는 부품명 검색', 'Search no. or name')) + '" style="margin-bottom:8px">';
+  h += '<div class="ptable-wrap"><table class="ptable"><thead><tr><th>' + PP('번호', 'No.') + '</th><th>' + PP('부품', 'Part') + '</th><th style="text-align:right">' + PP('구성', 'Qty') + '</th><th style="text-align:right">USD</th></tr></thead><tbody id="pcBody">' + pumpCatalogRows('') + '</tbody></table></div>';
+  h += '<div class="pump-sub" style="margin-top:8px">' + escapeHtml(PP('기본 수리비(부가세 별도) ' + fmtWon(PUMP_BASE_COST) + '원 — 내부 베어링 세트는 모든 수리에 자동 포함됩니다. 샌딩·착색 +' + fmtWon(PUMP_SAND_COST) + '원.', 'Base cost (excl. VAT) ' + fmtWon(PUMP_BASE_COST) + ' — included in every repair. Sanding/coloring +' + fmtWon(PUMP_SAND_COST) + '.')) + '</div></div>';
   return h;
 }
-function showPumpImportModal(){
-  const lines = LOCATION_LIST.filter(x => /^[12]F-\d+호기$/.test(x));
-  const saved = (function(){ try{ return localStorage.getItem('msds-worker') || ''; }catch(e){ return ''; } })();
-  const todayStr = (function(){ const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); })();
-  const ov = document.createElement('div'); ov.className = 'repair-popup-overlay';
-  const chips = (arr, name) => arr.map(x => '<button type="button" class="pchip" data-pg="' + name + '" data-v="' + escapeAttr(x[0]) + '">' + escapeHtml(PP(x[0], x[1])) + '</button>').join('');
-  ov.innerHTML = '<div class="repair-popup pump-pop" role="dialog" aria-modal="true">' +
-    '<div style="font-weight:700;font-size:15px;">' + escapeHtml(PP('기존 수리 중 펌프 가져오기', 'Import pump already in repair')) + '</div>' +
-    '<div class="pump-sub">' + escapeHtml(PP('이미 부품 사용 등록으로 재고가 차감된 펌프입니다. 재고는 바뀌지 않고 수리 대기 목록에만 추가됩니다.', 'Stock was already deducted. Only the repair queue is updated.')) + '</div>' +
-    '<label class="pump-l">' + escapeHtml(PP('탈거한 호기', 'Unit')) + '</label><select id="piLine" class="pump-in"><option value="">' + escapeHtml(PP('선택', 'Select')) + '</option>' + lines.map(x => '<option>' + escapeHtml(x) + '</option>').join('') + '</select>' +
-    '<label class="pump-l">' + escapeHtml(PP('탈거일', 'Date')) + '</label><input id="piDate" type="date" class="pump-in" max="' + todayStr + '" value="' + todayStr + '">' +
-    '<label class="pump-l">' + escapeHtml(PP('고장 사유', 'Reason')) + '</label><div class="pchips">' + chips(PUMP_REASONS, 'reason') + '</div>' +
-    '<label class="pump-l">' + escapeHtml(PP('설치 원료', 'Material')) + '</label><div class="pchips">' + chips([['POL','POL'],['MDI','MDI']], 'mat') + '</div>' +
-    '<label class="pump-l">' + escapeHtml(t('usageWorkerLabel')) + '</label><input id="piWorker" class="pump-in" maxlength="30" value="' + escapeAttr(saved) + '" placeholder="' + escapeAttr(t('usageWorkerPlaceholder')) + '">' +
-    '<div id="piErr" class="pump-err"></div>' +
-    '<div style="display:flex;gap:8px;margin-top:14px;"><button class="repair-popup-btn" id="piOk" style="flex:1;">' + escapeHtml(PP('가져오기', 'Import')) + '</button><button class="restart-btn" id="piNo">' + escapeHtml(t('usageCancel')) + '</button></div></div>';
-  document.body.appendChild(ov);
-  const sel = { reason:'', mat:'' };
-  const close = () => ov.remove();
-  ov.addEventListener('click', e => {
-    if(e.target === ov){ close(); return; }
-    const b = e.target.closest('.pchip');
-    if(b){ const g = b.getAttribute('data-pg'), v = b.getAttribute('data-v'); sel[g] = sel[g] === v ? '' : v; ov.querySelectorAll('.pchip[data-pg="' + g + '"]').forEach(x => x.classList.toggle('on', x.getAttribute('data-v') === sel[g])); }
-  });
-  ov.querySelector('#piNo').addEventListener('click', close);
-  const err = m => { const e = ov.querySelector('#piErr'); e.textContent = m; e.style.display = 'block'; };
-  ov.querySelector('#piOk').addEventListener('click', async () => {
-    const line = ov.querySelector('#piLine').value, worker = ov.querySelector('#piWorker').value.trim(), date = ov.querySelector('#piDate').value;
-    if(!line) return err(PP('호기를 선택하세요.', 'Select a unit.'));
-    if(!worker) return err(PP('담당자를 입력하세요.', 'Enter the worker name.'));
-    const btn = ov.querySelector('#piOk'); btn.disabled = true;
-    try{
-      const r = await pumpPost({ type:'pump_import', line, worker, reason:sel.reason, material:sel.mat, date });
-      if(!r || !r.ok){ btn.disabled = false; return err(pumpErrMsg(r && r.error)); }
-      try{ localStorage.setItem('msds-worker', worker); }catch(e){}
-      close(); await pumpRefreshAll();
-    }catch(e){ btn.disabled = false; err(PP('통신 오류입니다. 목록을 확인한 뒤 다시 시도하세요. (중복 등록 주의)', 'Network error. Check the list before retrying.')); }
-  });
+function pumpCatalogRows(q){
+  q = String(q || '').trim().toLowerCase();
+  const rows = PUMP_CATALOG.filter(c => !q || (c[0] + ' ' + c[1] + ' ' + c[2]).toLowerCase().indexOf(q) !== -1);
+  if(!rows.length) return '<tr><td colspan="4" class="pump-sub">' + escapeHtml(PP('검색 결과가 없습니다.', 'No match.')) + '</td></tr>';
+  return rows.map(c => '<tr><td class="mono"><b>' + escapeHtml(c[0]) + '</b></td><td>' + escapeHtml(c[2]) + '<div class="pump-sub">' + escapeHtml(c[1]) + '</div></td><td class="mono" style="text-align:right">' + c[3] + '</td><td class="mono" style="text-align:right">' + c[4] + '</td></tr>').join('');
 }
-function showPumpPartModal(mode, idx){
-  const p = idx != null ? pumpParts[idx] : null;
-  const ov = document.createElement('div'); ov.className = 'repair-popup-overlay';
-  const titles = { add:PP('부품 추가','Add part'), edit:PP('부품 수정','Edit part'), in:PP('입고','Stock in'), adj:PP('재고 조정','Set stock') };
-  let f = '';
-  if(mode === 'add' || mode === 'edit'){
-    f = '<label class="pump-l">' + escapeHtml(PP('부품명', 'Name')) + '</label><input id="ppName" class="pump-in" maxlength="40" value="' + escapeAttr(p ? p.name : '') + '"' + (p ? ' readonly' : '') + '>' +
-        '<label class="pump-l">' + escapeHtml(PP('위치', 'Position')) + '</label><input id="ppPos" class="pump-in" maxlength="30" value="' + escapeAttr(p ? p.pos : '') + '">' +
-        '<label class="pump-l">' + escapeHtml(PP('최소 보유 수량', 'Minimum stock')) + '</label><input id="ppMin" type="number" min="0" class="pump-in" value="' + (p ? p.min : 0) + '">' +
-        '<label class="pump-l">' + escapeHtml(PP('1대 수리당 기본 사용 수량', 'Default qty per repair')) + '</label><input id="ppKit" type="number" min="0" max="99" class="pump-in" value="' + (p ? p.kit : 0) + '">';
-  } else {
-    f = '<div class="pump-sub">' + escapeHtml(p.name) + ' · ' + escapeHtml(PP('현재 재고', 'Current')) + ' <b>' + p.stock + '</b></div>' +
-        '<label class="pump-l">' + escapeHtml(mode === 'in' ? PP('입고 수량', 'Quantity in') : PP('실사 재고 (이 수량으로 변경)', 'Counted stock (set to)')) + '</label><input id="ppQty" type="number" min="' + (mode === 'in' ? 1 : 0) + '" class="pump-in" value="' + (mode === 'in' ? 1 : p.stock) + '">' +
-        '<label class="pump-l">' + escapeHtml(PP('작업자', 'Worker')) + '</label><input id="ppWorker" class="pump-in" maxlength="30" value="' + escapeAttr(PUMP_REPAIRER) + '">' +
-        '<label class="pump-l">' + escapeHtml(PP('메모', 'Memo')) + '</label><input id="ppMemo" class="pump-in" maxlength="60">';
-  }
-  ov.innerHTML = '<div class="repair-popup pump-pop" role="dialog" aria-modal="true"><div style="font-weight:700;font-size:15px;">' + escapeHtml(titles[mode]) + '</div>' + f +
-    '<div id="ppErr" class="pump-err"></div><div style="display:flex;gap:8px;margin-top:14px;"><button class="repair-popup-btn" id="ppOk" style="flex:1;">' + escapeHtml(PP('저장', 'Save')) + '</button><button class="restart-btn" id="ppNo">' + escapeHtml(t('usageCancel')) + '</button></div></div>';
-  document.body.appendChild(ov);
-  const close = () => ov.remove();
-  ov.addEventListener('click', e => { if(e.target === ov) close(); });
-  ov.querySelector('#ppNo').addEventListener('click', close);
-  const err = m => { const e = ov.querySelector('#ppErr'); e.textContent = m; e.style.display = 'block'; };
-  ov.querySelector('#ppOk').addEventListener('click', async () => {
-    let payload;
-    if(mode === 'add' || mode === 'edit'){
-      const name = ov.querySelector('#ppName').value.trim();
-      if(!name) return err(pumpErrMsg('no_name'));
-      payload = { type:'pump_part_save', name, pos:ov.querySelector('#ppPos').value.trim(), min:Number(ov.querySelector('#ppMin').value) || 0, kit:Number(ov.querySelector('#ppKit').value) || 0, mustExist: mode === 'edit' };
-      if(mode === 'add' && pumpParts.some(x => x.name === name)) return err(PP('이미 있는 부품명입니다.', 'Name already exists.'));
-    } else {
-      const q = Number(ov.querySelector('#ppQty').value);
-      if(!isFinite(q) || ov.querySelector('#ppQty').value === '' || (mode === 'in' && q < 1) || q < 0) return err(pumpErrMsg('bad_qty'));
-      payload = { type:'pump_part_move', name:p.name, kind: mode === 'in' ? '입고' : '조정', qty:q, worker:ov.querySelector('#ppWorker').value.trim(), memo:ov.querySelector('#ppMemo').value.trim() };
-    }
-    const btn = ov.querySelector('#ppOk'); btn.disabled = true;
-    try{
-      const r = await pumpPost(payload);
-      if(!r || !r.ok){ btn.disabled = false; return err(pumpErrMsg(r && r.error)); }
-      close(); await loadPump();
-    }catch(e){ btn.disabled = false; err(PP('통신 오류입니다. 다시 시도하세요.', 'Network error. Try again.')); }
-  });
-}
-
 /* ---- 이벤트 ---- */
 document.addEventListener('click', async e => {
   const root = document.getElementById('panel-pump');
@@ -5478,57 +5445,63 @@ document.addEventListener('click', async e => {
   if(tb){ pumpTab = tb.getAttribute('data-pt'); renderPump(); return; }
   const pq = e.target.closest('[data-pq]');
   if(pq){ pumpOpenForm(pq.getAttribute('data-pq')); return; }
-  const pk = e.target.closest('[data-pk]');
-  if(pk && pumpForm){ const v = pk.getAttribute('data-pk'); pumpForm.kinds.has(v) ? pumpForm.kinds.delete(v) : pumpForm.kinds.add(v); pumpSyncCost(); renderPump(); return; }
   const pt2 = e.target.closest('[data-pt2]');
-  if(pt2 && pumpForm){ pumpForm.test = pt2.getAttribute('data-pt2'); renderPump(); return; }
+  if(pt2 && pumpForm){ pumpForm.test = pt2.getAttribute('data-pt2'); root.querySelectorAll('[data-pt2]').forEach(b => b.classList.toggle('on', b === pt2)); return; }
+  const xa = e.target.closest('[data-xa]');
+  if(xa && pumpForm){
+    const id = xa.getAttribute('data-xa'), c = pumpCat(id);
+    if(c && !pumpForm.extras.some(x => x.id === id)) pumpForm.extras.push({ id, qty:c[3] });
+    const si = document.getElementById('pfSearch'); if(si){ si.value = ''; si.focus(); }
+    const rs = document.getElementById('pfResults'); if(rs) rs.innerHTML = '';
+    pumpUpdateForm(); return;
+  }
+  const xr = e.target.closest('[data-xr]');
+  if(xr && pumpForm){ pumpForm.extras.splice(Number(xr.getAttribute('data-xr')), 1); pumpUpdateForm(); return; }
   if(e.target.id === 'phCsv'){ pumpCsv(); return; }
-  if(e.target.closest('[data-pi-open]')){ showPumpImportModal(); return; }
-  const ba = e.target.closest('[data-pp-add]'); if(ba){ showPumpPartModal('add'); return; }
-  const bi = e.target.closest('[data-pp-in]'); if(bi){ showPumpPartModal('in', Number(bi.getAttribute('data-pp-in'))); return; }
-  const bj = e.target.closest('[data-pp-adj]'); if(bj){ showPumpPartModal('adj', Number(bj.getAttribute('data-pp-adj'))); return; }
-  const be = e.target.closest('[data-pp-edit]'); if(be){ showPumpPartModal('edit', Number(be.getAttribute('data-pp-edit'))); return; }
   if(e.target.id === 'pfOk') pumpSubmitDone(e.target);
   if(e.target.id === 'pfCancel') pumpSubmitCancel(e.target);
 });
-function pumpSyncCost(){
-  // 수리비를 직접 고치지 않았다면 자동 계산값 유지
-  if(pumpForm && !pumpForm.costTouched) pumpForm.cost = null;
-}
+document.addEventListener('input', e => {
+  const root = document.getElementById('panel-pump');
+  if(!root || !root.contains(e.target)) return;
+  if(e.target.id === 'pfSearch' && pumpForm){ const rs = document.getElementById('pfResults'); if(rs) rs.innerHTML = pumpSearchHtml(e.target.value); }
+  else if(e.target.id === 'pcSearch'){ const b = document.getElementById('pcBody'); if(b) b.innerHTML = pumpCatalogRows(e.target.value); }
+});
 document.addEventListener('change', e => {
   const root = document.getElementById('panel-pump');
   if(!root || !root.contains(e.target)) return;
   if(e.target.id === 'phYear'){ pumpFilter.year = e.target.value; renderPump(); }
   else if(e.target.id === 'phLine'){ pumpFilter.line = e.target.value; renderPump(); }
-  else if(e.target.id === 'pfSand' && pumpForm){ pumpForm.sanding = e.target.checked; pumpSyncCost(); renderPump(); }
-  else if(e.target.classList && e.target.classList.contains('pump-qty') && pumpForm){ pumpForm.parts[Number(e.target.getAttribute('data-pi'))].qty = Math.max(0, Math.min(99, parseInt(e.target.value) || 0)); }
-  else if(e.target.id === 'pfCost' && pumpForm){ pumpForm.cost = Math.max(0, Number(e.target.value) || 0); pumpForm.costTouched = true; }
+  else if(e.target.id === 'pfSand' && pumpForm){ pumpForm.sanding = e.target.checked; pumpUpdateForm(); }
+  else if(e.target.classList && e.target.classList.contains('pf-xq') && pumpForm){
+    const x = pumpForm.extras[Number(e.target.getAttribute('data-xi'))];
+    if(x){ x.qty = Math.max(1, Math.min(99, parseInt(e.target.value) || 1)); pumpUpdateForm(); }
+  }
+  else if(e.target.id === 'pfRate' && pumpForm){ pumpForm.rate = e.target.value; pumpUpdateForm(); }
+  else if(e.target.id === 'pfCost' && pumpForm){ const v = Math.max(0, Math.round(Number(e.target.value) || 0)); pumpForm.adjust = v - pumpCostAuto(); pumpUpdateForm(); }
   else if(e.target.id === 'pfMemo' && pumpForm){ pumpForm.memo = e.target.value; }
 });
+
 async function pumpSubmitDone(btn){
   const f = pumpForm, sel = pumpPending().find(r => r['접수번호'] === pumpSelId);
   const err = m => { const x = document.getElementById('pfErr'); if(x){ x.textContent = m; x.style.display = 'block'; } };
   if(!f || !sel) return;
-  if(!f.kinds.size) return err(PP('수리 내용을 선택하세요.', 'Select the repair work.'));
-  const costEl = document.getElementById('pfCost'); const memoEl = document.getElementById('pfMemo');
-  const cost = costEl ? Math.max(0, Number(costEl.value) || 0) : pumpCostAuto();
+  const memoEl = document.getElementById('pfMemo');
   const memo = memoEl ? memoEl.value.trim() : f.memo;
-  const parts = f.parts.filter(p => p.qty > 0).map(p => ({ spec:p.name, qty:p.qty }));
-  const kind = PUMP_KINDS.map(k => k[0]).filter(k => f.kinds.has(k)).join(' + ');
-  const over = f.parts.filter(p => p.qty > p.stock);
-  if(over.length) return err(PP('재고가 부족한 부품: ', 'Not enough stock: ') + over.map(p => p.name + ' (' + p.stock + ')').join(', '));
+  const kind = PUMP_BASE_SET + (f.extras.length ? ' + 추가 교체 ' + f.extras.length + '종' : '');
+  const parts = [{ spec:'기본 세트(필수 ' + PUMP_BASE_PARTS.length + '종)', qty:1 }].concat(f.extras.map(x => { const c = pumpCat(x.id); return { spec: c[0] + '.' + c[1] + ' ' + c[2], qty:x.qty }; }));
   btn.disabled = true; const txt = btn.textContent; btn.textContent = PP('저장 중...', 'Saving...');
   try{
-    const r = await pumpPost({ type:'pump_done', id:sel['접수번호'], worker:PUMP_REPAIRER, kind, sanding:f.sanding, test:f.test, cost, memo, parts });
+    const r = await pumpPost({ type:'pump_done', id:sel['접수번호'], worker:PUMP_REPAIRER, kind, sanding:f.sanding, test:f.test, cost:pumpCostTotal(), usd:pumpUsd(), rate:pumpRate(), memo, parts });
     if(!r || !r.ok){ btn.disabled = false; btn.textContent = txt; return err(pumpErrMsg(r && r.error)); }
-    showIconPopup('✅', PP(sel['탈거호기'] + ' 펌프 수리를 기록했습니다. 예비 재고에 +1 반영됩니다.', 'Repair recorded for ' + sel['탈거호기'] + '. Spare stock +1.'));
+    showIconPopup('✅', PP(sel['탈거호기'] + ' 펌프 수리를 기록했습니다. 재고에 +1 반영됩니다.', 'Repair recorded for ' + sel['탈거호기'] + '. Stock +1.'));
     pumpSelId = null; pumpForm = null; pumpTab = 'queue';
     await pumpRefreshAll();
   }catch(ex){ btn.disabled = false; btn.textContent = txt; err(PP('통신 오류입니다. 저장 여부를 확인한 뒤 다시 시도하세요.', 'Network error. Check whether it saved before retrying.')); }
 }
 async function pumpSubmitCancel(btn){
   const sel = pumpPending().find(r => r['접수번호'] === pumpSelId); if(!sel) return;
-  if(!confirm(PP(sel['탈거호기'] + ' 교체 등록을 취소할까요? 예비 재고가 +1 복원되고 수리 대기에서 제외됩니다.', 'Cancel this swap? Spare stock is restored and the item leaves the queue.'))) return;
+  if(!confirm(PP(sel['탈거호기'] + ' 교체 등록을 취소할까요? 재고가 +1 복원되고 수리 대기에서 제외됩니다.', 'Cancel this swap? Stock is restored and the item leaves the queue.'))) return;
   btn.disabled = true;
   try{
     const r = await pumpPost({ type:'pump_cancel', id:sel['접수번호'], worker:PUMP_REPAIRER });
@@ -7288,7 +7261,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v58', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v59', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
