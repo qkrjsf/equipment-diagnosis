@@ -5,9 +5,20 @@
   "server": {
     "url": "https://qkrjsf.github.io/equipment-diagnosis/",
     "cleartext": false,
-    "allowNavigation": ["qkrjsf.github.io", "script.google.com", "*.googleusercontent.com", "script.googleusercontent.com"]
+    "allowNavigation": [
+      "qkrjsf.github.io",
+      "script.google.com",
+      "*.googleusercontent.com",
+      "script.googleusercontent.com"
+    ]
   },
   "android": {
     "allowMixedContent": false
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon",
+      "iconColor": "#0E7C9A"
+    }
   }
 }
