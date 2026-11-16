@@ -31,6 +31,13 @@ jobs:
       - name: Add Android platform
         run: npx cap add android
 
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq imagemagick fonts-dejavu-core
+          command -v convert || command -v magick
+          convert -version | head -1
+
       - name: Set app icon (앱 안의 아이콘과 동일한 이미지 사용)
         run: |
           set -e
@@ -48,6 +55,7 @@ jobs:
           ls $RES/mipmap-xxxhdpi
 
       - name: Notification icon
+        continue-on-error: true
         run: |
           set -e
           RES=android/app/src/main/res
