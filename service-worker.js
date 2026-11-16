@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sulbi-jindan-v68';
+const CACHE_NAME = 'sulbi-jindan-v69';
 const ASSETS = [
   './index.html',
   './manifest.json',
@@ -44,6 +44,11 @@ self.addEventListener('fetch', (event) => {
   // 우리 사이트가 아닌 외부 도메인 요청(구글시트 API, 구글드라이브 이미지 등)은
   // 캐싱/가로채기 전혀 하지 않고 그대로 네트워크로 흘려보냄 - 항상 최신 데이터 보장
   if (new URL(req.url).origin !== self.location.origin) {
+    return;
+  }
+
+  // 버전 확인용 service-worker.js 는 캐시에서 돌려주면 안 됨 (항상 네트워크)
+  if (new URL(req.url).pathname.endsWith('/service-worker.js')) {
     return;
   }
 
