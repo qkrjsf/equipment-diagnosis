@@ -718,7 +718,9 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
 .hm-chip small{font-weight:500;opacity:.85;font-size:11.5px;}
 .hm-chip.k-ok{background:#E2F3EC;color:#23805F;}.hm-chip.k-a{background:#FDF0E2;color:#A9570F;}.hm-chip.k-h{background:#FFF6D6;color:#7A5A00;}.hm-chip.k-t{background:#E5ECFB;color:#2B4A9B;}.hm-chip.k-d{background:#0B2A3D;color:#fff;}
 .hm-chip.sc.c1{background:#E2F3EC;color:#1F6E52}.hm-chip.sc.c2{background:#FBE9E6;color:#A3392C}.hm-chip.sc.c3{background:#E5ECFB;color:#2B4A9B}.hm-chip.sc.c4{background:#EFE7F8;color:#6B3FA0}.hm-chip.sc.c5{background:#EEF1F4;color:#44525F}
-.hm-grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:start;}
+.hm-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start;}
+.hm-grid>*,.hm-col>*{min-width:0;max-width:100%}
+.hm-sec,.ask-box{min-width:0}
 .hm-col{display:flex;flex-direction:column;gap:14px;min-width:0;}
 .hm-col>.card{margin:0;}
 .hm-sec h3{margin:0 0 10px;font-size:15px;}
@@ -764,7 +766,7 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
 .td-n.d{background:#0B2A3D;color:#fff}.td-n.a{background:#FDF0E2;color:#A9570F}.td-n.h{background:#FFF6D6;color:#7A5A00}.td-n.t{background:#E5ECFB;color:#2B4A9B}
 .td-r{display:flex;align-items:center;gap:8px;padding:9px 0;border-top:1px solid #E6EDF1;flex-wrap:wrap}.td-r:first-of-type{border-top:0}
 .td-r>div{flex:1;min-width:0;font-size:14px}.td-r small{display:block;font-size:12px;color:#566B7B;font-weight:400;word-break:break-all}
-.td-f{display:grid;grid-template-columns:1fr 1fr;gap:8px}.td-f input,.td-f select{width:100%;min-width:0}
+.td-f{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}.td-f>*{min-width:0}.td-f input,.td-f select{max-width:100%;box-sizing:border-box}.td-f input,.td-f select{width:100%;min-width:0}
 .td-l{display:flex;flex-direction:column;gap:3px;font-size:11.5px;color:#566B7B}
 .td-de{background:#F4F8FA;border-radius:10px;padding:10px;margin:0 0 8px}.td-de .emq-f{display:grid;grid-template-columns:1fr auto;gap:8px}
 .td-dn summary{cursor:pointer;font-size:13px;color:#566B7B;padding:8px 0}
@@ -797,9 +799,10 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
   .dr-scrim{display:none!important;}.dr-x{display:none!important;}.tb-menu{display:none!important;}
   .content{margin-left:var(--sbw)!important;}
   .topbar .tb-brand{display:none!important;}
-  .app{max-width:1320px;margin:0 auto!important;padding:24px 32px 48px;}
+  .app{max-width:1600px;margin:0!important;padding:24px 32px 48px;}
   .hm-grid{grid-template-columns:minmax(300px,1fr) minmax(320px,1.15fr) minmax(300px,1fr);}
   .hm-cards{grid-template-columns:1fr 1fr}.hm-quick{grid-template-columns:1fr 1fr}.hm-q.big{grid-column:1/-1}
+  .hm-cards>:last-child:nth-child(odd),.hm-quick>:last-child:nth-child(even){grid-column:1/-1}
   .sc-wrap{grid-template-columns:minmax(0,1.7fr) minmax(320px,1fr)}.sc-side{position:sticky;top:76px}
   .hm-hi h1{font-size:28px}
 }
@@ -1027,7 +1030,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v67</span></div>
+    <div class="sb-foot"><span id="verLabel">v68</span></div>
   </nav>
 
   <div class="content">
@@ -1282,7 +1285,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v67</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v68</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8236,7 +8239,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v67', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v68', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
