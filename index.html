@@ -707,6 +707,12 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
 .emq-qr .qb{display:flex;gap:4px}.emq-qr .qb button{width:40px;height:38px;border:1.5px solid #B7C6D0;border-radius:8px;background:#fff;font-size:14px;color:#0B2A3D;cursor:pointer}.emq-qr .qb button.on{background:#0E7C9A;border-color:#0E7C9A;color:#fff;font-weight:700}
 
 .emq-ck{display:flex;align-items:center;gap:8px;margin:10px 0 8px;font-size:14px;color:#0B2A3D;cursor:pointer}.emq-ck input{width:18px;height:18px;margin:0}
+
+.emq-busy{position:fixed;inset:0;z-index:100000;background:rgba(11,42,61,.38);display:flex;align-items:center;justify-content:center;padding:24px;touch-action:none}.emq-busy[hidden]{display:none}
+.emq-busy-box{background:#fff;color:#0B2A3D;border-radius:16px;padding:22px 28px 18px;min-width:170px;max-width:300px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.3);font-family:'Pretendard','Noto Sans KR',system-ui,sans-serif}
+.emq-busy-box b{display:block;font-size:16px;margin-top:10px}.emq-busy-box small{display:block;font-size:12.5px;color:#5B7384;margin-top:6px;line-height:1.5}.emq-busy-box small:empty{display:none}
+.emq-spin{display:block;width:38px;height:38px;margin:0 auto;border:4px solid #D6E3EA;border-top-color:#0E7C9A;border-radius:50%;animation:emqspin .8s linear infinite}@keyframes emqspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.emq-spin{animation-duration:2s}}
 /* ===== v67: 홈 · 할 일/근태 · 스케줄표 · PC 고정 메뉴 · 업데이트 배너 ===== */
 #panel-home>.page-title{display:none;}
 .hm-hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;margin:0 0 16px;}
@@ -832,6 +838,63 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
 .cf-btn:active{transform:translateY(2px);box-shadow:0 0 0 #C9D6DE;background:#EEF3F6}
 .cf-btn:disabled{opacity:.45;box-shadow:none}
 @media (hover:hover){.cf-btn:hover{background:#F4F8FA}}
+
+/* ---- 홈으로 돌아가기 버튼 / 토스트 ---- */
+.tb-brand{flex:1 1 auto!important;min-width:0}
+.tb-back{margin-left:auto;display:inline-flex;align-items:center;gap:2px;height:38px;padding:0 14px 0 8px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;font:600 14px/1 inherit;font-family:inherit;cursor:pointer;flex:0 0 auto}
+.tb-back[hidden]{display:none}
+.tb-back:active{transform:translateY(1px);background:rgba(255,255,255,.24)}
+@media (min-width:1100px){.tb-back{display:none!important}}
+@media (min-width:900px) and (max-width:1099px){.tb-back{border-color:#D6E3EA;background:#fff;color:#0B2A3D}}
+.emq-toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translate(-50%,12px);z-index:100001;background:rgba(11,42,61,.94);color:#fff;font-size:14px;padding:10px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:86vw;text-align:center}
+.emq-toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* ---- 점검 현황: 종류 탭 + 층별 묶음 ---- */
+.hc-kseg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 0 10px}
+.hc-kseg button{display:flex;flex-direction:column;align-items:center;gap:2px;min-height:52px;padding:8px 4px;border-radius:12px;border:1px solid var(--line,#D6E3EA);background:#fff;color:#0B2A3D;font-size:15px;font-weight:700;cursor:pointer}
+.hc-kseg button small{font-size:12px;font-weight:500;color:#5B7384;font-variant-numeric:tabular-nums}
+.hc-kseg button.on{background:#0B2A3D;border-color:#0B2A3D;color:#fff}.hc-kseg button.on small{color:#B8D4E0}
+.hc-bar{height:6px;border-radius:99px;background:#E6EDF1;overflow:hidden;margin:2px 0 12px}.hc-bar i{display:block;height:100%;background:#23805F;border-radius:99px;transition:width .25s}
+.hc-flt{display:flex;gap:6px;margin:0 0 12px}.hc-flt button{height:34px;padding:0 14px;border-radius:999px;border:1px solid #D6E3EA;background:#fff;color:#4A6577;font-size:13.5px;cursor:pointer}.hc-flt button.on{background:#E6F1F5;border-color:#0E7C9A;color:#0B2A3D;font-weight:700}
+.hc-grp{margin:0 0 14px}.hc-gh{display:flex;align-items:baseline;justify-content:space-between;padding:0 2px 6px;margin-bottom:8px;border-bottom:1px solid #E3E8ED}.hc-gh b{font-size:14.5px}.hc-gh span{font-size:12.5px;color:#5B7384;font-variant-numeric:tabular-nums}
+.hc-grp .hc-eqs{grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px}.hc-grp .hc-eqb{min-height:54px;font-size:15px}.hc-grp .hc-eqb small{font-size:11px;margin-top:2px}
+
+/* ---- 설비 이력: 부위/부품 검색 ---- */
+.hc-cs{margin:0 0 12px}.hc-cs input[type=search]{width:100%;height:46px;font-size:16px}
+.hc-cap{font-size:12px;font-weight:700;color:#5B7384;margin:8px 2px 0;letter-spacing:.02em}
+.hc-cs .hc-b small{display:block;margin-top:2px;font-size:12px;color:#5B7384;font-weight:400}
+
+/* ---- 부품 입출고 ---- */
+.mv-box{max-width:380px!important;text-align:left!important;max-height:90vh;overflow:auto}
+.mv-t{font-weight:700;font-size:16px;line-height:1.35}.mv-sub{font-size:12.5px;color:#5B7384;margin-top:2px;word-break:break-all}
+.mv-st{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}.mv-st span{font-size:12.5px;padding:3px 9px;border-radius:99px;background:#E6F1F5;color:#0B2A3D;font-weight:600}.mv-st span.low{background:#FBE4E0;color:#BF3A2C}
+.mv-acts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 8px}
+.mv-acts button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:78px;border-radius:14px;border:1.5px solid #B7C6D0;background:#fff;color:#0B2A3D;cursor:pointer;padding:8px 4px}
+.mv-acts button b{font-size:17px}.mv-acts button small{font-size:11px;color:#5B7384;text-align:center;line-height:1.3}
+.mv-acts button:active{background:#E6F1F5;transform:translateY(1px)}
+.mv-x{display:block;width:100%;margin-top:4px;height:42px;border-radius:10px;border:0;background:#EEF2F5;color:#0B2A3D;font-size:14px;cursor:pointer}
+.mv-l{font-size:12.5px;font-weight:600;color:#4A6577;margin:12px 0 5px}
+.mv-in{width:100%;box-sizing:border-box;height:44px;border:1.5px solid #B7C6D0;border-radius:10px;padding:0 12px;font-size:16px;background:#fff;color:#0B2A3D}
+.mv-in[hidden]{display:none}.mv-chips[hidden]{display:none}
+.mv-chips{display:flex;flex-wrap:wrap;gap:6px}.mv-chips button{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid #B7C6D0;background:#fff;color:#0B2A3D;font-size:14.5px;cursor:pointer}
+.mv-chips button.on{background:#0B2A3D;border-color:#0B2A3D;color:#fff;font-weight:700}
+.mv-qty{display:flex;align-items:center;gap:8px}.mv-qty button{width:46px;height:46px;border-radius:12px;border:1.5px solid #B7C6D0;background:#fff;font-size:22px;color:#0B2A3D;cursor:pointer}.mv-qty button:active{background:#E6F1F5}
+.mv-qty input{width:84px;height:46px;text-align:center;font-size:18px;font-weight:700;border:1.5px solid #B7C6D0;border-radius:10px;color:#0B2A3D;background:#fff}
+.mv-who{margin-top:12px;font-size:13px;color:#5B7384}.mv-who b{color:#0B2A3D}
+.mv-err{min-height:18px;margin-top:8px;color:#BF3A2C;font-size:13.5px;line-height:1.45}
+.mv-foot{display:flex;gap:8px;margin-top:10px}.mv-foot .repair-popup-btn{flex:1}.mv-foot .repair-popup-btn:disabled{opacity:.5}
+.mv-note{padding:14px 2px;color:#5B7384;font-size:14px}
+.mv-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.mv-pick{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1.5px solid #D6E3EA;border-radius:12px;background:#fff;font-size:14px;cursor:pointer;text-align:left;color:#0B2A3D}
+.mv-pick small{display:block;font-size:12px;color:#5B7384;margin-top:2px}.mv-pick.btn{justify-content:space-between;align-items:center;width:100%}.mv-pick em{font-style:normal;font-size:12.5px;font-weight:700;color:#0E7C9A;flex:none}
+.mv-pick input{margin-top:3px;width:18px;height:18px;flex:none}
+.mv-ck{display:flex;gap:8px;align-items:center;margin-top:12px;font-size:14px;cursor:pointer}.mv-ck input{width:18px;height:18px}
+.mv-lg{display:flex;gap:10px;align-items:flex-start;padding:8px 2px;border-top:1px solid #E3E8ED;font-size:14px}.mv-lg small{display:block;font-size:12px;color:#5B7384;margin-top:2px}
+.mv-lg .k{flex:none;min-width:84px;text-align:center;font-size:12px;font-weight:700;padding:3px 6px;border-radius:99px}.mv-lg .k.in{background:#D6EEE4;color:#23805F}.mv-lg .k.out{background:#FBE4E0;color:#BF3A2C}
+.mv-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 12px}
+.mv-bar button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 14px;border-radius:12px;border:1.5px solid #D6E3EA;background:#fff;color:#0B2A3D;cursor:pointer;text-align:left}
+.mv-bar button b{font-size:15px}.mv-bar button small{font-size:12px;color:#5B7384}.mv-bar button.warn{background:#FFF6EC;border-color:#E5B98F}
+.mv-bar button:active{transform:translateY(1px);background:#E6F1F5}
 </style>
 </head>
 <body>
@@ -879,6 +942,22 @@ async function api(o,post){
 }
 
 /* ---- fetch 래퍼: 시트 API 호출에 토큰 자동 첨부 ---- */
+/* ---- 저장 중 표시: 시트에 쓰는 요청이 끝날 때까지 가운데 회전 표시 + 화면 잠금(중복 클릭 방지) ---- */
+const QUIET={msds_download:1,diag_rating:1,diag_feedback:1,feedback:1};
+const BUSY_TXT={usage:'등록 중…',repair_out:'등록 중…',hist_add:'이력 저장 중…',hist_update:'수정 중…',hist_cancel:'취소 중…',check_add:'점검 저장 중…',check_cancel:'취소 중…',chk_confirm:'확인 처리 중…',pump_invoice:'입고 처리 중…',pump_swap:'등록 중…',pump_done:'등록 중…',pump_part_adjust:'저장 중…',att_add:'저장 중…',att_cancel:'취소 중…',todo_add:'저장 중…',todo_done:'처리 중…',todo_cancel:'취소 중…',duty_set:'저장 중…',duty_swap:'저장 중…',duty_del:'삭제 중…',sched_add:'저장 중…',sched_update:'수정 중…',sched_cancel:'삭제 중…'};
+let BN=0,BE=null,BT1=null,BT2=null;
+function busy(d,type){
+  BN=Math.max(0,BN+d);
+  if(BN>0){
+    if(!BE){BE=document.createElement('div');BE.className='emq-busy';BE.setAttribute('role','status');BE.setAttribute('aria-live','polite');BE.innerHTML='<div class="emq-busy-box"><i class="emq-spin"></i><b></b><small></small></div>';BE.hidden=true;document.body.appendChild(BE);}
+    if(d>0){BE.querySelector('b').textContent=BUSY_TXT[type]||'처리 중…';BE.querySelector('small').textContent='';}
+    if(!BT1&&BE.hidden){BT1=setTimeout(()=>{BT1=null;if(BN>0)BE.hidden=false;},200);}
+    if(!BT2){BT2=setTimeout(()=>{BT2=null;if(BN>0&&BE)BE.querySelector('small').textContent='서버 응답이 늦습니다. 잠시만 기다려 주세요.';},15000);}
+  }else{
+    if(BT1){clearTimeout(BT1);BT1=null;}if(BT2){clearTimeout(BT2);BT2=null;}
+    if(BE)BE.hidden=true;
+  }
+}
 window.fetch=async function(u,o){
   const url=typeof u==='string'?u:(u&&u.url)||'';
   if(url.indexOf('script.google.com/macros')<0||/[?&]type=ping/.test(url))return of(u,o);
@@ -886,7 +965,10 @@ window.fetch=async function(u,o){
   let u2=u,o2=o;
   if(o&&o.method==='POST'){try{const b=JSON.parse(o.body);b.token=EMQ.token;o2=Object.assign({},o,{body:JSON.stringify(b)});}catch(e){}}
   else u2=url+(url.indexOf('?')<0?'?':'&')+'token='+encodeURIComponent(EMQ.token);
-  const res=await of(u2,o2);
+  let busyOn=false,bt='';
+  if(o&&o.method==='POST'&&o.mode!=='no-cors'){try{bt=JSON.parse(o.body).type||'';}catch(e){}if(!QUIET[bt]){busyOn=true;busy(1,bt);}}
+  let res;
+  try{res=await of(u2,o2);}finally{if(busyOn)busy(-1);}
   try{
     const t=await res.clone().text();
     if(t.length<300&&/"error"\s*:\s*"auth"/.test(t)){expire();return window.fetch(u,o);}
@@ -1030,7 +1112,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v69</span></div>
+    <div class="sb-foot"><span id="verLabel">v70</span></div>
   </nav>
 
   <div class="content">
@@ -1113,7 +1195,7 @@ start();
   </div>
 
   <div class="panel" id="panel-register">
-    <h1 class="page-title" data-i18n="tabRegister">부품 등록</h1>
+    <h1 class="page-title" data-i18n="tabRegister">부품 입출고</h1>
     <div class="hint" data-i18n="registerHint">사용한 부품을 눌러서 바로 사용 등록할 수 있습니다.</div>
 
     <div class="parts-search">
@@ -1285,7 +1367,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v69</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v70</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -4801,7 +4883,7 @@ const UI_STRINGS = {
     subtitle: "자연어 질문 → 사내 정의 진단 트리 기반 원인 안내 (오프라인 동작, 서버/API 비용 없음)",
     tabChat: "진단하기",
     tabParts: "부품 조회",
-    tabRegister: "부품 등록",
+    tabRegister: "부품 입출고",
     tabHome: "홈",
     fbRate: "요청이 너무 많습니다. 잠시 후 다시 시도해주세요.",
     msdsLinesLabel: "호기", msdsNone: "미지정", msdsCommon: "전 호기 공통", msdsMoreN: "외 {n}",
@@ -4879,7 +4961,7 @@ const UI_STRINGS = {
     msdsWorking: "다운로드 준비 중...",
     msdsDone: "다운로드를 시작했습니다. ({n}개)",
     tabCodeSearch: "에러코드",
-    registerHint: "사용한 부품을 눌러서 바로 사용 등록할 수 있습니다.",
+    registerHint: "부품을 누르면 사용 · 출고 · 입고를 선택할 수 있습니다.",
     chatPlaceholder: "예: 화면에 OCT 떴어요, 레벨센서 알람 떴어요",
     send: "전송",
     partsHint: "부품구분·규격으로 찾아보거나, 이름으로 검색해서 재고 현황을 확인할 수 있습니다.",
@@ -5341,24 +5423,27 @@ function markWorkerRequired(input){
   input.focus();
   input.addEventListener('input', () => { input.style.borderColor = ''; if(n.parentNode) n.remove(); }, { once:true });
 }
-function logUsageToSheet(category, spec, qty, location, memo, worker){
-  if(!GOOGLE_SHEET_URL) return;
+async function postSheetOk(payload){
+  if(!GOOGLE_SHEET_URL) return { ok:false, error:'no_url' };
   try{
-    fetch(GOOGLE_SHEET_URL, {
-      method: 'POST', mode: 'no-cors',
-      body: JSON.stringify({ type: 'usage', category: category || '', spec: spec || '', qty: qty || 1, location: location || '', memo: memo || '', worker: worker || '' })
-    }).catch(() => {});
-  }catch(e){}
+    const r = await fetch(GOOGLE_SHEET_URL, { method:'POST', headers:{ 'Content-Type':'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
+    const j = await r.json();
+    return { ok: !!(j && (j.ok === true || j.result === 'ok')), error: j && j.error };
+  }catch(e){ return { ok:false, error:'network' }; }
+}
+function sheetErrText(e){
+  return e === 'auth' ? '로그인이 만료되었습니다. 다시 로그인한 뒤 시도하세요.'
+    : e === 'forbidden' ? '이 작업을 할 권한이 없습니다.'
+    : e === 'forbidden_team' ? '이 팀에서는 사용할 수 없는 기능입니다.'
+    : e === 'network' ? '네트워크 연결을 확인해 주세요.'
+    : '잠시 후 다시 시도해 주세요.';
+}
+function logUsageToSheet(category, spec, qty, location, memo, worker){
+  return postSheetOk({ type: 'usage', category: category || '', spec: spec || '', qty: qty || 1, location: location || '', memo: memo || '', worker: worker || '' });
 }
 
 function logRepairOutToSheet(category, spec, qty, vendor){
-  if(!GOOGLE_SHEET_URL) return;
-  try{
-    fetch(GOOGLE_SHEET_URL, {
-      method: 'POST', mode: 'no-cors',
-      body: JSON.stringify({ type: 'repair_out', category: category || '', spec: spec || '', qty: qty || 1, vendor: vendor || '', memo: '' })
-    }).catch(() => {});
-  }catch(e){}
+  return postSheetOk({ type: 'repair_out', category: category || '', spec: spec || '', qty: qty || 1, vendor: vendor || '', memo: '' });
 }
 
 function renderUsagePrompt(){
@@ -5450,21 +5535,30 @@ function renderPartUsageQty(part){
     if(!worker){ markWorkerRequired(div.querySelector('#usageWorkerInput')); return; }
     btn.disabled = true;
     div.querySelectorAll('input').forEach(el => el.disabled = true);
-    submitPartUsage(part, qty, location, memo, worker);
+    submitPartUsage(part, qty, location, memo, worker).then(ok => {
+      if(!ok){ btn.disabled = false; div.querySelectorAll('input').forEach(el => el.disabled = false); }
+    });
   });
 }
 
-function submitPartUsage(part, qty, location, memo, worker){
+async function submitPartUsage(part, qty, location, memo, worker){
   const name = part['제품형태'] || part['제품규격'] || '';
-  logUsageToSheet(part['제품구분'], part['제품규격'], qty, location, memo, worker);
+  const r = await logUsageToSheet(part['제품구분'], part['제품규격'], qty, location, memo, worker);
+  if(!r.ok){
+    addMsg('diagnosis', '<div class="dval" style="color:#BF3A2C">' + escapeHtml('사용 등록을 저장하지 못했습니다. ' + sheetErrText(r.error)) + '</div>');
+    return false;
+  }
   addMsg('diagnosis', '<div class="dval">' + escapeHtml(t('usageDone').replace('{qty}', qty).replace('{name}', name)) + '</div>');
 
   if(isTruthyRepair(part['수리가능여부'])){
-    logRepairOutToSheet(part['제품구분'], part['제품규격'], qty, part['거래처']);
+    const r2 = await logRepairOutToSheet(part['제품구분'], part['제품규격'], qty, part['거래처']);
+    if(!r2.ok){ showIconPopup('\u26A0\uFE0F', '수리 출고 기록을 저장하지 못했습니다. ' + sheetErrText(r2.error) + ' (수리이력 시트에 직접 입력해 주세요)'); }
     const msg = t('repairReminder').replace('{name}', name);
     addMsg('clarify', escapeHtml(msg));
     showRepairPopup(msg);
   }
+  try{ loadPartsFromSheet(); }catch(e){}
+  return true;
 }
 
 const LOCATION_LIST = [
@@ -5689,24 +5783,28 @@ function showUsageModal(part){
     '</div>';
   document.body.appendChild(overlay);
   const close = () => overlay.remove();
+  try{ const wi = overlay.querySelector('#modalWorkerInput'); if(wi && !wi.value) wi.value = (window.EMQ && EMQ.user && EMQ.user.name) || localStorage.getItem('msds-worker') || ''; }catch(e){}
   const modalLocInput = overlay.querySelector('#modalLocationInput');
   modalLocInput.addEventListener('click', () => showLocationPicker(v => { modalLocInput.value = v; }));
   overlay.querySelector('#modalCancelBtn').addEventListener('click', close);
   overlay.addEventListener('click', (e) => { if(e.target === overlay) close(); });
-  overlay.querySelector('#modalSubmitBtn').addEventListener('click', () => {
+  overlay.querySelector('#modalSubmitBtn').addEventListener('click', async () => {
     const qty = parseInt(overlay.querySelector('#modalQtyInput').value) || 1;
     const location = overlay.querySelector('#modalLocationInput').value.trim();
     const worker = overlay.querySelector('#modalWorkerInput').value.trim();
     const memo = overlay.querySelector('#modalMemoInput').value.trim();
     if(!worker){ markWorkerRequired(overlay.querySelector('#modalWorkerInput')); return; }
-    close();
     const name = part['제품형태'] || part['제품규격'] || '';
-    logUsageToSheet(part['제품구분'], part['제품규격'], qty, location, memo, worker);
+    const r = await logUsageToSheet(part['제품구분'], part['제품규격'], qty, location, memo, worker);
+    if(!r.ok){ showIconPopup('\u26A0\uFE0F', '사용 등록을 저장하지 못했습니다. ' + sheetErrText(r.error)); return; }
+    close();
     showIconPopup('\u2705', t('usageDone').replace('{qty}', qty).replace('{name}', name));
     if(isTruthyRepair(part['수리가능여부'])){
-      logRepairOutToSheet(part['제품구분'], part['제품규격'], qty, part['거래처']);
-      setTimeout(() => showRepairPopup(t('repairReminder').replace('{name}', name)), 300);
+      const r2 = await logRepairOutToSheet(part['제품구분'], part['제품규격'], qty, part['거래처']);
+      if(!r2.ok){ showIconPopup('\u26A0\uFE0F', '수리 출고 기록을 저장하지 못했습니다. ' + sheetErrText(r2.error) + ' (수리이력 시트에 직접 입력해 주세요)'); }
+      else setTimeout(() => showRepairPopup(t('repairReminder').replace('{name}', name)), 300);
     }
+    try{ loadPartsFromSheet(); }catch(e){}
   });
 }
 
@@ -7245,7 +7343,7 @@ function renderPartsReg(filter){
   grid.querySelectorAll('.use-card').forEach(card => {
     card.addEventListener('click', () => {
       const idx = parseInt(card.getAttribute('data-idx'));
-      showUsageModal(list[idx]);
+      showPartActionSheet(list[idx]);
     });
   });
 }
@@ -8239,7 +8337,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v69', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v70', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
@@ -8352,7 +8450,7 @@ for(let i=1;i<=11;i++)EQG['1층'].push('1F-'+i);
 for(let i=1;i<=7;i++)EQG['2층'].push('2F-'+i);
 const EQ=[].concat(EQG['1층'],EQG['2층']);
 const HC={worker:'',hist:[],histOk:false,histLoading:false,histErr:'',chk:[],chkOk:false,chkLoading:false,chkErr:'',
-  tabH:'new',tabC:'status',W:null,K:null,lf:{eq:'',g:'',per:'all'},edit:'',sp:'all',cf:{kind:'',eq:''},pk:false,subs:{}};
+  tabH:'new',tabC:'status',stK:(function(){try{return sessionStorage.getItem('emq-stk')||'주간';}catch(e){return '주간';}})(),stF:'all',W:null,K:null,lf:{eq:'',g:'',per:'all'},edit:'',sp:'all',cf:{kind:'',eq:''},pk:false,subs:{}};
 try{HC.worker=localStorage.getItem('msds-worker')||'';HC.subs=JSON.parse(localStorage.getItem('hc-subs')||'{}')||{};}catch(e){}
 
 /* ---------- 공통 ---------- */
@@ -8399,7 +8497,7 @@ async function loadChk(force){
 /* ---------- 설비 이력: 등록 마법사 ---------- */
 const STEPS=['설비','부위','고장 현상','조치','확인'];
 function newW(keep){HC.W={step:1,g:'',eq:'',p:[],alarm:'',noAlarm:false,cidx:-2,ph:[],act:'',actText:'',min:null,cause:'',causeText:'',parts:[],src:'점검 중',link:'',checkId:'',checkItem:'',occ:'',memo:'',preset:false,saving:false,err:'',done:false,last:null};
-  if(keep){HC.W.g=keep.g;HC.W.eq=keep.eq;HC.W.step=2;}HC.pk=false;}
+  if(keep){HC.W.g=keep.g;HC.W.eq=keep.eq;HC.W.step=2;}HC.pk=false;HC.csq='';HC.csList=[];}
 const gOf=eq=>EQG['1층'].indexOf(eq)>=0?'1층':EQG['2층'].indexOf(eq)>=0?'2층':'프레스·기타';
 const B=(cls,attr,txt)=>'<button type="button" class="hc-b '+cls+'" '+attr+'>'+txt+'</button>';
 function alarmDef(){return HC_ALARMS.find(a=>a.n===HC.W.alarm);}
@@ -8425,7 +8523,7 @@ function stepBody(){
         +'<div class="hc-grid one">'+al.causes.map((c,i)=>B('left','data-ci="'+i+'"',E(c.c)+'<small>→ '+E(c.a)+'</small>')).join('')+B('soft left','data-ci="-1"','기타 · 원인을 직접 입력')+'</div>';
     }
     let body;
-    if(!a)body='<div class="hc-grid two">'+Object.keys(HC_TREE).map(x=>B('','data-l1="'+A(x)+'"',E(x))).join('')+'</div>';
+    if(!a)body='<div class="hc-cs"><input id="hcCs" class="hc-in" type="search" autocomplete="off" placeholder="검색 · 예) 유압펌프, 고압호스, 믹싱헤드" aria-label="부위 또는 부품 검색" value="'+A(HC.csq||'')+'"><div id="hcCsr">'+csResultsHtml(HC.csq||'')+'</div>'+(W.csNote?'<div class="hc-auto" style="margin-top:8px">'+E(W.csNote)+'</div>':'')+'</div>'+'<div class="hc-grid two">'+Object.keys(HC_TREE).map(x=>B('','data-l1="'+A(x)+'"',E(x))).join('')+'</div>';
     else if(!b)body='<div class="hc-grid two">'+Object.keys(HC_TREE[a]).map(x=>B('','data-l2="'+A(x)+'"',E(x))).join('')+'</div>';
     else body='<div class="hc-grid two">'+subsOf(a,b).map(x=>B('','data-l3="'+A(x)+'"',E(x))).join('')+B('soft','data-l3=""','소분류 없음')+'</div>'
       +'<div style="display:flex;gap:6px;margin-top:10px"><input id="hcNewSub" class="hc-in" maxlength="30" placeholder="목록에 없으면 직접 입력"><button type="button" class="hc-btn ghost sm" data-h="addsub" style="flex:none">추가</button></div>';
@@ -8464,6 +8562,44 @@ function partsBlock(){
   return '<div class="hc-picked">'+W.parts.map((p,i)=>'<div class="hc-pp"><span>'+E(p.name)+(p.spec&&p.spec!==p.name?' <small style="color:var(--muted)">'+E(p.spec)+'</small>':'')+'</span><button type="button" data-pm="'+i+'" aria-label="수량 줄이기">−</button><b>'+p.qty+'</b><button type="button" data-pp="'+i+'" aria-label="수량 늘리기">+</button></div>').join('')+'</div>'
     +(HC.pk?'<div class="hc-pk"><div class="hc-pkh"><input id="hcPq" class="hc-in" type="search" placeholder="부품 검색 (규격, 이름)" aria-label="부품 검색"><button type="button" class="hc-btn ghost sm" data-h="closepk">닫기</button></div><div id="hcPl" class="hc-pl"></div><div style="padding:8px;display:flex;gap:6px"><input id="hcFree" class="hc-in" maxlength="60" placeholder="목록에 없는 부품 이름 (재고 차감 없음)"><button type="button" class="hc-btn ghost sm" data-h="addfree" style="flex:none">추가</button></div></div>'
       :'<button type="button" class="hc-btn ghost" data-h="openpk" style="width:100%">+ 부품 추가</button>');
+}
+/* ---------- 부위/부품 검색 (대분류 선택 화면) ---------- */
+const csNorm=x=>String(x||'').toLowerCase().replace(/[\s·\-_()\/]/g,'');
+function csMatch(q,text){const t=csNorm(text);return q.split(/\s+/).filter(Boolean).every(w=>t.indexOf(csNorm(w))>=0);}
+function csFind(q){
+  q=String(q||'').trim();const out=[];if(!q)return out;
+  const paths=[];
+  Object.keys(HC_TREE).forEach(a=>Object.keys(HC_TREE[a]).forEach(b=>{
+    paths.push({p:[a,b,''],label:a+' › '+b,key:a+' '+b});
+    subsOf(a,b).forEach(c=>paths.push({p:[a,b,c],label:a+' › '+b+' › '+c,key:a+' '+b+' '+c,leaf:c}));
+  }));
+  const rank=x=>{const n=csNorm(q),k=csNorm(x.leaf||x.p[1]);return k===n?0:k.indexOf(n)===0?1:k.indexOf(n)>0?2:3;};
+  paths.filter(x=>csMatch(q,x.key)).sort((a,b)=>rank(a)-rank(b)).slice(0,7).forEach(x=>out.push({t:'path',p:x.p,label:x.label}));
+  HC_ALARMS.forEach((al,i)=>{if(csMatch(q,al.n+' '+(al.alias||'')+' 칠러 알람'))out.push({t:'alarm',i:i,label:'칠러 알람 · '+al.n});});
+  if(out.filter(x=>x.t==='alarm').length>3){const k=out.filter(x=>x.t==='alarm');k.slice(3).forEach(x=>out.splice(out.indexOf(x),1));}
+  (partsData||[]).filter(p=>csMatch(q,String(p['제품규격'])+' '+String(p['제품형태'])+' '+String(p['제품구분'])+' '+String(p['설명']||''))).slice(0,6)
+    .forEach(p=>out.push({t:'part',spec:String(p['제품규격']),label:String(p['제품형태']||p['제품규격']),sub:String(p['제품규격'])+' · 재고 '+(p['현재고']==null?'-':p['현재고'])}));
+  return out;
+}
+function csResultsHtml(q){
+  HC.csList=csFind(q);const L=HC.csList;
+  if(!String(q||'').trim())return '';
+  if(!L.length)return '<div class="hc-empty" style="padding:10px 2px">검색 결과가 없습니다. 아래에서 직접 고르세요.</div>';
+  const cap=(t,n)=>n?'<div class="hc-cap">'+t+'</div>':'';
+  const idx=L.map((x,i)=>({x:x,i:i}));
+  const sect=(type,title)=>{const r=idx.filter(o=>o.x.t===type);return cap(title,r.length)+r.map(o=>'<button type="button" class="hc-b left" data-cs="'+o.i+'">'+E(o.x.label)+(o.x.sub?'<small>'+E(o.x.sub)+'</small>':'')+'</button>').join('');};
+  return '<div class="hc-grid one" style="margin-top:8px">'+sect('path','부위')+sect('alarm','알람')+sect('part','부품 · 누르면 사용 부품에 추가')+'</div>';
+}
+// 부품 설명/이름에서 분류 후보를 추정 (유일하게 하나로 좁혀질 때만 사용)
+function csGuessPath(p){
+  const txt=csNorm(String(p['제품형태']||'')+' '+String(p['제품구분']||'')+' '+String(p['제품규격']||'')+' '+String(p['설명']||''));
+  const hits=[];
+  Object.keys(HC_TREE).forEach(a=>Object.keys(HC_TREE[a]).forEach(b=>{
+    subsOf(a,b).forEach(c=>{if(csNorm(c).length>=2&&txt.indexOf(csNorm(c))>=0)hits.push({p:[a,b,c],n:csNorm(c).length});});
+    if(!subsOf(a,b).length&&csNorm(b).length>=2&&txt.indexOf(csNorm(b))>=0)hits.push({p:[a,b,''],n:csNorm(b).length});
+  }));
+  if(!hits.length)return null;hits.sort((x,y)=>y.n-x.n);
+  return (hits.length===1||hits[0].n>hits[1].n)?hits[0].p:null;
 }
 function renderPL(){
   const el=$('hcPl');if(!el)return;
@@ -8541,6 +8677,23 @@ function wizClick(ev){
   if(d.h==='tolist'){HC.tabH='list';refreshHist();return;}
   if(d.g!=null){W.g=d.g;W.eq='';refreshHist();return;}
   if(d.eq){W.eq=d.eq;go(2);return;}
+  if(d.cs!=null){
+    const it=(HC.csList||[])[+d.cs];if(!it)return;
+    if(it.t==='path'){
+      HC.csq='';W.csNote='';W.noAlarm=false;
+      const a=it.p[0],b=it.p[1],c=it.p[2];
+      if(c){W.p=[a,b,c];go(3);}else{W.p=[a,b];if(!subsOf(a,b).length){W.p=[a,b,''];go(3);}else refreshHist();}
+      return;}
+    if(it.t==='alarm'){HC.csq='';W.csNote='';W.p=['칠러'];W.noAlarm=false;W.alarm=HC_ALARMS[it.i].n;W.cidx=-2;if(!alarmDef().causes.length){applyCause(-1);return;}refreshHist();return;}
+    if(it.t==='part'){
+      const p=partsData.find(x=>String(x['제품규격'])===it.spec);if(!p)return;
+      const g=csGuessPath(p);const had=W.parts.some(x=>x.spec===it.spec);
+      if(!had){W.parts.push({spec:it.spec,name:String(p['제품형태']||p['제품규격']),qty:1,cat:p['제품구분'],rep:isTruthyRepair(p['수리가능여부']),vendor:p['거래처']||''});}
+      HC.csq='';
+      if(g){W.csNote='';W.p=g[2]?[g[0],g[1],g[2]]:[g[0],g[1],''];W.noAlarm=false;go(3);return;}
+      W.csNote='"'+String(p['제품형태']||p['제품규격'])+'" 부품을 사용 부품에 담았습니다. 부위를 직접 골라 주세요.';refreshHist();return;}
+    return;
+  }
   if(d.al!=null){W.alarm=HC_ALARMS[+d.al].n;W.cidx=-2;if(!alarmDef().causes.length){applyCause(-1);return;}refreshHist();return;}
   if(d.ci!=null){applyCause(+d.ci);return;}
   if(d.l1!=null){W.p=[d.l1];W.noAlarm=false;refreshHist();return;}
@@ -8565,6 +8718,7 @@ function wizInput(ev){
   else if(t.id==='hcCauseText')W.causeText=t.value;
   else if(t.id==='hcMemo')W.memo=t.value;
   else if(t.id==='hcPq')renderPL();
+  else if(t.id==='hcCs'){HC.csq=t.value;const r=$('hcCsr');if(r){if(!partsData.length)loadPartsFromSheet().then(()=>{const r2=$('hcCsr');if(r2&&HC.csq)r2.innerHTML=csResultsHtml(HC.csq);}).catch(()=>{});r.innerHTML=csResultsHtml(t.value);}}
   else if(t.id==='hcSrc')W.src=t.value;
   else if(t.id==='hcOcc')W.occ=t.value;
 }
@@ -8662,15 +8816,28 @@ function eqBtn(eq,kind){
   return '<button type="button" class="hc-eqb '+s.cls+(mute?' mute':'')+'" data-start="'+kind+'|'+A(eq)+'">'+E(eq)+'<small>'+(kind==='연간'&&q?q+'분기 · ':'')+(s.n?s.n+'/'+s.total:s.total?'미점검':'해당 없음')+'</small>'+(s.c?'<i title="C 판정 미처리"></i>':'')+'</button>';
 }
 function statusHtml(){
-  const sec=kind=>{const done=EQ.filter(e=>eqState(e,kind).cls==='ok').length;
-    const q=curQ();const tgt=kind==='연간'?EQ.filter(e=>HC_QUARTERS[e]===q):EQ;const dq=tgt.filter(e=>eqState(e,kind).cls==='ok').length;
-    return '<div class="hc-card"><div class="hc-per"><h3 style="margin:0">'+kind+' 점검</h3><b>'+plabel(kind)+'</b><span class="hc-prog">'+(kind==='연간'?q+'분기 배정 '+dq+'/'+tgt.length+' · 전체 '+done+'/'+EQ.length:'완료 '+done+'/'+EQ.length)+'</span></div><div class="hc-eqs">'+EQ.map(e=>eqBtn(e,kind)).join('')+'</div>'
-      +(kind==='연간'?'<p class="hc-hint" style="margin:10px 0 0">설비별로 배정된 분기에 연간 항목을 점검합니다. 흐리게 표시된 설비는 다른 분기 배정입니다. 프레스·기타 설비는 설비 시트에 추가된 뒤 배정합니다.</p>':'')+'</div>';};
+  const K=HC.stK||'주간',F=HC.stF||'all',q=curQ();
+  const kinds=['주간','월간','연간'];
+  const inScope=(e,k)=>k!=='연간'||HC_QUARTERS[e]===q;
+  const sum=k=>{const tgt=EQ.filter(e=>inScope(e,k));const dn=tgt.filter(e=>eqState(e,k).cls==='ok').length;return {n:tgt.length,d:dn};};
+  const tabs='<div class="hc-seg hc-kseg" role="tablist">'+kinds.map(k=>{const s=sum(k);return '<button type="button" role="tab" data-sk="'+k+'" aria-selected="'+(K===k)+'" class="'+(K===k?'on':'')+'">'+k+'<small>'+s.d+'/'+s.n+'</small></button>';}).join('')+'</div>';
+  const s=sum(K),pct=s.n?Math.round(s.d/s.n*100):0;
+  const head='<div class="hc-per"><h3 style="margin:0">'+K+' 점검</h3><b>'+plabel(K)+'</b><span class="hc-prog">'+(K==='연간'?q+'분기 배정 ':'')+'완료 '+s.d+'/'+s.n+'</span></div><div class="hc-bar" aria-hidden="true"><i style="width:'+pct+'%"></i></div>'
+    +'<div class="hc-flt"><button type="button" data-sf="all" class="'+(F==='all'?'on':'')+'">전체</button><button type="button" data-sf="todo" class="'+(F==='todo'?'on':'')+'">'+(K==='연간'?'이번 분기 미점검만':'미점검만')+'</button></div>';
+  const groups=['1층','2층'].map(g=>{
+    let list=EQG[g].filter(e=>EQ.indexOf(e)>=0);
+    if(F==='todo')list=list.filter(e=>inScope(e,K)&&eqState(e,K).cls!=='ok');
+    if(!list.length)return '';
+    const all=EQG[g].filter(e=>EQ.indexOf(e)>=0&&inScope(e,K));const dn=all.filter(e=>eqState(e,K).cls==='ok').length;
+    return '<div class="hc-grp"><div class="hc-gh"><b>'+g+'</b><span>'+(all.length?dn+'/'+all.length:'')+'</span></div><div class="hc-eqs">'+list.map(e=>eqBtn(e,K)).join('')+'</div></div>';
+  }).join('');
+  const empty=!groups?'<div class="hc-auto">'+(F==='todo'?'남은 설비가 없습니다. 모두 점검했습니다.':'표시할 설비가 없습니다.')+'</div>':'';
   const pend=HC.chk.filter(r=>r['결과']==='C'&&!r['연결이력ID']&&(new Date()-(pdt(r['일시'])||0))<60*864e5).sort((a,b)=>String(b['일시']).localeCompare(String(a['일시'])));
   return (HC.chkErr?'<div class="hc-warn">점검 기록을 불러오지 못했습니다. ('+E(HC.chkErr)+') <button type="button" class="hc-btn ghost sm" data-h="reloadc">다시 불러오기</button></div>':HC.chkLoading&&!HC.chkOk?'<div class="hc-auto">점검 기록을 불러오는 중입니다...</div>':'')
     +(pend.length?'<div class="hc-card" style="border-color:#E7A99F"><h3>C 판정 · 이력 미등록 ('+pend.length+'건)</h3>'+pend.slice(0,10).map(r=>'<div class="hc-br" style="grid-template-columns:62px 1fr auto"><b>'+E(r['설비'])+'</b><span style="font-size:13.5px">'+E(r['항목'])+' <small class="hc-muted">'+E(String(r['일시']).slice(5,10))+'</small></span><button type="button" class="hc-btn sm" data-tohist="'+A(r['점검ID']+'|'+r['항목번호'])+'">이력 등록</button></div>').join('')+'</div>':'')
-    +'<div class="hc-lg"><span class="o">완료</span><span class="p">일부 점검</span><span>미점검</span><span style="display:inline-flex;align-items:center;gap:5px"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bad)"></i> C 판정 미처리</span></div><div style="height:10px"></div>'
-    +sec('주간')+sec('월간')+sec('연간');
+    +tabs+'<div class="hc-card">'+head+groups+empty
+    +'<div class="hc-lg"><span class="o">완료</span><span class="p">일부 점검</span><span>미점검</span><span style="display:inline-flex;align-items:center;gap:5px"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bad)"></i> C 판정 미처리</span></div>'
+    +(K==='연간'?'<p class="hc-hint" style="margin:10px 0 0">설비별로 배정된 분기에 연간 항목을 점검합니다. 흐리게 표시된 설비는 다른 분기 배정입니다. 프레스·기타 설비는 설비 시트에 추가된 뒤 배정합니다.</p>':'')+'</div>';
 }
 const cfOf=r=>String(r['확인']||'').trim()==='대기'?'대기':'확인';
 function pendIds(){const m={};HC.chk.forEach(r=>{if(cfOf(r)==='대기')m[r['점검ID']]=1;});return Object.keys(m);}
@@ -8765,6 +8932,8 @@ function refreshChk(keep){const el=$('hcChk');if(!el)return;const y=window.scrol
 function chkClick(ev){
   const t=ev.target.closest('button');if(!t)return;const d=t.dataset,K=HC.K;
   if(d.ct){HC.tabC=d.ct;if(d.ct==='rec')loadChk(true);refreshChk();return;}
+  if(d.sk){HC.stK=d.sk;try{sessionStorage.setItem('emq-stk',d.sk);}catch(e){}refreshChk(true);return;}
+  if(d.sf){HC.stF=d.sf;refreshChk(true);return;}
   if(d.start){const p=d.start.split('|');startCheck(p[0],p[1]);return;}
   if(d.h==='reloadc'){loadChk(true);return;}
   if(d.tohist){const p=d.tohist.split('|');const r=HC.chk.find(x=>x['점검ID']===p[0]&&x['항목번호']===p[1]);if(r)toHist(p[0],p[1],r['설비'],r['메모']);return;}
@@ -8804,7 +8973,7 @@ const ic=k=>'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke=
 function menuDef(){const P=PP;return [
   {items:[{id:'home',t:P('홈','Home'),i:'home'}]},
   {label:P('진단·조회','DIAGNOSE · LOOKUP'),items:[{id:'chat',t:P('진단하기','Diagnose'),i:'chat'},{id:'equip',t:P('설비 사양','Equipment'),i:'equip'},{id:'parts',t:P('부품 조회','Parts'),i:'parts'},{id:'codesearch',t:P('에러코드','Error codes'),i:'code',ko:1},{id:'msds',t:'MSDS',i:'msds'}]},
-  {label:P('등록·수리','REGISTER · REPAIR'),items:[{id:'register',t:P('부품 등록','Log parts use'),i:'register',lv:2},{id:'pump',t:(document.body.getAttribute('data-team')==='other'?P('펌프 부품 재고','Pump part stock'):P('펌프 수리 (A2VK)','Pump repair (A2VK)')),i:'pump',lv:(document.body.getAttribute('data-team')==='other'?1:2)}]},
+  {label:P('등록·수리','REGISTER · REPAIR'),items:[{id:'register',t:P('부품 입출고','Parts in/out'),i:'register',lv:2},{id:'pump',t:(document.body.getAttribute('data-team')==='other'?P('펌프 부품 재고','Pump part stock'):P('펌프 수리 (A2VK)','Pump repair (A2VK)')),i:'pump',lv:(document.body.getAttribute('data-team')==='other'?1:2)}]},
   {label:P('점검·이력','INSPECT · HISTORY'),badge:P('신규','NEW'),items:[{id:'check',t:P('점검','Inspection'),i:'inspect'},{id:'hist',t:P('설비 이력','Equipment history'),i:'history'},{id:'chkadmin',t:'점검 항목 관리',i:'inspect',lv:3},{id:'todo',t:P('할 일 · 근태','To-do · Attendance'),i:'todo',main:1},{id:'sched',t:P('업무 스케줄표','Team schedule'),i:'cal',main:1}]},
   {label:P('분석·현황','ANALYTICS'),badge:P('예정','SOON'),gray:1,items:[{id:'metrics',t:P('지표·보고서','Reports'),i:'chart',soon:1},{id:'board',t:P('현황판·알람','Status board'),i:'monitor',soon:1}]},
   {items:[{id:'account',t:'내 계정',i:'user'},{id:'users',t:'사용자 관리',i:'users',lv:4},{id:'settings',t:P('설정','Settings'),i:'settings'}]}];}
@@ -9121,7 +9290,7 @@ function cardH(tone,label,big,unit,sub,btn,act){
 function hmQuickHtml(){
   const w=lvOk(2);
   let h='<button type="button" class="hm-q big" data-goto="chat"><b>진단 시작</b><span>증상으로 원인 찾기</span></button>';
-  if(w)h+='<button type="button" class="hm-q" data-hm="histnew"><b>이력 등록</b><span>고장·조치 기록</span></button><button type="button" class="hm-q" data-hm="check"><b>점검 시작</b><span>주간·월간·연간</span></button><button type="button" class="hm-q" data-goto="register"><b>부품 사용 등록</b><span>바로 기록하기</span></button>';
+  if(w)h+='<button type="button" class="hm-q" data-hm="histnew"><b>이력 등록</b><span>고장·조치 기록</span></button><button type="button" class="hm-q" data-hm="check"><b>점검 시작</b><span>주간·월간·연간</span></button><button type="button" class="hm-q" data-goto="register"><b>부품 입출고</b><span>사용·출고·입고</span></button>';
   else h+='<button type="button" class="hm-q" data-goto="hist"><b>설비 이력</b><span>기록 조회</span></button><button type="button" class="hm-q" data-hm="check"><b>점검 현황</b><span>설비별 상태</span></button>';
   return h;
 }
@@ -9407,6 +9576,231 @@ async function nativeAlarm(){
   window.emqRefresh=function(){_er();TD.ok=false;TD.users=[];hmRender();hmLoadAll();};
   setTimeout(()=>{hmRender();hmLoadAll();markCur();},0);
 }
+/* ===== 뒤로가기: 폰 뒤로가기 버튼 + 상단 "← 홈" 버튼 ===== */
+(function(){
+  if(window.__emqNav)return;window.__emqNav=1;
+  const orig=window.showPanel;if(typeof orig!=='function')return;
+  let cur='home',depth=0,restoring=false,silent=false,exitAt=0,bn=null;
+  const safe=f=>{try{return f();}catch(e){}};
+  safe(()=>{history.replaceState({emq:'exit'},'');history.pushState({emq:'p',p:'home',d:0},'');});
+  function toast(t){
+    let el=document.getElementById('emqToast');
+    if(!el){el=document.createElement('div');el.id='emqToast';el.className='emq-toast';document.body.appendChild(el);}
+    el.textContent=t;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('on'),1800);
+  }
+  function activeId(fallback){const a=document.querySelector('.panel.active');return a?a.id.replace('panel-',''):fallback;}
+  function sync(){
+    const b=document.getElementById('emqBack');if(!b)return;
+    b.hidden=(cur==='home');
+  }
+  window.showPanel=function(name){
+    orig(name);
+    const id=activeId(name);
+    if(restoring){cur=id;sync();return;}
+    if(id!==cur){
+      if(id==='home'&&depth>0){silent=true;const n=depth;depth=0;safe(()=>history.go(-n));}
+      else if(id!=='home'){depth++;safe(()=>history.pushState({emq:'p',p:id,d:depth},''));}
+    }
+    cur=id;sync();
+  };
+  function closeOverlay(){
+    if(document.body.classList.contains('dr-open')){safe(()=>setDrawer(false));return true;}
+    const m=document.getElementById('hmFriM');if(m){const b=m.querySelector('[data-fr=later]');if(b)b.click();else m.remove();return true;}
+    return false;
+  }
+  window.addEventListener('popstate',e=>{
+    const lk=document.querySelector('.emq-lock');if(lk&&!lk.hidden)return;
+    const s=e.state||{};
+    if(silent){silent=false;return;}
+    if(closeOverlay()){safe(()=>history.pushState({emq:'p',p:cur,d:depth},''));return;}
+    if(s.emq==='exit'){
+      if(Date.now()-exitAt<2500){exitAt=0;safe(()=>history.back());return;}
+      exitAt=Date.now();toast('한 번 더 누르면 종료됩니다');
+      depth=0;safe(()=>history.pushState({emq:'p',p:'home',d:0},''));
+      restoring=true;try{window.showPanel('home');}finally{restoring=false;}
+      return;
+    }
+    if(s.emq==='p'){depth=s.d||0;restoring=true;try{window.showPanel(s.p||'home');}finally{restoring=false;}}
+  });
+  function mount(){
+    const tb=document.querySelector('.topbar .tb-brand');if(!tb||document.getElementById('emqBack'))return;
+    tb.insertAdjacentHTML('beforeend','<button type="button" id="emqBack" class="tb-back" hidden aria-label="홈으로"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span>홈</span></button>');
+    document.getElementById('emqBack').addEventListener('click',()=>{const gs=document.getElementById('gsearch');if(gs)gs.value='';window.showPanel('home');});
+    sync();
+  }
+  mount();setTimeout(mount,600);
+})();
+/* ===== 부품 입출고: 사용 / 출고(지점 이동·기타) / 입고(구매·수리 입고·기타) ===== */
+(function(){
+  if(window.__emqMv)return;window.__emqMv=1;
+  const eh=x=>escapeHtml(String(x==null?'':x)),ea=x=>escapeAttr?escapeAttr(String(x==null?'':x)):eh(x);
+  const num=x=>Number(x)||0;
+  const nm=p=>String(p['제품형태']||p['제품규격']||'');
+  const who=()=>{try{return (window.EMQ&&EMQ.user&&EMQ.user.name)||localStorage.getItem('msds-worker')||'';}catch(e){return '';}};
+  const MV_ERR={over_stock:'현재고보다 많이 출고할 수 없습니다.',no_dest:'이동처를 선택하거나 입력해 주세요.',bad_qty:'수량을 확인해 주세요.',unknown_spec:'품목에 없는 부품입니다.',stale:'그 사이 다른 곳에서 이미 처리된 건입니다. 목록을 새로 불러와 주세요.',busy:'다른 요청을 처리 중입니다. 잠시 후 다시 시도해 주세요.',bad_request:'요청이 올바르지 않습니다.',no_spec:'부품이 선택되지 않았습니다.'};
+  const errT=e=>MV_ERR[e]||sheetErrText(e);
+  function overlay(html){
+    const o=document.createElement('div');o.className='repair-popup-overlay';
+    o.innerHTML='<div class="repair-popup mv-box" role="dialog" aria-modal="true">'+html+'</div>';
+    document.body.appendChild(o);const close=()=>o.remove();
+    o.addEventListener('click',e=>{if(e.target===o)close();});
+    return {o:o,close:close};
+  }
+  function stockLine(p){const s=num(p['현재고']),mn=num(p['최소보유수량']),rp=num(p['수리중수량']);
+    return '<div class="mv-st"><span class="'+(s<mn?'low':'')+'">재고 '+s+'</span>'+(rp?'<span>수리 중 '+rp+'</span>':'')+(mn?'<span>최소 '+mn+'</span>':'')+'</div>';}
+  const stepper=(id,val,max)=>'<div class="mv-qty"><button type="button" data-q="-1" aria-label="수량 줄이기">−</button><input type="number" id="'+id+'" min="1" '+(max?'max="'+max+'" ':'')+'value="'+val+'" inputmode="numeric"><button type="button" data-q="1" aria-label="수량 늘리기">+</button></div>';
+  function bindStepper(root,id,max){
+    const inp=root.querySelector('#'+id);if(!inp)return;
+    root.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>{let v=(parseInt(inp.value)||1)+Number(b.dataset.q);if(v<1)v=1;if(max&&v>max)v=max;inp.value=v;}));
+  }
+  const chips=(name,list,cur)=>'<div class="mv-chips" data-chips="'+name+'">'+list.map(x=>'<button type="button" class="'+(x===cur?'on':'')+'" data-v="'+ea(x)+'">'+eh(x)+'</button>').join('')+'</div>';
+  function bindChips(root,name,fn){
+    const box=root.querySelector('[data-chips="'+name+'"]');if(!box)return;
+    box.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;box.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));fn(b.dataset.v);});
+  }
+  function afterDone(msg){
+    showIconPopup('✅',msg);
+    try{const r=loadPartsFromSheet();const re=()=>{const i=document.getElementById('partsSearchReg');try{renderPartsReg(i?i.value:'');}catch(e){}try{if(typeof renderHome==='function')renderHome();}catch(e){}};if(r&&r.then)r.then(re).catch(()=>{});else re();}catch(e){}
+  }
+  async function sendMv(box,payload,doneMsg){
+    const err=box.o.querySelector('.mv-err');if(err)err.textContent='';
+    const r=await postSheetOk(payload);
+    if(!r.ok){if(err)err.textContent='저장하지 못했습니다. '+errT(r.error);return false;}
+    box.close();afterDone(doneMsg);return true;
+  }
+
+  /* ---------- 작업 선택 ---------- */
+  window.showPartActionSheet=function(part){
+    const box=overlay('<div class="mv-t">'+eh(nm(part))+'</div><div class="mv-sub">'+eh(part['제품규격']||'')+'</div>'+stockLine(part)
+      +'<div class="mv-acts"><button type="button" data-mv="use"><b>사용</b><small>설비에 사용(소모)</small></button><button type="button" data-mv="out"><b>출고</b><small>지점 이동 · 기타</small></button><button type="button" data-mv="in"><b>입고</b><small>구매 · 수리 입고</small></button></div>'
+      +'<button type="button" class="mv-x" data-mv="x">닫기</button>');
+    box.o.addEventListener('click',e=>{const b=e.target.closest('[data-mv]');if(!b)return;const k=b.dataset.mv;box.close();
+      if(k==='use')showUsageModal(part);else if(k==='out')showStockOutModal(part);else if(k==='in')showStockInModal(part);});
+  };
+
+  /* ---------- 출고 ---------- */
+  function showStockOutModal(part){
+    const stock=num(part['현재고']);let kind='지점이동',dest='경주공장';
+    const box=overlay('<div class="mv-t">출고 · '+eh(nm(part))+'</div><div class="mv-sub">'+eh(part['제품규격']||'')+'</div>'+stockLine(part)
+      +'<div class="mv-l">구분</div>'+chips('kind',['지점 이동','기타'],'지점 이동')
+      +'<div class="mv-l" id="mvDestL">이동처</div>'+chips('dest',['경주공장','지점','직접 입력'],'경주공장')
+      +'<input type="text" id="mvDest" class="mv-in" maxlength="40" placeholder="이동처 직접 입력" hidden>'
+      +'<div class="mv-l">수량</div>'+stepper('mvQty',1,stock||0)
+      +'<div class="mv-l">메모</div><input type="text" id="mvMemo" class="mv-in" maxlength="120" placeholder="예) 긴급 요청으로 발송">'
+      +'<div class="mv-who">작업자 <b>'+eh(who()||'-')+'</b></div><div class="mv-err" role="alert"></div>'
+      +'<div class="mv-foot"><button type="button" class="repair-popup-btn" id="mvGo">출고 등록</button><button type="button" class="restart-btn" id="mvNo">취소</button></div>');
+    const o=box.o,dIn=o.querySelector('#mvDest');
+    const sync=()=>{const free=dest==='직접 입력'||kind==='기타';dIn.hidden=!free;o.querySelector('[data-chips="dest"]').hidden=(kind==='기타');
+      o.querySelector('#mvDestL').textContent=kind==='기타'?'사유 · 대상':'이동처';dIn.placeholder=kind==='기타'?'예) 폐기, 타 부서 대여':'이동처 직접 입력';};
+    bindChips(o,'kind',v=>{kind=(v==='기타')?'기타':'지점이동';sync();});
+    bindChips(o,'dest',v=>{dest=v;sync();});bindStepper(o,'mvQty',stock||0);sync();
+    o.querySelector('#mvNo').addEventListener('click',box.close);
+    o.querySelector('#mvGo').addEventListener('click',()=>{
+      const qty=parseInt(o.querySelector('#mvQty').value)||0;
+      if(qty<1){o.querySelector('.mv-err').textContent='수량을 확인해 주세요.';return;}
+      if(qty>stock){o.querySelector('.mv-err').textContent='현재고('+stock+')보다 많이 출고할 수 없습니다.';return;}
+      const to=(kind==='지점이동')?(dest==='직접 입력'?dIn.value.trim():dest):dIn.value.trim();
+      if(kind==='지점이동'&&!to){o.querySelector('.mv-err').textContent='이동처를 입력해 주세요.';return;}
+      sendMv(box,{type:'stock_out',category:part['제품구분']||'',spec:part['제품규격'],qty:qty,kind:kind,dest:to,memo:o.querySelector('#mvMemo').value.trim(),worker:who()},
+        '"'+nm(part)+'" '+qty+'개 출고 등록했습니다.'+(kind==='지점이동'?' ('+to+')':''));
+    });
+  }
+
+  /* ---------- 입고 ---------- */
+  async function loadPending(){
+    try{const r=await fetch(GOOGLE_SHEET_URL+'?type=repair_pending');const j=await r.json();return (j&&j.ok)?(j.rows||[]):null;}catch(e){return null;}
+  }
+  function showStockInModal(part,startKind,pickRow){
+    let kind=startKind||'구매',pend=null,sel=pickRow||0;
+    const spec=String(part['제품규격']||'');
+    const box=overlay('<div class="mv-t">입고 · '+eh(nm(part))+'</div><div class="mv-sub">'+eh(spec)+'</div>'+stockLine(part)
+      +'<div class="mv-l">구분</div>'+chips('kind',['구매','수리 입고','기타'],kind)
+      +'<div id="mvBody"></div>'
+      +'<div class="mv-who">작업자 <b>'+eh(who()||'-')+'</b></div><div class="mv-err" role="alert"></div>'
+      +'<div class="mv-foot"><button type="button" class="repair-popup-btn" id="mvGo">입고 등록</button><button type="button" class="restart-btn" id="mvNo">취소</button></div>');
+    const o=box.o,body=o.querySelector('#mvBody'),go=o.querySelector('#mvGo');
+    function rowOf(){return (pend||[]).find(x=>x.row===sel);}
+    function renderBody(){
+      go.disabled=false;
+      if(kind==='수리 입고'){
+        if(pend===null){body.innerHTML='<div class="mv-note">수리 중인 건을 불러오는 중입니다…</div>';go.disabled=true;return;}
+        const mine=pend.filter(x=>x.spec===spec);
+        if(!mine.length){body.innerHTML='<div class="mv-note">이 부품은 수리 중인 건이 없습니다.</div>';go.disabled=true;return;}
+        if(!mine.some(x=>x.row===sel))sel=mine[0].row;
+        const cur=mine.find(x=>x.row===sel);
+        body.innerHTML='<div class="mv-l">수리 중인 건 (돌아온 건을 선택)</div><div class="mv-list">'
+          +mine.map(x=>'<label class="mv-pick"><input type="radio" name="mvRow" value="'+x.row+'"'+(x.row===sel?' checked':'')+'><span><b>'+eh(x.date||'-')+' 출고</b> · '+eh(x.vendor||'거래처 없음')+' · '+x.qty+'개'+(x.memo?'<small>'+eh(x.memo)+'</small>':'')+'</span></label>').join('')+'</div>'
+          +'<div class="mv-l">돌아온 수량</div>'+stepper('mvQty',cur.qty,cur.qty)
+          +'<label class="mv-ck"><input type="checkbox" id="mvScrap"> 수리 불가 · 폐기 처리 (재고로 돌려놓지 않음)</label>'
+          +'<div class="mv-l">메모</div><input type="text" id="mvMemo" class="mv-in" maxlength="120" placeholder="예) 베어링 교체 완료">';
+        bindStepper(o,'mvQty',cur.qty);
+        body.querySelectorAll('input[name=mvRow]').forEach(r=>r.addEventListener('change',()=>{sel=Number(r.value);renderBody();}));
+        const sc=body.querySelector('#mvScrap');const upd=()=>{go.textContent=sc.checked?'폐기 처리 등록':'수리 입고 등록';};sc.addEventListener('change',upd);upd();
+      }else{
+        const buy=(kind==='구매');
+        body.innerHTML='<div class="mv-l">'+(buy?'거래처':'입고 사유 · 출처')+'</div><input type="text" id="mvVendor" class="mv-in" maxlength="40" placeholder="'+(buy?'예) 거래처 이름':'예) 지점에서 받음')+'" value="'+ea(buy?(part['거래처']||''):'')+'">'
+          +'<div class="mv-l">수량</div>'+stepper('mvQty',1,0)
+          +'<div class="mv-l">메모</div><input type="text" id="mvMemo" class="mv-in" maxlength="120" placeholder="예) 발주분 입고">';
+        bindStepper(o,'mvQty',0);go.textContent='입고 등록';
+      }
+    }
+    bindChips(o,'kind',v=>{kind=v;o.querySelector('.mv-err').textContent='';renderBody();if(kind==='수리 입고'&&pend===null)fetchPend();});
+    async function fetchPend(){const r=await loadPending();pend=r||[];if(r===null)o.querySelector('.mv-err').textContent='수리 중인 건을 불러오지 못했습니다. 네트워크를 확인해 주세요.';renderBody();}
+    o.querySelector('#mvNo').addEventListener('click',box.close);
+    go.addEventListener('click',()=>{
+      const err=o.querySelector('.mv-err');err.textContent='';
+      const qty=parseInt((o.querySelector('#mvQty')||{}).value)||0;if(qty<1){err.textContent='수량을 확인해 주세요.';return;}
+      const memo=((o.querySelector('#mvMemo')||{}).value||'').trim();
+      if(kind==='수리 입고'){
+        const r=rowOf();if(!r){err.textContent='수리 중인 건을 선택해 주세요.';return;}
+        if(qty>r.qty){err.textContent='선택한 건의 수량('+r.qty+')보다 많습니다.';return;}
+        const scrap=!!o.querySelector('#mvScrap').checked;
+        sendMv(box,{type:'repair_in',spec:spec,row:r.row,qty:qty,scrap:scrap,memo:memo},scrap?'"'+nm(part)+'" '+qty+'개를 수리 불가(폐기)로 처리했습니다.':'"'+nm(part)+'" '+qty+'개 수리 입고 처리했습니다.');
+      }else{
+        sendMv(box,{type:'stock_in',category:part['제품구분']||'',spec:spec,qty:qty,kind:kind==='구매'?'구매':'기타',vendor:((o.querySelector('#mvVendor')||{}).value||'').trim(),memo:memo,worker:who()},
+          '"'+nm(part)+'" '+qty+'개 입고 등록했습니다.');
+      }
+    });
+    renderBody();if(kind==='수리 입고')fetchPend();
+  }
+
+  /* ---------- 수리 중 목록 / 최근 입출고 ---------- */
+  async function showRepairList(){
+    const box=overlay('<div class="mv-t">수리 중인 부품</div><div id="mvRl" class="mv-note">불러오는 중입니다…</div><button type="button" class="mv-x" data-mv="x">닫기</button>');
+    box.o.querySelector('.mv-x').addEventListener('click',box.close);
+    const rows=await loadPending();const el=box.o.querySelector('#mvRl');
+    if(rows===null){el.textContent='불러오지 못했습니다. 네트워크를 확인해 주세요.';return;}
+    if(!rows.length){el.textContent='수리 중인 건이 없습니다.';return;}
+    el.className='mv-list';
+    el.innerHTML=rows.map((x,i)=>'<button type="button" class="mv-pick btn" data-i="'+i+'"><span><b>'+eh(x.spec)+'</b> · '+x.qty+'개<small>'+eh(x.date||'-')+' 출고 · '+eh(x.vendor||'거래처 없음')+'</small></span><em>입고 처리</em></button>').join('');
+    el.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(!b)return;const x=rows[Number(b.dataset.i)];
+      const part=(partsData||[]).find(p=>String(p['제품규격'])===x.spec)||{'제품규격':x.spec,'제품형태':x.spec,'제품구분':x.category};
+      box.close();showStockInModal(part,'수리 입고',x.row);});
+  }
+  async function showStockLog(){
+    const box=overlay('<div class="mv-t">최근 입출고 내역</div><div id="mvLg" class="mv-note">불러오는 중입니다…</div><button type="button" class="mv-x" data-mv="x">닫기</button>');
+    box.o.querySelector('.mv-x').addEventListener('click',box.close);
+    let j=null;try{const r=await fetch(GOOGLE_SHEET_URL+'?type=stock_log');j=await r.json();}catch(e){}
+    const el=box.o.querySelector('#mvLg');
+    if(!j||!j.ok){el.textContent='불러오지 못했습니다.';return;}
+    if(!j.rows.length){el.textContent='아직 입출고 내역이 없습니다.';return;}
+    el.className='mv-list';
+    el.innerHTML=j.rows.slice(0,40).map(x=>'<div class="mv-lg"><span class="k '+(x.kind.indexOf('입고')===0?'in':'out')+'">'+eh(x.kind)+'</span><span><b>'+eh(x.spec)+'</b> '+(x.kind.indexOf('입고')===0?'+':'−')+x.qty+'<small>'+eh(String(x.at).slice(5,16))+' · '+eh(x.worker||'')+(x.party?' · '+eh(x.party):'')+(x.memo?' · '+eh(x.memo):'')+'</small></span></div>').join('');
+  }
+
+  /* ---------- 부품 등록 화면 상단 바 ---------- */
+  function bar(){
+    const p=document.getElementById('panel-register');if(!p)return;
+    let el=document.getElementById('mvBar');
+    if(!el){el=document.createElement('div');el.id='mvBar';el.className='mv-bar';const h=p.querySelector('.hint');if(h)h.insertAdjacentElement('afterend',el);else p.appendChild(el);
+      el.addEventListener('click',e=>{const b=e.target.closest('[data-mvb]');if(!b)return;if(b.dataset.mvb==='rp')showRepairList();else showStockLog();});}
+    const rp=(partsData||[]).reduce((a,x)=>a+num(x['수리중수량']),0);
+    el.innerHTML='<button type="button" data-mvb="rp"'+(rp?' class="warn"':'')+'><b>수리 중 '+rp+'개</b><small>돌아온 부품 입고 처리</small></button><button type="button" data-mvb="lg"><b>최근 입출고</b><small>내역 보기</small></button>';
+  }
+  const orig=window.renderPartsReg;
+  if(typeof orig==='function'){window.renderPartsReg=function(f){const r=orig.apply(this,arguments);try{bar();}catch(e){}return r;};}
+  setTimeout(()=>{try{bar();}catch(e){}},800);
+})();
 init();
 setTimeout(loadItems,0);
 })();
