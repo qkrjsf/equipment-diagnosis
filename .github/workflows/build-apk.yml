@@ -1,7 +1,7 @@
 name: Build EMQ APK
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:        # Actions 탭에서 'Run workflow' 버튼으로 실행
   push:
     paths:
       - 'apk/**'
@@ -31,17 +31,29 @@ jobs:
       - name: Add Android platform
         run: npx cap add android
 
-      - name: Set app icon
-        continue-on-error: true
+      - name: Set app icon (앱 안의 아이콘과 동일한 이미지 사용)
         run: |
+          set -e
           RES=android/app/src/main/res
-          rm -rf $RES/mipmap-anydpi-v26
-          for pair in mdpi:48 hdpi:72 xhdpi:96 xxhdpi:144 xxxhdpi:192; do
-            d=${pair%%:*}; s=${pair##*:}
-            for n in ic_launcher ic_launcher_round ic_launcher_foreground; do
-              convert assets/icon-only.png -resize ${s}x${s} $RES/mipmap-$d/$n.png
+          # 런처가 원형/둥근 사각형으로 잘라도 점이 잘리지 않도록 80%로 줄여 같은 배경색 위에 올림
+          convert -size 512x512 xc:'#EEF0F2' \( assets/icon-only.png -resize 410x410 \) -gravity center -composite assets/launcher.png
+          rm -rf $RES/mipmap-anydpi-v26 $RES/drawable-v24/ic_launcher_foreground.xml $RES/drawable/ic_launcher_background.xml
+          for d in mdpi:48 hdpi:72 xhdpi:96 xxhdpi:144 xxxhdpi:192; do
+            n=${d%%:*}; sz=${d##*:}
+            mkdir -p $RES/mipmap-$n
+            for f in ic_launcher ic_launcher_round ic_launcher_foreground; do
+              convert assets/launcher.png -resize ${sz}x${sz} $RES/mipmap-$n/$f.png
             done
           done
+          ls $RES/mipmap-xxxhdpi
+
+      - name: Notification icon
+        run: |
+          set -e
+          RES=android/app/src/main/res
+          mkdir -p $RES/drawable
+          convert -size 96x96 xc:none -fill white -draw "roundrectangle 6,6 90,90 16,16" /tmp/base.png
+          convert /tmp/base.png \( -size 96x96 xc:none -gravity center -pointsize 62 -font DejaVu-Sans-Bold -fill white -annotate 0 'E' \) -compose DstOut -composite $RES/drawable/ic_stat_icon.png
 
       - name: Sync
         run: npx cap sync android
