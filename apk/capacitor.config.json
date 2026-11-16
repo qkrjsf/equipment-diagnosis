@@ -1,0 +1,13 @@
+{
+  "appId": "kr.co.hwainsolution.emq",
+  "appName": "EMQ",
+  "webDir": "www",
+  "server": {
+    "url": "https://qkrjsf.github.io/equipment-diagnosis/",
+    "cleartext": false,
+    "allowNavigation": ["qkrjsf.github.io", "script.google.com", "*.googleusercontent.com", "script.googleusercontent.com"]
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}

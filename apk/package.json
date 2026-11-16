@@ -1,0 +1,15 @@
+{
+  "name": "emq-android",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EMQ (설비 진단 어시스턴트) Android 앱 - 웹앱을 감싸는 Capacitor 프로젝트",
+  "dependencies": {
+    "@capacitor/android": "6.2.1",
+    "@capacitor/cli": "6.2.1",
+    "@capacitor/core": "6.2.1",
+    "capacitor-native-biometric": "4.2.2"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "3.0.5"
+  }
+}
