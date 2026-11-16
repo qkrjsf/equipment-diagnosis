@@ -895,6 +895,19 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
 .mv-bar button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 14px;border-radius:12px;border:1.5px solid #D6E3EA;background:#fff;color:#0B2A3D;cursor:pointer;text-align:left}
 .mv-bar button b{font-size:15px}.mv-bar button small{font-size:12px;color:#5B7384}.mv-bar button.warn{background:#FFF6EC;border-color:#E5B98F}
 .mv-bar button:active{transform:translateY(1px);background:#E6F1F5}
+/* v71 */
+.hc-seg.n4{grid-template-columns:repeat(2,minmax(0,1fr));}
+.eqx-seg{display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap;}
+.eqx-seg button{flex:1 1 0;min-width:0;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);font:inherit;font-weight:600;cursor:pointer;color:var(--ink);}
+.eqx-seg button.on{background:var(--amber);border-color:var(--amber);color:#fff;}
+.eq-row .v .nodata{color:var(--muted);font-weight:400;}
+.hi-list{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
+.hi-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;min-width:0;}
+.hi-row.off{opacity:.55;}
+.hi-row .nm{flex:1 1 auto;min-width:0;overflow-wrap:anywhere;font-weight:600;font-size:14px;}
+.hi-row .nm small{display:block;color:var(--muted);font-weight:400;font-size:12px;}
+.hi-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;margin-top:10px;}
+.hi-add select{grid-column:1 / -1;}
 </style>
 </head>
 <body>
@@ -1112,7 +1125,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v70</span></div>
+    <div class="sb-foot"><span id="verLabel">v71</span></div>
   </nav>
 
   <div class="content">
@@ -1367,7 +1380,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v70</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v71</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8337,7 +8350,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v70', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v71', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
@@ -8445,12 +8458,14 @@ const CAUSE=['노후','간섭·충돌 손상','이물질·오염·막힘','체�
 const ACT=['교체','수리','청소','조정·교정','보충','재체결','점검만','기타'];
 const SRC=['점검 중','작업 중','알람','기타'];
 const TCH=[10,30,60,120,240,480];
-const EQG={'1층':[],'2층':[],'프레스·기타':['프레스','기타 설비']};
+const DUTY='기타(공무)';
+const EQG={'1층':[],'2층':[],'프레스':[]};
 for(let i=1;i<=11;i++)EQG['1층'].push('1F-'+i);
 for(let i=1;i<=7;i++)EQG['2층'].push('2F-'+i);
 const EQ=[].concat(EQG['1층'],EQG['2층']);
 const HC={worker:'',hist:[],histOk:false,histLoading:false,histErr:'',chk:[],chkOk:false,chkLoading:false,chkErr:'',
   tabH:'new',tabC:'status',stK:(function(){try{return sessionStorage.getItem('emq-stk')||'주간';}catch(e){return '주간';}})(),stF:'all',W:null,K:null,lf:{eq:'',g:'',per:'all'},edit:'',sp:'all',cf:{kind:'',eq:''},pk:false,subs:{}};
+HC.hitems=[];HC.xtabs=[];HC.hitemsOk=false;
 try{HC.worker=localStorage.getItem('msds-worker')||'';HC.subs=JSON.parse(localStorage.getItem('hc-subs')||'{}')||{};}catch(e){}
 
 /* ---------- 공통 ---------- */
@@ -8475,7 +8490,27 @@ function needWho(){if(HC.worker)return true;document.querySelectorAll('#hcWho').
 function eqType(eq){try{const hi=equipHeaders.findIndex(h=>/점검표/.test(String(h)));if(hi>=0){const row=equipRows.find(r=>String(r[0]).replace(/호기/g,'').replace(/\s/g,'')===eq);if(row&&row[hi]){const v=String(row[hi]).trim();if(/저압|고압|수발포기/.test(v))return v.match(/수발포기|저압|고압/)[0];}}}catch(e){}return HC_EQTYPE[eq]||'고압';}
 function applies(it,eq){const t=eqType(eq);return t==='저압'?it.L:t==='수발포기'?it.S:it.H;}
 const pstr=p=>p.filter(Boolean).join(' › ');
-function subsOf(a,b){const base=[...((HC_TREE[a]||{})[b]||[])];(HC.subs[a+'|'+b]||[]).forEach(x=>{if(base.indexOf(x)<0)base.push(x);});return base.filter(Boolean);}
+/* v71: 관리자가 시트(이력항목)에 추가한 항목 · 설비(프레스) 탭 */
+const DUTY_DEF=['전등 교체','수전 교체','배관·누수 보수','문·잠금장치','청소·정리','기타'];
+const typing=()=>/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement||{}).tagName||'');
+function hitemsOf(kind,parent){return (HC.hitems||[]).filter(i=>i.kind===kind&&(parent==null||i.parent===parent));}
+function hiddenSet(kind){const s={};hitemsOf(kind).forEach(i=>{if(i.status==='숨김')s[i.value]=1;});return s;}
+function dutyKinds(){const hid=hiddenSet('공무작업');const out=DUTY_DEF.filter(x=>!hid[x]);hitemsOf('공무작업').forEach(i=>{if(i.status!=='숨김'&&out.indexOf(i.value)<0)out.splice(Math.max(0,out.length-(out.indexOf('기타')>=0?1:0)),0,i.value);});return out;}
+function phenList(){const hid=hiddenSet('고장현상');const out=PHEN.filter(x=>x!=='기타'&&!hid[x]);hitemsOf('고장현상').forEach(i=>{if(i.status!=='숨김'&&out.indexOf(i.value)<0)out.push(i.value);});out.push('기타');return out;}
+function subsOf(a,b){const base=[...((HC_TREE[a]||{})[b]||[])];(HC.subs[a+'|'+b]||[]).forEach(x=>{if(base.indexOf(x)<0)base.push(x);});hitemsOf('소분류',a+'|'+b).forEach(i=>{if(i.status!=='숨김'&&base.indexOf(i.value)<0)base.push(i.value);});return base.filter(Boolean);}
+function pressTab(){return (HC.xtabs||[]).find(t=>t.name==='프레스')||null;}
+function pressNames(){const t=pressTab();return t?t.rows.map(r=>String(r[0]||'').trim()).filter(Boolean):[];}
+function syncPress(){EQG['프레스']=pressNames();}
+function applyHitems(d){if(!d||!d.ok||!Array.isArray(d.items))return false;HC.hitems=d.items;HC.hitemsOk=true;return true;}
+async function loadHitems(){
+  if(!HC.hitemsTried){HC.hitemsTried=true;try{applyHitems(JSON.parse(localStorage.getItem('hc-hitems')||'null'));}catch(e){}}
+  try{const d=await hcGet('hist_items');if(applyHitems(d)){try{localStorage.setItem('hc-hitems',JSON.stringify(d));}catch(e){}if(typeof refreshHist==='function'&&curPanel==='hist'&&!typing())refreshHist(true);if(curPanel==='chkadmin'&&typeof renderAdm==='function')renderAdm();}}catch(e){}
+}
+async function loadXtabs(){
+  if(!HC.xtabsTried){HC.xtabsTried=true;try{const c=JSON.parse(localStorage.getItem('cache-equip-tabs')||'null');if(c&&Array.isArray(c.tabs)){HC.xtabs=c.tabs;syncPress();}}catch(e){}}
+  try{const d=await hcGet('equip_tabs');if(d&&d.ok&&Array.isArray(d.tabs)){HC.xtabs=d.tabs;HC.xtabsOk=true;syncPress();try{localStorage.setItem('cache-equip-tabs',JSON.stringify(d));}catch(e){}
+    if(typeof renderEquip==='function'&&curPanel==='equip')renderEquip();if(curPanel==='hist'&&typeof refreshHist==='function'&&!typing())refreshHist(true);}else HC.xtabsErr=true;}catch(e){HC.xtabsErr=true;}
+}
 function mapHist(r){let parts=[];try{parts=r['사용부품']?JSON.parse(r['사용부품']):[];}catch(e){}return Object.assign({},r,{_parts:parts,_occ:String(r['발생일시']||'')});}
 
 /* ---------- 데이터 불러오기 ---------- */
@@ -8496,18 +8531,20 @@ async function loadChk(force){
 
 /* ---------- 설비 이력: 등록 마법사 ---------- */
 const STEPS=['설비','부위','고장 현상','조치','확인'];
-function newW(keep){HC.W={step:1,g:'',eq:'',p:[],alarm:'',noAlarm:false,cidx:-2,ph:[],act:'',actText:'',min:null,cause:'',causeText:'',parts:[],src:'점검 중',link:'',checkId:'',checkItem:'',occ:'',memo:'',preset:false,saving:false,err:'',done:false,last:null};
-  if(keep){HC.W.g=keep.g;HC.W.eq=keep.eq;HC.W.step=2;}HC.pk=false;HC.csq='';HC.csList=[];}
-const gOf=eq=>EQG['1층'].indexOf(eq)>=0?'1층':EQG['2층'].indexOf(eq)>=0?'2층':'프레스·기타';
+function newW(keep){HC.W={step:1,g:'',eq:'',p:[],alarm:'',noAlarm:false,cidx:-2,ph:[],act:'',actText:'',duty:false,dk:'',min:null,cause:'',causeText:'',parts:[],src:'점검 중',link:'',checkId:'',checkItem:'',occ:'',memo:'',preset:false,saving:false,err:'',done:false,last:null};
+  if(keep){HC.W.g=keep.g;HC.W.eq=keep.eq;HC.W.step=2;if(keep.eq===DUTY){HC.W.duty=true;}}HC.pk=false;HC.csq='';HC.csList=[];}
+const gOf=eq=>EQG['1층'].indexOf(eq)>=0?'1층':EQG['2층'].indexOf(eq)>=0?'2층':eq===DUTY?DUTY:'프레스';
 const B=(cls,attr,txt)=>'<button type="button" class="hc-b '+cls+'" '+attr+'>'+txt+'</button>';
 function alarmDef(){return HC_ALARMS.find(a=>a.n===HC.W.alarm);}
 function stepHead(q,hint){const W=HC.W;return '<div class="hc-h"><button type="button" class="hc-back" data-h="back" aria-label="이전" '+(W.step===1&&!W.alarm?'disabled':'')+'>‹</button><div class="hc-pg"><b>'+W.step+' / 5 · '+STEPS[W.step-1]+'</b><div class="hc-bar"><i style="width:'+W.step*20+'%"></i></div></div></div><h2 class="hc-q">'+q+'</h2>'+(hint?'<p class="hc-hint">'+hint+'</p>':'');}
 const nextBtn=(ok,label)=>'<button type="button" class="hc-btn hc-nx" data-h="next" '+(ok?'':'disabled')+'>'+(label||'다음')+'</button>';
 function stepBody(){
   const W=HC.W;
+  if(W.duty&&W.step>=2)return dutyBody();
   if(W.step===1){
-    return stepHead('어느 설비인가요?','구분을 고른 뒤 호기를 누르세요.')+'<div class="hc-seg">'+Object.keys(EQG).map(g=>B(W.g===g?'on':'','data-g="'+g+'"',g)).join('')+'</div>'
-      +(W.g?'<div class="hc-grid">'+EQG[W.g].map(e=>B(W.eq===e?'on':'','data-eq="'+A(e)+'"',E(e))).join('')+'</div>'+(W.g==='프레스·기타'?'<p class="hc-hint" style="margin-top:10px">프레스·기타 설비 이름은 설비 시트에 추가되면 이 목록에 반영합니다.</p>':''):'');
+    const SEGS=Object.keys(EQG).concat([DUTY]);
+    return stepHead('어느 설비인가요?','구분을 고른 뒤 호기를 누르세요. 설비가 아닌 공무 업무는 기타(공무)를 고르세요.')+'<div class="hc-seg n4">'+SEGS.map(g=>B(W.g===g?'on':'','data-g="'+g+'"',g)).join('')+'</div>'
+      +(W.g===DUTY?nextBtn(true,'작업 입력'):W.g==='프레스'&&!EQG['프레스'].length?'<div class="hc-auto" style="margin-top:10px">'+(HC.xtabsOk?'설비(프레스) 시트에 등록된 프레스가 없습니다.':HC.xtabsErr?'프레스 목록을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.':'프레스 목록을 불러오는 중입니다...')+'</div>':W.g?'<div class="hc-grid">'+EQG[W.g].map(e=>B(W.eq===e?'on':'','data-eq="'+A(e)+'"',E(e))).join('')+'</div>':'');
   }
   if(W.step===2){
     const a=W.p[0],b=W.p[1];
@@ -8530,7 +8567,7 @@ function stepBody(){
     return stepHead(!a?'어느 부위인가요? (대분류)':!b?'어떤 부품군인가요? (중분류)':'세부 부위를 고르세요 (소분류)','큰 분류부터 차례로 고릅니다.')+crumbs()+body;
   }
   if(W.step===3){
-    return stepHead('어떤 현상인가요?','여러 개 선택할 수 있습니다.')+'<div class="hc-grid two">'+PHEN.map(x=>B(W.ph.indexOf(x)>=0?'on':'','data-ph="'+A(x)+'"',E(x))).join('')+'</div>'+nextBtn(W.ph.length>0);
+    return stepHead('어떤 현상인가요?','여러 개 선택할 수 있습니다.')+'<div class="hc-grid two">'+phenList().map(x=>B(W.ph.indexOf(x)>=0?'on':'','data-ph="'+A(x)+'"',E(x))).join('')+'</div>'+nextBtn(W.ph.length>0);
   }
   if(W.step===4){
     const open=W.act==='교체'||W.parts.length;
@@ -8555,6 +8592,21 @@ function stepBody(){
     +'<label class="hc-lab" for="hcOcc">발생 일시</label><input id="hcOcc" class="hc-in" type="datetime-local" value="'+A(W.occ||nowLocal())+'"></details>'
     +whoHtml()+(W.err?'<div class="hc-err">'+E(W.err)+'</div>':'')
     +'<button type="button" class="hc-btn hc-nx" data-h="save" '+(W.saving?'disabled':'')+'>'+(W.saving?'저장 중...':'이력 저장')+'</button>';
+}
+function dutyBody(){
+  const W=HC.W,kinds=dutyKinds(),custom=W.dk&&kinds.indexOf(W.dk)<0;
+  return '<div class="hc-h"><button type="button" class="hc-back" data-h="back" aria-label="이전">‹</button><div class="hc-pg"><b>2 / 2 · 공무 작업</b><div class="hc-bar"><i style="width:100%"></i></div></div></div>'
+    +'<h2 class="hc-q">어떤 작업을 했나요?</h2><p class="hc-hint">전등 교체, 수전 교체 같은 공무 업무를 기록합니다. 설비 고장 이력은 설비를 선택해 주세요.</p>'
+    +'<div class="hc-grid two">'+kinds.map(k=>B(W.dk===k?'on':'','data-dk="'+A(k)+'"',E(k))).join('')+'</div>'
+    +'<label class="hc-lab" for="hcDk">목록에 없으면 직접 입력</label><input id="hcDk" class="hc-in" maxlength="30" placeholder="예: 콘센트 교체" value="'+A(custom?W.dk:'')+'">'
+    +'<label class="hc-lab" for="hcActText">장소 · 작업 내용</label><textarea id="hcActText" class="hc-in" maxlength="300" placeholder="예: 2층 복도 전등 2개 교체">'+E(W.actText)+'</textarea>'
+    +'<span class="hc-lab">작업 시간 <b id="hcDur" style="color:var(--ink)">'+fmtMin(W.min)+'</b></span>'
+    +'<div class="hc-chips">'+TCH.map(m=>'<button type="button" class="hc-chip'+(W.min===m?' on':'')+'" data-tv="'+m+'">'+fmtMin(m)+'</button>').join('')+'</div>'
+    +'<div style="display:flex;gap:6px;margin-top:8px;align-items:center"><button type="button" class="hc-chip" data-tm="-10">−10분</button><input id="hcMin" class="hc-in" type="number" min="0" max="2880" inputmode="numeric" placeholder="분 직접 입력" value="'+(W.min==null?'':W.min)+'" style="max-width:150px"><button type="button" class="hc-chip" data-tm="10">+10분</button></div>'
+    +'<label class="hc-lab" for="hcMemo">메모 <small>(선택)</small></label><textarea id="hcMemo" class="hc-in" maxlength="300">'+E(W.memo)+'</textarea>'
+    +'<label class="hc-lab" for="hcOcc">작업 일시</label><input id="hcOcc" class="hc-in" type="datetime-local" value="'+A(W.occ||nowLocal())+'">'
+    +whoHtml()+(W.err?'<div class="hc-err">'+E(W.err)+'</div>':'')
+    +'<button type="button" class="hc-btn hc-nx" data-h="save" '+(W.saving||!W.dk?'disabled':'')+'>'+(W.saving?'저장 중...':'공무 작업 저장')+'</button>';
 }
 function crumbs(){const W=HC.W;const c=[];if(W.p[0])c.push('<button type="button" data-up="0">'+E(W.p[0])+' ×</button>');if(W.p[1])c.push('<button type="button" data-up="1">'+E(W.p[1])+' ×</button>');if(W.alarm)c.push('<button type="button" data-up="al">'+E(W.alarm)+' ×</button>');return c.length?'<div class="hc-crumbs">'+c.join('')+'</div>':'';}
 function partsBlock(){
@@ -8645,8 +8697,9 @@ function addPart(spec){
 async function saveHist(){
   const W=HC.W;if(W.saving)return;
   if(!needWho())return;
+  if(W.duty){if(!W.dk){W.err='작업 종류를 선택하거나 입력하세요.';refreshHist();return;}W.p=['공무',W.dk];W.act='공무';W.ph=[];W.cause='';W.alarm='';W.src='공무';W.parts=[];}
   const p=W.p;W.saving=true;W.err='';refreshHist();
-  const payload={type:'hist_add',eq:W.eq,occ:(W.occ||nowLocal()).replace('T',' '),p0:p[0]||'',p1:p[1]||'',p2:p[2]||'',alarm:W.alarm,ph:W.ph,cause:W.cause||'원인 불명',causeText:W.causeText,act:W.act,actText:W.actText,min:W.min,
+  const payload={type:'hist_add',eq:W.eq,occ:(W.occ||nowLocal()).replace('T',' '),p0:p[0]||'',p1:p[1]||'',p2:p[2]||'',alarm:W.alarm,ph:W.ph,cause:W.duty?'':(W.cause||'원인 불명'),causeText:W.causeText,act:W.act,actText:W.actText,min:W.min,
     parts:W.parts.map(x=>({spec:x.spec,name:x.name,qty:x.qty})),worker:HC.worker,src:W.src,link:W.link,memo:W.memo,checkId:W.checkId,checkItem:W.checkItem};
   try{
     const r=await hcPost(payload);
@@ -8675,8 +8728,9 @@ function wizClick(ev){
   if(d.h==='save'){saveHist();return;}
   if(d.h==='again'){newW(d.v==='same'?{g:W.g,eq:W.eq}:null);refreshHist();return;}
   if(d.h==='tolist'){HC.tabH='list';refreshHist();return;}
-  if(d.g!=null){W.g=d.g;W.eq='';refreshHist();return;}
-  if(d.eq){W.eq=d.eq;go(2);return;}
+  if(d.g!=null){W.g=d.g;W.duty=(d.g===DUTY);W.eq=W.duty?DUTY:'';if(W.duty){go(2);return;}if(d.g==='프레스'&&!HC.xtabsOk)loadXtabs();refreshHist();return;}
+  if(d.eq){W.eq=d.eq;W.duty=false;go(2);return;}
+  if(d.dk!=null){W.dk=W.dk===d.dk?'':d.dk;refreshHist();return;}
   if(d.cs!=null){
     const it=(HC.csList||[])[+d.cs];if(!it)return;
     if(it.t==='path'){
@@ -8715,6 +8769,7 @@ function wizInput(ev){
   const t=ev.target,W=HC.W;
   if(t.id==='hcMin')setMin(t.value);
   else if(t.id==='hcActText')W.actText=t.value;
+  else if(t.id==='hcDk'){W.dk=t.value.trim();const sv=document.querySelector('[data-h=save]');if(sv&&!W.saving)sv.disabled=!W.dk;document.querySelectorAll('[data-dk]').forEach(c=>c.classList.toggle('on',c.dataset.dk===W.dk));}
   else if(t.id==='hcCauseText')W.causeText=t.value;
   else if(t.id==='hcMemo')W.memo=t.value;
   else if(t.id==='hcPq')renderPL();
@@ -8731,10 +8786,11 @@ function perSel(id,v){return '<select id="'+id+'" aria-label="기간"><option va
 function listHtml(){
   const f=HC.lf;
   let rows=HC.hist.filter(r=>(!f.eq||r['설비']===f.eq)&&(!f.g||r['대분류']===f.g)&&inPer(r,f.per)).sort((a,b)=>b._occ.localeCompare(a._occ));
-  const head='<div class="hc-filters"><select id="hcFe" aria-label="설비"><option value="">설비 전체</option>'+EQ.concat(['프레스','기타 설비']).map(e=>'<option'+(f.eq===e?' selected':'')+'>'+e+'</option>').join('')+'</select><select id="hcFg" aria-label="대분류"><option value="">대분류 전체</option>'+Object.keys(HC_TREE).map(e=>'<option'+(f.g===e?' selected':'')+'>'+e+'</option>').join('')+'</select>'+perSel('hcFp',f.per)+'</div>';
+  const head='<div class="hc-filters"><select id="hcFe" aria-label="설비"><option value="">설비 전체</option>'+filterEqs().map(e=>'<option'+(f.eq===e?' selected':'')+'>'+e+'</option>').join('')+'</select><select id="hcFg" aria-label="대분류"><option value="">대분류 전체</option>'+Object.keys(HC_TREE).map(e=>'<option'+(f.g===e?' selected':'')+'>'+e+'</option>').join('')+'</select>'+perSel('hcFp',f.per)+'</div>';
   const body=rows.length?rows.slice(0,200).map(itemHtml).join(''):'<div class="hc-empty">'+(HC.histLoading?'불러오는 중입니다...':HC.histErr?'이력을 불러오지 못했습니다. ('+E(HC.histErr)+') <br><button type="button" class="hc-btn ghost sm" data-h="reload" style="margin-top:8px">다시 불러오기</button>':'조건에 맞는 이력이 없습니다.')+'</div>';
   return head+'<div class="hc-muted" style="margin-bottom:8px">'+rows.length+'건'+(rows.length>200?' (최근 200건 표시)':'')+'</div>'+body;
 }
+function filterEqs(){const l=EQ.concat(pressNames(),[DUTY]);HC.hist.forEach(r=>{const e=r['설비'];if(e&&l.indexOf(e)<0)l.push(e);});return l;}
 function itemHtml(r){
   const m=r['조치시간(분)'],ed=HC.edit===r['이력ID'];
   const parts=(r._parts||[]).map(x=>E(x.n||x.s)+'×'+x.q).join(', ');
@@ -9000,7 +9056,7 @@ function chkInit(){const el=$('hcChk');if(!el||el.dataset.bound)return;el.datase
 window.hcOnPanel=function(name){
   if(emqGuard(name))return;
   curPanel=name;setDrawer(false);
-  if(name==='hist'){if(window.EMQ&&!EMQ.can(2)&&HC.tabH==='new')HC.tabH='list';refreshHistInit();if(!HC.W)newW();refreshHist();loadHist(!HC.histOk);if(!partsData.length)loadPartsFromSheet().catch(()=>{});}
+  if(name==='hist'){if(window.EMQ&&!EMQ.can(2)&&HC.tabH==='new')HC.tabH='list';refreshHistInit();if(!HC.W)newW();refreshHist();loadHist(!HC.histOk);loadHitems();loadXtabs();if(!partsData.length)loadPartsFromSheet().catch(()=>{});}
   if(name==='check'){chkInit();refreshChk();loadChk(true);if(!equipRows.length)loadEquip();}
 };
 function init(){
@@ -9025,7 +9081,7 @@ function emqGuard(name){
   if(LV_NEED[name]&&!E0.can(LV_NEED[name])){toast(name==='users'?'마스터만 사용할 수 있습니다.':name==='chkadmin'?'관리자 이상만 사용할 수 있습니다.':'조회 권한 계정은 등록 화면을 사용할 수 없습니다.');showPanel('home');return true;}
   if(name==='pump'){const oth=document.body.getAttribute('data-team')==='other';if(oth){renderPumpStockOnly();return false;}if(!E0.can(2)){toast('조회 권한 계정은 펌프 수리 화면을 사용할 수 없습니다.');showPanel('home');return true;}}
   if((name==='todo'||name==='sched')&&document.body.getAttribute('data-team')==='other'){toast('생산기술팀 전용 메뉴입니다.');showPanel('home');return true;}
-  if(name==='chkadmin'){loadItems();renderAdm();if(!equipRows.length&&typeof loadEquip==='function'){try{Promise.resolve(loadEquip()).then(renderAdm);}catch(e){}}}
+  if(name==='chkadmin'){loadItems();loadHitems();renderAdm();if(!equipRows.length&&typeof loadEquip==='function'){try{Promise.resolve(loadEquip()).then(renderAdm);}catch(e){}}}
   if(name==='account'){renderAcc();}
   if(name==='users'){loadUsers();}
   return false;
@@ -9131,11 +9187,44 @@ function admQHtml(){
   h+=(CA.err?'<div class="hc-err">'+E(CA.err)+'</div>':'')+'<div class="hc-col" style="margin-top:12px"><button type="button" class="hc-btn" data-ca="qsave"'+(CA.dirty&&!CA.saving?'':' disabled')+'>'+(CA.saving?'저장 중...':'배정 저장')+'</button></div></div>';
   return h;
 }
+Object.assign(ERR,{dup_item:'이미 등록된 항목입니다.',no_value:'항목 이름을 입력하세요.',no_parent:'대분류와 중분류를 선택하세요.',not_found:'항목을 찾을 수 없습니다. 새로고침 후 다시 시도하세요.',bad_op:'요청이 올바르지 않습니다.'});
+CA.hk='공무작업';CA.hp0='';CA.hp1='';CA.herr='';CA.hv='';CA.hbusy=false;CA.hrows=[];
+const HKINDS=[['공무작업','공무 작업 종류'],['고장현상','고장 현상'],['소분류','소분류(부위)']];
+function admHiRows(){
+  const k=CA.hk,rows=[];
+  if(k==='공무작업'){const hid=hiddenSet('공무작업');DUTY_DEF.forEach(v=>rows.push({value:v,parent:'',status:hid[v]?'숨김':'사용',def:true}));}
+  if(k==='고장현상'){const hid=hiddenSet('고장현상');PHEN.forEach(v=>{if(v!=='기타')rows.push({value:v,parent:'',status:hid[v]?'숨김':'사용',def:true});});}
+  hitemsOf(k).forEach(i=>{if(!rows.some(r=>r.value===i.value&&r.parent===i.parent))rows.push({value:i.value,parent:i.parent,status:i.status,def:false});});
+  return rows;
+}
+function admHiHtml(){
+  const k=CA.hk,rows=admHiRows();CA.hrows=rows;
+  const chips=HKINDS.map(x=>'<button type="button" class="hc-chip'+(k===x[0]?' on':'')+'" data-ca="hk|'+x[0]+'">'+x[1]+'</button>').join('');
+  const tree=(typeof HC_TREE!=='undefined'&&HC_TREE)||{};
+  const sel=k==='소분류'?'<select class="hc-in" id="caHp0" aria-label="대분류"><option value="">대분류 선택</option>'+Object.keys(tree).map(a=>'<option'+(CA.hp0===a?' selected':'')+'>'+E(a)+'</option>').join('')+'</select>'
+    +'<select class="hc-in" id="caHp1" aria-label="중분류"'+(CA.hp0?'':' disabled')+'><option value="">중분류 선택</option>'+Object.keys(tree[CA.hp0]||{}).map(b=>'<option'+(CA.hp1===b?' selected':'')+'>'+E(b)+'</option>').join('')+'</select>':'';
+  const info={'공무작업':'기타(공무) 이력의 작업 종류 버튼입니다. 기본 항목도 숨길 수 있습니다.','고장현상':'설비 이력의 고장 현상 선택지입니다. 추가한 항목은 목록의 "기타" 앞에 표시됩니다.','소분류':'부위 선택의 소분류입니다. 대분류와 중분류를 고른 뒤 이름을 추가합니다.'}[k];
+  const list=k==='소분류'?rows.slice().sort((a,b)=>(a.parent+a.value).localeCompare(b.parent+b.value)):rows;
+  return '<div class="hc-chips" style="margin-bottom:10px">'+chips+'</div><div class="hc-card"><h3 style="margin:0 0 4px">'+HKINDS.find(x=>x[0]===k)[1]+' ('+rows.filter(r=>r.status!=='숨김').length+')</h3><p class="hc-muted" style="margin:0">'+info+' 삭제 대신 숨김 처리하면 과거 이력은 그대로 유지됩니다.</p>'
+    +'<div class="hi-add">'+sel+'<input class="hc-in" id="caHv" maxlength="30" placeholder="추가할 항목 이름" value="'+A(CA.hv)+'"><button type="button" class="hc-btn sm" data-ca="hadd"'+(CA.hbusy?' disabled':'')+'>'+(CA.hbusy?'저장 중...':'추가')+'</button></div>'
+    +(CA.herr?'<div class="hc-err" style="margin-top:8px">'+E(CA.herr)+'</div>':'')
+    +(list.length?'<div class="hi-list">'+list.map((r,i)=>'<div class="hi-row'+(r.status==='숨김'?' off':'')+'"><span class="nm">'+E(r.value)+(r.parent?'<small>'+E(r.parent.replace('|',' › '))+'</small>':'')+(r.def?'<small>기본 항목</small>':'')+'</span><button type="button" class="hc-btn ghost sm" data-ca="'+(r.status==='숨김'?'hshow':'hhide')+'|'+CA.hrows.indexOf(r)+'"'+(CA.hbusy?' disabled':'')+'>'+(r.status==='숨김'?'다시 사용':'숨기기')+'</button></div>').join('')+'</div>':'<p class="hc-muted" style="margin-top:10px">등록된 항목이 없습니다.</p>')
+    +'</div>';
+}
+async function admHiPost(op,r){
+  CA.hbusy=true;CA.herr='';renderAdm();
+  try{
+    const x=await hcPost({type:'hist_item_save',op:op,kind:CA.hk,value:r.value,parent:r.parent||'',worker:HC.worker});
+    CA.hbusy=false;
+    if(!x||!x.ok){CA.herr=errMsg(x&&x.error);renderAdm();return false;}
+    await loadHitems();renderAdm();return true;
+  }catch(e){CA.hbusy=false;CA.herr='네트워크 오류로 저장하지 못했습니다.';renderAdm();return false;}
+}
 function renderAdm(){
   const el=$('emqChkAdm');if(!el||!window.EMQ||!EMQ.can(3))return;
-  const T=[['items','점검 항목'],['q','연간 배정']];
+  const T=[['items','점검 항목'],['q','연간 배정'],['hi','이력 항목']];
   el.innerHTML='<div class="emq-p"><div class="hc-tabs" role="tablist">'+T.map(x=>'<button type="button" role="tab" data-ca="tab|'+x[0]+'" aria-selected="'+(CA.tab===x[0])+'">'+x[1]+'</button>').join('')+'</div>'
-   +(CA.tab==='items'?(CA.form?admFormHtml():admItemsHtml()):admQHtml())+'</div>';
+   +(CA.tab==='items'?(CA.form?admFormHtml():admItemsHtml()):CA.tab==='hi'?admHiHtml():admQHtml())+'</div>';
 }
 function formFromDom(){
   const f=CA.form;if(!f)return;const g=id=>{const x=$(id);return x?x.value:null;};
@@ -9147,6 +9236,15 @@ async function admClick(ev){
   const b=ev.target.closest('[data-ca]');if(!b)return;const p=b.dataset.ca.split('|'),a=p[0];
   if(a==='tab'){formFromDom();CA.tab=p[1];CA.form=null;CA.err='';if(p[1]==='q'&&!equipRows.length)loadEquip();renderAdm();return;}
   if(a==='kind'){CA.kind=p[1];renderAdm();return;}
+  if(a==='hk'){CA.hk=p[1];CA.herr='';CA.hv='';renderAdm();return;}
+  if(a==='hadd'){
+    const v=(($('caHv')||{}).value||'').trim();CA.hv=v;
+    if(!v){CA.herr='추가할 항목 이름을 입력하세요.';renderAdm();return;}
+    let parent='';
+    if(CA.hk==='소분류'){const a0=($('caHp0')||{}).value,b0=($('caHp1')||{}).value;if(!a0||!b0){CA.herr='대분류와 중분류를 선택하세요.';renderAdm();return;}parent=a0+'|'+b0;CA.hp0=a0;CA.hp1=b0;}
+    if(await admHiPost('add',{value:v,parent:parent})){CA.hv='';renderAdm();toast('항목을 추가했습니다.');}
+    return;}
+  if(a==='hhide'||a==='hshow'){const r=CA.hrows[+p[1]];if(!r)return;if(await admHiPost(a==='hhide'?'hide':'show',r))toast(a==='hhide'?'숨겼습니다.':'다시 사용합니다.');return;}
   if(a==='reload'){loadItems();return;}
   if(a==='new'){CA.form={id:'',kind:CA.kind,area:'',part:'',name:'',desc:'',mode:'판정',H:true,L:true,S:true,path:['','',''],status:'사용'};CA.err='';renderAdm();window.scrollTo(0,0);return;}
   if(a==='edit'){const i=(rawItems()||[]).find(x=>x.id===p[1]);if(!i)return;const q=String(i.path||'').split('>');while(q.length<3)q.push('');CA.form=Object.assign({},i,{path:q.slice(0,3)});CA.err='';renderAdm();window.scrollTo(0,0);return;}
@@ -9174,7 +9272,7 @@ async function admClick(ev){
     }catch(e){CA.saving=false;CA.err='네트워크 오류로 저장하지 못했습니다.';renderAdm();}
   }
 }
-function admChange(ev){const id=ev.target.id;if(id==='caP0'||id==='caP1'){formFromDom();if(id==='caP0')CA.form.path=[CA.form.path[0],'',''];else CA.form.path=[CA.form.path[0],CA.form.path[1],''];renderAdm();}}
+function admChange(ev){const id=ev.target.id;if(id==='caHp0'||id==='caHp1'){CA.hv=(($('caHv')||{}).value||'');if(id==='caHp0'){CA.hp0=ev.target.value;CA.hp1='';}else CA.hp1=ev.target.value;renderAdm();return;}if(id==='caP0'||id==='caP1'){formFromDom();if(id==='caP0')CA.form.path=[CA.form.path[0],'',''];else CA.form.path=[CA.form.path[0],CA.form.path[1],''];renderAdm();}}
 (function(){const el=$('emqChkAdm');if(el&&!el.dataset.bound){el.dataset.bound='1';el.addEventListener('click',admClick);el.addEventListener('change',admChange);}})();
 
 /* ---------- v66: 다른 팀은 펌프 부품 재고 조회만 ---------- */
@@ -9801,6 +9899,70 @@ async function nativeAlarm(){
   if(typeof orig==='function'){window.renderPartsReg=function(f){const r=orig.apply(this,arguments);try{bar();}catch(e){}return r;};}
   setTimeout(()=>{try{bar();}catch(e){}},800);
 })();
+
+/* ---------- v71: 설비(프레스) 사양 · 이력 항목 연동 ---------- */
+const EQX={tab:'발포기',cur:null};
+const ESEC=[['기본',/^(종류|제조사|형식|톤수|제작년월|일련번호)$/],['사양',/베드|실린더|스트로크|오픈|작업\s*높이|슬롯|모터|펌프/],['속도',/속도/],['제어 · 안전',/조작|센서|안전|QDC|오일|전기/]];
+function xTab(){return EQX.tab==='발포기'?null:(HC.xtabs||[]).find(t=>t.name===EQX.tab)||null;}
+function xSeg(){
+  const panel=$('panel-equip');if(!panel)return;
+  let seg=$('equipSeg');
+  if(!seg){seg=document.createElement('div');seg.id='equipSeg';seg.className='eqx-seg';const lb=$('equipList');if(lb)lb.parentNode.insertBefore(seg,lb);else return;}
+  const tabs=HC.xtabs||[];
+  if(!tabs.length){seg.style.display='none';return;}
+  seg.style.display='';
+  seg.innerHTML=['발포기'].concat(tabs.map(t=>t.name)).map(n=>'<button type="button" data-xt="'+A(n)+'" class="'+(EQX.tab===n?'on':'')+'" aria-pressed="'+(EQX.tab===n)+'">'+E(n)+'</button>').join('');
+}
+const xv=(t,r,i)=>String(r[i]==null?'':r[i]).trim();
+function xCol(t,re){return t.headers.findIndex(h=>re.test(h));}
+function xListHtml(t){
+  if(!t.rows.length)return '<div class="parts-empty">'+E(t.name)+' 설비가 등록되어 있지 않습니다. 시트의 설비('+E(t.name)+') 탭에 행을 추가하세요.</div>';
+  const ik=xCol(t,/^종류$/),im=xCol(t,/^형식$/),it=xCol(t,/^톤수$/),imk=xCol(t,/^제조사$/);
+  return '<div class="eq-grid">'+t.rows.map(r=>{
+    const no=xv(t,r,0),ty=ik>=0?xv(t,r,ik):'';
+    const kv=[['형식',im>=0?xv(t,r,im):''],['톤수',it>=0?xv(t,r,it):''],['제조사',imk>=0?xv(t,r,imk):'']].filter(x=>x[1]).map(x=>'<dt>'+x[0]+'</dt><dd>'+E(x[1])+'</dd>').join('');
+    return '<button type="button" class="eq-card" data-xe="'+A(no)+'"><div class="eq-card-h"><span class="eq-no">'+E(no)+'</span>'+(ty&&ty!=='일반'?'<span class="eq-badge">'+E(ty)+'</span>':'')+'</div>'+(kv?'<dl class="eq-kv">'+kv+'</dl>':'')+'</button>';
+  }).join('')+'</div>';
+}
+function xDetailHtml(t,no){
+  const idx=t.rows.findIndex(r=>xv(t,r,0)===no);if(idx<0)return '';
+  const row=t.rows[idx],secs={};
+  t.headers.forEach((h,i)=>{if(i===0)return;const s=ESEC.find(x=>x[1].test(h));const k=s?s[0]:'기타';(secs[k]=secs[k]||[]).push([h,xv(t,row,i)]);});
+  const order=ESEC.map(x=>x[0]).concat(['기타']);
+  const rowHtml=x=>'<div class="eq-row single"><div class="l">'+E(x[0])+'</div><div class="v">'+(x[1]?E(x[1]):'<span class="nodata">자료없음</span>')+'</div></div>';
+  const body=order.filter(k=>secs[k]&&secs[k].length).map(k=>'<section class="eq-sec"><h3>'+k+'</h3>'+secs[k].map(rowHtml).join('')+'</section>').join('');
+  const prev=t.rows[idx-1],next=t.rows[idx+1];
+  const ik=xCol(t,/^종류$/),ty=ik>=0?xv(t,row,ik):'';
+  return '<div class="eq-top"><button type="button" class="eq-navb" data-xb="1">← 목록</button><span class="eq-no">'+E(no)+'</span>'+(ty&&ty!=='일반'?'<span class="eq-badge">'+E(ty)+'</span>':'')+'<span class="eq-sp"></span>'
+    +'<button type="button" class="eq-navb"'+(prev?' data-xe="'+A(xv(t,prev,0))+'"':' disabled')+'>‹ '+E(prev?xv(t,prev,0):'이전')+'</button><button type="button" class="eq-navb"'+(next?' data-xe="'+A(xv(t,next,0))+'"':' disabled')+'>'+E(next?xv(t,next,0):'다음')+' ›</button></div>'
+    +'<div class="eq-secs">'+body+'</div>';
+}
+if(typeof renderEquip==='function'){
+  const _re=renderEquip;
+  renderEquip=function(){
+    xSeg();
+    const t=xTab();
+    if(!t){_re.apply(this,arguments);return;}
+    const lb=$('equipList'),db=$('equipDetail'),st=$('equipStatusMsg');if(!lb||!db)return;
+    if(st)st.style.display='none';
+    if(EQX.cur&&t.rows.some(r=>xv(t,r,0)===EQX.cur)){lb.style.display='none';db.style.display='';db.innerHTML=xDetailHtml(t,EQX.cur);}
+    else{EQX.cur=null;db.style.display='none';db.innerHTML='';lb.style.display='';lb.innerHTML=xListHtml(t);}
+  };
+}
+if(typeof openEquip==='function'){const _oe=openEquip;openEquip=function(){EQX.tab='발포기';EQX.cur=null;return _oe.apply(this,arguments);};}
+if(typeof loadEquip==='function'){const _le=loadEquip;loadEquip=function(){try{loadXtabs();}catch(e){}return _le.apply(this,arguments);};}
+(function(){
+  const panel=$('panel-equip');if(!panel||panel.dataset.xbound)return;panel.dataset.xbound='1';
+  panel.addEventListener('click',ev=>{
+    const tb=ev.target.closest('[data-xt]');
+    if(tb){ev.stopImmediatePropagation();EQX.tab=tb.dataset.xt;EQX.cur=null;try{equipCur=null;}catch(e){}renderEquip();window.scrollTo(0,0);return;}
+    if(EQX.tab==='발포기')return;
+    const xe=ev.target.closest('[data-xe]');
+    if(xe){ev.stopImmediatePropagation();EQX.cur=xe.dataset.xe;renderEquip();window.scrollTo(0,0);return;}
+    if(ev.target.closest('[data-xb]')){ev.stopImmediatePropagation();EQX.cur=null;renderEquip();window.scrollTo(0,0);return;}
+  },true);
+})();
+setTimeout(()=>{try{loadHitems();loadXtabs();}catch(e){}},60);
 init();
 setTimeout(loadItems,0);
 })();
