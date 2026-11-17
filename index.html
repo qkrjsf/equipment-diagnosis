@@ -908,6 +908,44 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
 .hi-row .nm small{display:block;color:var(--muted);font-weight:400;font-size:12px;}
 .hi-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;margin-top:10px;}
 .hi-add select{grid-column:1 / -1;}
+/* v72 */
+.hm-hi .hm-date{margin:0;font-size:14px;font-weight:600;color:#566B7B}
+.hm-sh{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}.hm-sh h3{margin:0!important}
+.hm-more{border:0;background:none;color:#0E7C9A;font:inherit;font-size:13px;font-weight:600;cursor:pointer;padding:6px 0;white-space:nowrap}
+.hm-day{padding:10px 0;border-top:1px solid #E6EDF1}.hm-day:first-child{border-top:0;padding-top:0}
+.hm-day>b{display:block;font-size:14px;margin-bottom:6px;color:#0B2A3D}.hm-day>b small{font-weight:400;color:#566B7B;margin-left:4px}
+.hm-day.bad>b{color:#B3261E}.hm-day .hm-t{margin-top:0;border-top:0;padding:6px 0}
+.hm-di{display:flex;flex-wrap:wrap;gap:6px}.hm-none{color:#566B7B;font-size:13px}.hm-nd{margin-top:6px}
+.hm-chip.td{background:#fff;border:1px solid #C9D5DD;color:#0B2A3D}
+.hm-sr{display:flex;align-items:center;gap:8px;padding:9px 0;border-top:1px solid #E6EDF1;flex-wrap:wrap}.hm-sr:first-child{border-top:0;padding-top:0}
+.hm-sl{flex:1 1 140px;min-width:0;font-size:14px;color:#0B2A3D}.hm-sl small{display:block;color:#566B7B;font-size:12px;margin-top:2px;overflow-wrap:anywhere}
+.hm-sr>b{font-size:15px}.hm-sr.bad>b{color:#B3261E}.hm-sr.warn>b{color:#B45309}.hm-sr.ok>b{color:#2E7D5B}
+.hm-cbtn.sm{margin-top:0;padding:0 12px}
+.hm-quick{grid-template-columns:repeat(var(--qn,3),minmax(0,1fr))!important}.hm-quick .hm-q.big{grid-column:1/-1}
+.hm-quick .hm-q{min-width:0;padding:10px 8px}.hm-quick .hm-q span{font-size:11.5px}
+.hm-sec .hm-u:first-of-type{border-top:0}
+#panel-home .hm-sec .hm-l{min-height:40px}
+/* 일정 · 할 일 통합 */
+.us-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0 0 12px}
+.us-tabs button{min-height:46px;border-radius:10px;border:1px solid #C9D5DD;background:#fff;font:inherit;font-weight:700;font-size:14px;color:#0B2A3D;cursor:pointer;min-width:0}
+.us-tabs button.on{background:#0E7C9A;border-color:#0E7C9A;color:#fff}
+.us-tabs i{font-style:normal;font-size:12px;background:#B45309;color:#fff;border-radius:9px;padding:1px 7px;margin-left:6px}.us-tabs i.bad{background:#B3261E}
+.us-flt{display:flex;gap:6px;margin:0 0 12px;flex-wrap:wrap}
+.us-flt button{min-height:34px;border-radius:999px;border:1px solid #C9D5DD;background:#fff;font:inherit;font-size:13px;padding:0 12px;cursor:pointer;color:#0B2A3D}.us-flt button.on{background:#E3F1F5;border-color:#0E7C9A;color:#0B5F77;font-weight:700}
+.us-od{border-color:#E8B4AF!important;background:#FFF6F5}.us-od h3{color:#B3261E}.us-od .hm-t{border-top:1px solid #F0D4D1;margin-top:0}
+.us-add{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.sc-b.td{background:#fff;color:#0B2A3D;border:1px solid #C9D5DD}
+.td-form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}.td-form .full{grid-column:1/-1}
+.td-form .td-l{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:#566B7B;min-width:0}
+.td-form .td-l small{font-weight:400}
+.td-form select,.td-form input{width:100%;min-width:0;height:46px;box-sizing:border-box;padding:0 12px;font:inherit;font-size:15px;font-weight:400;color:#0B2A3D;border:1px solid #C9D5DD;border-radius:10px;background:#fff}
+.td-pre{display:flex;gap:6px;flex-wrap:wrap}.td-pre button{min-height:38px;border-radius:999px;border:1px solid #C9D5DD;background:#fff;font:inherit;font-size:13px;padding:0 12px;cursor:pointer;color:#0B2A3D}.td-pre button.on{background:#E3F1F5;border-color:#0E7C9A;color:#0B5F77;font-weight:700}.td-pre small{color:#566B7B}
+.hc-who1{margin:-6px 0 10px;color:#566B7B;font-size:13px}.hc-who1 b{color:#0B2A3D}
+#emqUpd{position:static;max-width:none;margin:10px 0 0;box-shadow:none;border-radius:12px}
+.hm-grid>*,.hm-col>*{min-width:0}
+@media (max-width:1099px){.o10{order:10}}
+@media (max-width:1099px){.hm-grid{align-items:stretch}.hm-grid>.hm-sec,.hm-grid>.ask-box,.hm-col>.hm-sec,.hm-col>.ask-box{width:100%;box-sizing:border-box}}
+.hm-quick>.hm-q:not(.big){grid-column:auto!important}
 </style>
 </head>
 <body>
@@ -1125,7 +1163,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v71</span></div>
+    <div class="sb-foot"><span id="verLabel">v72</span></div>
   </nav>
 
   <div class="content">
@@ -1143,12 +1181,13 @@ start();
     <div id="hmFri"></div>
     <div class="hm-grid">
       <div class="hm-col">
-        <section class="card hm-sec o1"><h3>오늘 할 일</h3><div id="hmCards" class="hm-cards"></div><div id="hmMine"></div></section>
-        <section class="card hm-sec o5"><h3>앞으로 3주 일정</h3><div id="hmUp"></div><button type="button" class="hm-l" data-hm="sched" style="margin-top:8px">스케줄표 열기</button></section>
+        <section class="card hm-sec o1"><div class="hm-sh"><h3>오늘 · 내일</h3><button type="button" class="hm-more" data-hm="sched">일정 · 할 일 열기</button></div><div id="hmToday"></div></section>
+        <section class="card hm-sec o2"><div class="hm-sh"><h3>점검 현황</h3><button type="button" class="hm-more" data-hm="check">점검 열기</button></div><div id="hmCards"></div></section>
+        <section class="card hm-sec o6"><div class="hm-sh"><h3>이후 일정 (7일)</h3><button type="button" class="hm-more" data-hm="sched">전체 보기</button></div><div id="hmUp"></div></section>
       </div>
       <div class="hm-col">
-        <section class="card hm-sec o2"><h3>빠른 실행</h3><div id="hmQuick" class="hm-quick"></div></section>
-    <section class="card ask-box o3">
+        <section class="card hm-sec o3"><h3>빠른 실행</h3><div id="hmQuick" class="hm-quick"></div></section>
+    <section class="card ask-box o4">
       <form id="askForm" class="ask-row" autocomplete="off">
         <input id="askInput" type="text" data-i18n-placeholder="askPh" placeholder="예) 1F-1호기 믹싱헤드 뭐야?" aria-label="질문하기" enterkeyhint="search">
         <button type="submit" data-i18n="askBtn">질문</button>
@@ -1156,19 +1195,19 @@ start();
       <div id="askChips" class="chip-row ask-chips"></div>
       <div id="askOut" aria-live="polite"></div>
     </section>
-        <section class="card hm-sec o4"><h3>조회</h3><div id="hmLook" class="hm-look"></div></section>
+        <section class="card hm-sec o5"><h3>조회</h3><div id="hmLook" class="hm-look"></div></section>
       </div>
       <div class="hm-col">
-        <section class="card hm-sec o6"><h3>최근 설비 이력</h3><div id="hmHist"></div></section>
-        <section class="card hm-sec o7"><h3 data-i18n="homeLowH">재고 부족 부품</h3>
+        <section class="card hm-sec o7"><h3>최근 설비 이력</h3><div id="hmHist"></div></section>
+        <section class="card hm-sec o8"><h3 data-i18n="homeLowH">재고 부족 부품</h3>
     <div class="kpis">
       <button type="button" class="kpi" data-kpi="low"><div class="kpi-l" data-i18n="kpiLow">재고 부족</div><div class="kpi-v" style="color:var(--danger)"><span id="kpiLow">–</span><small data-i18n="unitKind">종</small></div></button>
       <button type="button" class="kpi" data-kpi="repair"><div class="kpi-l" data-i18n="kpiRepair">수리 중</div><div class="kpi-v" style="color:#8A5A00"><span id="kpiRepair">–</span><small data-i18n="unitEa">개</small></div></button>
       <button type="button" class="kpi" data-kpi="total"><div class="kpi-l" data-i18n="kpiTotal">등록 부품</div><div class="kpi-v"><span id="kpiTotal">–</span><small data-i18n="unitKind">종</small></div></button>
     </div>
           <div id="homeLow"></div></section>
-        <section class="card hm-sec o8"><h3 data-i18n="homeRecentH">최근 진단</h3><div id="homeRecent"></div></section>
-        <section class="card hm-sec o9" id="homeCodesCard"><h3 data-i18n="homeCodesH">최근 찾은 에러코드</h3><div id="homeCodes" class="chip-row"></div></section>
+        <section class="card hm-sec o9"><h3 data-i18n="homeRecentH">최근 진단</h3><div id="homeRecent"></div></section>
+        <section class="card hm-sec o10" id="homeCodesCard"><h3 data-i18n="homeCodesH">최근 찾은 에러코드</h3><div id="homeCodes" class="chip-row"></div></section>
       </div>
     </div>
   </div>
@@ -1311,12 +1350,12 @@ start();
   </div>
 
   <div class="panel" id="panel-todo">
-    <h1 class="page-title">할 일 · 근태</h1>
+    <h1 class="page-title">일정 · 할 일</h1>
     <div class="hc" id="emqTodo"></div>
   </div>
 
   <div class="panel" id="panel-sched">
-    <h1 class="page-title">업무 스케줄표</h1>
+    <h1 class="page-title">일정 · 할 일</h1>
     <div class="hc" id="emqSched"></div>
   </div>
 
@@ -1380,7 +1419,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v71</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v72</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -5780,7 +5819,7 @@ function showUsageModal(part){
           '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageLocationLabel')) + '</label>' +
           makeLocationInputHtml('modalLocationInput') +
         '</div>' +
-        '<div style="display:flex;gap:8px;align-items:center;">' +
+        '<div style="display:' + (window.EMQ && EMQ.user ? 'none' : 'flex') + ';gap:8px;align-items:center;">' +
           '<label style="font-size:12px;color:var(--text-muted);width:56px;flex:0 0 auto;">' + escapeHtml(t('usageWorkerLabel')) + '</label>' +
           '<input type="text" id="modalWorkerInput" placeholder="' + escapeAttr(t('usageWorkerPlaceholder')) + '" style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;" />' +
         '</div>' +
@@ -7340,7 +7379,7 @@ function renderPartsReg(filter){
     const repairableLabel = LANG === 'ko' ? '수리가능' : 'Repairable';
     return `
     <div class="part-card use-card" data-idx="${i}" style="cursor:pointer;">
-      ${photo ? '<img src="'+photo+'" alt="'+escapeHtml(p['제품규격']||'')+'" loading="lazy"/>' : '<div class="noimg">' + (LANG==='ko'?'사진 없음':'No photo') + '</div>'}
+      ${photo ? '<img src="'+photo+'" alt="'+escapeHtml(p['제품규격']||'')+'" loading="lazy"/>' : ''}
       ${photos.length > 1 ? '<span class="ph-badge">1/' + photos.length + '</span>' : ''}
       <div class="part-card-body">
         <div class="part-card-name">${escapeHtml(p['제품형태'] || p['제품규격'] || '')}</div>
@@ -7394,7 +7433,7 @@ function renderParts(filter){
     const repairableLabel = LANG === 'ko' ? '수리가능' : 'Repairable';
     return `
     <div class="part-card">
-      ${photo ? '<img src="'+photo+'" alt="'+escapeHtml(p['제품규격']||'')+'" loading="lazy"/>' : '<div class="noimg">' + (LANG==='ko'?'사진 없음':'No photo') + '</div>'}
+      ${photo ? '<img src="'+photo+'" alt="'+escapeHtml(p['제품규격']||'')+'" loading="lazy"/>' : ''}
       ${photos.length > 1 ? '<span class="ph-badge">1/' + photos.length + '</span>' : ''}
       <div class="part-card-body">
         <div class="part-card-name">${escapeHtml(p['제품형태'] || p['제품규격'] || '')}</div>
@@ -8350,7 +8389,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v71', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v72', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
@@ -8484,9 +8523,9 @@ const ERR={no_part_path:'부위를 선택하세요.',bad_kind:'점검 종류가 
 function errMsg(c){return ERR[c]||pumpErrMsg(c);}
 async function hcGet(type,extra){const r=await fetch(GOOGLE_SHEET_URL+'?type='+type+(extra||'')+'&t='+Date.now(),{cache:'no-store'});return r.json();}
 async function hcPost(p){const r=await fetch(GOOGLE_SHEET_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)});return r.json();}
-function whoHtml(){const lk=window.EMQ&&EMQ.user;return '<div class="hc-who"><label for="hcWho">작업자</label><input id="hcWho" type="text" maxlength="30" placeholder="이름" value="'+A(lk?EMQ.user.name:HC.worker)+'" autocomplete="off"'+(lk?' readonly':'')+'></div>';}
+function whoHtml(){const lk=window.EMQ&&EMQ.user;if(lk)return '<div class="hc-who hc-who1"><span>작업자 <b>'+E(lk.name)+'</b></span><input id="hcWho" type="hidden" value="'+A(lk.name)+'"></div>';return '<div class="hc-who"><label for="hcWho">작업자</label><input id="hcWho" type="text" maxlength="30" placeholder="이름" value="'+A(lk?EMQ.user.name:HC.worker)+'" autocomplete="off"'+(lk?' readonly':'')+'></div>';}
 function setWho(v){HC.worker=v.trim();try{localStorage.setItem('msds-worker',HC.worker);}catch(e){}document.querySelectorAll('#hcWho,.hcWho2').forEach(i=>{if(i.value!==v&&document.activeElement!==i)i.value=v;i.classList.remove('req');});}
-function needWho(){if(HC.worker)return true;document.querySelectorAll('#hcWho').forEach(i=>{i.classList.add('req');i.focus();});toast('작업자 이름을 입력하세요.');return false;}
+function needWho(){if(window.EMQ&&EMQ.user&&EMQ.user.name)HC.worker=EMQ.user.name;if(HC.worker)return true;document.querySelectorAll('#hcWho').forEach(i=>{i.classList.add('req');i.focus();});toast('작업자 이름을 입력하세요.');return false;}
 function eqType(eq){try{const hi=equipHeaders.findIndex(h=>/점검표/.test(String(h)));if(hi>=0){const row=equipRows.find(r=>String(r[0]).replace(/호기/g,'').replace(/\s/g,'')===eq);if(row&&row[hi]){const v=String(row[hi]).trim();if(/저압|고압|수발포기/.test(v))return v.match(/수발포기|저압|고압/)[0];}}}catch(e){}return HC_EQTYPE[eq]||'고압';}
 function applies(it,eq){const t=eqType(eq);return t==='저압'?it.L:t==='수발포기'?it.S:it.H;}
 const pstr=p=>p.filter(Boolean).join(' › ');
@@ -8605,7 +8644,7 @@ function dutyBody(){
     +'<div style="display:flex;gap:6px;margin-top:8px;align-items:center"><button type="button" class="hc-chip" data-tm="-10">−10분</button><input id="hcMin" class="hc-in" type="number" min="0" max="2880" inputmode="numeric" placeholder="분 직접 입력" value="'+(W.min==null?'':W.min)+'" style="max-width:150px"><button type="button" class="hc-chip" data-tm="10">+10분</button></div>'
     +'<label class="hc-lab" for="hcMemo">메모 <small>(선택)</small></label><textarea id="hcMemo" class="hc-in" maxlength="300">'+E(W.memo)+'</textarea>'
     +'<label class="hc-lab" for="hcOcc">작업 일시</label><input id="hcOcc" class="hc-in" type="datetime-local" value="'+A(W.occ||nowLocal())+'">'
-    +whoHtml()+(W.err?'<div class="hc-err">'+E(W.err)+'</div>':'')
+    +(W.err?'<div class="hc-err">'+E(W.err)+'</div>':'')
     +'<button type="button" class="hc-btn hc-nx" data-h="save" '+(W.saving||!W.dk?'disabled':'')+'>'+(W.saving?'저장 중...':'공무 작업 저장')+'</button>';
 }
 function crumbs(){const W=HC.W;const c=[];if(W.p[0])c.push('<button type="button" data-up="0">'+E(W.p[0])+' ×</button>');if(W.p[1])c.push('<button type="button" data-up="1">'+E(W.p[1])+' ×</button>');if(W.alarm)c.push('<button type="button" data-up="al">'+E(W.alarm)+' ×</button>');return c.length?'<div class="hc-crumbs">'+c.join('')+'</div>':'';}
@@ -8982,7 +9021,7 @@ function chkHtml(){
   const pn=(window.EMQ&&EMQ.can(3))?pendIds().length:0;
   const T=[['status','점검 현황'],['rec','기록'+(pn?' ('+pn+')':'')]];
   return whoHtml()+'<div class="hc-tabs" role="tablist">'+T.map(x=>'<button type="button" role="tab" data-ct="'+x[0]+'" aria-selected="'+(HC.tabC===x[0])+'">'+x[1]+'</button>').join('')+'</div>'
-    +(HC.tabC==='status'?'<p class="hc-lead">점검할 설비를 누르세요. 호기별로 해당 항목만 표시됩니다. 항목은 점검표 유형(고압·저압·수발포기)에 따라 달라집니다.</p>'+statusHtml():recordsHtml());
+    +(HC.tabC==='status'?'<p class="hc-lead">점검할 호기를 누르세요.</p>'+statusHtml():recordsHtml());
 }
 function refreshChk(keep){const el=$('hcChk');if(!el)return;const y=window.scrollY;el.innerHTML=chkHtml();if(keep)window.scrollTo(0,y);}
 function chkClick(ev){
@@ -9030,9 +9069,10 @@ function menuDef(){const P=PP;return [
   {items:[{id:'home',t:P('홈','Home'),i:'home'}]},
   {label:P('진단·조회','DIAGNOSE · LOOKUP'),items:[{id:'chat',t:P('진단하기','Diagnose'),i:'chat'},{id:'equip',t:P('설비 사양','Equipment'),i:'equip'},{id:'parts',t:P('부품 조회','Parts'),i:'parts'},{id:'codesearch',t:P('에러코드','Error codes'),i:'code',ko:1},{id:'msds',t:'MSDS',i:'msds'}]},
   {label:P('등록·수리','REGISTER · REPAIR'),items:[{id:'register',t:P('부품 입출고','Parts in/out'),i:'register',lv:2},{id:'pump',t:(document.body.getAttribute('data-team')==='other'?P('펌프 부품 재고','Pump part stock'):P('펌프 수리 (A2VK)','Pump repair (A2VK)')),i:'pump',lv:(document.body.getAttribute('data-team')==='other'?1:2)}]},
-  {label:P('점검·이력','INSPECT · HISTORY'),badge:P('신규','NEW'),items:[{id:'check',t:P('점검','Inspection'),i:'inspect'},{id:'hist',t:P('설비 이력','Equipment history'),i:'history'},{id:'chkadmin',t:'점검 항목 관리',i:'inspect',lv:3},{id:'todo',t:P('할 일 · 근태','To-do · Attendance'),i:'todo',main:1},{id:'sched',t:P('업무 스케줄표','Team schedule'),i:'cal',main:1}]},
-  {label:P('분석·현황','ANALYTICS'),badge:P('예정','SOON'),gray:1,items:[{id:'metrics',t:P('지표·보고서','Reports'),i:'chart',soon:1},{id:'board',t:P('현황판·알람','Status board'),i:'monitor',soon:1}]},
-  {items:[{id:'account',t:'내 계정',i:'user'},{id:'users',t:'사용자 관리',i:'users',lv:4},{id:'settings',t:P('설정','Settings'),i:'settings'}]}];}
+  {label:P('점검·이력','INSPECT · HISTORY'),items:[{id:'check',t:P('점검','Inspection'),i:'inspect'},{id:'hist',t:P('설비 이력','Equipment history'),i:'history'}]},
+  {label:P('업무','WORK'),items:[{id:'sched',t:P('일정 · 할 일','Schedule · To-do'),i:'cal',main:1}]},
+  {label:P('관리','ADMIN'),items:[{id:'chkadmin',t:'점검 항목 관리',i:'inspect',lv:3},{id:'users',t:'사용자 관리',i:'users',lv:4}]},
+  {items:[{id:'account',t:'내 계정',i:'user'},{id:'settings',t:P('설정','Settings'),i:'settings'}]}];}
 function buildDrawer(){
   const me=window.EMQ&&EMQ.user;let h=me?'<div class="dr-me"><b>'+E(me.name)+'</b>'+E(EMQ.RN[me.role]||'')+' · '+E(me.id)+'</div>':'';
   menuDef().forEach(g=>{
@@ -9319,7 +9359,7 @@ if(typeof renderEquipDetail==='function'){
 /* ---------- v67: 근태 · 당직 · 할 일 · 스케줄표 · 홈 개편 · 업데이트 배너 ---------- */
 const HOL={"2026-12-25":"성탄절","2027-01-01":"신정","2027-02-06":"설날 연휴","2027-02-07":"설날","2027-02-08":"설날 연휴","2027-02-09":"대체공휴일(설날)","2027-03-01":"삼일절","2027-05-01":"노동절","2027-05-03":"대체공휴일(노동절)","2027-05-05":"어린이날","2027-05-13":"부처님오신날","2027-06-06":"현충일","2027-07-17":"제헌절","2027-07-19":"대체공휴일(제헌절)","2027-08-15":"광복절","2027-08-16":"대체공휴일(광복절)","2027-09-14":"추석 연휴","2027-09-15":"추석","2027-09-16":"추석 연휴","2027-10-03":"개천절","2027-10-04":"대체공휴일(개천절)","2027-10-09":"한글날","2027-10-11":"대체공휴일(한글날)","2027-12-25":"성탄절","2027-12-27":"대체공휴일(성탄절)"};   // 공휴일 (한국천문연구원 달력자료 기준, 공식 월력요항 확인 필요)
 const DUTY_NAMES=['김대연','최형진','박준성','이기찬'];
-const TD={att:[],todo:[],users:[],duty:[],dnames:[],sched:[],ok:false,loading:false,err:'',t:0,de:'',form:null,sel:'',ym:'',showDone:false};
+const TD={v:'',vNext:'',flt:'mine',dutyAll:false,dr:{title:'',to:null,due:'',memo:''},att:[],todo:[],users:[],duty:[],dnames:[],sched:[],ok:false,loading:false,err:'',t:0,de:'',form:null,sel:'',ym:'',showDone:false};
 const isMain=()=>document.body.getAttribute('data-team')!=='other';
 const myId=()=>(window.EMQ&&EMQ.user)?EMQ.user.id:'';
 const myName=()=>(window.EMQ&&EMQ.user)?EMQ.user.name:'';
@@ -9387,56 +9427,75 @@ function cardH(tone,label,big,unit,sub,btn,act){
 }
 function hmQuickHtml(){
   const w=lvOk(2);
-  let h='<button type="button" class="hm-q big" data-goto="chat"><b>진단 시작</b><span>증상으로 원인 찾기</span></button>';
-  if(w)h+='<button type="button" class="hm-q" data-hm="histnew"><b>이력 등록</b><span>고장·조치 기록</span></button><button type="button" class="hm-q" data-hm="check"><b>점검 시작</b><span>주간·월간·연간</span></button><button type="button" class="hm-q" data-goto="register"><b>부품 입출고</b><span>사용·출고·입고</span></button>';
-  else h+='<button type="button" class="hm-q" data-goto="hist"><b>설비 이력</b><span>기록 조회</span></button><button type="button" class="hm-q" data-hm="check"><b>점검 현황</b><span>설비별 상태</span></button>';
-  return h;
+  let h='<button type="button" class="hm-q big" data-goto="chat"><b>진단 시작</b><span>증상으로 원인 찾기</span></button>',n=0;
+  if(w){n=3;h+='<button type="button" class="hm-q" data-hm="histnew"><b>이력 등록</b><span>고장·조치 기록</span></button><button type="button" class="hm-q" data-hm="check"><b>점검 시작</b><span>주간·월간·연간</span></button><button type="button" class="hm-q" data-goto="register"><b>부품 입출고</b><span>사용·출고·입고</span></button>';}
+  else{n=2;h+='<button type="button" class="hm-q" data-goto="hist"><b>설비 이력</b><span>기록 조회</span></button><button type="button" class="hm-q" data-hm="check"><b>점검 현황</b><span>설비별 상태</span></button>';}
+  return {h:h,n:n};
 }
 function hmLookHtml(){
   const oth=!isMain();
-  return [['msds','MSDS 받기'],['equip','설비 사양'],['parts','부품 조회'],['pump',oth?'펌프 부품 재고':'펌프 수리'],['hist','설비 이력']].concat(typeof LANG!=='undefined'&&LANG==='ko'?[['codesearch','에러코드']]:[]).map(x=>'<button type="button" class="hm-l" data-goto="'+x[0]+'">'+x[1]+'</button>').join('')+(isMain()?'<button type="button" class="hm-l" data-hm="sched">업무 스케줄표</button>':'');
+  return [['msds','MSDS 받기'],['equip','설비 사양'],['parts','부품 조회'],['pump',oth?'펌프 부품 재고':'펌프 수리']].concat(typeof LANG!=='undefined'&&LANG==='ko'?[['codesearch','에러코드']]:[]).map(x=>'<button type="button" class="hm-l" data-goto="'+x[0]+'">'+x[1]+'</button>').join('');
+}
+/* v72: 오늘 · 내일 (할 일 + 일정 + 근태 + 당직 한 곳에) */
+const attChip=r=>'<span class="hm-chip k-'+(r.kind==='출장'?'t':r.kind==='연차'?'a':'h')+'">'+E(r.name)+' <small>'+E(KSH[r.kind]||r.kind)+'</small></span>';
+function chipsFor(k){
+  const L=[],du=dutyOn(k);
+  if(du)L.push('<span class="hm-chip k-d">당직 '+E(du.name)+'</span>');
+  offOn(k).forEach(r=>L.push(attChip(r)));
+  TD.sched.filter(s=>s.start<=k&&s.end>=k).forEach(s=>L.push('<span class="hm-chip sc '+(CATC[s.cat]||'c5')+'">'+E(s.title)+'</span>'));
+  return L;
+}
+const todoRowHm=t=>'<div class="hm-t"><div class="hm-tt">'+E(t.title)+'<small>'+(t.to?'':'공용 · ')+E(t.by)+' 등록'+(t.memo?' · '+E(t.memo):'')+'</small></div>'+dueBadge(t)+'<button type="button" class="hm-ok" data-td="done" data-id="'+A(t.id)+'" aria-label="완료">완료</button></div>';
+function todayHtml(){
+  if(!isMain())return '';
+  if(!TD.ok)return '<div class="empty-note">'+(TD.err?'불러오지 못했습니다':'불러오는 중…')+'</div>';
+  const k0=todayK(),k1=ymd(addD(new Date(),1)),mine=myTodos(),od=mine.filter(overdue).sort((a,b)=>a.due<b.due?-1:1);
+  let h='';
+  if(od.length)h+='<div class="hm-day bad"><b>기한 지난 할 일 '+od.length+'건</b>'+od.slice(0,4).map(todoRowHm).join('')+(od.length>4?'<button type="button" class="hm-l" data-goto="todo">+'+(od.length-4)+'건 더 보기</button>':'')+'</div>';
+  [[k0,'오늘'],[k1,'내일']].forEach(x=>{
+    const k=x[0],tds=mine.filter(t=>t.due===k),ch=chipsFor(k);
+    h+='<div class="hm-day"><b>'+x[1]+' <small>'+mdw(k)+'</small></b>'+tds.map(todoRowHm).join('')+(ch.length?'<div class="hm-di">'+ch.join('')+'</div>':'')+((!tds.length&&!ch.length)?'<span class="hm-none">일정 · 할 일 없음</span>':'')+'</div>';});
+  const nd=mine.filter(t=>!t.due).length;
+  if(nd)h+='<button type="button" class="hm-l hm-nd" data-goto="todo">기한 없는 할 일 '+nd+'건 보기</button>';
+  return h;
+}
+/* v72: 점검 현황 (이상 없는 항목은 한 줄로) */
+function sumRow(tone,label,val,sub,btn,act){return '<div class="hm-sr '+tone+'"><span class="hm-sl">'+label+(sub?'<small>'+sub+'</small>':'')+'</span><b>'+val+'</b>'+(btn?'<button type="button" class="hm-cbtn sm" data-hm="'+act+'">'+btn+'</button>':'')+'</div>';}
+function checkSummaryHtml(){
+  if(HC.chkErr)return '<div class="empty-note">점검 기록을 불러오지 못했습니다</div>';
+  if(!HC.chkOk)return '<div class="empty-note">불러오는 중…</div>';
+  const a=autoTasks();let h='';
+  if(a.c.length)h+=sumRow('bad','C 판정 미조치',a.c.length+'건',E(a.c.slice(0,2).map(r=>r['설비']+' '+(r['항목']||'')).join(', ')),'조치','check');
+  if(a.b.length)h+=sumRow('warn','관찰(B)',a.b.length+'건','','','');
+  const un=[['주간',a.wk.length],['월간',a.mo.length],['연간',a.yr.length]].filter(x=>x[1]>0);
+  if(un.length)h+=sumRow('warn','미점검 설비',un.map(x=>x[0]+' '+x[1]).join(' · '),'',lvOk(2)?'점검 시작':'점검 현황','check');
+  if(lvOk(3)){const pn=pendIds().length;if(pn)h+=sumRow('warn','점검 확인 대기',pn+'건','','기록에서 확인','chkrec');}
+  return h||sumRow('ok','점검 이상 없음','✓','이번 주 · 이번 달 점검이 모두 완료되었습니다','','');
 }
 function hmRender(){
   const hero=$('hmHero');if(!hero)return;
-  const u=window.EMQ&&EMQ.user,now=new Date();
-  hero.innerHTML='<div class="hm-hi"><h1>'+(u?E(u.name)+'님, 안녕하세요':'안녕하세요')+'</h1><p>'+(now.getMonth()+1)+'월 '+now.getDate()+'일 '+WD[now.getDay()]+'요일'+(u?' · '+E(EMQ.RN[u.role]||''):'')+'</p></div>'+(isMain()?'<div class="hm-work">'+workStrip()+'</div>':'');
-  const cards=$('hmCards');if(cards){
-    const a=autoTasks(),ld=!HC.chkOk;let h='';
-    const sub0=HC.chkErr?'점검 기록을 불러오지 못했습니다':ld?'불러오는 중…':'';
-    h+=cardH(ld?'':a.c.length?'bad':'ok','C 판정 미조치',ld?'–':a.c.length,'건',ld?sub0:(a.c.length?E(a.c.slice(0,2).map(r=>r['설비']+' '+(r['항목']||'')).join(', ')):'미조치 항목 없음')+(!ld&&a.b.length?'<br>관찰(B) '+a.b.length+'건':''),'점검 화면에서 조치','check');
-    const un=a.wk.length;
-    h+=cardH(ld?'':un?'warn':'ok','이번 주 미점검',ld?'–':un,'대',ld?sub0:'월간 '+a.mo.length+'대 · 연간('+a.q+'분기) '+a.yr.length+'대',lvOk(2)?'점검 시작':'점검 현황 보기','check');
-    const hasP=typeof partsData!=='undefined'&&partsData.length>0;
-    h+=cardH(!hasP?'':a.low.length?'warn':'ok','재고 부족',hasP?a.low.length:'–','종',hasP?(a.low.length?E(a.low.slice(0,2).map(p=>p['제품규격']).join(', ')):'부족한 부품 없음'):'불러오는 중…',hasP&&a.low.length?'목록 보기':'','low');
-    if(lvOk(3)){const pn=pendIds().length;h+=cardH(ld?'':pn?'warn':'ok','점검 확인 대기',ld?'–':pn,'건',ld?sub0:(pn?'관리자 확인이 필요합니다':'모두 확인됨'),pn?'기록에서 확인':'','chkrec');}
-    if(isMain()){
-      const m=myTodos(),od=m.filter(overdue).length;
-      h+=cardH(!TD.ok?'':od?'bad':m.length?'warn':'ok','내 할 일',TD.ok?m.length:'–','건',TD.ok?(od?'기한 지남 '+od+'건':m.length?'진행 중':'할 일 없음'):(TD.err?'불러오지 못했습니다':'불러오는 중…'),'할 일 열기','todo');
-    }
-    cards.innerHTML=h;
-    const ml=$('hmMine');if(ml){const m=isMain()&&TD.ok?myTodos().sort((x,y)=>(x.due||'9')<(y.due||'9')?-1:1).slice(0,4):[];
-      ml.innerHTML=m.length?m.map(t=>'<div class="hm-t"><div class="hm-tt">'+E(t.title)+'<small>'+(t.to?'':'공용 · ')+E(t.by)+' 등록</small></div>'+dueBadge(t)+'<button type="button" class="hm-ok" data-td="done" data-id="'+A(t.id)+'" aria-label="완료">완료</button></div>').join(''):'';}
-  }
+  const now=new Date();
+  hero.innerHTML='<div class="hm-hi"><p class="hm-date">'+(now.getMonth()+1)+'월 '+now.getDate()+'일 '+WD[now.getDay()]+'요일</p></div>';
+  const td=$('hmToday');if(td){td.parentElement.style.display=isMain()?'':'none';td.innerHTML=todayHtml();}
+  const cards=$('hmCards');if(cards)cards.innerHTML=checkSummaryHtml();
   const fc=$('hmFri');if(fc)fc.innerHTML=friCardHtml();
-  const up=$('hmUp');if(up){up.parentElement.style.display=isMain()?'':'none';up.innerHTML=isMain()?upcomingHtml():'';}
-  const q=$('hmQuick');if(q)q.innerHTML=hmQuickHtml();
+  const up=$('hmUp');if(up){const h=isMain()?upcomingHtml(2,9,5):'';up.parentElement.style.display=h?'':'none';up.innerHTML=h;}
+  const q=$('hmQuick');if(q){const x=hmQuickHtml();q.innerHTML=x.h;q.style.setProperty('--qn',x.n);}
   const l=$('hmLook');if(l)l.innerHTML=hmLookHtml();
   const hb=$('hmHist');if(hb){
     const rows=HC.hist.slice().sort((a,b)=>String(b['등록일시']||'').localeCompare(String(a['등록일시']||''))).slice(0,5);
     hb.innerHTML=!HC.histOk?'<div class="empty-note">'+(HC.histErr?'불러오지 못했습니다':'불러오는 중…')+'</div>':rows.length?rows.map(r=>'<button type="button" class="hm-h" data-hm="hist"><span class="d">'+E(String(r['_occ']||r['등록일시']||'').slice(5,10).replace('-','/'))+'</span><span class="m"><b>'+E(r['설비'])+'</b> '+E(r['고장현상']||[r['대분류'],r['중분류']].filter(Boolean).join(' · '))+'<small>'+E([r['조치유형'],r['작업자']].filter(Boolean).join(' · '))+'</small></span></button>').join(''):'<div class="empty-note">등록된 이력이 없습니다.</div>';
   }
+  hmTidy();
 }
-function upcomingHtml(){
+function hmTidy(){const r=$('homeRecent');if(r&&r.closest('.hm-sec'))r.closest('.hm-sec').style.display=/없습니다/.test(r.textContent)?'none':'';}
+/* 오늘·내일 이후 N일 (from~to 일 뒤) 일정 */
+function upcomingHtml(from,to,maxDays){
   if(!TD.ok)return '<div class="empty-note">불러오는 중…</div>';
-  const k=todayK(),lim=ymd(addD(new Date(),21));
-  const items=[];
-  TD.duty.filter(d=>d.date>=k&&d.date<=lim).forEach(d=>items.push({d:d.date,h:'<span class="hm-chip k-d">당직 '+E(d.name)+'</span>'+(d.label&&d.label!=='토요일'?'<small>'+E(d.label)+'</small>':'')}));
-  TD.att.filter(r=>r.date>=k&&r.date<=lim).forEach(r=>items.push({d:r.date,h:'<span class="hm-chip k-'+(r.kind==='출장'?'t':r.kind==='연차'?'a':'h')+'">'+E(r.name)+' <small>'+E(KSH[r.kind]||r.kind)+'</small></span>'}));
-  TD.sched.filter(s=>s.end>=k&&s.start<=lim).forEach(s=>items.push({d:s.start<k?k:s.start,h:'<span class="hm-chip sc '+CATC[s.cat]+'">'+E(s.title)+'</span>'}));
-  items.sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:0);
-  if(!items.length)return '<div class="empty-note">앞으로 3주간 등록된 일정이 없습니다.</div>';
-  const by={};items.forEach(i=>{(by[i.d]=by[i.d]||[]).push(i.h);});
-  return Object.keys(by).slice(0,10).map(d=>'<div class="hm-u"><b>'+mdw(d)+'</b><div>'+by[d].join('')+'</div></div>').join('');
+  const k0=ymd(addD(new Date(),from)),k1=ymd(addD(new Date(),to)),mine=myTodos(),by={};
+  for(let d=pd(k0);d&&ymd(d)<=k1;d=addD(d,1)){const k=ymd(d),L=mine.filter(t=>t.due===k).map(t=>'<span class="hm-chip td">☐ '+E(t.title)+'</span>').concat(chipsFor(k));if(L.length)by[k]=L;}
+  const ks=Object.keys(by).slice(0,maxDays||10);
+  return ks.map(d=>'<div class="hm-u"><b>'+mdw(d)+'</b><div>'+by[d].join('')+'</div></div>').join('');
 }
 
 /* ----- 금요일 16시 확인 ----- */
@@ -9472,7 +9531,7 @@ function friClose(){const m=$('hmFriM');if(m)m.remove();}
 function friOk(){try{localStorage.setItem(friWeek().key,'1');}catch(e){}friClose();hmRender();toast('다음 주 확인을 완료했습니다.');}
 
 /* ----- 할 일 · 근태 패널 ----- */
-function tdOpen(){tdRender();loadTD(true);if(!TD.users.length)loadTD(true);}
+function tdOpen(){TD.v=TD.vNext||'todo';TD.vNext='';tdRender();loadTD(true);if(!TD.users.length)loadTD(true);}
 function tdWeekStrip(){
   const s=wkStart(new Date()),k0=todayK();let h='<div class="td-wk">';
   for(let i=0;i<14;i++){const d=addD(s,i),k=ymd(d),off=offOn(k),du=dutyOn(k),hol=HOL[k];
@@ -9486,11 +9545,6 @@ function dutyEditHtml(k){
   const others=TD.duty.filter(x=>x.date>=todayK()&&x.date!==k).slice(0,16);
   return '<div class="td-de"><div class="emq-f"><select id="deName">'+(TD.dnames.length?TD.dnames:DUTY_NAMES).map(n=>'<option'+(n===du.name?' selected':'')+'>'+E(n)+'</option>').join('')+'</select><button type="button" class="hc-btn sm" data-td="dset" data-d="'+k+'">담당자 변경</button></div>'
    +'<div class="emq-f" style="margin-top:8px"><select id="deSwap">'+others.map(x=>'<option value="'+x.date+'">'+mdw(x.date)+' '+E(x.name)+(x.label&&x.label!=='토요일'?' · '+E(x.label):'')+'</option>').join('')+'</select><button type="button" class="hc-btn sm ghost" data-td="dswap" data-d="'+k+'">이 날짜와 맞교환</button></div></div>';
-}
-function dutyListHtml(){
-  const k=todayK(),rows=TD.duty.filter(d=>d.date>=k).slice(0,8);
-  if(!rows.length)return '<div class="empty-note">등록된 당직이 없습니다.</div>';
-  return rows.map(d=>'<div class="td-r"><div><b>'+mdw(d.date)+'</b> '+E(d.name)+(d.name===myName()?' <i class="hm-b ok">내 당직</i>':'')+(d.changed?' <i class="hm-b">변경됨</i>':'')+'<small>'+E(d.label||'')+'</small></div>'+(lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="dedit" data-d="'+d.date+'">'+(TD.de===d.date?'닫기':'변경')+'</button>':'')+'</div>'+(TD.de===d.date?dutyEditHtml(d.date):'')).join('');
 }
 function attFormHtml(){
   const adm=lvOk(3);
@@ -9525,55 +9579,107 @@ function autoListHtml(){
   if(a.low.length)h+='<div class="td-r"><div><b>재고 부족 '+a.low.length+'종</b><small>'+E(a.low.slice(0,4).map(p=>p['제품규격']).join(', '))+'</small></div><button type="button" class="hc-btn sm ghost" data-hm="low">목록</button></div>';
   return h||'<div class="empty-note">확인할 항목이 없습니다. 👍</div>';
 }
-function tdRender(){
-  const el=$('emqTodo');if(!el)return;
-  const adm=lvOk(3);
-  el.innerHTML='<div class="emq-p">'+(TD.err?'<div class="hc-warn">불러오지 못했습니다. ('+E(TD.err)+') <button type="button" class="hc-btn ghost sm" data-td="reload">다시 불러오기</button></div>':!TD.ok?'<div class="hc-auto">불러오는 중입니다...</div>':'')
-   +'<div class="hc-card"><h3>이번 주 · 다음 주 근무</h3>'+tdWeekStrip()+'<p class="hc-muted" style="margin:8px 0 0">당직은 토요일과 공휴일(일요일 제외)이며 김대연 → 최형진 → 박준성 → 이기찬 순입니다.</p></div>'
-   +'<div class="hc-card"><h3>다가오는 당직</h3>'+dutyListHtml()+'</div>'
-   +'<div class="hc-card"><h3>연차·근태 등록</h3><p class="hc-muted" style="margin:0 0 8px">'+(adm?'관리자 이상은 팀원 대신 등록할 수 있습니다.':'본인 근태만 등록·취소할 수 있습니다.')+'</p>'+attFormHtml()+'<h3 style="margin-top:16px">예정된 근태</h3>'+attListHtml()+'</div>'
-   +'<div class="hc-card"><h3>할 일</h3>'+(lvOk(2)?'<div class="emq-f td-f"><input id="tdTitle" placeholder="할 일 (예: 1F-3 호스 교체 발주)" maxlength="80" style="grid-column:1/-1"><select id="tdTo"><option value="">전체(공용)</option>'+TD.users.map(u=>'<option value="'+A(u.id)+'"'+(u.id===myId()?' selected':'')+'>'+E(u.name)+'</option>').join('')+'</select><label class="td-l">기한(선택)<input type="date" id="tdDue"></label><input id="tdMemo" placeholder="메모(선택)" maxlength="200" style="grid-column:1/-1"></div><button type="button" class="hc-btn" data-td="todoadd" style="margin:10px 0 12px">할 일 추가</button>':'')+todoListHtml()+'</div>'
-   +'<div class="hc-card"><h3>자동 확인 항목</h3><p class="hc-muted" style="margin:0 0 6px">점검·재고 기록에서 자동으로 모은 항목입니다. 조치 이력을 연결하면 C 판정은 자동으로 사라집니다.</p>'+autoListHtml()+'</div></div>';
-}
-
 /* ----- 업무 스케줄표(달력) ----- */
-function scOpen(){if(!TD.ym){const n=new Date();TD.ym=n.getFullYear()+'-'+pad(n.getMonth()+1);TD.sel=todayK();}scRender();loadTD(true);}
+function scOpen(){TD.v=TD.vNext||'cal';TD.vNext='';if(!TD.ym){const n=new Date();TD.ym=n.getFullYear()+'-'+pad(n.getMonth()+1);TD.sel=todayK();}scRender();loadTD(true);}
 function monthShift(n){const p=TD.ym.split('-').map(Number),d=new Date(p[0],p[1]-1+n,1);TD.ym=d.getFullYear()+'-'+pad(d.getMonth()+1);TD.sel='';TD.form=null;scRender();}
-function dayItems(k){
-  const L=[];
-  const du=dutyOn(k);if(du)L.push({t:'d',x:'당직 '+du.name,c:'d'});
-  offOn(k).forEach(r=>L.push({t:'a',x:r.name+' '+(KSH[r.kind]||r.kind),c:r.kind==='출장'?'t':r.kind==='연차'?'a':'h'}));
-  TD.sched.filter(s=>s.start<=k&&s.end>=k).forEach(s=>L.push({t:'s',x:s.title,c:CATC[s.cat]||'c5'}));
-  return L;
-}
 function scCal(){
   const p=TD.ym.split('-').map(Number),first=new Date(p[0],p[1]-1,1),start=addD(first,-first.getDay()),k0=todayK();
   let h='<div class="sc-h"><button type="button" class="hc-btn sm ghost" data-sc="prev" aria-label="이전 달">‹</button><b>'+p[0]+'년 '+p[1]+'월</b><button type="button" class="hc-btn sm ghost" data-sc="next" aria-label="다음 달">›</button><button type="button" class="hc-btn sm ghost" data-sc="today">오늘</button></div><div class="sc-g">'+WD.map((w,i)=>'<div class="sc-w'+(i===0?' red':i===6?' blu':'')+'">'+w+'</div>').join('');
   for(let i=0;i<42;i++){const d=addD(start,i),k=ymd(d),out=d.getMonth()!==p[1]-1,hol=HOL[k],its=dayItems(k);
     if(i>=35&&out)break;
     h+='<button type="button" class="sc-c'+(out?' out':'')+(k===k0?' today':'')+(k===TD.sel?' sel':'')+(d.getDay()===0||hol?' red':d.getDay()===6?' blu':'')+'" data-sc="day" data-d="'+k+'"><span class="n">'+d.getDate()+'</span>'+(hol?'<span class="hn">'+E(hol.replace('대체공휴일','대체'))+'</span>':'')+its.slice(0,3).map(x=>'<span class="sc-b '+x.c+'">'+E(x.x)+'</span>').join('')+(its.length>3?'<span class="sc-m">+'+(its.length-3)+'</span>':'')+'</button>';}
-  return h+'</div><div class="sc-lg"><span class="sc-b d">당직</span><span class="sc-b a">연차</span><span class="sc-b h">반차</span><span class="sc-b t">출장</span><span class="sc-b c1">점검</span><span class="sc-b c2">수리·공사</span><span class="sc-b c4">회의·교육</span></div>';
+  return h+'</div><div class="sc-lg"><span class="sc-b d">당직</span><span class="sc-b a">연차</span><span class="sc-b h">반차</span><span class="sc-b t">출장</span><span class="sc-b c1">점검</span><span class="sc-b c2">수리·공사</span><span class="sc-b c4">회의·교육</span><span class="sc-b td">☐ 할 일</span></div>';
 }
 function schedFormHtml(){
   const f=TD.form;if(!f)return '';
   return '<div class="hc-card sc-form"><h3>'+(f.id?'일정 수정':'일정 추가')+'</h3><div class="emq-f td-f"><input id="scTitle" placeholder="제목 (예: 1F-3 펌프 교체)" maxlength="80" value="'+A(f.title||'')+'" style="grid-column:1/-1"><select id="scCat">'+CATS.map(c=>'<option'+(c===f.cat?' selected':'')+'>'+c+'</option>').join('')+'</select><select id="scEq"><option value="">설비 선택(선택)</option>'+EQ.map(e=>'<option'+(e===f.eq?' selected':'')+'>'+e+'</option>').join('')+'</select><label class="td-l">시작일<input type="date" id="scFrom" value="'+A(f.start)+'"></label><label class="td-l">종료일<input type="date" id="scTo" value="'+A(f.end)+'"></label><input id="scWho" placeholder="담당자(선택)" maxlength="40" value="'+A(f.who||'')+'"><input id="scMemo" placeholder="메모(선택)" maxlength="200" value="'+A(f.memo||'')+'"></div><div class="hm-fa" style="margin-top:10px"><button type="button" class="hc-btn" data-sc="save">저장</button><button type="button" class="hc-btn ghost" data-sc="cancelform">닫기</button></div></div>';
 }
+/* ----- v72: 일정 · 할 일 통합 화면 ----- */
+const visTodos=()=>TD.todo.filter(t=>t.status==='진행'&&(TD.flt==='all'||!t.to||t.to===myId()));
+function usTabs(){
+  const m=myTodos(),od=m.filter(overdue).length,n=m.length;
+  const T=[['cal','달력',''],['todo','할 일',n?'<i'+(od?' class="bad"':'')+'>'+n+'</i>':''],['off','근태 · 당직','']];
+  return '<div class="us-tabs" role="tablist">'+T.map(x=>'<button type="button" role="tab" aria-selected="'+(TD.v===x[0])+'" class="'+(TD.v===x[0]?'on':'')+'" data-us="tab" data-v="'+x[0]+'">'+x[1]+x[2]+'</button>').join('')+'</div>';
+}
+function usFlt(){
+  const all=TD.todo.filter(t=>t.status==='진행').length,mine=myTodos().length;
+  return '<div class="us-flt"><button type="button" class="'+(TD.flt!=='all'?'on':'')+'" data-us="flt" data-v="mine">내 할 일 · 공용 '+mine+'</button><button type="button" class="'+(TD.flt==='all'?'on':'')+'" data-us="flt" data-v="all">전체 '+all+'</button></div>';
+}
+function overdueHtml(){
+  const od=visTodos().filter(overdue).sort((a,b)=>a.due<b.due?-1:1);
+  if(!od.length)return '';
+  return '<div class="hc-card us-od"><h3>기한 지난 할 일 '+od.length+'건</h3>'+od.slice(0,5).map(todoRowHm).join('')+(od.length>5?'<p class="hc-muted" style="margin:8px 0 0">나머지 '+(od.length-5)+'건은 "할 일" 탭에서 확인하세요.</p>':'')+'</div>';
+}
+function dayItems(k){
+  const L=[];
+  const du=dutyOn(k);if(du)L.push({t:'d',x:'당직 '+du.name,c:'d'});
+  offOn(k).forEach(r=>L.push({t:'a',x:r.name+' '+(KSH[r.kind]||r.kind),c:r.kind==='출장'?'t':r.kind==='연차'?'a':'h'}));
+  TD.sched.filter(s=>s.start<=k&&s.end>=k).forEach(s=>L.push({t:'s',x:s.title,c:CATC[s.cat]||'c5'}));
+  visTodos().filter(t=>t.due===k).forEach(t=>L.push({t:'t',x:'☐ '+t.title,c:'td'}));
+  return L;
+}
 function scDay(){
   const k=TD.sel;if(!k)return '<div class="empty-note">날짜를 누르면 상세가 보입니다.</div>';
-  const hol=HOL[k],du=dutyOn(k),off=offOn(k),ss=TD.sched.filter(s=>s.start<=k&&s.end>=k);
-  let h='<div class="hc-card"><h3>'+mdw(k)+(hol?' · '+E(hol):'')+'</h3>';
-  h+='<div class="td-r"><div><b>당직</b> '+(du?E(du.name)+(du.changed?' <i class="hm-b">변경됨</i>':''):'<span class="hc-muted">없음</span>')+'</div>'+(du&&lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="dedit" data-d="'+k+'">'+(TD.de===k?'닫기':'변경')+'</button>':'')+'</div>'+(du&&TD.de===k?dutyEditHtml(k):'');
-  off.forEach(r=>h+='<div class="td-r"><div><b>'+E(r.name)+'</b> <span class="hm-chip k-'+(r.kind==='출장'?'t':r.kind==='연차'?'a':'h')+'">'+E(KSH[r.kind]||r.kind)+'</span></div></div>');
+  const hol=HOL[k],du=dutyOn(k),off=offOn(k),ss=TD.sched.filter(s=>s.start<=k&&s.end>=k),tds=visTodos().filter(t=>t.due===k);
+  let h='<div class="hc-card"><h3>'+mdw(k)+(k===todayK()?' · 오늘':'')+(hol?' · '+E(hol):'')+'</h3>';
+  tds.forEach(t=>h+='<div class="td-r"><div><b>☐ '+E(t.title)+'</b> '+dueBadge(t)+'<small>'+(t.to?E(t.toName||t.to):'공용')+' · '+E(t.by)+' 등록'+(t.memo?' · '+E(t.memo):'')+'</small></div>'+(lvOk(2)&&(!t.to||t.to===myId()||lvOk(3))?'<button type="button" class="hc-btn sm" data-td="done" data-id="'+A(t.id)+'">완료</button>':'')+'</div>');
   ss.forEach(s=>h+='<div class="td-r"><div><b>'+E(s.title)+'</b> <span class="hm-chip sc '+(CATC[s.cat]||'c5')+'">'+E(s.cat)+'</span><small>'+mdw(s.start)+(s.end!==s.start?' ~ '+mdw(s.end):'')+(s.eq?' · '+E(s.eq):'')+(s.who?' · '+E(s.who):'')+(s.memo?' · '+E(s.memo):'')+' · '+E(s.by)+'</small></div>'+(lvOk(2)&&(s.by===myName()||lvOk(3))?'<button type="button" class="hc-btn sm ghost" data-sc="edit" data-id="'+A(s.id)+'">수정</button><button type="button" class="hc-btn sm bad" data-sc="del" data-id="'+A(s.id)+'">삭제</button>':'')+'</div>');
-  if(!off.length&&!ss.length&&!du)h+='<div class="empty-note">등록된 내용이 없습니다.</div>';
-  if(lvOk(2)&&!TD.form)h+='<button type="button" class="hc-btn" style="margin-top:10px" data-sc="add" data-d="'+k+'">+ 이 날짜에 일정 추가</button>';
+  off.forEach(r=>h+='<div class="td-r"><div>'+attChip(r)+'</div></div>');
+  if(du)h+='<div class="td-r"><div><b>당직</b> '+E(du.name)+(du.changed?' <i class="hm-b">변경됨</i>':'')+'</div>'+(lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="dedit" data-d="'+k+'">'+(TD.de===k?'닫기':'변경')+'</button>':'')+'</div>'+(TD.de===k?dutyEditHtml(k):'');
+  if(!tds.length&&!ss.length&&!off.length&&!du)h+='<div class="empty-note">일정 · 할 일이 없습니다.</div>';
+  if(lvOk(2)&&!TD.form)h+='<div class="us-add"><button type="button" class="hc-btn" data-sc="add" data-d="'+k+'">+ 일정</button><button type="button" class="hc-btn" data-us="addtodo" data-d="'+k+'">+ 할 일</button></div>';
   return h+'</div>';
 }
-function scRender(){
-  const el=$('emqSched');if(!el)return;
-  if(!TD.ym){const n=new Date();TD.ym=n.getFullYear()+'-'+pad(n.getMonth()+1);TD.sel=todayK();}
-  el.innerHTML='<div class="sc-wrap">'+(TD.err?'<div class="hc-warn">불러오지 못했습니다. ('+E(TD.err)+') <button type="button" class="hc-btn ghost sm" data-td="reload">다시 불러오기</button></div>':!TD.ok?'<div class="hc-auto">불러오는 중입니다...</div>':'')+'<div class="hc-card sc-cal">'+scCal()+'</div><div class="sc-side">'+schedFormHtml()+scDay()+'</div></div>';
+function usUpcoming(){
+  const by={},k1=ymd(addD(new Date(),14));
+  for(let d=addD(new Date(),1);ymd(d)<=k1;d=addD(d,1)){const k=ymd(d),L=visTodos().filter(t=>t.due===k).map(t=>'<span class="hm-chip td">☐ '+E(t.title)+'</span>').concat(chipsFor(k));if(L.length)by[k]=L;}
+  const ks=Object.keys(by).slice(0,12);
+  return '<div class="hc-card"><h3>다가오는 일정 · 할 일 <small class="hc-muted">내일부터 2주</small></h3>'+(ks.length?ks.map(d=>'<div class="hm-u"><b>'+mdw(d)+'</b><div>'+by[d].join('')+'</div></div>').join(''):'<div class="empty-note">앞으로 2주간 등록된 내용이 없습니다.</div>')+'</div>';
 }
+function presetDue(){
+  const n=new Date(),f=addD(n,(5-n.getDay()+7)%7);
+  return [['오늘',todayK()],['내일',ymd(addD(n,1))],['금요일',ymd(f)],['기한 없음','']];
+}
+function vTodo(){
+  const dr=TD.dr,adm=lvOk(2);
+  const form=adm?'<div class="hc-card"><h3>할 일 추가</h3><div class="td-form">'
+   +'<label class="td-l full">할 일<input id="tdTitle" placeholder="예: 1F-3 호스 교체 발주" maxlength="80" value="'+A(dr.title)+'"></label>'
+   +'<label class="td-l">담당자<select id="tdTo"><option value="">전체(공용)</option>'+TD.users.map(u=>'<option value="'+A(u.id)+'"'+((dr.to==null?myId():dr.to)===u.id?' selected':'')+'>'+E(u.name)+'</option>').join('')+'</select></label>'
+   +'<label class="td-l">기한<input type="date" id="tdDue" lang="ko" value="'+A(dr.due)+'"></label>'
+   +'<div class="td-pre full">'+presetDue().map(p=>'<button type="button" class="'+(dr.due===p[1]?'on':'')+'" data-us="due" data-v="'+p[1]+'">'+p[0]+(p[1]?' <small>'+mdw(p[1]).replace(/\(.\)/,'')+'</small>':'')+'</button>').join('')+'</div>'
+   +'<label class="td-l full"><span>메모 <small>(선택)</small></span><input id="tdMemo" maxlength="200" value="'+A(dr.memo)+'"></label>'
+   +'</div><button type="button" class="hc-btn" data-td="todoadd" style="margin-top:12px">할 일 추가</button></div>':'';
+  const op=visTodos().sort((a,b)=>(a.due||'9')<(b.due||'9')?-1:(a.due||'9')>(b.due||'9')?1:0),dn=TD.todo.filter(t=>t.status==='완료').sort((a,b)=>String(b.doneAt).localeCompare(String(a.doneAt))).slice(0,10);
+  const row=t=>{const canDone=!t.to||t.to===myId()||lvOk(3),canDel=t.by===myName()||lvOk(3);
+    return '<div class="td-r"><div><b>'+E(t.title)+'</b> '+(t.status==='진행'?dueBadge(t):'')+'<small>'+(t.to?E(t.toName||t.to):'공용')+' · '+E(t.by)+' 등록'+(t.status==='완료'?' · '+E(t.doneBy)+' 완료 '+E(String(t.doneAt).slice(5,10)):'')+(t.memo?' · '+E(t.memo):'')+'</small></div>'
+      +(t.status==='진행'?(canDone&&lvOk(2)?'<button type="button" class="hc-btn sm" data-td="done" data-id="'+A(t.id)+'">완료</button>':''):(canDone&&lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="undo" data-id="'+A(t.id)+'">되돌리기</button>':''))
+      +(canDel&&lvOk(2)&&t.status==='진행'?'<button type="button" class="hc-btn sm bad" data-td="del" data-id="'+A(t.id)+'">삭제</button>':'')+'</div>';};
+  return form+'<div class="hc-card"><h3>진행 중인 할 일</h3>'+usFlt()+(op.length?op.map(row).join(''):'<div class="empty-note">진행 중인 할 일이 없습니다.</div>')+(dn.length?'<details class="td-dn"><summary>최근 완료 '+dn.length+'건</summary>'+dn.map(row).join('')+'</details>':'')+'</div>';
+}
+function dutyListHtml(){
+  const k=todayK(),all=TD.duty.filter(d=>d.date>=k),rows=all.slice(0,TD.dutyAll?16:3);
+  if(!rows.length)return '<div class="empty-note">등록된 당직이 없습니다.</div>';
+  return rows.map(d=>'<div class="td-r"><div><b>'+mdw(d.date)+'</b> '+E(d.name)+(d.name===myName()?' <i class="hm-b ok">내 당직</i>':'')+(d.changed?' <i class="hm-b">변경됨</i>':'')+'<small>'+E(d.label||'')+'</small></div>'+(lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="dedit" data-d="'+d.date+'">'+(TD.de===d.date?'닫기':'변경')+'</button>':'')+'</div>'+(TD.de===d.date?dutyEditHtml(d.date):'')).join('')+(all.length>3?'<button type="button" class="hm-l" style="margin-top:8px" data-us="dutymore">'+(TD.dutyAll?'접기':'당직 더 보기')+'</button>':'');
+}
+function vOff(){
+  const adm=lvOk(3);
+  return '<div class="hc-card"><h3>다가오는 당직</h3>'+dutyListHtml()+'<p class="hc-muted" style="margin:8px 0 0">당직은 토요일과 공휴일(일요일 제외)이며 김대연 → 최형진 → 박준성 → 이기찬 순입니다.</p></div>'
+   +'<div class="hc-card"><h3>이번 주 · 다음 주 근무</h3>'+tdWeekStrip()+'</div>'
+   +'<div class="hc-card"><h3>연차 · 근태 등록</h3><p class="hc-muted" style="margin:0 0 8px">'+(adm?'관리자 이상은 팀원 대신 등록할 수 있습니다.':'본인 근태만 등록·취소할 수 있습니다.')+'</p>'+attFormHtml()+'<h3 style="margin-top:16px">예정된 근태</h3>'+attListHtml()+'</div>';
+}
+function usRender(){
+  const el=curPanel==='todo'?$('emqTodo'):curPanel==='sched'?$('emqSched'):null;if(!el)return;
+  if(!TD.v)TD.v=curPanel==='todo'?'todo':'cal';
+  if(!TD.ym){const n=new Date();TD.ym=n.getFullYear()+'-'+pad(n.getMonth()+1);TD.sel=todayK();}
+  const msg=TD.err?'<div class="hc-warn">불러오지 못했습니다. ('+E(TD.err)+') <button type="button" class="hc-btn ghost sm" data-td="reload">다시 불러오기</button></div>':!TD.ok?'<div class="hc-auto">불러오는 중입니다...</div>':'';
+  let body;
+  if(TD.v==='cal')body=overdueHtml()+usFlt()+'<div class="sc-wrap"><div class="hc-card sc-cal">'+scCal()+'</div><div class="sc-side">'+schedFormHtml()+scDay()+usUpcoming()+'</div></div>';
+  else if(TD.v==='todo')body=vTodo();
+  else body=vOff();
+  el.innerHTML='<div class="us-wrap emq-p">'+msg+usTabs()+body+'</div>';
+}
+function tdRender(){usRender();}
+function scRender(){usRender();}
 
 /* ----- 동작 ----- */
 async function tdDo(p,okMsg){
@@ -9588,6 +9694,13 @@ function dateRange(a,b,skipWe){
 }
 document.addEventListener('click',async ev=>{
   const t=ev.target.closest('button');if(!t)return;
+  if(t.dataset.us){const a=t.dataset.us;
+    if(a==='tab'){TD.v=t.dataset.v;TD.form=null;usRender();}
+    else if(a==='flt'){TD.flt=t.dataset.v;usRender();}
+    else if(a==='due'){const v=t.dataset.v;TD.dr.due=v;const i=$('tdDue');if(i)i.value=v;t.parentElement.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===t));}
+    else if(a==='addtodo'){TD.v='todo';TD.dr.due=t.dataset.d||'';usRender();window.scrollTo(0,0);setTimeout(()=>{const i=$('tdTitle');if(i)i.focus();},50);}
+    else if(a==='dutymore'){TD.dutyAll=!TD.dutyAll;usRender();}
+    return;}
   if(t.dataset.hm){const a=t.dataset.hm;
     if(a==='low'){if(typeof showKpiList==='function')showKpiList('low');}
     else if(a==='histnew'){HC.tabH='new';showPanel('hist');}
@@ -9596,7 +9709,7 @@ document.addEventListener('click',async ev=>{
     friClose();return;}
   if(t.dataset.fr){const a=t.dataset.fr;
     if(a==='ok')friOk();else if(a==='later')friClose();
-    else if(a==='att'){friClose();showPanel('todo');}else if(a==='duty'){friClose();showPanel('sched');}return;}
+    else if(a==='att'){friClose();TD.vNext='off';showPanel('todo');}else if(a==='duty'){friClose();showPanel('sched');}return;}
   if(t.dataset.upd){return;}
   if(t.dataset.td){const a=t.dataset.td,id=t.dataset.id;
     if(a==='reload'){loadTD(true);return;}
@@ -9604,7 +9717,7 @@ document.addEventListener('click',async ev=>{
     if(a==='undo'){await tdDo({type:'todo_done',id:id,undo:true},'되돌렸습니다.');return;}
     if(a==='del'){if(!confirm('이 할 일을 삭제할까요?'))return;await tdDo({type:'todo_cancel',id:id},'삭제했습니다.');return;}
     if(a==='todoadd'){const title=($('tdTitle').value||'').trim();if(!title){toast('할 일을 입력하세요.');return;}
-      if(await tdDo({type:'todo_add',title:title,to:$('tdTo').value,due:$('tdDue').value,memo:$('tdMemo').value},'할 일을 추가했습니다.'))tdRender();return;}
+      if(await tdDo({type:'todo_add',title:title,to:$('tdTo').value,due:$('tdDue').value,memo:$('tdMemo').value},'할 일을 추가했습니다.')){TD.dr={title:'',to:$('tdTo')?$('tdTo').value:null,due:'',memo:''};tdRender();}return;}
     if(a==='attadd'){const from=$('atFrom').value;if(!from){toast('시작일을 선택하세요.');return;}
       const dates=dateRange(from,$('atTo').value,$('atWe').checked);if(!dates.length){toast('등록할 날짜가 없습니다. 날짜 범위를 확인하세요.');return;}
       const who=lvOk(3)?$('atWho').value:'';
@@ -9634,7 +9747,7 @@ document.addEventListener('click',async ev=>{
   const btn=$('updateBtn');if(!btn)return;
   const bar=document.createElement('div');bar.id='emqUpd';bar.hidden=true;
   bar.innerHTML='<span>새 버전이 있습니다</span><button type="button" id="emqUpdGo">지금 업데이트</button><button type="button" id="emqUpdX" aria-label="닫기">×</button>';
-  document.body.appendChild(bar);let dismissed=false;
+  const hp=$('panel-home');(hp&&hp.parentNode?hp.parentNode.insertBefore(bar,hp.parentNode.firstChild):document.body.appendChild(bar));let dismissed=false;
   const sync=()=>{bar.hidden=!btn.classList.contains('available')||dismissed;};
   new MutationObserver(sync).observe(btn,{attributes:true,attributeFilter:['class']});
   $('emqUpdGo').onclick=()=>{$('emqUpdGo').disabled=true;$('emqUpdGo').textContent='업데이트 중…';btn.click();};
@@ -9674,6 +9787,10 @@ async function nativeAlarm(){
   window.emqRefresh=function(){_er();TD.ok=false;TD.users=[];hmRender();hmLoadAll();};
   setTimeout(()=>{hmRender();hmLoadAll();markCur();},0);
 }
+
+/* v72: 할 일 입력 중 값 보존 */
+document.addEventListener('input',ev=>{const t=ev.target,id=t&&t.id;if(id==='tdTitle')TD.dr.title=t.value;else if(id==='tdMemo')TD.dr.memo=t.value;else if(id==='tdDue'){TD.dr.due=t.value;document.querySelectorAll('.td-pre button').forEach(b=>b.classList.toggle('on',b.dataset.v===t.value));}});
+document.addEventListener('change',ev=>{const t=ev.target;if(t&&t.id==='tdTo')TD.dr.to=t.value;});
 /* ===== 뒤로가기: 폰 뒤로가기 버튼 + 상단 "← 홈" 버튼 ===== */
 (function(){
   if(window.__emqNav)return;window.__emqNav=1;
