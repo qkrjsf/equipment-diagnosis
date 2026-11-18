@@ -946,6 +946,108 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
 @media (max-width:1099px){.o10{order:10}}
 @media (max-width:1099px){.hm-grid{align-items:stretch}.hm-grid>.hm-sec,.hm-grid>.ask-box,.hm-col>.hm-sec,.hm-col>.ask-box{width:100%;box-sizing:border-box}}
 .hm-quick>.hm-q:not(.big){grid-column:auto!important}
+
+/* v73 사용처 선택 구분 */
+.loc-gh{font-size:12px;font-weight:700;color:var(--text-muted);margin:10px 0 6px;letter-spacing:.02em}
+.loc-gh:first-child{margin-top:0}
+.loc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:6px}
+.loc-grid .opt-btn{margin:0;text-align:center;padding:9px 6px;font-size:13px;white-space:normal;word-break:keep-all}
+
+.eq-fl{grid-column:1/-1;font-size:12px;font-weight:700;color:var(--text-muted);margin:6px 2px 0;letter-spacing:.02em}
+.eq-grid>.eq-fl:first-child{margin-top:0}
+
+/* v73 PC: 홈 열 균형(자동), 긴 목록 스크롤, 점검/설정/계정 */
+@media (min-width:1100px){
+  .hm-grid{display:block;column-count:3;column-gap:14px}
+  .hm-col{display:contents}
+  .hm-grid>.hm-sec,.hm-col>.hm-sec,.hm-col>.ask-box{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 14px;width:100%;box-sizing:border-box;display:block}
+  .hm-scr{max-height:300px;overflow-y:auto;overscroll-behavior:contain;padding-right:4px;scrollbar-width:thin}
+  .chk-st{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,380px);gap:14px;align-items:start}
+  .chk-st>.chk-side:empty{display:none}
+  .chk-st:has(>.chk-side:empty){grid-template-columns:minmax(0,1fr)}
+  .chk-side{order:2;display:flex;flex-direction:column;gap:12px}
+  .chk-side .hc-card{margin:0}
+  .set-grid{grid-auto-flow:dense}
+  .set-grid .wide:last-child{grid-column:auto}
+  .emq-p{max-width:none}
+  #emqAcc .emq-p{column-count:2;column-gap:14px}
+  #emqAcc .emq-p>.hc-card{break-inside:avoid}
+  .us-wrap.emq-p{max-width:none}
+}
+@media (max-width:1099px){.chk-st{display:flex;flex-direction:column;gap:12px}.chk-side{order:-1}.chk-side:empty{display:none}.chk-side .hc-card{margin:0}}
+@media (min-width:1100px){.hc-scr{max-height:calc(100vh - 300px);min-height:240px;overflow-y:auto;overscroll-behavior:contain;padding-right:6px;scrollbar-width:thin}}
+
+/* v73 홈 통계 */
+.hm-st1{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:0 0 10px}
+.hm-st1 b{font-size:30px;line-height:1;font-weight:800}.hm-st1 span{font-size:13px;margin-left:2px;color:var(--text-muted)}.hm-st1 small{display:block;font-size:12px;color:var(--text-muted);margin-top:4px}
+.hm-sd{font-size:12.5px;color:var(--text-muted);white-space:nowrap}.hm-sd.up{color:#B45309}.hm-sd.dn{color:#0F766E}
+.hm-sh2{font-size:12.5px;font-weight:700;margin:12px 0 6px}.hm-sh2 small{font-weight:400;color:var(--text-muted);margin-left:4px}
+.hm-bar{display:grid;grid-template-columns:minmax(52px,38%) 1fr auto;align-items:center;gap:8px;font-size:13px;margin:5px 0}
+.hm-bar .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hm-bar i{display:block;height:8px;border-radius:4px;background:var(--surface2,#E8EEF2);position:relative;overflow:hidden}
+.hm-bar i::after{content:'';position:absolute;left:0;top:0;bottom:0;width:var(--w,0);background:var(--accent,#0E7C95);border-radius:4px}
+.hm-bar i.ok::after{background:#0F9D78}
+.hm-bar b{font-variant-numeric:tabular-nums;min-width:30px;text-align:right}
+.hm-bar small{display:none}
+
+@media (min-width:1100px){
+  .hm-sec.o3{column-span:all}
+  .hm-sec.o3 h3{display:none}
+  .hm-quick{grid-template-columns:minmax(0,1.6fr) repeat(var(--qn,3),minmax(0,1fr))!important}
+  .hm-quick .hm-q.big{grid-column:auto!important}
+}
+
+/* v73 부품 목록: 텍스트 우선 행 */
+#panel-parts .view-row,#panel-register .view-row{display:none}
+.pt-list{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+@media (min-width:900px){.pt-list{grid-template-columns:repeat(auto-fill,minmax(440px,1fr))}}
+.pt-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px 12px;align-items:center;padding:10px 12px;background:var(--surface,#fff);border:1px solid var(--border,#D6E3EA);border-radius:10px;cursor:pointer}
+.pt-row:hover{border-color:#9DB8C5}.pt-row.low{border-left:4px solid #D14B3B}
+.pt-main{min-width:0}.pt-main b{display:block;font-size:14.5px;line-height:1.3;overflow-wrap:anywhere}.pt-main small{display:block;font-size:12px;color:var(--text-muted);margin-top:2px;overflow-wrap:anywhere}
+.pt-st{text-align:right;line-height:1.15}.pt-st b{display:block;font-size:20px;font-variant-numeric:tabular-nums}.pt-st b.low{color:#C0392B}
+.pt-st small{display:block;font-size:11px;color:var(--text-muted)}.pt-st small.rp{color:#B45309}
+.pt-th{padding:0;border:1px solid var(--border,#D6E3EA);border-radius:8px;background:none;width:44px;height:44px;overflow:hidden;cursor:zoom-in}
+.pt-th img{width:100%;height:100%;object-fit:cover;display:block}
+.pt-acts{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:2px}
+.pt-acts button{padding:9px 4px;border-radius:8px;border:1.5px solid;background:#fff;font-weight:700;font-size:13.5px;cursor:pointer}
+.pt-acts .u{color:#0E7C95;border-color:#0E7C95}.pt-acts .o{color:#C2410C;border-color:#C2410C}.pt-acts .i{color:#0F766E;border-color:#0F9D78}
+.pt-acts button:active{background:#EEF5F8}
+@media (min-width:900px){.pt-row.reg{grid-template-columns:minmax(0,1fr) auto auto auto}.pt-row.reg .pt-acts{grid-column:auto;min-width:210px;margin:0}}
+.pt-today{margin:0 0 10px;background:var(--surface,#fff);border:1px solid var(--border,#D6E3EA);border-radius:10px;padding:8px 12px}
+.pt-today summary{cursor:pointer;font-size:13.5px}.pt-today[hidden]{display:none}
+.pt-lg{display:flex;gap:10px;align-items:baseline;padding:6px 0;border-top:1px solid var(--border,#E3ECF1);font-size:13.5px}.pt-lg:first-of-type{margin-top:6px}
+.pt-lg small{display:block;font-size:11.5px;color:var(--text-muted)}
+.pt-lg .k{flex:0 0 40px;text-align:center;font-size:11.5px;font-weight:700;padding:2px 0;border-radius:6px;background:#E3F1F5;color:#0E7C95}.pt-lg .k.in{background:#DDF3EB;color:#0F766E}.pt-lg .k.out{background:#FCE7DC;color:#C2410C}
+#panel-register .page-title::after{content:'입력';margin-left:8px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#FCE7DC;color:#C2410C;vertical-align:middle}
+#panel-parts .page-title::after{content:'조회';margin-left:8px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#E3ECF1;color:#4A6272;vertical-align:middle}
+#emqUpd{margin-bottom:12px!important}
+
+/* v73 일정/할 일 구분 안내 */
+.us-add .hc-btn{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;padding:10px 12px;line-height:1.25;height:auto}
+.us-add .hc-btn b{font-size:15px}.us-add .hc-btn small{font-size:11.5px;font-weight:400;opacity:.92}
+.us-gd{margin:0 0 10px;font-size:12.5px;color:var(--text-muted);line-height:1.45}
+.us-ex{display:flex;flex-wrap:wrap;gap:6px}.us-ex.full{grid-column:1/-1}
+.us-ex button{padding:5px 10px;font-size:12.5px;border-radius:999px;border:1px solid var(--border,#D6E3EA);background:var(--surface,#fff);color:var(--text);cursor:pointer}
+.us-ex button:active{background:#EEF5F8}
+
+/* v73 수리 부품 초기재고 일괄 등록 */
+.pb-pop{width:min(760px,calc(100vw - 20px))!important;max-width:none!important;max-height:calc(100vh - 24px);display:flex;flex-direction:column;text-align:left;padding:16px}
+.pb-t{font-weight:800;font-size:16px}.pb-n{margin:6px 0 8px;font-size:12.5px;color:var(--text-muted);line-height:1.45}
+.pb-paste{margin:0 0 8px;border:1px dashed var(--border,#D6E3EA);border-radius:8px;padding:6px 10px}.pb-paste summary{cursor:pointer;font-size:13px;font-weight:600}
+.pb-paste textarea{width:100%;box-sizing:border-box;margin-top:8px;font-family:inherit;font-size:13px;padding:8px;border:1px solid var(--border,#D6E3EA);border-radius:8px;background:var(--surface2,#F5F8FA);color:var(--text);resize:vertical}
+.pb-pr{display:flex;align-items:center;gap:10px;margin-top:6px;flex-wrap:wrap}.pb-pm{font-size:12px;color:var(--text-muted)}
+.pb-tw{flex:1 1 auto;min-height:160px;overflow:auto;margin-top:8px;border:1px solid var(--border,#D6E3EA);border-radius:8px}
+.pb-tb{width:100%;border-collapse:collapse;font-size:13px}.pb-tb th{position:sticky;top:0;background:var(--surface2,#EEF3F6);text-align:left;padding:6px 8px;font-size:12px;z-index:1}
+.pb-tb td{padding:6px 8px;border-top:1px solid var(--border,#E3ECF1);vertical-align:middle}.pb-tb th:nth-child(3),.pb-tb th:nth-child(4){text-align:right}
+.pb-tb tr.chg{background:#EAF6F1}.pb-tb tr.bad{background:#FDEDEA}
+.pb-q{width:72px;text-align:right;padding:6px 6px;border:1px solid var(--border,#C9D8E0);border-radius:6px;font-size:14px;background:var(--surface,#fff);color:var(--text);box-sizing:border-box}
+.pb-nm{width:100%;box-sizing:border-box;padding:6px;border:1px solid var(--border,#C9D8E0);border-radius:6px;font-size:13px;background:var(--surface,#fff);color:var(--text)}
+.pb-e{font-size:11.5px;color:#C0392B}.pb-e:empty{display:none}
+.pb-sum{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 2px;font-size:13px}.pb-sum .bad{color:#C0392B}
+.pb-foot{display:flex;gap:8px;margin-top:10px}.pb-foot .repair-popup-btn{flex:1}
+.pb-pop>*:not(.pb-tw){flex-shrink:0}
+.pb-tb th{white-space:nowrap}.pb-tb th:nth-child(3){min-width:44px}
+.pb-paste textarea{min-height:84px}
 </style>
 </head>
 <body>
@@ -1163,7 +1265,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v72</span></div>
+    <div class="sb-foot"><span id="verLabel">v73</span></div>
   </nav>
 
   <div class="content">
@@ -1181,12 +1283,9 @@ start();
     <div id="hmFri"></div>
     <div class="hm-grid">
       <div class="hm-col">
+        <section class="card hm-sec o3"><h3>빠른 실행</h3><div id="hmQuick" class="hm-quick"></div></section>
         <section class="card hm-sec o1"><div class="hm-sh"><h3>오늘 · 내일</h3><button type="button" class="hm-more" data-hm="sched">일정 · 할 일 열기</button></div><div id="hmToday"></div></section>
         <section class="card hm-sec o2"><div class="hm-sh"><h3>점검 현황</h3><button type="button" class="hm-more" data-hm="check">점검 열기</button></div><div id="hmCards"></div></section>
-        <section class="card hm-sec o6"><div class="hm-sh"><h3>이후 일정 (7일)</h3><button type="button" class="hm-more" data-hm="sched">전체 보기</button></div><div id="hmUp"></div></section>
-      </div>
-      <div class="hm-col">
-        <section class="card hm-sec o3"><h3>빠른 실행</h3><div id="hmQuick" class="hm-quick"></div></section>
     <section class="card ask-box o4">
       <form id="askForm" class="ask-row" autocomplete="off">
         <input id="askInput" type="text" data-i18n-placeholder="askPh" placeholder="예) 1F-1호기 믹싱헤드 뭐야?" aria-label="질문하기" enterkeyhint="search">
@@ -1196,17 +1295,17 @@ start();
       <div id="askOut" aria-live="polite"></div>
     </section>
         <section class="card hm-sec o5"><h3>조회</h3><div id="hmLook" class="hm-look"></div></section>
-      </div>
-      <div class="hm-col">
-        <section class="card hm-sec o7"><h3>최근 설비 이력</h3><div id="hmHist"></div></section>
+        <section class="card hm-sec o6"><div class="hm-sh"><h3>이후 일정 (7일)</h3><button type="button" class="hm-more" data-hm="sched">전체 보기</button></div><div id="hmUp" class="hm-scr"></div></section>
+        <section class="card hm-sec o7"><h3>최근 설비 이력</h3><div id="hmHist" class="hm-scr"></div></section>
+        <section class="card hm-sec o7" id="hmStatCard"><div class="hm-sh"><h3>통계</h3><button type="button" class="hm-more" data-hm="histstat">이력 통계</button></div><div id="hmStat"></div></section>
         <section class="card hm-sec o8"><h3 data-i18n="homeLowH">재고 부족 부품</h3>
     <div class="kpis">
       <button type="button" class="kpi" data-kpi="low"><div class="kpi-l" data-i18n="kpiLow">재고 부족</div><div class="kpi-v" style="color:var(--danger)"><span id="kpiLow">–</span><small data-i18n="unitKind">종</small></div></button>
       <button type="button" class="kpi" data-kpi="repair"><div class="kpi-l" data-i18n="kpiRepair">수리 중</div><div class="kpi-v" style="color:#8A5A00"><span id="kpiRepair">–</span><small data-i18n="unitEa">개</small></div></button>
       <button type="button" class="kpi" data-kpi="total"><div class="kpi-l" data-i18n="kpiTotal">등록 부품</div><div class="kpi-v"><span id="kpiTotal">–</span><small data-i18n="unitKind">종</small></div></button>
     </div>
-          <div id="homeLow"></div></section>
-        <section class="card hm-sec o9"><h3 data-i18n="homeRecentH">최근 진단</h3><div id="homeRecent"></div></section>
+          <div id="homeLow" class="hm-scr"></div></section>
+        <section class="card hm-sec o9"><h3 data-i18n="homeRecentH">최근 진단</h3><div id="homeRecent" class="hm-scr"></div></section>
         <section class="card hm-sec o10" id="homeCodesCard"><h3 data-i18n="homeCodesH">최근 찾은 에러코드</h3><div id="homeCodes" class="chip-row"></div></section>
       </div>
     </div>
@@ -1232,7 +1331,7 @@ start();
 
   <div class="panel" id="panel-parts">
     <h1 class="page-title" data-i18n="tabParts">부품 조회</h1>
-    <div class="hint" data-i18n="partsHint">부품구분·규격으로 찾아보거나, 이름으로 검색해서 재고 현황을 확인할 수 있습니다.</div>
+    <div class="hint" data-i18n="partsHint">재고와 규격을 확인하는 화면입니다. 입출고는 '부품 입출고' 메뉴에서 합니다.</div>
 
     <div class="parts-search">
       <input type="text" id="partsSearch" data-i18n-placeholder="partsSearchPlaceholder" placeholder="제품구분·규격·비고로 검색..." />
@@ -1248,7 +1347,7 @@ start();
 
   <div class="panel" id="panel-register">
     <h1 class="page-title" data-i18n="tabRegister">부품 입출고</h1>
-    <div class="hint" data-i18n="registerHint">사용한 부품을 눌러서 바로 사용 등록할 수 있습니다.</div>
+    <div class="hint" data-i18n="registerHint">부품 오른쪽의 사용 · 출고 · 입고 버튼으로 바로 등록합니다.</div>
 
     <div class="parts-search">
       <input type="text" id="partsSearchReg" data-i18n-placeholder="partsSearchPlaceholder" placeholder="제품구분·규격·비고로 검색..." />
@@ -1419,7 +1518,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v72</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v73</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -5013,10 +5112,10 @@ const UI_STRINGS = {
     msdsWorking: "다운로드 준비 중...",
     msdsDone: "다운로드를 시작했습니다. ({n}개)",
     tabCodeSearch: "에러코드",
-    registerHint: "부품을 누르면 사용 · 출고 · 입고를 선택할 수 있습니다.",
+    registerHint: "부품 오른쪽의 사용 · 출고 · 입고 버튼으로 바로 등록합니다.",
     chatPlaceholder: "예: 화면에 OCT 떴어요, 레벨센서 알람 떴어요",
     send: "전송",
-    partsHint: "부품구분·규격으로 찾아보거나, 이름으로 검색해서 재고 현황을 확인할 수 있습니다.",
+    partsHint: "재고와 규격을 확인하는 화면입니다. 입출고는 '부품 입출고' 메뉴에서 합니다.",
     partsSearchPlaceholder: "제품구분·규격·비고로 검색...",
     partsEmpty: "등록된 부품이 없습니다.",
     diagTitle: "진단 결과",
@@ -5638,10 +5737,11 @@ function showLocationPicker(onSelect){
   overlay.addEventListener('click', (e) => { if(e.target === overlay) close(); });
 
   const listEl = overlay.querySelector('#locList');
-  listEl.innerHTML = LOCATION_LIST.map((loc, i) => '<button class="opt-btn" data-idx="' + i + '">' + escapeHtml(loc) + '</button>').join('');
-  listEl.querySelectorAll('.opt-btn').forEach((btn, i) => {
+  const locGroups = (typeof window.emqLocGroups === 'function') ? window.emqLocGroups() : [{ g: '', list: LOCATION_LIST }];
+  listEl.innerHTML = locGroups.filter(gr => gr.list.length).map(gr => (gr.g ? '<div class="loc-gh">' + escapeHtml(gr.g) + '</div>' : '') + '<div class="loc-grid">' + gr.list.map(loc => '<button class="opt-btn" data-loc="' + escapeAttr(loc) + '">' + escapeHtml(loc) + '</button>').join('') + '</div>').join('');
+  listEl.querySelectorAll('.opt-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      onSelect(LOCATION_LIST[i]);
+      onSelect(btn.getAttribute('data-loc'));
       close();
     });
   });
@@ -5979,7 +6079,7 @@ function showPumpSwapModal(part){
     '<div style="font-weight:700;font-size:15px;">' + escapeHtml(PP('A2VK12CC 펌프 교체', 'A2VK12CC pump swap')) + '</div>' +
     '<div class="pump-sub">' + escapeHtml(PP('재고', 'Stock')) + ' <b>' + st + '</b> → <b>' + Math.max(0, st - 1) + '</b> · ' + escapeHtml(PP('수리 대기 +1', 'Awaiting repair +1')) + '</div>' +
     '<label class="pump-l">' + escapeHtml(PP('교체한 호기', 'Unit')) + '</label>' +
-    '<select id="pwLine" class="pump-in"><option value="">' + escapeHtml(PP('선택', 'Select')) + '</option>' + lines.map(x => '<option>' + escapeHtml(x) + '</option>').join('') + '</select>' +
+    '<select id="pwLine" class="pump-in"><option value="">' + escapeHtml(PP('선택', 'Select')) + '</option>' + ['1F', '2F'].map(fl => '<optgroup label="' + (fl === '1F' ? '1층' : '2층') + '">' + lines.filter(x => x.indexOf(fl) === 0).map(x => '<option>' + escapeHtml(x) + '</option>').join('') + '</optgroup>').join('') + '</select>' +
     '<label class="pump-l">' + escapeHtml(PP('고장 사유', 'Reason')) + '</label><div class="pchips">' + chips(PUMP_REASONS, 'reason') + '</div>' +
     '<label class="pump-l">' + escapeHtml(PP('설치 원료', 'Material')) + '</label><div class="pchips">' + chips([['POL','POL'],['MDI','MDI']], 'mat') + '</div>' +
     '<label class="pump-l">' + escapeHtml(t('usageWorkerLabel')) + '</label><input id="pwWorker" class="pump-in" type="text" placeholder="' + escapeAttr(t('usageWorkerPlaceholder')) + '">' +
@@ -8389,7 +8489,7 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v72', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v73', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
@@ -8540,6 +8640,11 @@ function subsOf(a,b){const base=[...((HC_TREE[a]||{})[b]||[])];(HC.subs[a+'|'+b]
 function pressTab(){return (HC.xtabs||[]).find(t=>t.name==='프레스')||null;}
 function pressNames(){const t=pressTab();return t?t.rows.map(r=>String(r[0]||'').trim()).filter(Boolean):[];}
 function syncPress(){EQG['프레스']=pressNames();}
+/* v73: 설비 구분(1층/2층/프레스/기타) 공통 */
+function eqGroups(extra){const g=[{g:'1층',list:EQG['1층'].slice()},{g:'2층',list:EQG['2층'].slice()},{g:'프레스',list:pressNames()},{g:'기타',list:[DUTY]}];if(extra&&extra.length){const have={};g.forEach(x=>x.list.forEach(e=>have[e]=1));const o=extra.filter(e=>e&&!have[e]);if(o.length)g[3].list=g[3].list.concat(o);}return g;}
+function eqOptHtml(sel,extra){return eqGroups(extra).filter(x=>x.list.length).map(x=>'<optgroup label="'+x.g+'">'+x.list.map(e=>'<option'+(sel===e?' selected':'')+'>'+E(e)+'</option>').join('')+'</optgroup>').join('');}
+window.emqLocGroups=function(){const pr=pressNames();const old=(typeof LOCATION_LIST!=='undefined'?LOCATION_LIST:[]).filter(x=>/프레스/.test(x));return [{g:'1층',list:EQG['1층'].map(e=>e+'호기')},{g:'2층',list:EQG['2층'].map(e=>e+'호기')},{g:'프레스',list:pr.length?pr:old},{g:'기타',list:[DUTY,'기타']}];};
+
 function applyHitems(d){if(!d||!d.ok||!Array.isArray(d.items))return false;HC.hitems=d.items;HC.hitemsOk=true;return true;}
 async function loadHitems(){
   if(!HC.hitemsTried){HC.hitemsTried=true;try{applyHitems(JSON.parse(localStorage.getItem('hc-hitems')||'null'));}catch(e){}}
@@ -8825,7 +8930,7 @@ function perSel(id,v){return '<select id="'+id+'" aria-label="기간"><option va
 function listHtml(){
   const f=HC.lf;
   let rows=HC.hist.filter(r=>(!f.eq||r['설비']===f.eq)&&(!f.g||r['대분류']===f.g)&&inPer(r,f.per)).sort((a,b)=>b._occ.localeCompare(a._occ));
-  const head='<div class="hc-filters"><select id="hcFe" aria-label="설비"><option value="">설비 전체</option>'+filterEqs().map(e=>'<option'+(f.eq===e?' selected':'')+'>'+e+'</option>').join('')+'</select><select id="hcFg" aria-label="대분류"><option value="">대분류 전체</option>'+Object.keys(HC_TREE).map(e=>'<option'+(f.g===e?' selected':'')+'>'+e+'</option>').join('')+'</select>'+perSel('hcFp',f.per)+'</div>';
+  const head='<div class="hc-filters"><select id="hcFe" aria-label="설비"><option value="">설비 전체</option>'+eqOptHtml(f.eq,HC.hist.map(r=>r['설비']))+'</select><select id="hcFg" aria-label="대분류"><option value="">대분류 전체</option>'+Object.keys(HC_TREE).map(e=>'<option'+(f.g===e?' selected':'')+'>'+e+'</option>').join('')+'</select>'+perSel('hcFp',f.per)+'</div>';
   const body=rows.length?rows.slice(0,200).map(itemHtml).join(''):'<div class="hc-empty">'+(HC.histLoading?'불러오는 중입니다...':HC.histErr?'이력을 불러오지 못했습니다. ('+E(HC.histErr)+') <br><button type="button" class="hc-btn ghost sm" data-h="reload" style="margin-top:8px">다시 불러오기</button>':'조건에 맞는 이력이 없습니다.')+'</div>';
   return head+'<div class="hc-muted" style="margin-bottom:8px">'+rows.length+'건'+(rows.length>200?' (최근 200건 표시)':'')+'</div>'+body;
 }
@@ -8928,11 +9033,11 @@ function statusHtml(){
   }).join('');
   const empty=!groups?'<div class="hc-auto">'+(F==='todo'?'남은 설비가 없습니다. 모두 점검했습니다.':'표시할 설비가 없습니다.')+'</div>':'';
   const pend=HC.chk.filter(r=>r['결과']==='C'&&!r['연결이력ID']&&(new Date()-(pdt(r['일시'])||0))<60*864e5).sort((a,b)=>String(b['일시']).localeCompare(String(a['일시'])));
-  return (HC.chkErr?'<div class="hc-warn">점검 기록을 불러오지 못했습니다. ('+E(HC.chkErr)+') <button type="button" class="hc-btn ghost sm" data-h="reloadc">다시 불러오기</button></div>':HC.chkLoading&&!HC.chkOk?'<div class="hc-auto">점검 기록을 불러오는 중입니다...</div>':'')
-    +(pend.length?'<div class="hc-card" style="border-color:#E7A99F"><h3>C 판정 · 이력 미등록 ('+pend.length+'건)</h3>'+pend.slice(0,10).map(r=>'<div class="hc-br" style="grid-template-columns:62px 1fr auto"><b>'+E(r['설비'])+'</b><span style="font-size:13.5px">'+E(r['항목'])+' <small class="hc-muted">'+E(String(r['일시']).slice(5,10))+'</small></span><button type="button" class="hc-btn sm" data-tohist="'+A(r['점검ID']+'|'+r['항목번호'])+'">이력 등록</button></div>').join('')+'</div>':'')
-    +tabs+'<div class="hc-card">'+head+groups+empty
+  const side=(HC.chkErr?'<div class="hc-warn">점검 기록을 불러오지 못했습니다. ('+E(HC.chkErr)+') <button type="button" class="hc-btn ghost sm" data-h="reloadc">다시 불러오기</button></div>':HC.chkLoading&&!HC.chkOk?'<div class="hc-auto">점검 기록을 불러오는 중입니다...</div>':'')
+    +(pend.length?'<div class="hc-card" style="border-color:#E7A99F"><h3>C 판정 · 이력 미등록 ('+pend.length+'건)</h3>'+pend.slice(0,10).map(r=>'<div class="hc-br" style="grid-template-columns:62px 1fr auto"><b>'+E(r['설비'])+'</b><span style="font-size:13.5px">'+E(r['항목'])+' <small class="hc-muted">'+E(String(r['일시']).slice(5,10))+'</small></span><button type="button" class="hc-btn sm" data-tohist="'+A(r['점검ID']+'|'+r['항목번호'])+'">이력 등록</button></div>').join('')+'</div>':'');
+  return '<div class="chk-st"><div class="chk-main">'+tabs+'<div class="hc-card">'+head+groups+empty
     +'<div class="hc-lg"><span class="o">완료</span><span class="p">일부 점검</span><span>미점검</span><span style="display:inline-flex;align-items:center;gap:5px"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bad)"></i> C 판정 미처리</span></div>'
-    +(K==='연간'?'<p class="hc-hint" style="margin:10px 0 0">설비별로 배정된 분기에 연간 항목을 점검합니다. 흐리게 표시된 설비는 다른 분기 배정입니다. 프레스·기타 설비는 설비 시트에 추가된 뒤 배정합니다.</p>':'')+'</div>';
+    +(K==='연간'?'<p class="hc-hint" style="margin:10px 0 0">설비별로 배정된 분기에 연간 항목을 점검합니다. 흐리게 표시된 설비는 다른 분기 배정입니다. 프레스·기타 설비는 설비 시트에 추가된 뒤 배정합니다.</p>':'')+'</div></div><div class="chk-side">'+side+'</div></div>';
 }
 const cfOf=r=>String(r['확인']||'').trim()==='대기'?'대기':'확인';
 function pendIds(){const m={};HC.chk.forEach(r=>{if(cfOf(r)==='대기')m[r['점검ID']]=1;});return Object.keys(m);}
@@ -9141,6 +9246,7 @@ async function loadUsers(){
   const el=$('emqUsers');if(!el)return;el.innerHTML='<p class="hc-muted">불러오는 중...</p>';
   let r;try{r=await hcPost({type:'user_list'});}catch(e){el.innerHTML='<p class="hc-err">네트워크 오류입니다.</p>';return;}
   if(!r||!r.ok){el.innerHTML='<p class="hc-err">'+E(errMsg(r&&r.error))+'</p>';return;}
+  r.rows=r.rows||[];
   const TEAMS=['생산기술팀','생산팀','품질팀','개발팀','영업팀','기타'];
   const topt=(v)=>(TEAMS.indexOf(v)<0&&v?'<option value="'+A(v)+'" selected>'+E(v)+' (목록 외)</option>':'')+TEAMS.map(k=>'<option value="'+k+'"'+(v===k?' selected':'')+'>'+k+'</option>').join('');
   const opt=(v)=>['A','I','V'].map(k=>'<option value="'+k+'"'+(v===k?' selected':'')+'>'+EMQ.RN[k]+'</option>').join('');
@@ -9472,6 +9578,26 @@ function checkSummaryHtml(){
   if(lvOk(3)){const pn=pendIds().length;if(pn)h+=sumRow('warn','점검 확인 대기',pn+'건','','기록에서 확인','chkrec');}
   return h||sumRow('ok','점검 이상 없음','✓','이번 주 · 이번 달 점검이 모두 완료되었습니다','','');
 }
+function homeStatHtml(){
+  if(!HC.histOk&&!HC.chkOk)return '<div class="empty-note">불러오는 중…</div>';
+  const now=new Date(),y=now.getFullYear(),m=now.getMonth();
+  const m0=new Date(y,m,1),m1=new Date(y,m+1,1),p0=new Date(y,m-1,1),d30=new Date(now.getTime()-30*864e5);
+  const cnt=(a,b)=>HC.hist.filter(r=>{const d=pdt(r._occ);return d&&d>=a&&d<b;}).length;
+  let h='';
+  if(HC.histOk){
+    const cur=cnt(m0,m1),prev=cnt(p0,m0),df=cur-prev;
+    h+='<div class="hm-st1"><div><b>'+cur+'</b><span>건</span><small>이번 달 설비 이력</small></div><div class="hm-sd '+(df>0?'up':df<0?'dn':'')+'">'+(prev?'지난달 '+prev+'건 · '+(df>0?'▲ '+df:df<0?'▼ '+(-df):'변동 없음'):'지난달 기록 없음')+'</div></div>';
+    const ph={};HC.hist.forEach(r=>{const d=pdt(r._occ);if(!d||d<d30)return;String(r['고장현상']||'').split(' / ').forEach(x=>{x=x.trim();if(x)ph[x]=(ph[x]||0)+1;});});
+    const top=Object.keys(ph).map(k=>[k,ph[k]]).sort((a,b)=>b[1]-a[1]).slice(0,3),mx=top.length?top[0][1]:1;
+    h+='<div class="hm-sh2">고장 현상 상위 <small>최근 30일</small></div>'+(top.length?top.map(x=>'<div class="hm-bar"><span class="n">'+E(x[0])+'</span><i style="--w:'+Math.round(x[1]/mx*100)+'%"></i><b>'+x[1]+'</b></div>').join(''):'<div class="empty-note">최근 30일 고장 기록이 없습니다</div>');
+  }
+  if(HC.chkOk){
+    const q=curQ();
+    const rate=k=>{const tg=EQ.filter(e=>(k!=='연간'||HC_QUARTERS[e]===q)&&eqState(e,k).total>0);const d=tg.filter(e=>eqState(e,k).cls==='ok').length;return {n:tg.length,d:d};};
+    h+='<div class="hm-sh2">점검 이행률 <small>이번 주 · 이번 달 · '+(q?q+'분기':'연간')+'</small></div>'+['주간','월간','연간'].map(k=>{const r=rate(k),p=r.n?Math.round(r.d/r.n*100):0;return '<div class="hm-bar"><span class="n">'+k+'</span><i class="'+(p>=100?'ok':'')+'" style="--w:'+p+'%"></i><b>'+(r.n?p+'%':'–')+'</b><small>'+(r.n?r.d+'/'+r.n:'')+'</small></div>';}).join('');
+  }
+  return h||'<div class="empty-note">통계를 만들 데이터가 없습니다</div>';
+}
 function hmRender(){
   const hero=$('hmHero');if(!hero)return;
   const now=new Date();
@@ -9482,6 +9608,7 @@ function hmRender(){
   const up=$('hmUp');if(up){const h=isMain()?upcomingHtml(2,9,5):'';up.parentElement.style.display=h?'':'none';up.innerHTML=h;}
   const q=$('hmQuick');if(q){const x=hmQuickHtml();q.innerHTML=x.h;q.style.setProperty('--qn',x.n);}
   const l=$('hmLook');if(l)l.innerHTML=hmLookHtml();
+  const sb=$('hmStat');if(sb)sb.innerHTML=homeStatHtml();
   const hb=$('hmHist');if(hb){
     const rows=HC.hist.slice().sort((a,b)=>String(b['등록일시']||'').localeCompare(String(a['등록일시']||''))).slice(0,5);
     hb.innerHTML=!HC.histOk?'<div class="empty-note">'+(HC.histErr?'불러오지 못했습니다':'불러오는 중…')+'</div>':rows.length?rows.map(r=>'<button type="button" class="hm-h" data-hm="hist"><span class="d">'+E(String(r['_occ']||r['등록일시']||'').slice(5,10).replace('-','/'))+'</span><span class="m"><b>'+E(r['설비'])+'</b> '+E(r['고장현상']||[r['대분류'],r['중분류']].filter(Boolean).join(' · '))+'<small>'+E([r['조치유형'],r['작업자']].filter(Boolean).join(' · '))+'</small></span></button>').join(''):'<div class="empty-note">등록된 이력이 없습니다.</div>';
@@ -9592,7 +9719,7 @@ function scCal(){
 }
 function schedFormHtml(){
   const f=TD.form;if(!f)return '';
-  return '<div class="hc-card sc-form"><h3>'+(f.id?'일정 수정':'일정 추가')+'</h3><div class="emq-f td-f"><input id="scTitle" placeholder="제목 (예: 1F-3 펌프 교체)" maxlength="80" value="'+A(f.title||'')+'" style="grid-column:1/-1"><select id="scCat">'+CATS.map(c=>'<option'+(c===f.cat?' selected':'')+'>'+c+'</option>').join('')+'</select><select id="scEq"><option value="">설비 선택(선택)</option>'+EQ.map(e=>'<option'+(e===f.eq?' selected':'')+'>'+e+'</option>').join('')+'</select><label class="td-l">시작일<input type="date" id="scFrom" value="'+A(f.start)+'"></label><label class="td-l">종료일<input type="date" id="scTo" value="'+A(f.end)+'"></label><input id="scWho" placeholder="담당자(선택)" maxlength="40" value="'+A(f.who||'')+'"><input id="scMemo" placeholder="메모(선택)" maxlength="200" value="'+A(f.memo||'')+'"></div><div class="hm-fa" style="margin-top:10px"><button type="button" class="hc-btn" data-sc="save">저장</button><button type="button" class="hc-btn ghost" data-sc="cancelform">닫기</button></div></div>';
+  return '<div class="hc-card sc-form"><h3>'+(f.id?'일정 수정':'일정 추가')+'</h3><p class="us-gd">날짜·시간이 정해진 일입니다. 기한까지 끝내야 하는 일은 \'할 일\'에 넣어 주세요.</p><div class="emq-f td-f"><input id="scTitle" placeholder="제목 (예: 1F-3 펌프 교체)" maxlength="80" value="'+A(f.title||'')+'" style="grid-column:1/-1">'+(f.id?'':'<div class="us-ex" style="grid-column:1/-1">'+['업체 방문','회의','출장','설비 점검 입회','교육'].map(x=>'<button type="button" data-us="ex" data-t="'+A(x)+'" data-f="scTitle">'+E(x)+'</button>').join('')+'</div>')+'<select id="scCat">'+CATS.map(c=>'<option'+(c===f.cat?' selected':'')+'>'+c+'</option>').join('')+'</select><select id="scEq"><option value="">설비 선택(선택)</option>'+EQ.map(e=>'<option'+(e===f.eq?' selected':'')+'>'+e+'</option>').join('')+'</select><label class="td-l">시작일<input type="date" id="scFrom" value="'+A(f.start)+'"></label><label class="td-l">종료일<input type="date" id="scTo" value="'+A(f.end)+'"></label><input id="scWho" placeholder="담당자(선택)" maxlength="40" value="'+A(f.who||'')+'"><input id="scMemo" placeholder="메모(선택)" maxlength="200" value="'+A(f.memo||'')+'"></div><div class="hm-fa" style="margin-top:10px"><button type="button" class="hc-btn" data-sc="save">저장</button><button type="button" class="hc-btn ghost" data-sc="cancelform">닫기</button></div></div>';
 }
 /* ----- v72: 일정 · 할 일 통합 화면 ----- */
 const visTodos=()=>TD.todo.filter(t=>t.status==='진행'&&(TD.flt==='all'||!t.to||t.to===myId()));
@@ -9627,7 +9754,7 @@ function scDay(){
   off.forEach(r=>h+='<div class="td-r"><div>'+attChip(r)+'</div></div>');
   if(du)h+='<div class="td-r"><div><b>당직</b> '+E(du.name)+(du.changed?' <i class="hm-b">변경됨</i>':'')+'</div>'+(lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="dedit" data-d="'+k+'">'+(TD.de===k?'닫기':'변경')+'</button>':'')+'</div>'+(TD.de===k?dutyEditHtml(k):'');
   if(!tds.length&&!ss.length&&!off.length&&!du)h+='<div class="empty-note">일정 · 할 일이 없습니다.</div>';
-  if(lvOk(2)&&!TD.form)h+='<div class="us-add"><button type="button" class="hc-btn" data-sc="add" data-d="'+k+'">+ 일정</button><button type="button" class="hc-btn" data-us="addtodo" data-d="'+k+'">+ 할 일</button></div>';
+  if(lvOk(2)&&!TD.form)h+='<div class="us-add"><button type="button" class="hc-btn" data-sc="add" data-d="'+k+'"><b>+ 일정</b><small>그 날 그 시간에 있는 일<br>방문 · 회의 · 출장 · 입회</small></button><button type="button" class="hc-btn" data-us="addtodo" data-d="'+k+'"><b>+ 할 일</b><small>기한까지 내가 끝낼 일<br>발주 · 견적 · 보고 · 확인</small></button></div>';
   return h+'</div>';
 }
 function usUpcoming(){
@@ -9642,8 +9769,9 @@ function presetDue(){
 }
 function vTodo(){
   const dr=TD.dr,adm=lvOk(2);
-  const form=adm?'<div class="hc-card"><h3>할 일 추가</h3><div class="td-form">'
+  const form=adm?'<div class="hc-card"><h3>할 일 추가</h3><p class="us-gd">기한까지 끝내야 하는 일입니다. 날짜·시간에 맞춰 가야 하는 일은 \'일정\'에 넣어 주세요.</p><div class="td-form">'
    +'<label class="td-l full">할 일<input id="tdTitle" placeholder="예: 1F-3 호스 교체 발주" maxlength="80" value="'+A(dr.title)+'"></label>'
+   +'<div class="us-ex full">'+['발주 넣기','견적 받기','보고서 제출','부품 확인'].map(x=>'<button type="button" data-us="ex" data-t="'+A(x)+'" data-f="tdTitle">'+E(x)+'</button>').join('')+'</div>'
    +'<label class="td-l">담당자<select id="tdTo"><option value="">전체(공용)</option>'+TD.users.map(u=>'<option value="'+A(u.id)+'"'+((dr.to==null?myId():dr.to)===u.id?' selected':'')+'>'+E(u.name)+'</option>').join('')+'</select></label>'
    +'<label class="td-l">기한<input type="date" id="tdDue" lang="ko" value="'+A(dr.due)+'"></label>'
    +'<div class="td-pre full">'+presetDue().map(p=>'<button type="button" class="'+(dr.due===p[1]?'on':'')+'" data-us="due" data-v="'+p[1]+'">'+p[0]+(p[1]?' <small>'+mdw(p[1]).replace(/\(.\)/,'')+'</small>':'')+'</button>').join('')+'</div>'
@@ -9700,10 +9828,12 @@ document.addEventListener('click',async ev=>{
     else if(a==='due'){const v=t.dataset.v;TD.dr.due=v;const i=$('tdDue');if(i)i.value=v;t.parentElement.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===t));}
     else if(a==='addtodo'){TD.v='todo';TD.dr.due=t.dataset.d||'';usRender();window.scrollTo(0,0);setTimeout(()=>{const i=$('tdTitle');if(i)i.focus();},50);}
     else if(a==='dutymore'){TD.dutyAll=!TD.dutyAll;usRender();}
+    else if(a==='ex'){const i=$(t.dataset.f);if(i){const cur=i.value.trim();i.value=cur?(cur.indexOf(t.dataset.t)<0?cur+' '+t.dataset.t:cur):t.dataset.t+' ';i.focus();if(t.dataset.f==='tdTitle')TD.dr.title=i.value;}}
     return;}
   if(t.dataset.hm){const a=t.dataset.hm;
     if(a==='low'){if(typeof showKpiList==='function')showKpiList('low');}
     else if(a==='histnew'){HC.tabH='new';showPanel('hist');}
+    else if(a==='histstat'){HC.tabH='stat';showPanel('hist');}
     else if(a==='chkrec'){HC.tabC='rec';showPanel('check');}
     else showPanel(a);
     friClose();return;}
@@ -9791,6 +9921,31 @@ async function nativeAlarm(){
 /* v72: 할 일 입력 중 값 보존 */
 document.addEventListener('input',ev=>{const t=ev.target,id=t&&t.id;if(id==='tdTitle')TD.dr.title=t.value;else if(id==='tdMemo')TD.dr.memo=t.value;else if(id==='tdDue'){TD.dr.due=t.value;document.querySelectorAll('.td-pre button').forEach(b=>b.classList.toggle('on',b.dataset.v===t.value));}});
 document.addEventListener('change',ev=>{const t=ev.target;if(t&&t.id==='tdTo')TD.dr.to=t.value;});
+
+/* v73: PC에서 긴 목록은 카드 안에서 스크롤 (8개 이상일 때만, 모바일은 화면 스크롤 그대로) */
+(function(){
+  const SEL='.hc-item,.emq-it,.emq-u,.hi-row,.hm-u';
+  let busy=false,queued=false;
+  function wrapAll(){
+    if(busy)return;busy=true;
+    try{
+      if(innerWidth>=1100){
+        document.querySelectorAll('#hcHist,#hcChk,#emqChkAdm,#emqUsers,#emqSched,#emqTodo').forEach(root=>{
+          root.querySelectorAll(SEL).forEach(first=>{
+            const p=first.parentNode;if(!p||p.classList.contains('hc-scr'))return;
+            if(first.previousElementSibling&&first.previousElementSibling.matches(SEL))return;
+            const grp=[];let n=first;while(n&&n.matches&&n.matches(SEL)){grp.push(n);n=n.nextElementSibling;}
+            if(grp.length<8)return;
+            const w=document.createElement('div');w.className='hc-scr';p.insertBefore(w,first);grp.forEach(x=>w.appendChild(x));
+          });
+        });
+      }
+    }catch(e){}
+    busy=false;
+  }
+  const mo=new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;wrapAll();});});
+  ['hcHist','hcChk','emqChkAdm','emqUsers','emqSched','emqTodo'].forEach(id=>{const e=document.getElementById(id);if(e)mo.observe(e,{childList:true,subtree:true});});
+})();
 /* ===== 뒤로가기: 폰 뒤로가기 버튼 + 상단 "← 홈" 버튼 ===== */
 (function(){
   if(window.__emqNav)return;window.__emqNav=1;
@@ -9881,7 +10036,7 @@ document.addEventListener('change',ev=>{const t=ev.target;if(t&&t.id==='tdTo')TD
     const err=box.o.querySelector('.mv-err');if(err)err.textContent='';
     const r=await postSheetOk(payload);
     if(!r.ok){if(err)err.textContent='저장하지 못했습니다. '+errT(r.error);return false;}
-    box.close();afterDone(doneMsg);return true;
+    box.close();try{if(window.emqMvLog)window.emqMvLog(payload);}catch(e){}afterDone(doneMsg);return true;
   }
 
   /* ---------- 작업 선택 ---------- */
@@ -10003,6 +10158,7 @@ document.addEventListener('change',ev=>{const t=ev.target;if(t&&t.id==='tdTo')TD
     el.innerHTML=j.rows.slice(0,40).map(x=>'<div class="mv-lg"><span class="k '+(x.kind.indexOf('입고')===0?'in':'out')+'">'+eh(x.kind)+'</span><span><b>'+eh(x.spec)+'</b> '+(x.kind.indexOf('입고')===0?'+':'−')+x.qty+'<small>'+eh(String(x.at).slice(5,16))+' · '+eh(x.worker||'')+(x.party?' · '+eh(x.party):'')+(x.memo?' · '+eh(x.memo):'')+'</small></span></div>').join('');
   }
 
+  window.emqMvOut=showStockOutModal;window.emqMvIn=showStockInModal;
   /* ---------- 부품 등록 화면 상단 바 ---------- */
   function bar(){
     const p=document.getElementById('panel-register');if(!p)return;
@@ -10041,6 +10197,10 @@ function xListHtml(t){
     return '<button type="button" class="eq-card" data-xe="'+A(no)+'"><div class="eq-card-h"><span class="eq-no">'+E(no)+'</span>'+(ty&&ty!=='일반'?'<span class="eq-badge">'+E(ty)+'</span>':'')+'</div>'+(kv?'<dl class="eq-kv">'+kv+'</dl>':'')+'</button>';
   }).join('')+'</div>';
 }
+function xFloors(){
+  const g=document.querySelector('#equipList .eq-grid');if(!g||g.dataset.fl)return;g.dataset.fl='1';
+  const seen={};[...g.querySelectorAll('.eq-card')].forEach(c=>{const n=c.getAttribute('data-eq')||'';const f=/^1F/i.test(n)?'1층':/^2F/i.test(n)?'2층':'';if(f&&!seen[f]){seen[f]=1;const h=document.createElement('div');h.className='eq-fl';h.textContent=f;g.insertBefore(h,c);}});
+}
 function xDetailHtml(t,no){
   const idx=t.rows.findIndex(r=>xv(t,r,0)===no);if(idx<0)return '';
   const row=t.rows[idx],secs={};
@@ -10059,7 +10219,7 @@ if(typeof renderEquip==='function'){
   renderEquip=function(){
     xSeg();
     const t=xTab();
-    if(!t){_re.apply(this,arguments);return;}
+    if(!t){_re.apply(this,arguments);xFloors();return;}
     const lb=$('equipList'),db=$('equipDetail'),st=$('equipStatusMsg');if(!lb||!db)return;
     if(st)st.style.display='none';
     if(EQX.cur&&t.rows.some(r=>xv(t,r,0)===EQX.cur)){lb.style.display='none';db.style.display='';db.innerHTML=xDetailHtml(t,EQX.cur);}
@@ -10080,6 +10240,180 @@ if(typeof loadEquip==='function'){const _le=loadEquip;loadEquip=function(){try{l
   },true);
 })();
 setTimeout(()=>{try{loadHitems();loadXtabs();}catch(e){}},60);
+/* ===== v73: 부품 조회(읽기 전용 목록) / 부품 입출고(입력 중심) — 텍스트 우선 행 목록 ===== */
+(function(){
+  if(window.__emqPt)return;window.__emqPt=1;
+  const eh=x=>escapeHtml(String(x==null?'':x));
+  const num=x=>Number(x)||0;
+  const nm=p=>String(p['제품형태']||p['제품규격']||'');
+  const LKEY='emq-mvlog';
+  const pad=n=>String(n).padStart(2,'0');
+  const dayKey=()=>{const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());};
+  function logLoad(){try{const a=JSON.parse(localStorage.getItem(LKEY)||'[]');return Array.isArray(a)?a.filter(x=>x&&x.d===dayKey()):[];}catch(e){return [];}}
+  function logAdd(kind,name,spec,qty){try{const a=logLoad(),d=new Date();a.unshift({d:dayKey(),t:pad(d.getHours())+':'+pad(d.getMinutes()),k:kind,n:name,s:spec,q:qty});localStorage.setItem(LKEY,JSON.stringify(a.slice(0,60)));}catch(e){}renderToday();}
+  window.emqMvLog=function(p){if(!p)return;const part=(typeof partsData!=='undefined'?partsData:[]).find(x=>String(x['제품규격'])===String(p.spec))||{};logAdd(p.type==='stock_in'?'입고':'출고',nm(part)||p.spec,p.spec,p.qty);};
+  if(typeof submitPartUsage==='function'){
+    const _s=submitPartUsage;
+    window.submitPartUsage=function(part,qty){const r=_s.apply(this,arguments);try{if(r&&r.then)r.then(ok=>{if(ok)logAdd('사용',nm(part),part['제품규격'],qty);});}catch(e){}return r;};
+  }
+  function filtered(cat,filter){
+    const f=(filter||'').toLowerCase().trim();
+    let list=typeof partsData!=='undefined'?partsData:[];
+    if(cat!=='__all__')list=list.filter(p=>p['제품구분']===cat);
+    if(f)list=list.filter(p=>['제품구분','제품형태','제품규격','설명'].some(k=>String(p[k]||'').toLowerCase().includes(f)));
+    return list;
+  }
+  function rowHtml(p,i,reg){
+    const stock=num(p['현재고']),min=num(p['최소보유수량']),rp=num(p['수리중수량']),low=stock<min;
+    const ph=(typeof partPhotoUrls==='function'?partPhotoUrls(p):[])[0]||'';
+    const rep=typeof isTruthyRepair==='function'&&isTruthyRepair(p['수리가능여부']);
+    return '<div class="pt-row'+(low?' low':'')+(reg?' reg':'')+'" data-idx="'+i+'" tabindex="0" role="button">'
+      +'<div class="pt-main"><b>'+eh(nm(p))+'</b><small>'+eh(p['제품규격']||'')+(p['제품구분']?' · '+eh(p['제품구분']):'')+'</small></div>'
+      +'<div class="pt-st"><b class="'+(low?'low':'')+'">'+stock+'</b><small>재고'+(min?' · 최소 '+min:'')+'</small>'+(rp?'<small class="rp">수리 중 '+rp+'</small>':'')+(rep?'<small class="rp">🔧 수리가능</small>':'')+'</div>'
+      +(ph?'<button type="button" class="pt-th" data-pa="photo" aria-label="사진 보기"><img src="'+ph+'" alt="" loading="lazy"></button>':'')
+      +(reg?'<div class="pt-acts"><button type="button" class="u" data-pa="use">사용</button><button type="button" class="o" data-pa="out">출고</button><button type="button" class="i" data-pa="in">입고</button></div>':'')
+      +'</div>';
+  }
+  function draw(gridId,list,reg){
+    const grid=document.getElementById(gridId);if(!grid)return;
+    grid.className='pt-list'+(reg?' reg':'');
+    if(!list.length){grid.innerHTML='<div class="parts-empty">'+eh(t('partsEmpty'))+'</div>';return;}
+    grid.innerHTML=list.map((p,i)=>rowHtml(p,i,reg)).join('');
+    grid.onclick=e=>{
+      const row=e.target.closest('.pt-row');if(!row)return;const p=list[Number(row.dataset.idx)];if(!p)return;
+      const a=e.target.closest('[data-pa]');const k=a?a.dataset.pa:'';
+      if(reg){
+        if(k==='use')showUsageModal(p);else if(k==='out'&&window.emqMvOut)window.emqMvOut(p);else if(k==='in'&&window.emqMvIn)window.emqMvIn(p);
+        else if(k==='photo')showPartDetail(p);else if(typeof showPartActionSheet==='function')showPartActionSheet(p);
+      }else showPartDetail(p);
+    };
+    grid.onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('pt-row')){e.preventDefault();e.target.click();}};
+  }
+  window.renderParts=function(filter){draw('partsGrid',filtered(typeof activeCategory!=='undefined'?activeCategory:'__all__',filter),false);};
+  function renderToday(){
+    const grid=document.getElementById('partsGridReg');if(!grid)return;
+    let el=document.getElementById('ptToday');
+    if(!el){el=document.createElement('details');el.id='ptToday';el.className='pt-today';grid.parentNode.insertBefore(el,grid);}
+    const L=logLoad();
+    if(!L.length){el.hidden=true;return;}el.hidden=false;
+    const open=el.open;
+    el.innerHTML='<summary>오늘 이 기기에서 처리한 내역 <b>'+L.length+'건</b></summary>'+L.slice(0,20).map(x=>'<div class="pt-lg"><span class="k '+(x.k==='입고'?'in':x.k==='출고'?'out':'use')+'">'+eh(x.k)+'</span><span><b>'+eh(x.n)+'</b> × '+x.q+'<small>'+eh(x.t)+' · '+eh(x.s)+'</small></span></div>').join('');
+    el.open=open;
+  }
+  window.renderPartsReg=function(filter){
+    draw('partsGridReg',filtered(typeof activeCategoryReg!=='undefined'?activeCategoryReg:'__all__',filter),true);
+    try{if(typeof bar==='function')bar();}catch(e){}
+    renderToday();
+  };
+  /* 이미 그려진 화면 갱신 */
+  setTimeout(()=>{try{renderParts(document.getElementById('partsSearch')?document.getElementById('partsSearch').value:'');renderPartsReg(document.getElementById('partsSearchReg')?document.getElementById('partsSearchReg').value:'');}catch(e){}},900);
+})();
+/* ===== v73: 수리 부품 초기재고 일괄 등록 (관리자) — 표에 수량 입력 + 엑셀 붙여넣기 ===== */
+(function(){
+  if(window.__emqPb)return;window.__emqPb=1;
+  const eh=x=>escapeHtml(String(x==null?'':x)),ea=x=>escapeAttr(String(x==null?'':x));
+  const can3=()=>!!(window.EMQ&&EMQ.can&&EMQ.can(3));
+  /* 부품 목록 탭에 버튼 추가 */
+  if(typeof pumpCatalogHtml==='function'){
+    const _p=pumpCatalogHtml;
+    window.pumpCatalogHtml=function(){
+      let h=_p.apply(this,arguments);
+      if(can3()){const k='<button type="button" class="restart-btn" id="pcNew"';if(h.indexOf(k)>=0)h=h.replace(k,'<button type="button" class="restart-btn" id="pcBulk" style="margin:0">초기재고 일괄 등록</button>'+k);}
+      return h;
+    };
+  }
+  document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#pcBulk')){e.preventDefault();if(can3())openBulk();}});
+  const ERR={rate_limited:'요청이 너무 많습니다. 잠시 후 다시 시도하세요.',forbidden:'관리자만 할 수 있습니다.',forbidden_team:'생산기술팀 관리자만 할 수 있습니다.',no_items:'저장할 내용이 없습니다.',too_many:'한 번에 400줄까지 저장할 수 있습니다.',bad_qty:'수량을 확인하세요.',bad_part_id:'품번을 확인하세요.',dup_part_id:'같은 품번이 두 번 들어 있습니다.',no_name:'새 품목은 품명이 필요합니다.'};
+  function openBulk(){
+    const sm=(typeof pumpStockMap==='function')?pumpStockMap():{};
+    const rows=[];
+    (typeof PUMP_CATALOG!=='undefined'?PUMP_CATALOG:[]).forEach(c=>{const s=sm[String(c[0])];rows.push({id:String(c[0]),name:c[2],sub:c[1],cur:s?Number(s.stock)||0:null,val:'',extra:false});});
+    const inCat={};rows.forEach(r=>inCat[r.id]=1);
+    (pumpStock&&pumpStock.rows||[]).forEach(s=>{if(!inCat[String(s.id)])rows.push({id:String(s.id),name:s.name,sub:'카탈로그 외 품목',cur:Number(s.stock)||0,val:'',extra:false});});
+    const ov=document.createElement('div');ov.className='repair-popup-overlay';
+    ov.innerHTML='<div class="repair-popup pb-pop" role="dialog" aria-modal="true">'
+      +'<div class="pb-t">수리 부품 초기재고 일괄 등록</div>'
+      +'<p class="pb-n">숫자를 입력한 줄만 저장되고, 입력한 수량이 현재 재고를 <b>대체</b>합니다. 비워 두면 변경하지 않습니다.</p>'
+      +'<details class="pb-paste"><summary>엑셀에서 복사해 붙여넣기</summary>'
+      +'<textarea id="pbTa" rows="4" placeholder="품번  수량  품명(새 품목일 때만)\n예)\n1\t3\n19G\t5\nZ-100\t2\t새 부품 이름"></textarea>'
+      +'<div class="pb-pr"><button type="button" class="restart-btn" id="pbApply" style="margin:0">붙여넣은 내용 적용</button><span id="pbPm" class="pb-pm"></span></div></details>'
+      +'<input id="pbQ" class="pump-in" type="search" autocomplete="off" placeholder="번호 또는 부품명 검색">'
+      +'<div class="pb-tw"><table class="pb-tb"><thead><tr><th>번호</th><th>부품</th><th>현재</th><th>새 수량</th></tr></thead><tbody id="pbBody"></tbody></table></div>'
+      +'<div id="pbSum" class="pb-sum"></div><div id="pbErr" class="pump-err" style="display:none"></div>'
+      +'<div class="pb-foot"><button type="button" class="repair-popup-btn" id="pbOk" disabled>저장</button><button type="button" class="restart-btn" id="pbNo">취소</button></div></div>';
+    document.body.appendChild(ov);
+    const $o=s=>ov.querySelector(s),close=()=>ov.remove();
+    let q='';
+    const num=v=>{const t=String(v).trim();return /^\d{1,7}$/.test(t)?Number(t):NaN;};
+    function analyze(){
+      const out={send:[],nw:0,chg:0,same:0,bad:0,empty:0};
+      rows.forEach(r=>{
+        const v=String(r.val).trim();
+        if(v===''){if(r.extra){out.bad++;r.err='수량을 입력하세요';}else{out.empty++;r.err='';}return;}
+        const n=num(v);
+        if(isNaN(n)){out.bad++;r.err='0 이상의 정수';return;}
+        if(r.extra&&!String(r.name).trim()){out.bad++;r.err='품명 필요';return;}
+        if(r.extra&&!/^[0-9A-Za-z][0-9A-Za-z.\- x]{0,29}$/.test(r.id)){out.bad++;r.err='품번 형식';return;}
+        r.err='';
+        if(r.cur===null){out.nw++;out.send.push({id:r.id,name:String(r.name).trim(),qty:n});}
+        else if(r.cur!==n){out.chg++;out.send.push({id:r.id,name:String(r.name).trim(),qty:n});}
+        else out.same++;
+      });
+      return out;
+    }
+    function sum(){
+      const a=analyze();
+      $o('#pbSum').innerHTML='<span>신규 <b>'+a.nw+'</b></span><span>변경 <b>'+a.chg+'</b></span><span>동일 <b>'+a.same+'</b></span>'+(a.bad?'<span class="bad">오류 <b>'+a.bad+'</b></span>':'');
+      const ok=$o('#pbOk');ok.disabled=!(a.send.length&&!a.bad);ok.textContent=a.send.length?a.send.length+'건 저장':'저장';
+      ov.querySelectorAll('tr[data-i]').forEach(tr=>{const r=rows[Number(tr.dataset.i)];if(!r)return;const v=String(r.val).trim();tr.classList.toggle('chg',v!==''&&!r.err&&(r.cur===null||r.cur!==num(v)));tr.classList.toggle('bad',!!r.err);const e=tr.querySelector('.pb-e');if(e)e.textContent=r.err||'';});
+      return a;
+    }
+    function draw(){
+      const f=q.trim().toLowerCase();
+      const list=rows.map((r,i)=>[r,i]).filter(x=>!f||(x[0].id+' '+x[0].name+' '+(x[0].sub||'')).toLowerCase().indexOf(f)>=0);
+      $o('#pbBody').innerHTML=list.length?list.map(x=>{const r=x[0],i=x[1];
+        return '<tr data-i="'+i+'"><td class="mono"><b>'+eh(r.id)+'</b></td><td>'+(r.extra?'<input class="pb-nm" data-pn="'+i+'" maxlength="60" placeholder="품명" value="'+ea(r.name)+'">':eh(r.name)+(r.sub?'<div class="pump-sub">'+eh(r.sub)+'</div>':''))+'<div class="pb-e"></div></td><td class="mono" style="text-align:right">'+(r.cur===null?'<span class="pump-sub">–</span>':r.cur)+'</td><td><input class="pb-q" type="number" inputmode="numeric" min="0" step="1" data-pq="'+i+'" value="'+ea(r.val)+'"></td></tr>';}).join(''):'<tr><td colspan="4" class="pump-sub">검색 결과가 없습니다.</td></tr>';
+      sum();
+    }
+    ov.addEventListener('input',e=>{
+      const t=e.target;
+      if(t.id==='pbQ'){q=t.value;draw();return;}
+      if(t.dataset.pq!=null){rows[Number(t.dataset.pq)].val=t.value;sum();}
+      else if(t.dataset.pn!=null){rows[Number(t.dataset.pn)].name=t.value;sum();}
+    });
+    ov.addEventListener('click',e=>{if(e.target===ov)close();});
+    $o('#pbNo').addEventListener('click',close);
+    $o('#pbApply').addEventListener('click',()=>{
+      const lines=$o('#pbTa').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+      let ap=0,nw=0,skip=0;
+      lines.forEach((ln,li)=>{
+        let c=ln.indexOf('\t')>=0?ln.split('\t'):ln.indexOf(',')>=0?ln.split(','):ln.split(/\s+/);
+        c=c.map(s=>s.trim());const id=(c[0]||'').replace(/^'+/,''),qs=c[1]==null?'':c[1].replace(/,/g,'');
+        if(!id)return;
+        if(isNaN(num(qs))){if(li!==0||!/품번|번호|no/i.test(id))skip++;return;}
+        const nm=c.slice(2).join(' ').trim();
+        const hit=rows.find(r=>r.id.toLowerCase()===id.toLowerCase());
+        if(hit){hit.val=String(num(qs));ap++;}
+        else{rows.push({id:id,name:nm,sub:'새 품목',cur:null,val:String(num(qs)),extra:true});nw++;}
+      });
+      $o('#pbPm').textContent=(ap+nw)+'줄 적용'+(nw?' (새 품목 '+nw+')':'')+(skip?' · 수량이 숫자가 아니라 건너뜀 '+skip:'');
+      q='';$o('#pbQ').value='';draw();
+    });
+    $o('#pbOk').addEventListener('click',async ev=>{
+      const a=analyze();const btn=ev.currentTarget,er=$o('#pbErr');er.style.display='none';
+      if(!a.send.length||a.bad)return;
+      if(!confirm(a.send.length+'건을 저장합니다.\n(신규 '+a.nw+' · 변경 '+a.chg+')\n입력한 수량이 현재 재고를 대체합니다. 계속할까요?'))return;
+      btn.disabled=true;
+      try{
+        const r=await pumpPost({type:'pump_part_bulk',worker:PUMP_REPAIRER,items:a.send});
+        if(!r||!r.ok){btn.disabled=false;const it=r&&r.row?a.send[r.row-1]:null;er.textContent=(ERR[r&&r.error]||('저장하지 못했습니다. ('+((r&&r.error)||'network')+')'))+(it?' — 품번 '+it.id:'');er.style.display='block';return;}
+        close();try{await loadPumpStock();}catch(e){}try{renderPump();}catch(e){}
+        showIconPopup('✅','저장했습니다. 신규 '+r.created+' · 변경 '+r.updated+' · 동일 '+r.unchanged);
+      }catch(ex){btn.disabled=false;er.textContent='통신 오류입니다. 네트워크를 확인하고 다시 시도하세요.';er.style.display='block';}
+    });
+    draw();
+  }
+})();
 init();
 setTimeout(loadItems,0);
 })();
