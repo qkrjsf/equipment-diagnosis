@@ -1048,6 +1048,25 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
 .pb-pop>*:not(.pb-tw){flex-shrink:0}
 .pb-tb th{white-space:nowrap}.pb-tb th:nth-child(3){min-width:44px}
 .pb-paste textarea{min-height:84px}
+
+/* ===== v74 홈: 3줄 x 3열 격자, 같은 줄 카드 높이 동일 · 길면 카드 안에서 스크롤 ===== */
+.hm-sec.o5,.hm-sec.o9{display:none!important}
+@media (min-width:1100px){
+  .hm-grid{display:grid!important;column-count:auto;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+  .hm-col{display:contents}
+  .hm-grid>.hm-sec,.hm-col>.hm-sec,.hm-col>.ask-box{margin:0;width:auto;min-width:0;max-height:360px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;box-sizing:border-box}
+  .hm-sec.o3{grid-column:1/-1;max-height:none;overflow:visible;column-span:none}
+  .hm-scr{max-height:none!important;overflow:visible!important;padding-right:0}
+}
+/* v74 PC: 작은 글자 한 단계 키움 */
+@media (min-width:1100px){
+  .dr-label{font-size:12.5px}.dr-foot{font-size:12px}
+  .hm-sec small,.hm-sec .kpi-l,.hm-q span,.hm-q small,.hm-st1 small,.hm-sh2 small{font-size:12.5px}
+  .hm-st1 span{font-size:14px}
+  .hm-b,.hm-sd,.hm-cs{font-size:12px}
+  .sc-b,.sc-lg .sc-b{font-size:12.5px}
+  .hm-sec .kpi-v small{font-size:12px}
+}
 </style>
 </head>
 <body>
@@ -1265,7 +1284,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v73</span></div>
+    <div class="sb-foot"><span id="verLabel">v74</span></div>
   </nav>
 
   <div class="content">
@@ -1285,7 +1304,17 @@ start();
       <div class="hm-col">
         <section class="card hm-sec o3"><h3>빠른 실행</h3><div id="hmQuick" class="hm-quick"></div></section>
         <section class="card hm-sec o1"><div class="hm-sh"><h3>오늘 · 내일</h3><button type="button" class="hm-more" data-hm="sched">일정 · 할 일 열기</button></div><div id="hmToday"></div></section>
+        <section class="card hm-sec o6"><div class="hm-sh"><h3>이후 일정 (7일)</h3><button type="button" class="hm-more" data-hm="sched">전체 보기</button></div><div id="hmUp" class="hm-scr"></div></section>
+        <section class="card hm-sec o8"><h3 data-i18n="homeLowH">재고 부족 부품</h3>
+    <div class="kpis">
+      <button type="button" class="kpi" data-kpi="low"><div class="kpi-l" data-i18n="kpiLow">재고 부족</div><div class="kpi-v" style="color:var(--danger)"><span id="kpiLow">–</span><small data-i18n="unitKind">종</small></div></button>
+      <button type="button" class="kpi" data-kpi="repair"><div class="kpi-l" data-i18n="kpiRepair">수리 중</div><div class="kpi-v" style="color:#8A5A00"><span id="kpiRepair">–</span><small data-i18n="unitEa">개</small></div></button>
+      <button type="button" class="kpi" data-kpi="total"><div class="kpi-l" data-i18n="kpiTotal">등록 부품</div><div class="kpi-v"><span id="kpiTotal">–</span><small data-i18n="unitKind">종</small></div></button>
+    </div>
+          <div id="homeLow" class="hm-scr"></div></section>
         <section class="card hm-sec o2"><div class="hm-sh"><h3>점검 현황</h3><button type="button" class="hm-more" data-hm="check">점검 열기</button></div><div id="hmCards"></div></section>
+        <section class="card hm-sec o7"><h3>최근 설비 이력</h3><div id="hmHist" class="hm-scr"></div></section>
+        <section class="card hm-sec o7" id="hmStatCard"><div class="hm-sh"><h3>이번 달 설비 현황</h3><button type="button" class="hm-more" data-hm="histstat">이력 통계</button></div><div id="hmStat"></div></section>
     <section class="card ask-box o4">
       <form id="askForm" class="ask-row" autocomplete="off">
         <input id="askInput" type="text" data-i18n-placeholder="askPh" placeholder="예) 1F-1호기 믹싱헤드 뭐야?" aria-label="질문하기" enterkeyhint="search">
@@ -1294,19 +1323,10 @@ start();
       <div id="askChips" class="chip-row ask-chips"></div>
       <div id="askOut" aria-live="polite"></div>
     </section>
-        <section class="card hm-sec o5"><h3>조회</h3><div id="hmLook" class="hm-look"></div></section>
-        <section class="card hm-sec o6"><div class="hm-sh"><h3>이후 일정 (7일)</h3><button type="button" class="hm-more" data-hm="sched">전체 보기</button></div><div id="hmUp" class="hm-scr"></div></section>
-        <section class="card hm-sec o7"><h3>최근 설비 이력</h3><div id="hmHist" class="hm-scr"></div></section>
-        <section class="card hm-sec o7" id="hmStatCard"><div class="hm-sh"><h3>통계</h3><button type="button" class="hm-more" data-hm="histstat">이력 통계</button></div><div id="hmStat"></div></section>
-        <section class="card hm-sec o8"><h3 data-i18n="homeLowH">재고 부족 부품</h3>
-    <div class="kpis">
-      <button type="button" class="kpi" data-kpi="low"><div class="kpi-l" data-i18n="kpiLow">재고 부족</div><div class="kpi-v" style="color:var(--danger)"><span id="kpiLow">–</span><small data-i18n="unitKind">종</small></div></button>
-      <button type="button" class="kpi" data-kpi="repair"><div class="kpi-l" data-i18n="kpiRepair">수리 중</div><div class="kpi-v" style="color:#8A5A00"><span id="kpiRepair">–</span><small data-i18n="unitEa">개</small></div></button>
-      <button type="button" class="kpi" data-kpi="total"><div class="kpi-l" data-i18n="kpiTotal">등록 부품</div><div class="kpi-v"><span id="kpiTotal">–</span><small data-i18n="unitKind">종</small></div></button>
-    </div>
-          <div id="homeLow" class="hm-scr"></div></section>
-        <section class="card hm-sec o9"><h3 data-i18n="homeRecentH">최근 진단</h3><div id="homeRecent" class="hm-scr"></div></section>
+        <section class="card hm-sec o7" id="hmDutyCard"><div class="hm-sh"><h3>공무 작업</h3><button type="button" class="hm-more" data-hm="histlist">이력 보기</button></div><div id="hmDuty"></div></section>
         <section class="card hm-sec o10" id="homeCodesCard"><h3 data-i18n="homeCodesH">최근 찾은 에러코드</h3><div id="homeCodes" class="chip-row"></div></section>
+        <section class="card hm-sec o5"><h3>조회</h3><div id="hmLook" class="hm-look"></div></section>
+        <section class="card hm-sec o9"><h3 data-i18n="homeRecentH">최근 진단</h3><div id="homeRecent"></div></section>
       </div>
     </div>
   </div>
@@ -1518,7 +1538,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v73</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v74</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8489,11 +8509,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v73', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v74', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
+const PAGE_CACHE = 'sulbi-jindan-v74';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -8538,7 +8559,7 @@ async function checkForUpdate(retryLeft){
     updateBtn.classList.add('available');
     updateBtn.textContent = t('updAvailable');
     updateBtn.title = t('updTitleAvailable');
-  } else if(active === null){
+  } else if(active === null && remote !== PAGE_CACHE){
     // 재시도 후에도 확인 불가 - "최신"이라고 잘못 표시하지 않고, 눌러서 직접 갱신할 수 있게 활성화
     updateBtn.disabled = false;
     updateBtn.classList.add('available');
@@ -8658,19 +8679,20 @@ async function loadXtabs(){
 function mapHist(r){let parts=[];try{parts=r['사용부품']?JSON.parse(r['사용부품']):[];}catch(e){}return Object.assign({},r,{_parts:parts,_occ:String(r['발생일시']||'')});}
 
 /* ---------- 데이터 불러오기 ---------- */
+function homeAgain(){try{if(typeof curPanel!=='undefined'&&curPanel==='home'&&typeof hmRender==='function')hmRender();}catch(e){}}
 async function loadHist(force){
   if(HC.histLoading)return;if(HC.histOk&&!force)return;
   HC.histLoading=true;HC.histErr='';
   try{const d=await hcGet('hist');if(d&&d.ok){HC.hist=d.rows.map(mapHist);HC.histOk=true;}else HC.histErr=(d&&d.error)||'bad_response';}
   catch(e){HC.histErr='offline';}
-  HC.histLoading=false;refreshHist(true);
+  HC.histLoading=false;refreshHist(true);homeAgain();
 }
 async function loadChk(force){
   if(HC.chkLoading)return;if(HC.chkOk&&!force)return;
   HC.chkLoading=true;HC.chkErr='';
   try{const d=await hcGet('check','&since='+new Date().getFullYear()+'-01-01');if(d&&d.ok){HC.chk=d.rows;HC.chkOk=true;}else HC.chkErr=(d&&d.error)||'bad_response';}
   catch(e){HC.chkErr='offline';}
-  HC.chkLoading=false;refreshChk(true);
+  HC.chkLoading=false;refreshChk(true);homeAgain();
 }
 
 /* ---------- 설비 이력: 등록 마법사 ---------- */
@@ -8948,15 +8970,20 @@ function itemHtml(r){
 function bars(map,u){u=u||'건';const ks=Object.keys(map).sort((a,b)=>map[b].n-map[a].n).slice(0,12);if(!ks.length)return '<span class="hc-muted">데이터가 없습니다.</span>';const mx=Math.max.apply(null,ks.map(k=>map[k].n));
   return ks.map(k=>'<div class="hc-br"><span>'+E(k)+'</span><span class="b"><i style="width:'+map[k].n/mx*100+'%"></i></span><em>'+map[k].n+u+(map[k].t?' · '+fmtMin(map[k].t):'')+'</em></div>').join('');}
 function statHtml(){
-  const rows=HC.hist.filter(r=>inPer(r,HC.sp));const n=rows.length;
+  const allR=HC.hist.filter(r=>inPer(r,HC.sp));const rows=allR.filter(r=>r['설비']!==DUTY),dutyR=allR.filter(r=>r['설비']===DUTY);const n=rows.length;
   const ms=rows.map(r=>+r['조치시간(분)']).filter(x=>x>0);const sum=ms.reduce((a,b)=>a+b,0);
   const by=f=>{const o={};rows.forEach(r=>{[].concat(f(r)).forEach(k=>{if(!k)return;o[k]=o[k]||{n:0,t:0};o[k].n++;o[k].t+=(+r['조치시간(분)']||0);});});return o;};
   const pu={};rows.forEach(r=>(r._parts||[]).forEach(p=>{const k=p.n||p.s;pu[k]=pu[k]||{n:0,t:0};pu[k].n+=(+p.q||1);}));
   const bm={};rows.forEach(r=>{if(r['칠러알람'])bm[r['칠러알람']]=bm[r['칠러알람']]||{n:0,t:0},bm[r['칠러알람']].n++;});
   return '<div class="hc-filters" style="grid-template-columns:minmax(140px,220px)">'+perSel('hcSp',HC.sp)+'</div>'
-    +'<div class="hc-kpis"><div class="hc-kpi"><b>'+n+'</b><span>등록 건수</span></div><div class="hc-kpi"><b>'+(ms.length?fmtMin(Math.round(sum/ms.length)):'-')+'</b><span>평균 조치 시간</span></div><div class="hc-kpi"><b>'+fmtMin(sum)+'</b><span>조치 시간 합계</span></div><div class="hc-kpi"><b>'+rows.filter(r=>r['점검연결']).length+'</b><span>점검에서 연결</span></div></div>'
+    +'<div class="hc-kpis"><div class="hc-kpi"><b>'+n+'</b><span>설비 이력 건수</span></div><div class="hc-kpi"><b>'+(ms.length?fmtMin(Math.round(sum/ms.length)):'-')+'</b><span>평균 조치 시간</span></div><div class="hc-kpi"><b>'+fmtMin(sum)+'</b><span>조치 시간 합계</span></div><div class="hc-kpi"><b>'+rows.filter(r=>r['점검연결']).length+'</b><span>점검에서 연결</span></div></div>'
     +'<div class="hc-split" style="gap:0 16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"><div><div class="hc-card"><h3>설비별</h3>'+bars(by(r=>r['설비']))+'</div><div class="hc-card"><h3>대분류별</h3>'+bars(by(r=>r['대분류']))+'</div><div class="hc-card"><h3>조치 유형별</h3>'+bars(by(r=>r['조치유형']))+'</div></div>'
-    +'<div><div class="hc-card"><h3>고장 현상별</h3>'+bars(by(r=>String(r['고장현상']||'').split(' / ')))+'</div><div class="hc-card"><h3>원인별</h3>'+bars(by(r=>r['원인분류']))+'</div>'+(Object.keys(bm).length?'<div class="hc-card"><h3>칠러 알람별</h3>'+bars(bm)+'</div>':'')+'<div class="hc-card"><h3>사용 부품 (수량)</h3>'+bars(pu,'개')+'</div></div></div>';
+    +'<div><div class="hc-card"><h3>고장 현상별</h3>'+bars(by(r=>String(r['고장현상']||'').split(' / ')))+'</div><div class="hc-card"><h3>원인별</h3>'+bars(by(r=>r['원인분류']))+'</div>'+(Object.keys(bm).length?'<div class="hc-card"><h3>칠러 알람별</h3>'+bars(bm)+'</div>':'')+'<div class="hc-card"><h3>사용 부품 (수량)</h3>'+bars(pu,'개')+'</div></div></div>'
+    +dutyStatHtml(dutyR);
+}
+function dutyStatHtml(L){
+  const o={};let mins=0;L.forEach(r=>{const k=String(r['중분류']||'기타').trim()||'기타';o[k]=o[k]||{n:0,t:0};o[k].n++;o[k].t+=(+r['조치시간(분)']||0);mins+=(+r['조치시간(분)']||0);});
+  return '<div class="hc-card" style="margin-top:4px"><h3>공무 작업 <small class="hc-muted">설비 이력과 별도 집계 · '+L.length+'건'+(mins?' · '+fmtMin(mins):'')+'</small></h3>'+(L.length?bars(o):'<div class="hc-empty">이 기간 공무 작업 기록이 없습니다.</div>')+'</div>';
 }
 function histHtml(){
   const T=[['new','등록'],['list','목록 ('+HC.hist.length+')'],['stat','통계']];
@@ -9568,7 +9595,7 @@ function todayHtml(){
 /* v72: 점검 현황 (이상 없는 항목은 한 줄로) */
 function sumRow(tone,label,val,sub,btn,act){return '<div class="hm-sr '+tone+'"><span class="hm-sl">'+label+(sub?'<small>'+sub+'</small>':'')+'</span><b>'+val+'</b>'+(btn?'<button type="button" class="hm-cbtn sm" data-hm="'+act+'">'+btn+'</button>':'')+'</div>';}
 function checkSummaryHtml(){
-  if(HC.chkErr)return '<div class="empty-note">점검 기록을 불러오지 못했습니다</div>';
+  if(HC.chkErr)return '<div class="empty-note">점검 기록을 불러오지 못했습니다 <button type="button" class="hm-cbtn sm" data-hm="reloadchk">다시 시도</button></div>';
   if(!HC.chkOk)return '<div class="empty-note">불러오는 중…</div>';
   const a=autoTasks();let h='';
   if(a.c.length)h+=sumRow('bad','C 판정 미조치',a.c.length+'건',E(a.c.slice(0,2).map(r=>r['설비']+' '+(r['항목']||'')).join(', ')),'조치','check');
@@ -9582,12 +9609,12 @@ function homeStatHtml(){
   if(!HC.histOk&&!HC.chkOk)return '<div class="empty-note">불러오는 중…</div>';
   const now=new Date(),y=now.getFullYear(),m=now.getMonth();
   const m0=new Date(y,m,1),m1=new Date(y,m+1,1),p0=new Date(y,m-1,1),d30=new Date(now.getTime()-30*864e5);
-  const cnt=(a,b)=>HC.hist.filter(r=>{const d=pdt(r._occ);return d&&d>=a&&d<b;}).length;
+  const cnt=(a,b)=>HC.hist.filter(r=>r['설비']!==DUTY).filter(r=>{const d=pdt(r._occ);return d&&d>=a&&d<b;}).length;
   let h='';
   if(HC.histOk){
     const cur=cnt(m0,m1),prev=cnt(p0,m0),df=cur-prev;
-    h+='<div class="hm-st1"><div><b>'+cur+'</b><span>건</span><small>이번 달 설비 이력</small></div><div class="hm-sd '+(df>0?'up':df<0?'dn':'')+'">'+(prev?'지난달 '+prev+'건 · '+(df>0?'▲ '+df:df<0?'▼ '+(-df):'변동 없음'):'지난달 기록 없음')+'</div></div>';
-    const ph={};HC.hist.forEach(r=>{const d=pdt(r._occ);if(!d||d<d30)return;String(r['고장현상']||'').split(' / ').forEach(x=>{x=x.trim();if(x)ph[x]=(ph[x]||0)+1;});});
+    h+='<div class="hm-st1"><div><b>'+cur+'</b><span>건</span><small>이번 달 설비 이력 (공무 제외)</small></div><div class="hm-sd '+(df>0?'up':df<0?'dn':'')+'">'+(prev?'지난달 '+prev+'건 · '+(df>0?'▲ '+df:df<0?'▼ '+(-df):'변동 없음'):'지난달 기록 없음')+'</div></div>';
+    const ph={};HC.hist.forEach(r=>{if(r['설비']===DUTY)return;const d=pdt(r._occ);if(!d||d<d30)return;String(r['고장현상']||'').split(' / ').forEach(x=>{x=x.trim();if(x&&x!=='기타')ph[x]=(ph[x]||0)+1;});});
     const top=Object.keys(ph).map(k=>[k,ph[k]]).sort((a,b)=>b[1]-a[1]).slice(0,3),mx=top.length?top[0][1]:1;
     h+='<div class="hm-sh2">고장 현상 상위 <small>최근 30일</small></div>'+(top.length?top.map(x=>'<div class="hm-bar"><span class="n">'+E(x[0])+'</span><i style="--w:'+Math.round(x[1]/mx*100)+'%"></i><b>'+x[1]+'</b></div>').join(''):'<div class="empty-note">최근 30일 고장 기록이 없습니다</div>');
   }
@@ -9597,6 +9624,17 @@ function homeStatHtml(){
     h+='<div class="hm-sh2">점검 이행률 <small>이번 주 · 이번 달 · '+(q?q+'분기':'연간')+'</small></div>'+['주간','월간','연간'].map(k=>{const r=rate(k),p=r.n?Math.round(r.d/r.n*100):0;return '<div class="hm-bar"><span class="n">'+k+'</span><i class="'+(p>=100?'ok':'')+'" style="--w:'+p+'%"></i><b>'+(r.n?p+'%':'–')+'</b><small>'+(r.n?r.d+'/'+r.n:'')+'</small></div>';}).join('');
   }
   return h||'<div class="empty-note">통계를 만들 데이터가 없습니다</div>';
+}
+function homeDutyHtml(){
+  if(!HC.histOk)return '<div class="empty-note">'+(HC.histErr?'불러오지 못했습니다 <button type="button" class="hm-cbtn sm" data-hm="reloadhist">다시 시도</button>':'불러오는 중…')+'</div>';
+  const now=new Date(),m0=new Date(now.getFullYear(),now.getMonth(),1),m1=new Date(now.getFullYear(),now.getMonth()+1,1);
+  const L=HC.hist.filter(r=>r['설비']===DUTY).filter(r=>{const d=pdt(r._occ);return d&&d>=m0&&d<m1;});
+  if(!L.length)return '<div class="empty-note">이번 달 공무 작업 기록이 없습니다</div>';
+  const mins=L.reduce((a,r)=>a+(+r['조치시간(분)']||0),0),ty={};
+  L.forEach(r=>{const k=String(r['중분류']||'기타').trim()||'기타';ty[k]=(ty[k]||0)+1;});
+  const top=Object.keys(ty).map(k=>[k,ty[k]]).sort((a,b)=>b[1]-a[1]).slice(0,5),mx=top[0][1];
+  return '<div class="hm-st1"><div><b>'+L.length+'</b><span>건</span><small>이번 달 공무 작업</small></div><div class="hm-sd">'+(mins?'작업 시간 '+fmtMin(mins):'시간 기록 없음')+'</div></div>'
+    +'<div class="hm-sh2">작업 종류별</div>'+top.map(x=>'<div class="hm-bar"><span class="n">'+E(x[0])+'</span><i style="--w:'+Math.round(x[1]/mx*100)+'%"></i><b>'+x[1]+'</b></div>').join('');
 }
 function hmRender(){
   const hero=$('hmHero');if(!hero)return;
@@ -9609,9 +9647,10 @@ function hmRender(){
   const q=$('hmQuick');if(q){const x=hmQuickHtml();q.innerHTML=x.h;q.style.setProperty('--qn',x.n);}
   const l=$('hmLook');if(l)l.innerHTML=hmLookHtml();
   const sb=$('hmStat');if(sb)sb.innerHTML=homeStatHtml();
+  const db=$('hmDuty');if(db)db.innerHTML=homeDutyHtml();
   const hb=$('hmHist');if(hb){
     const rows=HC.hist.slice().sort((a,b)=>String(b['등록일시']||'').localeCompare(String(a['등록일시']||''))).slice(0,5);
-    hb.innerHTML=!HC.histOk?'<div class="empty-note">'+(HC.histErr?'불러오지 못했습니다':'불러오는 중…')+'</div>':rows.length?rows.map(r=>'<button type="button" class="hm-h" data-hm="hist"><span class="d">'+E(String(r['_occ']||r['등록일시']||'').slice(5,10).replace('-','/'))+'</span><span class="m"><b>'+E(r['설비'])+'</b> '+E(r['고장현상']||[r['대분류'],r['중분류']].filter(Boolean).join(' · '))+'<small>'+E([r['조치유형'],r['작업자']].filter(Boolean).join(' · '))+'</small></span></button>').join(''):'<div class="empty-note">등록된 이력이 없습니다.</div>';
+    hb.innerHTML=!HC.histOk?'<div class="empty-note">'+(HC.histErr?'불러오지 못했습니다 <button type="button" class="hm-cbtn sm" data-hm="reloadhist">다시 시도</button>':'불러오는 중…')+'</div>':rows.length?rows.map(r=>'<button type="button" class="hm-h" data-hm="hist"><span class="d">'+E(String(r['_occ']||r['등록일시']||'').slice(5,10).replace('-','/'))+'</span><span class="m"><b>'+E(r['설비'])+'</b> '+E(r['고장현상']||[r['대분류'],r['중분류']].filter(Boolean).join(' · '))+'<small>'+E([r['조치유형'],r['작업자']].filter(Boolean).join(' · '))+'</small></span></button>').join(''):'<div class="empty-note">등록된 이력이 없습니다.</div>';
   }
   hmTidy();
 }
@@ -9834,6 +9873,9 @@ document.addEventListener('click',async ev=>{
     if(a==='low'){if(typeof showKpiList==='function')showKpiList('low');}
     else if(a==='histnew'){HC.tabH='new';showPanel('hist');}
     else if(a==='histstat'){HC.tabH='stat';showPanel('hist');}
+    else if(a==='histlist'){HC.tabH='list';showPanel('hist');}
+    else if(a==='reloadchk'){HC.chkErr='';loadChk(true);hmRender();}
+    else if(a==='reloadhist'){HC.histErr='';loadHist(true);hmRender();}
     else if(a==='chkrec'){HC.tabC='rec';showPanel('check');}
     else showPanel(a);
     friClose();return;}
