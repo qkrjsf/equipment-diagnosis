@@ -1216,6 +1216,46 @@ body.dp-open{overflow:hidden}
 .sq-c{display:inline-flex;align-items:center;background:#EEF4F8;border:1px solid #D6DEE6;border-radius:999px;overflow:hidden}
 .sq-b{background:none;border:0;font:inherit;font-size:13.5px;color:#0E2A3F;padding:0 12px;min-height:36px;cursor:pointer}
 .sq-x{background:none;border:0;border-left:1px solid #D6DEE6;color:#5B6877;font-size:16px;line-height:1;width:32px;min-height:36px;cursor:pointer}
+/* v77: PC - 달력 주 행 높이 균등, 오른쪽 카드 열이 달력 카드와 같은 높이로 */
+.cv-month .sc-g{grid-auto-rows:minmax(0,auto)}
+.cv-month .sc-g .sc-c{height:100%}
+@media (min-width:1100px){
+  .sc-wrap{align-items:stretch}
+  .sc-side{position:static;display:flex;flex-direction:column}
+  .sc-side>.hc-card:last-child{flex:1 1 auto;margin-bottom:0}
+}
+@media (min-width:1100px){.sc-wrap>.sc-cal{margin-bottom:0}}
+/* v78: 확인 창 / 교체 등록 / 설비 화면 연계 */
+.emq-ask{position:fixed;inset:0;z-index:300;background:rgba(10,24,36,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+.emq-ask-b{background:#fff;border-radius:14px;max-width:420px;width:100%;padding:18px 18px 14px;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.emq-ask-b h3{margin:0 0 8px;font-size:17px;color:#0B2A3D}
+.emq-ask-t{font-size:14px;line-height:1.55;color:#22313F}.emq-ask-t small{color:#8A4B00}
+.emq-ask-f{display:flex;gap:8px;margin-top:14px}.emq-ask-f .hc-btn{flex:1}
+.hx-ov{position:fixed;inset:0;z-index:260;background:rgba(10,24,36,.55);display:flex;align-items:center;justify-content:center;padding:12px}
+.hx-pop{background:#fff;border-radius:14px;max-width:440px;width:100%;max-height:92vh;overflow:auto;padding:16px 16px 14px;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.hx-pop.wide{max-width:560px}
+.hx-pop h3{margin:0 0 6px;font-size:17px;color:#0B2A3D}
+.hx-sub{margin:0 0 10px;font-size:13.5px;line-height:1.5;color:#33414E}.hx-sub small{color:#5B6877}
+.hx-col{display:flex;flex-direction:column;gap:8px}.hx-col .hc-btn{text-align:left;display:flex;flex-direction:column;gap:2px}.hx-col .hc-btn small{font-weight:400;opacity:.85}
+.hx-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.hx-pop label{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:#4A5967}
+.hx-pop input,.hx-pop select{font:inherit;font-size:14px;padding:9px 10px;border:1px solid #C9D3DC;border-radius:8px;background:#fff;color:#0B2A3D;min-width:0}
+.hx-full{margin:8px 0}
+.hx-sec{border-top:1px solid #E3E9EE;padding-top:10px;margin-top:10px}.hx-sec>b{font-size:13.5px;color:#0B2A3D;display:block;margin-bottom:6px}
+.hx-rows{display:flex;flex-direction:column;gap:6px}
+.hx-r{display:grid;grid-template-columns:96px minmax(0,1fr) 16px minmax(0,1.3fr);gap:6px;align-items:center;font-size:12.5px}
+.hx-l{color:#4A5967}.hx-c{color:#0B2A3D;word-break:break-all}.hx-c i{color:#99A5B0}.hx-a{color:#0E7C9A;text-align:center}
+.hx-chk{flex-direction:row!important;align-items:center;gap:8px!important;font-size:13.5px!important}.hx-chk input{width:18px;height:18px;padding:0}
+.hx-warn{color:#B35A00;font-size:12.5px;margin:6px 0 0}.hx-ok{color:#1B7A4B;font-size:12.5px;margin:0}
+.hx-sum{margin-top:12px;padding:10px 12px;background:#EEF6F9;border-radius:10px;font-size:13px;line-height:1.6;color:#0B2A3D}.hx-sum b{display:block;margin-bottom:2px}.hx-sum div b{display:inline}
+.hx-f{display:flex;gap:8px;margin-top:14px;position:sticky;bottom:-14px;background:#fff;padding:10px 0 4px}.hx-f .hc-btn{flex:1}
+.hx-chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.hx-chips button{border:1px solid #C9D3DC;background:#fff;border-radius:999px;padding:7px 12px;font:inherit;font-size:13px;color:#0B2A3D;min-height:36px;cursor:pointer}.hx-chips button.on{background:#0E7C9A;color:#fff;border-color:#0E7C9A}
+.td-eq{font-style:normal;font-size:11px;background:#E7F0F6;color:#0B5E86;border-radius:6px;padding:1px 6px;margin-right:2px}
+.td-lk{font-style:normal;font-size:11px;background:#E4F4EA;color:#1B7A4B;border-radius:6px;padding:1px 6px}
+.hx-eqc{margin-top:12px}.hx-eqc>.hc-btn{margin-bottom:8px}.hx-eqc>.hc-btn small{font-weight:400;opacity:.85;margin-left:4px}
+.hx-eqs{margin-top:8px}.hx-eqs>b{font-size:13px;color:#0B2A3D}
+.hx-eqr{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #EDF1F4;font-size:13.5px}.hx-eqr .d{flex:0 0 66px;color:#5B6877;font-size:12.5px}.hx-eqr small{color:#5B6877}
+@media (max-width:480px){.hx-grid{grid-template-columns:1fr}.hx-r{grid-template-columns:1fr;gap:3px}.hx-a{display:none}.hx-c::before{content:'현재: ';color:#99A5B0}}
 </style>
 </head>
 <body>
@@ -1279,12 +1319,43 @@ function busy(d,type){
     if(BE)BE.hidden=true;
   }
 }
+/* v78: 저장 요청에 요청 번호(rid)를 붙여 더블탭·재시도로 두 번 저장되지 않게 함.
+   같은 내용의 요청이 3분 안에 다시 가면 같은 번호를 재사용 → 서버가 이미 처리한 요청은 다시 처리하지 않음 */
+const IDEMP={hist_add:1,stock_in:1,stock_out:1,usage:1,repair_out:1,todo_add:1,equip_swap:1};
+const RIDS={};
+function ridFor(b){
+  const k=Object.keys(b).filter(x=>x!=='token'&&x!=='rid'&&x!=='force'&&x!=='worker').sort().map(x=>x+'='+JSON.stringify(b[x])).join('&'),now=Date.now();
+  Object.keys(RIDS).forEach(x=>{if(now-RIDS[x].t>180000)delete RIDS[x];});
+  if(RIDS[k]){RIDS[k].t=now;return RIDS[k].r;}
+  const r='r'+now.toString(36)+Math.random().toString(36).slice(2,8);RIDS[k]={r:r,t:now};return r;
+}
+/* 확인 창 (최근 동일 이력·재고 부족 등 '그래도 저장할지' 묻기) */
+window.emqAsk=function(title,html,okLabel,noLabel){
+  return new Promise(res=>{
+    const ov=document.createElement('div');ov.className='emq-ask';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');
+    ov.innerHTML='<div class="emq-ask-b"><h3>'+title+'</h3><div class="emq-ask-t">'+html+'</div><div class="emq-ask-f"><button type="button" class="hc-btn ghost" data-a="0">'+(noLabel||'취소')+'</button><button type="button" class="hc-btn" data-a="1">'+(okLabel||'그래도 저장')+'</button></div></div>';
+    const done=v=>{ov.remove();res(v);};
+    ov.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)done(b.dataset.a==='1');else if(e.target===ov)done(false);});
+    document.body.appendChild(ov);const f=ov.querySelector('[data-a="0"]');if(f)f.focus();
+  });
+};
+const escA=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function softMsg(o){
+  const d=o.dup||{};
+  if(o.error==='dup_recent'){
+    if(d.spec)return ['최근 같은 입출고가 있습니다','10분 안에 같은 부품·수량이 이미 기록되어 있습니다.<br><b>'+escA(d.at)+'</b> · '+escA(d.worker)+'<br>'+escA(d.kind||'')+' '+escA(d.spec)+' × '+escA(d.qty)+'<br><small>중복이면 취소하세요. 재고가 두 번 반영됩니다.</small>'];
+    return ['최근 동일한 이력이 있습니다','같은 설비·부위·조치가 며칠 안에 이미 등록되어 있습니다.<br><b>'+escA(d.occ)+'</b> · '+escA(d.worker)+'<br>'+escA(d.p0)+(d.p1?' · '+escA(d.p1):'')+' · '+escA(d.act)+(d.actText?'<br>'+escA(d.actText):'')+'<br><small>같은 작업이면 취소하세요. 부품이 포함되면 재고가 두 번 빠집니다.</small>'];
+  }
+  if(o.error==='over_stock'&&Array.isArray(o.over))return ['재고보다 많이 사용하려 합니다',o.over.map(x=>escA(x.spec)+' — 현재고 <b>'+escA(x.stock)+'</b> / 사용 <b>'+escA(x.qty)+'</b>').join('<br>')+'<br><small>그대로 저장하면 재고가 음수가 됩니다.</small>'];
+  if(o.error==='already_linked')return ['이미 이력이 등록된 할 일입니다','이 할 일은 이미 설비 이력과 연결되어 있습니다. 또 등록하면 이력(과 부품 재고)이 중복됩니다.'];
+  return null;
+}
 window.fetch=async function(u,o){
   const url=typeof u==='string'?u:(u&&u.url)||'';
   if(url.indexOf('script.google.com/macros')<0||/[?&]type=ping/.test(url))return of(u,o);
   await EMQ.ready;
   let u2=u,o2=o;
-  if(o&&o.method==='POST'){try{const b=JSON.parse(o.body);b.token=EMQ.token;o2=Object.assign({},o,{body:JSON.stringify(b)});}catch(e){}}
+  if(o&&o.method==='POST'){try{const b=JSON.parse(o.body);b.token=EMQ.token;if(IDEMP[b.type]&&!b.rid)b.rid=ridFor(b);o2=Object.assign({},o,{body:JSON.stringify(b)});}catch(e){}}
   else u2=url+(url.indexOf('?')<0?'?':'&')+'token='+encodeURIComponent(EMQ.token);
   let busyOn=false,bt='';
   if(o&&o.method==='POST'&&o.mode!=='no-cors'){try{bt=JSON.parse(o.body).type||'';}catch(e){}if(!QUIET[bt]){busyOn=true;busy(1,bt);}}
@@ -1293,6 +1364,12 @@ window.fetch=async function(u,o){
   try{
     const t=await res.clone().text();
     if(t.length<300&&/"error"\s*:\s*"auth"/.test(t)){expire();return window.fetch(u,o);}
+    if(o&&o.method==='POST'&&t.length<4000&&/"error"\s*:\s*"(dup_recent|over_stock|already_linked)"/.test(t)){
+      const j=JSON.parse(t),m=softMsg(j);
+      if(m&&await window.emqAsk(m[0],m[1],'그래도 저장','취소')){
+        const b2=JSON.parse(o2.body);b2.force=true;return window.fetch(u,Object.assign({},o,{body:JSON.stringify(b2)}));
+      }
+    }
   }catch(e){}
   return res;
 };
@@ -1433,7 +1510,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v77</span></div>
+    <div class="sb-foot"><span id="verLabel">v78</span></div>
   </nav>
 
   <div class="content">
@@ -1687,7 +1764,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v77</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v78</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8658,12 +8735,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v77', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v78', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v77';
+const PAGE_CACHE = 'sulbi-jindan-v78';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -8789,7 +8866,7 @@ function plabel(kind){const n=new Date();if(kind==='주간'){const s=wkStart(n),
 const curQ=()=>Math.floor(new Date().getMonth()/3)+1;
 function fmtMin(m){m=Number(m);if(!(m>0))return '-';const h=Math.floor(m/60);return h?(m%60?h+'시간 '+(m%60)+'분':h+'시간'):m+'분';}
 function toast(msg){const t=document.createElement('div');t.className='hc-toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2600);}
-const ERR={no_part_path:'부위를 선택하세요.',bad_kind:'종류가 올바르지 않습니다. (새로 추가된 종류라면 서버(Apps Script) 업데이트가 필요합니다.)',no_items:'저장할 항목이 없습니다.',has_parts:'부품 사용이 함께 기록된 이력은 여기서 취소할 수 없습니다. 사용이력 탭에서 부품을 정정하세요.',bad_date:'발생 일시가 올바르지 않습니다.',forbidden:'이 작업을 할 권한이 없습니다. 마스터에게 권한을 요청하세요.',auth:'로그인이 필요합니다.',no_user:'없는 사용자입니다.',dup_id:'이미 있는 아이디입니다.',bad_id:'아이디는 영문 2자 이상으로 입력하세요.',no_name:'이름을 입력하세요.',bad_role:'권한 값이 올바르지 않습니다. (마스터는 시트에서만 지정)',pin_len:'PIN은 숫자 4~8자리입니다.',master_locked:'마스터 계정은 앱에서 바꿀 수 없습니다.',bad_team:'목록에 없는 팀입니다.',forbidden_team:'생산기술팀만 사용할 수 있습니다.',too_many:'한 번에 31일까지 등록할 수 있습니다.',no_title:'제목을 입력하세요.',not_found:'대상을 찾지 못했습니다. 새로고침 후 다시 확인하세요.',rate:'잠시 후 다시 시도하세요.',busy:'다른 작업 중입니다. 잠시 후 다시 시도하세요.'};
+const ERR={no_part_path:'부위를 선택하세요.',bad_kind:'종류가 올바르지 않습니다. (새로 추가된 종류라면 서버(Apps Script) 업데이트가 필요합니다.)',no_items:'저장할 항목이 없습니다.',has_parts:'부품 사용이 함께 기록된 이력은 여기서 취소할 수 없습니다. 사용이력 탭에서 부품을 정정하세요.',bad_date:'발생 일시가 올바르지 않습니다.',forbidden:'이 작업을 할 권한이 없습니다. 마스터에게 권한을 요청하세요.',auth:'로그인이 필요합니다.',no_user:'없는 사용자입니다.',dup_id:'이미 있는 아이디입니다.',bad_id:'아이디는 영문 2자 이상으로 입력하세요.',no_name:'이름을 입력하세요.',bad_role:'권한 값이 올바르지 않습니다. (마스터는 시트에서만 지정)',pin_len:'PIN은 숫자 4~8자리입니다.',master_locked:'마스터 계정은 앱에서 바꿀 수 없습니다.',bad_team:'목록에 없는 팀입니다.',forbidden_team:'생산기술팀만 사용할 수 있습니다.',too_many:'한 번에 31일까지 등록할 수 있습니다.',no_title:'제목을 입력하세요.',not_found:'대상을 찾지 못했습니다. 새로고침 후 다시 확인하세요.',rate:'잠시 후 다시 시도하세요.',busy:'다른 작업 중입니다. 잠시 후 다시 시도하세요.',dup_recent:'최근에 같은 내용이 이미 등록되어 있어 저장하지 않았습니다.',already_linked:'이미 이력이 연결된 할 일이라 저장하지 않았습니다.',over_stock:'재고보다 많은 수량이라 저장하지 않았습니다.',no_change:'바꿀 내용이 없습니다. (현재 사양과 같은 값입니다.)',no_changes:'바꿀 항목을 입력하세요.',no_equip:'설비 사양표에서 해당 호기를 찾지 못했습니다.',no_column:'설비 사양표에서 해당 항목(열)을 찾지 못했습니다.'};
 function errMsg(c){return ERR[c]||pumpErrMsg(c);}
 async function hcGet(type,extra){
   /* v75: 조회 요청은 25초 안에 끝나지 않으면 중단(저장 요청은 중복 위험이 있어 제한하지 않음) */
@@ -8859,7 +8936,7 @@ async function loadChk(force){
 
 /* ---------- 설비 이력: 등록 마법사 ---------- */
 const STEPS=['설비','부위','고장 현상','조치','확인'];
-function newW(keep){HC.W={step:1,g:'',eq:'',p:[],alarm:'',noAlarm:false,cidx:-2,ph:[],act:'',actText:'',duty:false,dk:'',min:null,cause:'',causeText:'',parts:[],src:'점검 중',link:'',checkId:'',checkItem:'',occ:'',memo:'',preset:false,saving:false,err:'',done:false,last:null};
+function newW(keep){HC.W={step:1,g:'',eq:'',p:[],alarm:'',noAlarm:false,cidx:-2,ph:[],act:'',actText:'',duty:false,dk:'',min:null,cause:'',causeText:'',parts:[],src:'점검 중',link:'',todoId:'',checkId:'',checkItem:'',occ:'',memo:'',preset:false,saving:false,err:'',done:false,last:null};
   if(keep){HC.W.g=keep.g;HC.W.eq=keep.eq;HC.W.step=2;if(keep.eq===DUTY){HC.W.duty=true;}}HC.pk=false;HC.csq='';HC.csList=[];}
 const gOf=eq=>EQG['1층'].indexOf(eq)>=0?'1층':EQG['2층'].indexOf(eq)>=0?'2층':eq===DUTY?DUTY:'프레스';
 const B=(cls,attr,txt)=>'<button type="button" class="hc-b '+cls+'" '+attr+'>'+txt+'</button>';
@@ -8997,7 +9074,7 @@ function asideHtml(){
 function wizardHtml(){
   const W=HC.W;
   if(W.done){const r=W.last||{};
-    return '<div class="hc-done"><div class="ck" aria-hidden="true">✓</div><h2>저장했습니다</h2><p class="hc-muted">'+E(r.eq)+' · '+E(pstr(r.p||[]))+(W.parts.length?'<br>부품 사용은 사용이력(재고)에도 기록했습니다.':'')+'</p><div class="hc-col"><button type="button" class="hc-btn" data-h="again" data-v="same">같은 설비('+E(r.eq)+')로 하나 더</button><button type="button" class="hc-btn ghost" data-h="again" data-v="new">새 이력 등록</button><button type="button" class="hc-btn ghost" data-h="tolist">목록 보기</button></div></div>';}
+    return '<div class="hc-done"><div class="ck" aria-hidden="true">✓</div><h2>저장했습니다</h2><p class="hc-muted">'+E(r.eq)+' · '+E(pstr(r.p||[]))+(W.parts.length?'<br>부품 사용은 사용이력(재고)에도 기록했습니다.':'')+'</p><div class="hc-col"><button type="button" class="hc-btn" data-h="again" data-v="same">같은 설비('+E(r.eq)+')로 하나 더</button><button type="button" class="hc-btn ghost" data-h="follow">후속 할 일 만들기</button><button type="button" class="hc-btn ghost" data-h="again" data-v="new">새 이력 등록</button><button type="button" class="hc-btn ghost" data-h="tolist">목록 보기</button></div></div>';}
   return '<div class="hc-split has-aside"><div>'+stepBody()+'</div><aside class="hc-aside">'+asideHtml()+'</aside></div>';
 }
 function go(n){HC.W.step=n;HC.W.err='';refreshHist();window.scrollTo(0,0);}
@@ -9028,7 +9105,7 @@ async function saveHist(){
   if(W.duty){if(!W.dk){W.err='작업 종류를 선택하거나 입력하세요.';refreshHist();return;}W.p=['공무',W.dk];W.act='공무';W.ph=[];W.cause='';W.alarm='';W.src='공무';W.parts=[];}
   const p=W.p;W.saving=true;W.err='';refreshHist();
   const payload={type:'hist_add',eq:W.eq,occ:(W.occ||nowLocal()).replace('T',' '),p0:p[0]||'',p1:p[1]||'',p2:p[2]||'',alarm:W.alarm,ph:W.ph,cause:W.duty?'':(W.cause||'원인 불명'),causeText:W.causeText,act:W.act,actText:W.actText,min:W.min,
-    parts:W.parts.map(x=>({spec:x.spec,name:x.name,qty:x.qty})),worker:HC.worker,src:W.src,link:W.link,memo:W.memo,checkId:W.checkId,checkItem:W.checkItem};
+    parts:W.parts.map(x=>({spec:x.spec,name:x.name,qty:x.qty})),worker:HC.worker,src:W.src,link:W.link,memo:W.memo,checkId:W.checkId,checkItem:W.checkItem,todoId:W.todoId||''};
   try{
     const r=await hcPost(payload);
     if(!r||!r.ok){W.saving=false;W.err=errMsg(r&&r.error);refreshHist();return;}
@@ -9037,7 +9114,7 @@ async function saveHist(){
     HC.hist.unshift(row);
     W.parts.forEach(x=>{if(x.rep){logRepairOutToSheet(x.cat,x.spec,x.qty,x.vendor);}});
     if(W.checkId){const k=HC.chk.find(c=>c['점검ID']===W.checkId&&c['항목번호']===W.checkItem);if(k)k['연결이력ID']=r.id;}
-    W.saving=false;W.done=true;W.last={eq:W.eq,p:p};
+    W.saving=false;W.done=true;W.last={eq:W.eq,p:p,act:W.act,todoId:W.todoId||''};
     if(W.parts.some(x=>x.rep))showRepairPopup(t('repairReminder').replace('{name}',W.parts.filter(x=>x.rep).map(x=>x.name).join(', ')));
     if(HC.tabH==='new')refreshHist();
     // 부품 재고 수치 갱신
@@ -9054,6 +9131,7 @@ function wizClick(ev){
   if(d.h==='closepk'){HC.pk=false;refreshHist();return;}
   if(d.h==='addfree'){const v=($('hcFree').value||'').trim();if(v){W.parts.push({spec:'',name:v,qty:1});refreshHist();}return;}
   if(d.h==='save'){saveHist();return;}
+  if(d.h==='follow'){if(typeof hxFollow==='function'){const r=W.last||{};hxFollow({eq:r.eq,title:r.eq+'호기 '+((r.p&&(r.p[1]||r.p[0]))||'')+' '+(r.act||'작업')+' 후 확인'});}return;}
   if(d.h==='again'){newW(d.v==='same'?{g:W.g,eq:W.eq}:null);refreshHist();return;}
   if(d.h==='tolist'){HC.tabH='list';refreshHist();return;}
   if(d.g!=null){W.g=d.g;W.duty=(d.g===DUTY);W.eq=W.duty?DUTY:'';if(W.duty){go(2);return;}if(d.g==='프레스'&&!HC.xtabsOk)loadXtabs();refreshHist();return;}
@@ -9686,7 +9764,7 @@ if(typeof renderEquipDetail==='function'){
 /* ---------- v67: 근태 · 당직 · 할 일 · 스케줄표 · 홈 개편 · 업데이트 배너 ---------- */
 const HOL={"2026-12-25":"성탄절","2027-01-01":"신정","2027-02-06":"설날 연휴","2027-02-07":"설날","2027-02-08":"설날 연휴","2027-02-09":"대체공휴일(설날)","2027-03-01":"삼일절","2027-05-01":"노동절","2027-05-03":"대체공휴일(노동절)","2027-05-05":"어린이날","2027-05-13":"부처님오신날","2027-06-06":"현충일","2027-07-17":"제헌절","2027-07-19":"대체공휴일(제헌절)","2027-08-15":"광복절","2027-08-16":"대체공휴일(광복절)","2027-09-14":"추석 연휴","2027-09-15":"추석","2027-09-16":"추석 연휴","2027-10-03":"개천절","2027-10-04":"대체공휴일(개천절)","2027-10-09":"한글날","2027-10-11":"대체공휴일(한글날)","2027-12-25":"성탄절","2027-12-27":"대체공휴일(성탄절)"};   // 공휴일 (한국천문연구원 달력자료 기준, 공식 월력요항 확인 필요)
 const DUTY_NAMES=['김대연','최형진','박준성','이기찬'];
-const TD={v:'',vNext:'',flt:'mine',dutyAll:false,dr:{title:'',to:null,due:'',memo:''},att:[],todo:[],users:[],duty:[],dnames:[],sched:[],ok:false,loading:false,err:'',t:0,de:'',form:null,attForm:null,sel:'',ym:'',showDone:false};
+const TD={v:'',vNext:'',flt:'mine',dutyAll:false,dr:{title:'',to:null,due:'',memo:'',eq:''},att:[],todo:[],users:[],duty:[],dnames:[],sched:[],ok:false,loading:false,err:'',t:0,de:'',form:null,attForm:null,sel:'',ym:'',showDone:false};
 const isMain=()=>document.body.getAttribute('data-team')!=='other';
 const myId=()=>(window.EMQ&&EMQ.user)?EMQ.user.id:'';
 const myName=()=>(window.EMQ&&EMQ.user)?EMQ.user.name:'';
@@ -9984,7 +10062,7 @@ function attListHtml(){
 function todoListHtml(){
   const op=TD.todo.filter(t=>t.status==='진행').sort((a,b)=>(a.due||'9')<(b.due||'9')?-1:(a.due||'9')>(b.due||'9')?1:0),dn=TD.todo.filter(t=>t.status==='완료').sort((a,b)=>String(b.doneAt).localeCompare(String(a.doneAt)));
   const row=t=>{const canDone=!t.to||t.to===myId()||lvOk(3),canDel=t.by===myName()||lvOk(3);
-    return '<div class="td-r"><div><b>'+E(t.title)+'</b> '+(t.status==='진행'?dueBadge(t):'')+'<small>'+(t.to?E(t.toName||t.to):'공용')+' · '+E(t.by)+' 등록'+(t.status==='완료'?' · '+E(t.doneBy)+' 완료 '+E(String(t.doneAt).slice(5,10)):'')+(t.memo?' · '+E(t.memo):'')+'</small></div>'
+    return '<div class="td-r"><div><b>'+E(t.title)+'</b> '+(t.eq?'<i class="td-eq">'+E(t.eq)+'</i> ':'')+(t.link?'<i class="td-lk">이력 등록됨</i> ':'')+(t.status==='진행'?dueBadge(t):'')+'<small>'+(t.to?E(t.toName||t.to):'공용')+' · '+E(t.by)+' 등록'+(t.status==='완료'?' · '+E(t.doneBy)+' 완료 '+E(String(t.doneAt).slice(5,10)):'')+(t.memo?' · '+E(t.memo):'')+'</small></div>'
       +(t.status==='진행'?(canDone&&lvOk(2)?'<button type="button" class="hc-btn sm" data-td="done" data-id="'+A(t.id)+'">완료</button>':''):(canDone&&lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="undo" data-id="'+A(t.id)+'">되돌리기</button>':''))
       +(canDel&&lvOk(2)&&t.status==='진행'?'<button type="button" class="hc-btn sm bad" data-td="del" data-id="'+A(t.id)+'">삭제</button>':'')+'</div>';};
   return (op.length?op.map(row).join(''):'<div class="empty-note">진행 중인 할 일이 없습니다.</div>')+(dn.length?'<details class="td-dn"><summary>최근 완료 '+dn.length+'건</summary>'+dn.map(row).join('')+'</details>':'');
@@ -10086,8 +10164,8 @@ function scDay(){
   const k=TD.sel;if(!k)return '<div class="empty-note">날짜를 누르면 상세가 보입니다.</div>';
   const hol=HOL[k],du=dutyOn(k),off=offOn(k),ss=TD.sched.filter(s=>s.start<=k&&s.end>=k),tds=visTodos().filter(t=>t.due===k);
   let h='<div class="hc-card"><h3>'+mdw(k)+(k===todayK()?' · 오늘':'')+(hol?' · '+E(hol):'')+'</h3>';
-  tds.forEach(t=>h+='<div class="td-r"><div><b>☐ '+E(t.title)+'</b> '+dueBadge(t)+'<small>'+(t.to?E(t.toName||t.to):'공용')+' · '+E(t.by)+' 등록'+(t.memo?' · '+E(t.memo):'')+'</small></div>'+(lvOk(2)&&(!t.to||t.to===myId()||lvOk(3))?'<button type="button" class="hc-btn sm" data-td="done" data-id="'+A(t.id)+'">완료</button>':'')+'</div>');
-  ss.forEach(s=>h+='<div class="td-r"><div><b>'+E(s.title)+'</b> <span class="hm-chip sc '+(CATC[s.cat]||'c5')+'">'+E(s.cat)+'</span><small>'+mdw(s.start)+(s.end!==s.start?' ~ '+mdw(s.end):'')+(s.eq?' · '+E(s.eq):'')+(s.who?' · '+E(s.who):'')+(s.memo?' · '+E(s.memo):'')+' · '+E(s.by)+'</small></div>'+(lvOk(2)&&(s.by===myName()||lvOk(3))?'<button type="button" class="hc-btn sm ghost" data-sc="edit" data-id="'+A(s.id)+'">수정</button><button type="button" class="hc-btn sm bad" data-sc="del" data-id="'+A(s.id)+'">삭제</button>':'')+'</div>');
+  tds.forEach(t=>h+='<div class="td-r"><div><b>☐ '+E(t.title)+'</b> '+(t.eq?'<i class="td-eq">'+E(t.eq)+'</i> ':'')+dueBadge(t)+'<small>'+(t.to?E(t.toName||t.to):'공용')+' · '+E(t.by)+' 등록'+(t.memo?' · '+E(t.memo):'')+'</small></div>'+(lvOk(2)&&(!t.to||t.to===myId()||lvOk(3))?'<button type="button" class="hc-btn sm" data-td="done" data-id="'+A(t.id)+'">완료</button>':'')+'</div>');
+  ss.forEach(s=>h+='<div class="td-r"><div><b>'+E(s.title)+'</b> <span class="hm-chip sc '+(CATC[s.cat]||'c5')+'">'+E(s.cat)+'</span><small>'+mdw(s.start)+(s.end!==s.start?' ~ '+mdw(s.end):'')+(s.eq?' · '+E(s.eq):'')+(s.who?' · '+E(s.who):'')+(s.memo?' · '+E(s.memo):'')+' · '+E(s.by)+'</small></div>'+(lvOk(2)&&s.eq&&s.start<=todayK()&&(s.cat==='수리·공사'||s.cat==='점검')?'<button type="button" class="hc-btn sm" data-hx="sched" data-id="'+A(s.id)+'">이력 등록</button>':'')+(lvOk(2)&&(s.by===myName()||lvOk(3))?'<button type="button" class="hc-btn sm ghost" data-sc="edit" data-id="'+A(s.id)+'">수정</button><button type="button" class="hc-btn sm bad" data-sc="del" data-id="'+A(s.id)+'">삭제</button>':'')+'</div>');
   off.forEach(r=>h+='<div class="td-r"><div>'+attChip(r)+'</div></div>');
   if(du)h+='<div class="td-r"><div><b>당직</b> '+E(du.name)+(du.changed?' <i class="hm-b">변경됨</i>':'')+'</div>'+(lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="dedit" data-d="'+k+'">'+(TD.de===k?'닫기':'변경')+'</button>':'')+'</div>'+(TD.de===k?dutyEditHtml(k):'');
   if(!tds.length&&!ss.length&&!off.length&&!du)h+='<div class="empty-note">일정 · 할 일이 없습니다.</div>';
@@ -10111,12 +10189,13 @@ function vTodo(){
    +'<div class="us-ex full">'+['발주 넣기','견적 받기','보고서 제출','부품 확인'].map(x=>'<button type="button" data-us="ex" data-t="'+A(x)+'" data-f="tdTitle">'+E(x)+'</button>').join('')+'</div>'
    +'<label class="td-l">담당자<select id="tdTo"><option value="">전체(공용)</option>'+TD.users.map(u=>'<option value="'+A(u.id)+'"'+((dr.to==null?myId():dr.to)===u.id?' selected':'')+'>'+E(u.name)+'</option>').join('')+'</select></label>'
    +'<label class="td-l">기한<input type="date" id="tdDue" lang="ko" value="'+A(dr.due)+'"></label>'
+   +'<label class="td-l full"><span>설비 <small>(선택 · 설비 이력과 연결)</small></span><select id="tdEq"><option value="">설비 없음</option>'+EQ.map(x=>'<option value="'+A(x)+'"'+(dr.eq===x?' selected':'')+'>'+E(x)+'호기</option>').join('')+'</select></label>'
    +'<div class="td-pre full">'+presetDue().map(p=>'<button type="button" class="'+(dr.due===p[1]?'on':'')+'" data-us="due" data-v="'+p[1]+'">'+p[0]+(p[1]?' <small>'+mdw(p[1]).replace(/\(.\)/,'')+'</small>':'')+'</button>').join('')+'</div>'
    +'<label class="td-l full"><span>메모 <small>(선택)</small></span><input id="tdMemo" maxlength="200" value="'+A(dr.memo)+'"></label>'
    +'</div><button type="button" class="hc-btn" data-td="todoadd" style="margin-top:12px">할 일 추가</button></div>':'';
   const op=visTodos().sort((a,b)=>(a.due||'9')<(b.due||'9')?-1:(a.due||'9')>(b.due||'9')?1:0),dn=TD.todo.filter(t=>t.status==='완료').sort((a,b)=>String(b.doneAt).localeCompare(String(a.doneAt))).slice(0,10);
   const row=t=>{const canDone=!t.to||t.to===myId()||lvOk(3),canDel=t.by===myName()||lvOk(3);
-    return '<div class="td-r"><div><b>'+E(t.title)+'</b> '+(t.status==='진행'?dueBadge(t):'')+'<small>'+(t.to?E(t.toName||t.to):'공용')+' · '+E(t.by)+' 등록'+(t.status==='완료'?' · '+E(t.doneBy)+' 완료 '+E(String(t.doneAt).slice(5,10)):'')+(t.memo?' · '+E(t.memo):'')+'</small></div>'
+    return '<div class="td-r"><div><b>'+E(t.title)+'</b> '+(t.eq?'<i class="td-eq">'+E(t.eq)+'</i> ':'')+(t.link?'<i class="td-lk">이력 등록됨</i> ':'')+(t.status==='진행'?dueBadge(t):'')+'<small>'+(t.to?E(t.toName||t.to):'공용')+' · '+E(t.by)+' 등록'+(t.status==='완료'?' · '+E(t.doneBy)+' 완료 '+E(String(t.doneAt).slice(5,10)):'')+(t.memo?' · '+E(t.memo):'')+'</small></div>'
       +(t.status==='진행'?(canDone&&lvOk(2)?'<button type="button" class="hc-btn sm" data-td="done" data-id="'+A(t.id)+'">완료</button>':''):(canDone&&lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="undo" data-id="'+A(t.id)+'">되돌리기</button>':''))
       +(canDel&&lvOk(2)&&t.status==='진행'?'<button type="button" class="hc-btn sm bad" data-td="del" data-id="'+A(t.id)+'">삭제</button>':'')+'</div>';};
   return form+'<div class="hc-card"><h3>진행 중인 할 일</h3>'+usFlt()+(op.length?op.map(row).join(''):'<div class="empty-note">진행 중인 할 일이 없습니다.</div>')+(dn.length?'<details class="td-dn"><summary>최근 완료 '+dn.length+'건</summary>'+dn.map(row).join('')+'</details>':'')+'</div>';
@@ -10185,11 +10264,11 @@ document.addEventListener('click',async ev=>{
   if(t.dataset.upd){return;}
   if(t.dataset.td){const a=t.dataset.td,id=t.dataset.id;
     if(a==='reload'){loadTD(true);return;}
-    if(a==='done'){t.disabled=true;await tdDo({type:'todo_done',id:id},'완료했습니다.');return;}
+    if(a==='done'){t.disabled=true;const okD=await tdDo({type:'todo_done',id:id},'완료했습니다.');if(okD&&typeof tdAfterDone==='function')tdAfterDone(id);return;}
     if(a==='undo'){await tdDo({type:'todo_done',id:id,undo:true},'되돌렸습니다.');return;}
     if(a==='del'){if(!confirm('이 할 일을 삭제할까요?'))return;await tdDo({type:'todo_cancel',id:id},'삭제했습니다.');return;}
     if(a==='todoadd'){const title=($('tdTitle').value||'').trim();if(!title){toast('할 일을 입력하세요.');return;}
-      if(await tdDo({type:'todo_add',title:title,to:$('tdTo').value,due:$('tdDue').value,memo:$('tdMemo').value},'할 일을 추가했습니다.')){TD.dr={title:'',to:$('tdTo')?$('tdTo').value:null,due:'',memo:''};tdRender();}return;}
+      if(await tdDo({type:'todo_add',title:title,to:$('tdTo').value,due:$('tdDue').value,memo:$('tdMemo').value,eq:($('tdEq')||{}).value||''},'할 일을 추가했습니다.')){TD.dr={title:'',to:$('tdTo')?$('tdTo').value:null,due:'',memo:'',eq:''};tdRender();}return;}
     if(a==='attadd'){const from=$('atFrom').value;if(!from){toast('시작일을 선택하세요.');return;}
       const dates=dateRange(from,$('atTo').value,$('atWe').checked);if(!dates.length){toast('등록할 날짜가 없습니다. 날짜 범위를 확인하세요.');return;}
       const who=lvOk(3)?$('atWho').value:'';
@@ -10277,7 +10356,8 @@ document.addEventListener('click',ev=>{const t=ev.target.closest&&ev.target.clos
   if(on){row.classList.add('open');t.setAttribute('aria-expanded','true');}});
 document.addEventListener('keydown',ev=>{if((ev.key==='Enter'||ev.key===' ')&&ev.target.matches&&ev.target.matches('.hm-tt[data-memo]')){ev.preventDefault();ev.target.click();}});
 document.addEventListener('input',ev=>{const t=ev.target,id=t&&t.id;if(id==='tdTitle')TD.dr.title=t.value;else if(id==='tdMemo')TD.dr.memo=t.value;else if(id==='tdDue'){TD.dr.due=t.value;document.querySelectorAll('.td-pre button').forEach(b=>b.classList.toggle('on',b.dataset.v===t.value));}});
-document.addEventListener('change',ev=>{const t=ev.target;if(t&&t.id==='tdTo')TD.dr.to=t.value;});
+document.addEventListener('change',ev=>{const t=ev.target;if(t&&t.id==='tdTo')TD.dr.to=t.value;else if(t&&t.id==='tdEq')TD.dr.eq=t.value;});
+document.addEventListener('input',ev=>{const t=ev.target;if(t&&t.id==='tdTitle'&&!TD.dr.eq&&typeof eqFind==='function'){const q=eqFind(t.value),s=$('tdEq');if(q&&s){TD.dr.eq=q;s.value=q;}}});
 /* v76: 시작일을 고르면 종료일이 같은 날로 따라가고, 직접 고른 종료일은 시작일 이후일 때만 유지 */
 document.addEventListener('change',ev=>{const t=ev.target;if(!t||!t.id)return;
   const pair={scFrom:'scTo',atFrom:'atTo'}[t.id];
@@ -10335,7 +10415,7 @@ function qiParse(q){
   const team=isMain(),w=lvOk(2),d=qiDate(raw);let rest=d.rest;const tk=todayK();
   const eqIn=t=>(EQ.find(e=>t.toUpperCase().indexOf(e.toUpperCase())>=0)||'');
   const catIn=t=>/점검/.test(t)?'점검':/수리|공사|교체|보수/.test(t)?'수리·공사':/회의|교육|미팅/.test(t)?'회의·교육':/출장/.test(t)?'출장':'기타';
-  const goTodo=(title,due)=>()=>{TD.dr={title:title,to:TD.dr.to,due:due||'',memo:''};TD.form=null;TD.attForm=null;TD.vNext='todo';TD.v='todo';showPanel('sched');setTimeout(()=>{const i=$('tdTitle');if(i)i.scrollIntoView({block:'center'});},200);};
+  const goTodo=(title,due)=>()=>{TD.dr={title:title,to:TD.dr.to,due:due||'',memo:'',eq:(typeof eqFind==='function'?eqFind(title):'')};TD.form=null;TD.attForm=null;TD.vNext='todo';TD.v='todo';showPanel('sched');setTimeout(()=>{const i=$('tdTitle');if(i)i.scrollIntoView({block:'center'});},200);};
   const goSched=(title,a,b)=>()=>{TD.attForm=null;TD.form={start:a,end:b,cat:catIn(title),title:title,eq:eqIn(title)};TD.vNext='cal';TD.v='cal';TD.sel=a;TD.ym=a.slice(0,7);showPanel('sched');setTimeout(()=>{const f=document.querySelector('.sc-form');if(f)f.scrollIntoView({block:'start'});},250);};
   const goAtt=(kind,a,b,memo)=>()=>{TD.form=null;TD.attForm={from:a,to:b,kind:kind,memo:memo};TD.vNext='cal';TD.v='cal';TD.sel=a;TD.ym=a.slice(0,7);showPanel('sched');setTimeout(()=>{const f=document.querySelector('.sc-form');if(f)f.scrollIntoView({block:'start'});},250);};
   let m,hit=false;
@@ -10982,6 +11062,220 @@ setTimeout(()=>{try{loadHitems();loadXtabs();}catch(e){}},60);
     draw();
   }
 })();
+/* ===== v78: 할 일·일정 ↔ 설비 이력 연계 / 교체 등록(사양·재고·품목 한 번에) / 설비 화면 통합 ===== */
+const HX={sw:null,srv:0,m:null};
+const eqFind=txt=>{const m=String(txt||'').match(/(\d{1,2})\s*(?:F|층)\s*[-_ ]?\s*(\d{1,2})/i);if(!m)return '';const k=m[1]+'F-'+m[2];return EQ.indexOf(k)>=0?k:'';};
+const hxEq=no=>String(no||'').replace(/호기/g,'').trim();
+/* 서버(Apps Script)가 v14 이상인지 확인: 아니면 교체 등록은 막음 (구버전은 모르는 요청을 진단이력에 잘못 쌓을 수 있음) */
+async function hxSrvOk(){
+  if(HX.srv>=14)return true;
+  try{const r=await fetch(GOOGLE_SHEET_URL+'?type=ping&t='+Date.now(),{cache:'no-store'});const j=await r.json();HX.srv=Number(j&&j.v)||0;}catch(e){}
+  return HX.srv>=14;
+}
+/* ----- 간단한 팝업 ----- */
+function hxClose(){if(HX.m){HX.m.remove();HX.m=null;}}
+function hxModal(html,cls){
+  hxClose();const ov=document.createElement('div');ov.className='hx-ov';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');
+  ov.innerHTML='<div class="hx-pop'+(cls?' '+cls:'')+'">'+html+'</div>';document.body.appendChild(ov);HX.m=ov;return ov;
+}
+function hxLookupRow(no){return equipRows.find(r=>hxEq(eqNo(r))===hxEq(no))||null;}
+
+/* ===== 1. 할 일 완료 후: 이력으로 남길까요? ===== */
+function tdAfterDone(id){
+  const t=TD.todo.find(x=>x.id===id);if(!t||t.link||!lvOk(2))return;
+  const txt=t.title+' '+(t.memo||''),eq=t.eq||eqFind(txt);if(!eq)return;
+  const swap=/교체|→|->|=>/.test(txt);
+  hxPrompt({eq:eq,title:t.title,memo:t.memo||'',todoId:t.id,swap:swap});
+}
+function hxPrompt(p){
+  const ov=hxModal('<h3>이력으로 남길까요?</h3><p class="hx-sub"><b>'+E(p.title)+'</b><br><small>'+E(p.eq)+'호기'+(p.memo?' · '+E(p.memo):'')+'</small></p><div class="hx-col">'
+    +(p.swap?'<button type="button" class="hc-btn" data-hx="swap">교체 등록 <small>사양·재고·이력을 한 번에</small></button>':'')
+    +'<button type="button" class="hc-btn'+(p.swap?' ghost':'')+'" data-hx="hist">이력 등록 <small>고장·조치 기록</small></button>'
+    +'<button type="button" class="hc-btn ghost" data-hx="x">건너뛰기</button></div>');
+  ov.addEventListener('click',e=>{const b=e.target.closest('[data-hx]');if(!b){if(e.target===ov)hxClose();return;}const a=b.dataset.hx;hxClose();if(a==='swap')hxSwOpen(p);else if(a==='hist')hxHist(p);});
+}
+/* 이력 등록 화면을 미리 채워서 열기 */
+function hxHist(p){
+  HC.tabH='new';newW({g:gOf(p.eq),eq:p.eq});const W=HC.W;
+  W.todoId=p.todoId||'';W.actText=p.title||'';if(/교체/.test(p.title||''))W.act='교체';if(p.memo)W.memo=p.memo;
+  if(p.date){const n=new Date(),hh=('0'+n.getHours()).slice(-2)+':'+('0'+n.getMinutes()).slice(-2);W.occ=p.date+'T'+hh;}
+  showPanel('hist');
+}
+
+/* ===== 2. 교체 등록 ===== */
+const hxBase=h=>String(h).replace(/\s*\((제조사|모델)\)\s*$/,'').replace(/\s*(ISO|MDI|POL)\s*$/i,'').replace(/^(ISO|MDI|POL)\s*/i,'').trim();
+function hxGroups(){
+  const g={},ord=[];
+  equipHeaders.forEach((h,i)=>{if(i===0||/^(비고|호기)$/.test(h))return;const b=hxBase(h);if(!g[b]){g[b]=[];ord.push(b);}g[b].push(i);});
+  return {g:g,ord:ord};
+}
+function hxSplit(txt){
+  const s=String(txt||'').trim();if(!s)return {maker:'',model:''};
+  const m=s.match(/[A-Za-z0-9][A-Za-z0-9\-\._\/]*\d[A-Za-z0-9\-\._\/]*/);
+  if(!m)return {maker:'',model:s};
+  return {maker:s.slice(0,m.index).trim(),model:m[0]};
+}
+function hxParseArrow(txt){
+  const parts=String(txt||'').split(/\s*(?:→|->|=>)\s*/);
+  if(parts.length<2)return null;
+  return {from:hxSplit(parts[0]),to:hxSplit(parts[parts.length-1]),toRaw:parts[parts.length-1].trim()};
+}
+function hxSwOpen(p){
+  if(!equipRows.length){toast('설비 사양을 불러오는 중입니다. 잠시 후 다시 시도하세요.');loadEquip();return;}
+  const grp=hxGroups(),txt=(p.title||'')+' '+(p.memo||'');
+  let gk=grp.ord.find(b=>b&&txt.indexOf(b)>=0)||'';
+  if(!gk&&/믹싱|헤드/.test(txt))gk=grp.ord.find(b=>/믹싱/.test(b))||'';
+  if(!gk)gk=grp.ord[0]||'';
+  HX.sw={eq:p.eq||'',group:gk,todoId:p.todoId||'',title:p.title||'',memo:p.memo||'',arrow:hxParseArrow(txt),vals:{},step:1,rm:{spec:'',qty:1,disp:'none'},ni:{on:null,cat:'',form:'',desc:''},note:'',busy:false};
+  hxSwPrefill();hxSwDraw();
+}
+function hxSwPrefill(){
+  const S=HX.sw,grp=hxGroups(),idx=grp.g[S.group]||[];S.vals={};
+  const ar=S.arrow;
+  idx.forEach(i=>{
+    const h=equipHeaders[i];let v='';
+    if(ar){if(/제조사/.test(h))v=ar.to.maker;else if(/모델/.test(h))v=ar.to.model;else if(idx.length===1)v=ar.toRaw;}
+    S.vals[i]=v;
+  });
+  const row=hxLookupRow(S.eq);
+  const mi=idx.find(i=>/모델/.test(equipHeaders[i]));
+  const oldModel=row&&mi!=null?String(row[mi]||'').trim():(row&&idx.length===1?String(row[idx[0]]||'').trim():'');
+  S.rm={spec:oldModel,qty:1,disp:'none'};
+  S.ni={on:null,cat:S.group,form:'',desc:''};
+}
+const hxIn=(pm,spec)=>partsData.some(x=>String(x['제품규격']).trim()===String(spec||'').trim());
+function hxNewSpec(){
+  const S=HX.sw,idx=(hxGroups().g[S.group]||[]);
+  const mi=idx.find(i=>/모델/.test(equipHeaders[i]));
+  const v=mi!=null?S.vals[mi]:(idx.length===1?S.vals[idx[0]]:'');
+  return String(v||'').trim();
+}
+function hxSwDraw(){
+  const S=HX.sw;if(!S)return;
+  const grp=hxGroups(),idx=grp.g[S.group]||[],row=hxLookupRow(S.eq);
+  const eqOpts=equipVisibleRows().map(r=>hxEq(eqNo(r)));
+  const nspec=hxNewSpec(),nExists=nspec?hxIn(null,nspec):true;
+  if(S.ni.on==null)S.ni.on=!!nspec&&!nExists;
+  const changes=idx.map(i=>({h:equipHeaders[i],old:row?String(row[i]||'').trim():'',to:String(S.vals[i]||'').trim()})).filter(c=>c.to&&c.to!==c.old);
+  let h='<h3>교체 등록</h3><p class="hx-sub">설비 사양 · 설비 이력 · 재고를 한 번에 반영합니다.'+(S.title?'<br><small>할 일: '+E(S.title)+'</small>':'')+'</p>';
+  h+='<div class="hx-grid"><label>설비<select data-sw="eq">'+eqOpts.map(x=>'<option value="'+A(x)+'"'+(hxEq(S.eq)===x?' selected':'')+'>'+E(x)+'호기</option>').join('')+'</select></label>'
+   +'<label>바꾸는 부품<select data-sw="group">'+grp.ord.map(b=>'<option value="'+A(b)+'"'+(b===S.group?' selected':'')+'>'+E(b)+'</option>').join('')+'</select></label></div>';
+  h+='<div class="hx-sec"><b>사양 변경</b><div class="hx-rows">'+idx.map(i=>{const hd=equipHeaders[i],cur=row?String(row[i]||'').trim():'';
+    return '<div class="hx-r"><span class="hx-l">'+E(hd)+'</span><span class="hx-c">'+(cur?E(cur):'<i>(빈칸)</i>')+'</span><span class="hx-a">→</span><input data-sw="v" data-i="'+i+'" value="'+A(S.vals[i]||'')+'" placeholder="새 값" maxlength="80"></div>';}).join('')+'</div></div>';
+  h+='<div class="hx-sec"><b>떼어낸 부품</b><div class="hx-grid"><label>규격·모델<input data-sw="rmspec" value="'+A(S.rm.spec)+'" maxlength="60"></label><label>수량<input type="number" min="1" max="99" data-sw="rmqty" value="'+A(S.rm.qty)+'"></label></div>'
+   +'<label class="hx-full">처리<select data-sw="rmdisp">'+[['none','재고에는 반영 안 함 (기록만)'],['spare','예비품으로 보관 (재고 +)'],['repair','수리 보냄 (수리 대기)'],['scrap','폐기 (기록만)']].map(o=>'<option value="'+o[0]+'"'+(S.rm.disp===o[0]?' selected':'')+'>'+o[1]+'</option>').join('')+'</select></label>'
+   +((S.rm.disp==='spare'||S.rm.disp==='repair')&&S.rm.spec&&!hxIn(null,S.rm.spec)?'<p class="hx-warn">이 규격은 품목에 없어 재고에는 반영되지 않습니다.</p>':'')+'</div>';
+  h+='<div class="hx-sec"><b>새 제품 품목</b>'+(nspec?(nExists?'<p class="hx-ok">"'+E(nspec)+'"은(는) 이미 품목에 있습니다.</p>'
+    :'<label class="hx-chk"><input type="checkbox" data-sw="nion"'+(S.ni.on?' checked':'')+'> 새 품목으로 추가 <small>(재고 0으로 시작)</small></label>'
+     +(S.ni.on?'<div class="hx-grid"><label>제품구분<input data-sw="nicat" value="'+A(S.ni.cat)+'" maxlength="30"></label><label>제품형태<input data-sw="niform" value="'+A(S.ni.form)+'" maxlength="40" placeholder="선택"></label></div><label class="hx-full">설명<input data-sw="nidesc" value="'+A(S.ni.desc)+'" maxlength="200" placeholder="예: 테란 믹싱헤드"></label>':''))
+    :'<p class="hx-sub"><small>새 모델을 입력하면 품목 등록 여부를 묻습니다.</small></p>')+'</div>';
+  h+='<label class="hx-full">메모 <small>(선택)</small><input data-sw="note" value="'+A(S.note)+'" maxlength="160"></label>';
+  h+='<div class="hx-sum">'+(changes.length?'<b>저장되는 변경</b>'+changes.map(c=>'<div>'+E(c.h)+': '+(c.old?E(c.old):'(빈칸)')+' → <b>'+E(c.to)+'</b></div>').join(''):'<span class="hx-warn">바꿀 새 값을 입력하세요.</span>')+'</div>';
+  h+='<div class="hx-f"><button type="button" class="hc-btn ghost" data-sw="cancel">취소</button><button type="button" class="hc-btn" data-sw="save"'+(changes.length&&!S.busy?'':' disabled')+'>'+(S.busy?'저장 중…':'저장')+'</button></div>';
+  const keep=HX.m&&HX.m.querySelector('.hx-pop'),sc=keep?keep.scrollTop:0;
+  const ov=HX.m&&HX.m.classList.contains('hx-sw')?HX.m:null;
+  if(ov){ov.querySelector('.hx-pop').innerHTML=h;ov.querySelector('.hx-pop').scrollTop=sc;}
+  else{const o=hxModal(h,'wide');o.classList.add('hx-sw');}
+}
+async function hxSwSave(){
+  const S=HX.sw;if(!S||S.busy)return;
+  const grp=hxGroups(),idx=grp.g[S.group]||[],row=hxLookupRow(S.eq);
+  const changes=idx.map(i=>({h:equipHeaders[i],to:String(S.vals[i]||'').trim(),old:row?String(row[i]||'').trim():''})).filter(c=>c.to&&c.to!==c.old).map(c=>({h:c.h,to:c.to}));
+  if(!changes.length)return;
+  if(!await hxSrvOk()){toast('서버(Apps Script) v14 배포 후에 사용할 수 있습니다.');return;}
+  S.busy=true;hxSwDraw();
+  const nspec=hxNewSpec();
+  const payload={type:'equip_swap',eq:hxEq(S.eq),group:S.group,changes:changes,occ:(typeof nowLocal==='function'?nowLocal():'').replace('T',' '),memo:S.note||'',todoId:S.todoId||'',
+    removed:{spec:S.rm.spec,qty:Number(S.rm.qty)||1,disp:S.rm.disp},newItem:(S.ni.on&&nspec&&!hxIn(null,nspec))?{spec:nspec,cat:S.ni.cat||S.group,form:S.ni.form,desc:S.ni.desc}:null,worker:HC.worker};
+  let r;
+  try{r=await hcPost(payload);}catch(e){S.busy=false;hxSwDraw();toast('네트워크 오류입니다. 연결을 확인하고 다시 눌러 주세요. (같은 요청은 중복 저장되지 않습니다)');return;}
+  S.busy=false;
+  if(!r||!r.ok){hxSwDraw();toast(errMsg(r&&r.error)+(r&&r.col?' ('+r.col+')':''));return;}
+  const done=HX.sw;HX.sw=null;hxClose();
+  toast(r.dup?'이미 저장된 요청입니다. (중복 방지)':'교체를 등록했습니다. 사양·이력이 갱신되었습니다.');
+  if(r.warn&&r.warn.length)setTimeout(()=>toast(r.warn[0]),1800);
+  try{loadEquip();}catch(e){}try{loadHist(true);}catch(e){}try{loadTD(true);}catch(e){}try{loadPartsFromSheet().catch(()=>{});}catch(e){}
+  setTimeout(()=>hxFollow({eq:done.eq,title:hxEq(done.eq)+'호기 '+done.group+' 교체 후 확인'}),600);
+}
+/* ===== 3. 후속 할 일 만들기 (이력 → 할 일) ===== */
+function hxFollow(p){
+  if(!isMain()||!lvOk(2))return;
+  const pre=presetDue();
+  const ov=hxModal('<h3>후속 할 일이 필요한가요?</h3><p class="hx-sub"><small>예: 시운전 확인, 부품 발주, 재점검</small></p><label class="hx-full">할 일<input data-fu="title" maxlength="80" value="'+A(p.title||'')+'"></label>'
+    +'<div class="hx-chips">'+pre.map((x,i)=>'<button type="button" class="'+(i===1?'on':'')+'" data-fu="due" data-v="'+A(x[1])+'">'+E(x[0])+'</button>').join('')+'</div>'
+    +'<div class="hx-f"><button type="button" class="hc-btn ghost" data-fu="x">필요 없음</button><button type="button" class="hc-btn" data-fu="go">할 일 만들기</button></div>');
+  let due=pre[1][1];
+  ov.addEventListener('click',async e=>{
+    const b=e.target.closest('[data-fu]');if(!b){if(e.target===ov)hxClose();return;}
+    const a=b.dataset.fu;
+    if(a==='due'){due=b.dataset.v;ov.querySelectorAll('[data-fu=due]').forEach(x=>x.classList.toggle('on',x===b));return;}
+    if(a==='x'){hxClose();return;}
+    if(a==='go'){const title=(ov.querySelector('[data-fu=title]').value||'').trim();if(!title){toast('할 일을 입력하세요.');return;}
+      b.disabled=true;const ok=await tdDo({type:'todo_add',title:title,to:myId(),due:due,memo:'',eq:p.eq||''},'후속 할 일을 추가했습니다.');hxClose();if(!ok)return;}
+  });
+}
+/* ===== 4. 클릭·입력 연결 ===== */
+document.addEventListener('click',e=>{
+  const sw=e.target.closest&&e.target.closest('[data-sw]');
+  if(sw&&HX.sw&&HX.m&&HX.m.contains(sw)){
+    const a=sw.dataset.sw;
+    if(a==='cancel'){HX.sw=null;hxClose();}
+    else if(a==='save')hxSwSave();
+    return;
+  }
+  const b=e.target.closest&&e.target.closest('[data-hx]');if(!b||(HX.m&&HX.m.contains(b)))return;
+  const a=b.dataset.hx;
+  if(a==='sched'){const s=TD.sched.find(x=>x.id===b.dataset.id);if(!s)return;const txt=s.title+' '+(s.memo||'');
+    hxPrompt({eq:hxEq(s.eq)||eqFind(txt),title:s.title,memo:s.memo||'',date:s.start,swap:/교체|→|->/.test(txt)});}
+  else if(a==='eqswap'){hxSwOpen({eq:b.dataset.eq,title:'',memo:''});}
+});
+document.addEventListener('input',e=>{
+  const t=e.target;if(!HX.sw||!t.dataset||!t.dataset.sw)return;const S=HX.sw,a=t.dataset.sw;
+  if(a==='v'){S.vals[t.dataset.i]=t.value;hxSwDrawKeep();}
+  else if(a==='rmspec'){S.rm.spec=t.value;}else if(a==='rmqty'){S.rm.qty=t.value;}
+  else if(a==='nicat')S.ni.cat=t.value;else if(a==='niform')S.ni.form=t.value;else if(a==='nidesc')S.ni.desc=t.value;else if(a==='note')S.note=t.value;
+});
+document.addEventListener('change',e=>{
+  const t=e.target;if(!HX.sw||!t.dataset||!t.dataset.sw)return;const S=HX.sw,a=t.dataset.sw;
+  if(a==='eq'){S.eq=t.value;hxSwPrefill();S.ni.on=null;hxSwDraw();}
+  else if(a==='group'){S.group=t.value;hxSwPrefill();S.ni.on=null;hxSwDraw();}
+  else if(a==='rmdisp'){S.rm.disp=t.value;hxSwDraw();}
+  else if(a==='nion'){S.ni.on=t.checked;hxSwDraw();}
+  else if(a==='v'){S.ni.on=null;hxSwDraw();}
+});
+/* 입력 중에는 요약만 갱신 (입력칸 포커스 유지) */
+function hxSwDrawKeep(){
+  const S=HX.sw;if(!S||!HX.m)return;
+  const grp=hxGroups(),idx=grp.g[S.group]||[],row=hxLookupRow(S.eq);
+  const ch=idx.map(i=>({h:equipHeaders[i],old:row?String(row[i]||'').trim():'',to:String(S.vals[i]||'').trim()})).filter(c=>c.to&&c.to!==c.old);
+  const el=HX.m.querySelector('.hx-sum');if(el)el.innerHTML=ch.length?'<b>저장되는 변경</b>'+ch.map(c=>'<div>'+E(c.h)+': '+(c.old?E(c.old):'(빈칸)')+' → <b>'+E(c.to)+'</b></div>').join(''):'<span class="hx-warn">바꿀 새 값을 입력하세요.</span>';
+  const sv=HX.m.querySelector('[data-sw=save]');if(sv)sv.disabled=!ch.length||S.busy;
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&HX.m){HX.sw=null;hxClose();}});
+
+/* ===== 5. 설비 상세 화면: 최근 이력 + 예정 일정 + 남은 할 일 + 교체 등록 ===== */
+(function(){
+  if(typeof renderEquipDetail!=='function')return;
+  const _r=renderEquipDetail;
+  renderEquipDetail=function(no){
+    let h=_r.apply(this,arguments);
+    try{h+=hxEqCard(no);}catch(e){}
+    return h;
+  };
+})();
+function hxEqCard(no){
+  const k=hxEq(no),today=todayK();
+  if((!TD.ok||!HC.histOk)&&(!HX.eqT||Date.now()-HX.eqT>30000)){HX.eqT=Date.now();Promise.all([TD.ok?0:loadTD(),HC.histOk?0:loadHist()]).catch(()=>{}).then(()=>{if(typeof equipCur!=='undefined'&&equipCur&&typeof renderEquip==='function')renderEquip();});}
+  const hist=(HC.hist||[]).filter(r=>hxEq(r['설비'])===k&&String(r['상태']||'정상')!=='취소').sort((a,b)=>String(b['_occ']||b['발생일시']||'').localeCompare(String(a['_occ']||a['발생일시']||''))).slice(0,5);
+  const sch=(TD.sched||[]).filter(s=>hxEq(s.eq)===k&&s.end>=today).sort((a,b)=>a.start<b.start?-1:1).slice(0,4);
+  const tds=(TD.todo||[]).filter(t=>t.status==='진행'&&(hxEq(t.eq)===k||(!t.eq&&eqFind(t.title)===k))).slice(0,4);
+  const canSwap=isMain()&&lvOk(2);
+  let h='<div class="card hx-eqc"><h3>이 설비의 작업</h3>';
+  if(canSwap)h+='<button type="button" class="hc-btn sm" data-hx="eqswap" data-eq="'+A(k)+'">교체 등록 <small>사양·이력·재고 한 번에</small></button>';
+  h+='<div class="hx-eqs"><b>예정</b>'+((sch.length||tds.length)?sch.map(s=>'<div class="hx-eqr"><span class="d">'+E(mdw(s.start))+'</span><span>'+E(s.title)+' <small>'+E(s.cat)+'</small></span></div>').join('')+tds.map(t=>'<div class="hx-eqr"><span class="d">'+(t.due?E(mdw(t.due)):'기한 없음')+'</span><span>☐ '+E(t.title)+'</span></div>').join(''):'<div class="hx-eqr"><span class="empty-note">예정된 일정·할 일이 없습니다.</span></div>')+'</div>';
+  h+='<div class="hx-eqs"><b>최근 이력</b>'+(hist.length?hist.map(r=>'<div class="hx-eqr"><span class="d">'+E(String(r['_occ']||r['발생일시']||'').slice(5,10).replace('-','/'))+'</span><span>'+E([r['대분류'],r['중분류']].filter(Boolean).join(' · '))+' '+E(r['조치유형']||'')+(r['조치내용']?' <small>'+E(String(r['조치내용']).slice(0,50))+'</small>':'')+'</span></div>').join(''):'<div class="hx-eqr"><span class="empty-note">'+(HC.histOk?'등록된 이력이 없습니다.':'불러오는 중…')+'</span></div>')+'</div></div>';
+  return h;
+}
 init();
 setTimeout(loadItems,0);
 })();
