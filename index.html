@@ -1256,6 +1256,69 @@ body.dp-open{overflow:hidden}
 .hx-eqs{margin-top:8px}.hx-eqs>b{font-size:13px;color:#0B2A3D}
 .hx-eqr{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #EDF1F4;font-size:13.5px}.hx-eqr .d{flex:0 0 66px;color:#5B6877;font-size:12.5px}.hx-eqr small{color:#5B6877}
 @media (max-width:480px){.hx-grid{grid-template-columns:1fr}.hx-r{grid-template-columns:1fr;gap:3px}.hx-a{display:none}.hx-c::before{content:'현재: ';color:#99A5B0}}
+/* ===== v79 ===== */
+/* 앱 바깥(body)에 붙는 창은 .hc 변수를 못 받아 버튼이 흰 글씨로 보이지 않았음 → 변수 직접 지정 */
+.hx-ov,.emq-ask,.cl-ov{--ink:#0B2A3D;--muted:#566B7B;--line:#D6E3EA;--accent:#0E7C9A;--tint:#E6F1F5;--warm:#D9731A;--warm-t:#FDF0E2;--ok:#23805F;--ok-t:#E2F3EC;--bad:#BF3A2C;--bad-t:#FBE9E6;--sf:#fff;--bg:#F4F8FA}
+.hx-col .hc-btn.ghost,.emq-ask-f .hc-btn.ghost{background:#fff;color:var(--accent)}
+/* 업데이트 내용 */
+.cl-link{border:0;background:none;color:#0E7C9A;font:inherit;font-size:12px;text-decoration:underline;cursor:pointer;margin-left:8px;padding:4px 2px;min-height:28px}
+.cl-link i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#D9731A;margin-left:4px;vertical-align:middle}
+.cl-ov{position:fixed;inset:0;z-index:270;background:rgba(10,24,36,.55);display:flex;align-items:center;justify-content:center;padding:12px}
+.cl-pop{background:#fff;border-radius:14px;max-width:520px;width:100%;max-height:88vh;overflow:auto;padding:16px 16px 12px;box-shadow:0 12px 40px rgba(0,0,0,.3);color:#0B2A3D}
+.cl-pop h3{margin:0 0 4px;font-size:17px}.cl-pop h4{margin:14px 0 4px;font-size:14px;color:#0E7C9A}.cl-pop h4 small{color:#566B7B;font-weight:400;margin-left:6px}
+.cl-pop ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.65}.cl-pop li b{font-weight:600}
+.cl-f{margin-top:12px}.cl-f .hc-btn{width:100%}
+/* 층→호기 칩 */
+.ep{display:flex;flex-direction:column;gap:6px}
+.ep-fl,.ep-no,.ep-ch{display:flex;gap:6px;flex-wrap:wrap}
+.ep button,.kc button,.ac button{border:1px solid #C9D3DC;background:#fff;border-radius:999px;padding:6px 12px;font:inherit;font-size:13.5px;color:#0B2A3D;min-height:38px;cursor:pointer}
+.ep button.on,.kc button.on,.ac button.on{background:#0E7C9A;color:#fff;border-color:#0E7C9A}
+.ep-no button{min-width:52px;border-radius:10px}
+.ep-sel{font-size:12.5px;color:#566B7B}.ep-sel b{color:#0B2A3D}
+.kc{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.kc button{border-radius:10px;display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.25;padding:8px 4px}.kc button small{font-size:11px;opacity:.85}
+.k79-f{display:flex;flex-direction:column;gap:10px}.k79-f .lb{font-size:12.5px;color:#4A5967;font-weight:600;margin-bottom:4px;display:block}
+.k79-f input[type=text],.k79-f input[type=date],.k79-f select,.k79-f textarea{font:inherit;font-size:14.5px;padding:10px;border:1px solid #C9D3DC;border-radius:8px;width:100%;background:#fff;color:#0B2A3D;min-width:0}
+.k79-two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.k79-auto{font-size:12px;color:#566B7B}
+.eqfix{font-size:12.5px;background:#FFF2D8;color:#8A5A00;border-radius:8px;padding:8px 10px}
+.eqfix button{margin:4px 4px 0 0;border:1px solid #D9731A;background:#fff;color:#8A5A00;border-radius:8px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer;min-height:34px}
+.td-edit{margin-left:4px}
+/* 일괄 정리 */
+.bf-r{display:grid;grid-template-columns:22px minmax(0,1fr) 150px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid #EDF1F4;font-size:13px}
+.bf-r input[type=checkbox]{width:18px;height:18px}.bf-r small{color:#566B7B;display:block}
+.bf-r select{font:inherit;font-size:13px;padding:6px;border:1px solid #C9D3DC;border-radius:8px;min-width:0}
+.bf-r.bad select{border-color:#D9731A}
+@media (max-width:520px){.bf-r{grid-template-columns:22px minmax(0,1fr)}.bf-r select{grid-column:2}}
+/* 현장 사진 */
+.ph-box{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.ph-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.ph-th{position:relative;width:64px;height:64px;border-radius:8px;overflow:hidden;border:1px solid #D6E3EA;background:#EEF3F6;padding:0;cursor:pointer}
+.ph-th img{width:100%;height:100%;object-fit:cover;display:block}
+.ph-th.ld::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#EEF3F6,#fff,#EEF3F6);background-size:200% 100%;animation:phsh 1s linear infinite}
+@keyframes phsh{to{background-position:-200% 0}}
+.ph-add{border:1.5px dashed #0E7C9A;background:#fff;color:#0E7C9A;border-radius:10px;min-height:44px;padding:0 14px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.ph-add[disabled]{opacity:.5}
+.ph-note{font-size:12px;color:#566B7B}
+.ph-big{max-width:100%;max-height:70vh;display:block;margin:6px auto;border-radius:8px}
+/* 품목 미등록 */
+.ur-r{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #EDF1F4;font-size:13.5px}.ur-r>div{flex:1;min-width:0}.ur-r small{display:block;color:#566B7B;font-size:12px}
+.sp-r{display:grid;grid-template-columns:70px 100px minmax(0,1fr);gap:8px;padding:6px 0;border-bottom:1px solid #EDF1F4;font-size:13px}.sp-r .d{color:#566B7B;font-size:12.5px}
+@media (max-width:480px){.sp-r{grid-template-columns:62px minmax(0,1fr)}.sp-r b{grid-column:2}}
+/* 엑셀 내려받기 */
+.xl-box{display:flex;flex-direction:column;gap:12px}
+.xl-box .lb{font-size:12.5px;color:#4A5967;font-weight:700;margin-bottom:6px;display:block}
+.xl-ch{display:flex;gap:6px;flex-wrap:wrap}.xl-ch button{border:1px solid #C9D3DC;background:#fff;border-radius:999px;padding:6px 12px;font:inherit;font-size:13.5px;min-height:38px;color:#0B2A3D;cursor:pointer}.xl-ch button.on{background:#0E7C9A;color:#fff;border-color:#0E7C9A}
+.xl-eq{display:flex;gap:8px;align-items:flex-start}.xl-eq>span{flex:0 0 34px;font-size:12.5px;color:#566B7B;padding-top:9px}
+.ph-box{margin-top:10px}.ph-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.ph-th{position:relative;width:76px;height:76px;border-radius:10px;overflow:hidden;background:#eef2f4;border:1px solid var(--line,#d5dde2);display:flex;align-items:center;justify-content:center}
+.ph-th img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.ph-x{position:absolute;top:2px;right:2px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:15px;line-height:1;cursor:pointer}
+.ph-add{width:76px;height:76px;border-radius:10px;border:1.5px dashed var(--accent,#0f7690);color:var(--accent,#0f7690);display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;font-size:20px}
+.ph-add small{display:block;font-size:11px}
+.ph-view{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.85)!important}.ph-view img{max-width:94vw;max-height:80vh;border-radius:8px}
+@media (max-width:899px){#sideXl{display:none!important}}
+.hx-pop.xl-pop{max-height:88vh;overflow:auto;max-width:560px}
+.xl-pop .hc-in{width:100%}
 </style>
 </head>
 <body>
@@ -1321,7 +1384,7 @@ function busy(d,type){
 }
 /* v78: 저장 요청에 요청 번호(rid)를 붙여 더블탭·재시도로 두 번 저장되지 않게 함.
    같은 내용의 요청이 3분 안에 다시 가면 같은 번호를 재사용 → 서버가 이미 처리한 요청은 다시 처리하지 않음 */
-const IDEMP={hist_add:1,stock_in:1,stock_out:1,usage:1,repair_out:1,todo_add:1,equip_swap:1};
+const IDEMP={photo_add:1,item_register:1,todo_update:1,hist_add:1,stock_in:1,stock_out:1,usage:1,repair_out:1,todo_add:1,equip_swap:1};
 const RIDS={};
 function ridFor(b){
   const k=Object.keys(b).filter(x=>x!=='token'&&x!=='rid'&&x!=='force'&&x!=='worker').sort().map(x=>x+'='+JSON.stringify(b[x])).join('&'),now=Date.now();
@@ -1510,7 +1573,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v78</span></div>
+    <div class="sb-foot"><span id="verLabel">v79</span></div>
   </nav>
 
   <div class="content">
@@ -1718,34 +1781,6 @@ start();
   <div class="panel" id="panel-settings">
     <h1 class="page-title" data-i18n="tabSettings">설정</h1>
     <div class="set-grid">
-      <section class="card">
-        <h3 data-i18n="setLangH">언어</h3>
-        <div class="set-row">
-          <button type="button" class="lang-btn active" data-lang="ko">한국어</button>
-          <button type="button" class="lang-btn" data-lang="en">English</button>
-        </div>
-        <div class="card-sub" style="margin:10px 0 0" data-i18n="setLangNote">모든 메뉴와 안내 문구가 선택한 언어로 바뀝니다</div>
-      </section>
-
-      <section class="card">
-        <h3 data-i18n="setFsH">글자 크기</h3>
-        <div class="set-row" id="fsRow">
-          <button type="button" class="fs-btn" data-fs="0" data-i18n="fs0">작게</button>
-          <button type="button" class="fs-btn" data-fs="1" data-i18n="fs1">보통</button>
-          <button type="button" class="fs-btn" data-fs="2" data-i18n="fs2">크게</button>
-          <button type="button" class="fs-btn" data-fs="3" data-i18n="fs3">아주 크게</button>
-          <button type="button" class="fs-btn" data-fs="4" data-i18n="fs4">최대</button>
-        </div>
-        <div class="card-sub" style="margin:10px 0 0" data-i18n="setFsNote">글자가 커지면 칸도 같이 커지고, 글자는 칸 밖으로 넘치지 않고 줄바꿈됩니다. 이 기기에 저장됩니다.</div>
-        <div class="preview-box">
-          <div class="pv-l" data-i18n="setPreview">미리보기</div>
-          <div class="lrow" style="border:1px solid var(--border);border-radius:8px;padding:9px 12px;background:#fff">
-            <div class="lrow-main"><div class="lrow-t">DHV0812, CONE (1.0)</div><div class="lrow-s" data-i18n="setSample">믹싱헤드 · 재고 부족, 수리중 1건</div></div>
-            <div class="lrow-n">1<small> / 3</small></div>
-          </div>
-        </div>
-      </section>
-
       <section class="card wide">
         <h3 data-i18n="fbH">개선 의견 보내기</h3>
         <div class="card-sub" data-i18n="fbSub">불편한 점, 추가했으면 하는 기능을 자유롭게 적어 주세요. 보낸 내용은 담당자가 시트에서 확인합니다.</div>
@@ -1764,7 +1799,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v78</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v79</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8735,12 +8770,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v78', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v79', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v78';
+const PAGE_CACHE = 'sulbi-jindan-v79';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -9017,7 +9052,7 @@ function crumbs(){const W=HC.W;const c=[];if(W.p[0])c.push('<button type="button
 function partsBlock(){
   const W=HC.W;
   return '<div class="hc-picked">'+W.parts.map((p,i)=>'<div class="hc-pp"><span>'+E(p.name)+(p.spec&&p.spec!==p.name?' <small style="color:var(--muted)">'+E(p.spec)+'</small>':'')+'</span><button type="button" data-pm="'+i+'" aria-label="수량 줄이기">−</button><b>'+p.qty+'</b><button type="button" data-pp="'+i+'" aria-label="수량 늘리기">+</button></div>').join('')+'</div>'
-    +(HC.pk?'<div class="hc-pk"><div class="hc-pkh"><input id="hcPq" class="hc-in" type="search" placeholder="부품 검색 (규격, 이름)" aria-label="부품 검색"><button type="button" class="hc-btn ghost sm" data-h="closepk">닫기</button></div><div id="hcPl" class="hc-pl"></div><div style="padding:8px;display:flex;gap:6px"><input id="hcFree" class="hc-in" maxlength="60" placeholder="목록에 없는 부품 이름 (재고 차감 없음)"><button type="button" class="hc-btn ghost sm" data-h="addfree" style="flex:none">추가</button></div></div>'
+    +(HC.pk?'<div class="hc-pk"><div class="hc-pkh"><input id="hcPq" class="hc-in" type="search" placeholder="부품 검색 (규격, 이름)" aria-label="부품 검색"><button type="button" class="hc-btn ghost sm" data-h="closepk">닫기</button></div><div id="hcPl" class="hc-pl"></div><div style="padding:8px;display:flex;gap:6px"><input id="hcFree" class="hc-in" maxlength="60" placeholder="목록에 없는 부품 (재고 차감 없음)"><button type="button" class="hc-btn ghost sm" data-h="addfree" style="flex:none">제조사·모델 입력</button></div></div>'
       :'<button type="button" class="hc-btn ghost" data-h="openpk" style="width:100%">+ 부품 추가</button>');
 }
 /* ---------- 부위/부품 검색 (대분류 선택 화면) ---------- */
@@ -9319,7 +9354,7 @@ function recordsHtml(){
     +(adm&&pn?'<div class="hc-card" style="border-color:#EBCB9E;background:#FFF9F0"><h3 style="margin:0 0 6px">확인 대기 '+pn+'건</h3><p class="hc-muted" style="margin:0 0 8px">점검자가 저장한 점검을 확인하면 승인됩니다. B·C 판정이 있는 건은 열어서 내용을 보고 개별 확인하세요.</p>'+(bulk.length?'<button type="button" class="cf-btn" data-cf="'+A(bulk.slice(0,80).join(','))+'">이상 없는 '+bulk.length+'건 모두 확인</button>':'')+'</div>':'');
   return head+(ids.length?ids.slice(0,100).map(id=>{const rs=g[id],h=rs[0];const cnt=x=>rs.filter(r=>r['결과']===x).length;
     return '<details class="hc-item"><summary class="cf-s" style="cursor:pointer"><div class="cf-l"><span class="hc-eq">'+E(h['설비'])+'</span> <b>'+E(h['종류'])+'점검</b> <span class="hc-dt" style="margin-left:8px">'+E(h['일시'])+'</span><div class="hc-tags"><span class="hc-tag">'+rs.length+'개 항목</span>'+(cnt('A')?'<span class="hc-tag k">A '+cnt('A')+'</span>':'')+(cnt('B')?'<span class="hc-tag w">B '+cnt('B')+'</span>':'')+(cnt('C')?'<span class="hc-tag r">C '+cnt('C')+'</span>':'')+'<span class="hc-tag">'+E(h['작업자'])+'</span>'+(cfOf(h)==='대기'?'<span class="hc-tag w">확인 대기</span>':h['확인자']?'<span class="hc-tag k">확인 '+E(h['확인자'])+(h['확인자']===h['작업자']?' (본인)':'')+'</span>':'')+'</div></div>'+(adm&&cfOf(h)==='대기'?'<button type="button" class="cf-btn" data-cf="'+A(id)+'">확인</button>':'')+'</summary>'
-      +rs.map(r=>'<div class="hc-br" style="grid-template-columns:44px 1fr auto"><span class="hc-muted">'+E(r['항목번호'])+'</span><span style="font-size:13.5px">'+E(r['항목'])+(r['메모']?'<br><small class="hc-muted">'+E(r['메모'])+'</small>':'')+(r['측정값1']!==''||r['측정값2']!==''?'<br><small class="hc-muted">'+(r['측정값1']!==''?r['측정값1']+'℃ ':'')+(r['측정값2']!==''?r['측정값2']+'dB':'')+'</small>':'')+'</span><b>'+E(r['결과'])+(r['조치시간(분)']!==''&&r['조치시간(분)']!=null?' <small class="hc-muted">'+fmtMin(r['조치시간(분)'])+'</small>':'')+'</b></div>').join('')
+      +rs.map(r=>'<div class="hc-br" style="grid-template-columns:44px 1fr auto"><span class="hc-muted">'+E(r['항목번호'])+'</span><span style="font-size:13.5px">'+E(r['항목'])+(r['메모']?'<br><small class="hc-muted">'+E(r['메모'])+'</small>':'')+(r['결과']==='B'||r['결과']==='C'?'<div data-phload="'+A(id)+'" data-item="'+A(r['항목번호'])+'" class="ph-box"></div>':'')+(r['측정값1']!==''||r['측정값2']!==''?'<br><small class="hc-muted">'+(r['측정값1']!==''?r['측정값1']+'℃ ':'')+(r['측정값2']!==''?r['측정값2']+'dB':'')+'</small>':'')+'</span><b>'+E(r['결과'])+(r['조치시간(분)']!==''&&r['조치시간(분)']!=null?' <small class="hc-muted">'+fmtMin(r['조치시간(분)'])+'</small>':'')+'</b></div>').join('')
       +'<div class="hc-act">'+(adm&&cfOf(h)==='확인'&&h['확인자']?'<button type="button" class="hc-btn ghost sm" data-cfu="'+A(id)+'">확인 취소</button> ':'')+'<button type="button" class="hc-btn bad sm" data-cc="'+A(id)+'">이 점검 취소</button></div></details>';}).join(''):'<div class="hc-empty">점검 기록이 없습니다.</div>');
 }
 
@@ -11064,7 +11099,18 @@ setTimeout(()=>{try{loadHitems();loadXtabs();}catch(e){}},60);
 })();
 /* ===== v78: 할 일·일정 ↔ 설비 이력 연계 / 교체 등록(사양·재고·품목 한 번에) / 설비 화면 통합 ===== */
 const HX={sw:null,srv:0,m:null};
-const eqFind=txt=>{const m=String(txt||'').match(/(\d{1,2})\s*(?:F|층)\s*[-_ ]?\s*(\d{1,2})/i);if(!m)return '';const k=m[1]+'F-'+m[2];return EQ.indexOf(k)>=0?k:'';};
+/* v79: 표기 보정 — 2F-2, 2층2호기, 2-2호기, 2 2호기 → 2F-2 / 층 없는 "3호기"는 후보를 돌려줌(8~11호기는 1층뿐이라 확정) */
+function eqCands(txt){
+  txt=String(txt||'');
+  let m=txt.match(/(\d{1,2})\s*(?:F|층)\s*[-_ ]?\s*(\d{1,2})/i);
+  if(m){const k=m[1]+'F-'+m[2];return EQ.indexOf(k)>=0?[k]:[];}
+  m=txt.match(/(?<![\d\/.])([12])\s*-\s*(\d{1,2})(?![\d월일\/.])/);
+  if(m){const k=m[1]+'F-'+m[2];return EQ.indexOf(k)>=0?[k]:[];}
+  m=txt.match(/(?<![\d\/.-])(\d{1,2})\s*호기/);
+  if(m){return ['1F-'+m[1],'2F-'+m[1]].filter(k=>EQ.indexOf(k)>=0);}
+  return [];
+}
+const eqFind=txt=>{const c=eqCands(txt);return c.length===1?c[0]:'';};
 const hxEq=no=>String(no||'').replace(/호기/g,'').trim();
 /* 서버(Apps Script)가 v14 이상인지 확인: 아니면 교체 등록은 막음 (구버전은 모르는 요청을 진단이력에 잘못 쌓을 수 있음) */
 async function hxSrvOk(){
@@ -11276,6 +11322,1000 @@ function hxEqCard(no){
   h+='<div class="hx-eqs"><b>최근 이력</b>'+(hist.length?hist.map(r=>'<div class="hx-eqr"><span class="d">'+E(String(r['_occ']||r['발생일시']||'').slice(5,10).replace('-','/'))+'</span><span>'+E([r['대분류'],r['중분류']].filter(Boolean).join(' · '))+' '+E(r['조치유형']||'')+(r['조치내용']?' <small>'+E(String(r['조치내용']).slice(0,50))+'</small>':'')+'</span></div>').join(''):'<div class="hx-eqr"><span class="empty-note">'+(HC.histOk?'등록된 이력이 없습니다.':'불러오는 중…')+'</span></div>')+'</div></div>';
   return h;
 }
+/* ===== v79 (1): 업데이트 내용 · 표기 보정 · 부위 자동 인식 ===== */
+const CHANGELOG=[
+ {v:'v79',d:'2026-11-18',items:[
+  '<b>할 일·일정 입력 개선</b> · 종류(설비 작업 / 회의·교육·출장 / 행정)를 먼저 고르고, 설비는 층→호기 버튼으로 선택합니다. 설비 작업은 작업·부위를 고르면 제목이 자동으로 만들어집니다.',
+  '<b>표기 자동 보정</b> · 2-2호기, 2층2호기처럼 적어도 2F-2호기로 인식합니다. 층이 불명확하면 층을 묻습니다.',
+  '<b>할 일 수정 버튼</b> · 제목·기한·담당자·설비·작업·부위·메모를 고칠 수 있습니다. 수정 내용은 기록으로 남습니다.',
+  '<b>기존 할 일·일정 설비 일괄 정리</b> (관리자) · 설비가 비어 있는 항목을 한 번에 채웁니다.',
+  '<b>점검 B·C 판정 현장 사진</b> · B는 선택, C는 사진이 있어야 저장됩니다. 카메라로 바로 찍어 올리고, 점검 기록과 이력에서 다시 볼 수 있습니다.',
+  '<b>이력 등록</b> · 할 일 제목에서 부위(예: 믹싱헤드)를 인식해 대분류 단계를 건너뜁니다. 홈 검색창에서 한 줄로 이력을 빠르게 입력할 수 있습니다.',
+  '<b>목록에 없는 부품</b> · 제조사와 모델명을 입력해 남기고, 자주 쓰이는 미등록 부품은 모아서 보여줍니다. 관리자는 "품목으로 등록"으로 정식 품목에 올립니다.',
+  '<b>설비 상세</b> · 설비 사양이 바뀐 이력(이전 값 → 새 값)을 볼 수 있습니다.',
+  '<b>엑셀 내려받기 6종</b> · 점검표(주간·월간·연간), 설비 이력, 설비 사양, 재고현황. 점검표와 사양은 설비를 여러 대 골라 한 파일로 받습니다. (사이드 메뉴 › 점검·이력 › 엑셀 내려받기)',
+  '<b>채팅 질문</b> · "몇 대", "몇 개" 같은 수량 질문에 수량으로 답하고, "말고" 같은 부정 표현도 이해합니다.',
+  '<b>수정</b> · 할 일 완료 후 "이력으로 남길까요?" 창의 버튼이 보이지 않던 문제를 고쳤습니다. 설정에서 언어·글자 크기 항목을 없앴습니다.'
+ ]},
+ {v:'v78',d:'2026-11-17',items:[
+  '할 일·일정과 설비 이력 연결 (완료하면 이력으로 남기기)',
+  '교체 등록 · 설비 사양, 품목, 이력을 한 번에 변경',
+  '중복 등록 방지 · 최근 같은 이력이 있으면 확인 창이 뜹니다.',
+  '설비 상세에 "이 설비의 작업" 카드 추가'
+ ]},
+ {v:'v77',d:'2026-11-16',items:[
+  '달력 일·주·월 보기, 날짜 선택 화면 개선',
+  '홈 검색창 빠른 입력 (할 일·일정·근태·부품 입출고)'
+ ]}
+];
+const CL_KEY='emq-cl-seen';
+function clVer(){const e=document.getElementById('verLabel');return e?String(e.textContent||'').trim():'';}
+function clSeen(){try{return localStorage.getItem(CL_KEY)||'';}catch(e){return '';}}
+function clOpen(){
+  const cur=clVer();try{localStorage.setItem(CL_KEY,cur);}catch(e){}
+  document.querySelectorAll('.cl-link i').forEach(i=>i.remove());
+  const ov=document.createElement('div');ov.className='cl-ov';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');
+  ov.innerHTML='<div class="cl-pop"><h3>업데이트 내용</h3>'+CHANGELOG.map(c=>'<h4>'+E(c.v)+'<small>'+E(c.d)+'</small></h4><ul>'+c.items.map(x=>'<li>'+x+'</li>').join('')+'</ul>').join('')
+   +'<div class="cl-f"><button type="button" class="hc-btn" data-cl="x">닫기</button></div></div>';
+  ov.addEventListener('click',e=>{if(e.target===ov||e.target.closest('[data-cl=x]'))ov.remove();});
+  document.addEventListener('keydown',function k(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',k);}});
+  document.body.appendChild(ov);
+}
+function clMount(){
+  ['verLabel','verLabel2'].forEach(id=>{const e=document.getElementById(id);if(!e||e.parentNode.querySelector('.cl-link'))return;
+    const b=document.createElement('button');b.type='button';b.className='cl-link';b.dataset.clopen='1';
+    b.innerHTML='업데이트 내용'+(clSeen()!==clVer()?'<i aria-label="새 소식"></i>':'');e.insertAdjacentElement('afterend',b);});
+}
+document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('[data-clopen]'))clOpen();});
+setTimeout(clMount,0);setTimeout(clMount,1500);
+
+/* 제목 속 호기 표기를 2F-2호기 형태로 고침 */
+function eqRewrite(txt){
+  txt=String(txt||'');
+  const c=eqCands(txt);if(c.length!==1)return txt;
+  const k=c[0],canon=k+'호기';
+  const pats=[/(\d{1,2})\s*(?:F|층)\s*[-_ ]?\s*(\d{1,2})(?:\s*호기)?/i,/(?<![\d\/.])([12])\s*-\s*(\d{1,2})(?![\d월일\/.])(?:\s*호기)?/,/(?<![\d\/.-])(\d{1,2})\s*호기/];
+  for(const p of pats){const m=txt.match(p);if(m)return txt.replace(p,canon);}
+  return txt;
+}
+
+/* 제목에서 부위(대분류›중분류›소분류) 하나로 좁혀 인식 — 애매하면 null */
+function partGuess(text){
+  const t=csNorm(text);if(!t)return null;const hits=[];
+  Object.keys(HC_TREE).forEach(a=>Object.keys(HC_TREE[a]).forEach(b=>{
+    const subs=subsOf(a,b);
+    subs.forEach(c=>{const n=csNorm(c);if(n.length>=2&&t.indexOf(n)>=0)hits.push({p:[a,b,c],n:n.length});});
+    const nb=csNorm(b);if(nb.length>=2&&t.indexOf(nb)>=0)hits.push({p:[a,b,''],n:nb.length+(subs.length?0:1)});
+  }));
+  if(!hits.length)return null;
+  hits.sort((x,y)=>y.n-x.n);
+  const top=hits.filter(h=>h.n===hits[0].n);
+  const keys={};top.forEach(h=>{keys[h.p.join('|')]=h;});
+  const ks=Object.keys(keys);
+  if(ks.length===1)return keys[ks[0]].p;
+  /* 같은 중분류 안에서 소분류가 여럿이면 중분류까지만 */
+  const same=top.every(h=>h.p[0]===top[0].p[0]&&h.p[1]===top[0].p[1]);
+  return same?[top[0].p[0],top[0].p[1],'']:null;
+}
+/* 이력 등록 화면을 채워서 열기(덮어쓰기): 부위가 인식되면 대분류·부위 단계를 건너뜀 */
+function hxHist(p){
+  HC.tabH='new';newW({g:gOf(p.eq),eq:p.eq});const W=HC.W;
+  W.todoId=p.todoId||'';W.actText=p.actText||p.title||'';
+  const act=p.act||(/교체/.test(p.title||'')?'교체':'');if(act&&ACT.indexOf(act)>=0)W.act=act;
+  if(p.memo)W.memo=p.memo;
+  if(p.date){const n=new Date(),hh=('0'+n.getHours()).slice(-2)+':'+('0'+n.getMinutes()).slice(-2);W.occ=p.date+'T'+hh;}
+  let pp=null;
+  if(p.part){const parts=String(p.part).split('›').map(x=>x.trim());if(parts[0]&&HC_TREE[parts[0]])pp=[parts[0],parts[1]||'',parts[2]||''];}
+  if(!pp)pp=partGuess((p.title||'')+' '+(p.memo||''));
+  if(pp&&W.g!==DUTY){W.p=pp[2]?[pp[0],pp[1],pp[2]]:[pp[0],pp[1],''];if(!subsOf(pp[0],pp[1]).length)W.p=[pp[0],pp[1],''];W.step=3;W.partAuto=true;}
+  showPanel('hist');
+}
+const _stepBody79=stepBody;
+stepBody=function(){
+  const W=HC.W;let h=_stepBody79();
+  if(W&&W.partAuto&&W.step===3&&W.p[0]){
+    h=h.replace(/(<h2 class="hc-q">.*?<\/h2>(?:<p class="hc-hint">.*?<\/p>)?)/,'$1<div class="hc-auto">부위: <b>'+E(pstr(W.p))+'</b> (제목에서 인식했습니다) <button type="button" class="hc-btn ghost sm" data-h2="repart" style="margin-left:6px">바꾸기</button></div>');
+  }
+  return h;
+};
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-h2=repart]');if(!b||!HC.W)return;
+  e.stopPropagation();HC.W.p=[];HC.W.partAuto=false;HC.W.step=2;refreshHist();},true);
+/* ===== v79 (7): 점검 B·C 판정 현장 사진 (B 선택, C 필수) ===== */
+const PH_MAX=6;
+function phCompress(file){return new Promise((res,rej)=>{
+  const fr=new FileReader();
+  fr.onerror=()=>rej(new Error('read'));
+  fr.onload=()=>{const im=new Image();im.onerror=()=>rej(new Error('img'));
+    im.onload=()=>{let w=im.width,h=im.height;const m=1280;if(Math.max(w,h)>m){const s=m/Math.max(w,h);w=Math.round(w*s);h=Math.round(h*s);}
+      const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);
+      let q=0.7,d=c.toDataURL('image/jpeg',q);while(d.length>800000&&q>0.35){q-=0.1;d=c.toDataURL('image/jpeg',q);}
+      d.length>880000?rej(new Error('big')):res(d);};
+    im.src=fr.result;};
+  fr.readAsDataURL(file);});}
+function phBlock(it,i){
+  const ph=it.photos||[];
+  return '<div class="ph-box"><span class="hc-lab">현장 사진 '+(it.res==='C'?'<b style="color:var(--bad)">(필수)</b>':'<small>(선택)</small>')+' <small>최대 '+PH_MAX+'장</small></span><div class="ph-row">'
+   +ph.map((d,k)=>'<div class="ph-th"><img src="'+d+'" alt="현장 사진 '+(k+1)+'"><button type="button" class="ph-x" data-phx="'+i+'|'+k+'" aria-label="사진 삭제">×</button></div>').join('')
+   +(ph.length<PH_MAX?'<label class="ph-add"><input type="file" accept="image/*" capture="environment" data-phin="'+i+'" hidden><span>📷<small>사진 추가</small></span></label>':'')
+   +'</div></div>';
+}
+const _ic79=itemCard;
+itemCard=function(it,i){
+  let h=_ic79(it,i);
+  if(it.def.mode==='judge'&&(it.res==='C'||it.res==='B')){const k=h.lastIndexOf('</div>');h=h.slice(0,k)+phBlock(it,i)+h.slice(k);}
+  return h;
+};
+document.addEventListener('change',async e=>{
+  const t=e.target;if(!t.dataset||t.dataset.phin===undefined)return;
+  const i=Number(t.dataset.phin),it=HC.K&&HC.K.items[i];if(!it)return;
+  const f=t.files&&t.files[0];t.value='';if(!f)return;
+  it.photos=it.photos||[];if(it.photos.length>=PH_MAX){toast(ERR.photo_limit);return;}
+  try{it.photos.push(await phCompress(f));}catch(x){toast('사진을 읽지 못했습니다. 다시 찍어 주세요.');return;}
+  refreshChk(true);
+},true);
+document.addEventListener('click',e=>{
+  const t=e.target.closest&&e.target.closest('[data-phx]');if(!t)return;
+  e.stopPropagation();const [i,k]=t.dataset.phx.split('|').map(Number);
+  const it=HC.K&&HC.K.items[i];if(it&&it.photos){it.photos.splice(k,1);refreshChk(true);}
+},true);
+/* 판정을 A로 바꾸면 사진은 비움 */
+document.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('[data-ck]');if(!t||!HC.K)return;const [i,r]=t.dataset.ck.split('|');const it=HC.K.items[Number(i)];if(it&&r==='A'&&it.photos&&it.photos.length)it.photos=[];},true);
+/* 점검 저장 직후 사진 업로드(점검ID가 나온 뒤) */
+const _hp79=hcPost;
+hcPost=async function(p){
+  const photos=[];
+  if(p&&p.type==='check_add'&&HC.K)HC.K.items.forEach(it=>{if(it.photos&&it.photos.length&&answered(it))it.photos.forEach(d=>photos.push({item:it.def.id,d:d}));});
+  const r=await _hp79(p);
+  if(photos.length&&r&&r.ok&&r.id)phUploadAll(r.id,photos);
+  return r;
+};
+async function phUploadAll(link,list){
+  if(!(await srvAtLeast(15))){toast('사진은 서버(Apps Script) v15 업데이트 후 올릴 수 있습니다. 점검 기록은 저장되었습니다.');return;}
+  let ok=0,fail=0;
+  for(const x of list){
+    const m=/^data:(image\/\w+);base64,(.*)$/.exec(x.d);if(!m){fail++;continue;}
+    try{const r=await hcPost({type:'photo_add',kind:'chk',link:link,item:x.item,mime:m[1],b64:m[2]});if(r&&r.ok)ok++;else{fail++;if(r&&r.error==='photo_limit')break;}}catch(e){fail++;}
+  }
+  PH.cache={};
+  toast(fail?'사진 '+ok+'장 업로드, '+fail+'장 실패했습니다.':'사진 '+ok+'장을 올렸습니다.');
+}
+/* ===== 저장된 사진 보기(지연 로딩) ===== */
+const PH={cache:{},img:{}};
+async function phList(link){
+  if(PH.cache[link])return PH.cache[link];
+  const d=await hcGet('photos','&links='+encodeURIComponent(link));
+  return PH.cache[link]=(d&&d.ok?d.rows:[]);
+}
+async function phImg(id){
+  if(PH.img[id])return PH.img[id];
+  const d=await hcGet('photo','&id='+encodeURIComponent(id));
+  if(!d||!d.ok)throw new Error('x');
+  return PH.img[id]='data:'+(d.mime||'image/jpeg')+';base64,'+d.b64;
+}
+function phView(src){
+  const o=document.createElement('div');o.className='hx-ov ph-view';o.innerHTML='<img src="'+src+'" alt="현장 사진 확대"><button type="button" class="hc-btn" style="margin-top:10px">닫기</button>';
+  o.addEventListener('click',()=>o.remove());document.body.appendChild(o);
+}
+async function phFill(el){
+  if(el.dataset.done)return;const dt=el.closest('details');if(dt&&!dt.open)return;el.dataset.done='1';
+  const link=el.dataset.phload,item=el.dataset.item||'';
+  el.innerHTML='<small class="hc-muted">사진 확인 중...</small>';
+  if(HX.srv&&HX.srv<15){el.innerHTML='';return;}
+  let rows;try{rows=(await phList(link)).filter(r=>!item||r.item===item);}catch(e){el.innerHTML='';return;}
+  if(!rows.length){el.innerHTML='';return;}
+  el.innerHTML='<span class="hc-lab">현장 사진 '+rows.length+'장</span><div class="ph-row">'+rows.map(r=>'<div class="ph-th" data-phid="'+A(r.id)+'"><span class="ph-ld">…</span>'+(lvOk(3)||r.by===myName()?'<button type="button" class="ph-x" data-phdel="'+A(r.id)+'" aria-label="사진 삭제">×</button>':'')+'</div>').join('')+'</div>';
+  el.querySelectorAll('[data-phid]').forEach(async th=>{
+    try{const s=await phImg(th.dataset.phid);const im=new Image();im.src=s;im.alt='현장 사진';im.addEventListener('click',()=>phView(s));th.querySelector('.ph-ld').replaceWith(im);}
+    catch(e){th.querySelector('.ph-ld').textContent='!';}
+  });
+}
+document.addEventListener('click',async e=>{
+  const t=e.target.closest&&e.target.closest('[data-phdel]');if(!t)return;
+  e.stopPropagation();
+  if(!confirm('이 사진을 삭제할까요?'))return;
+  try{const r=await hcPost({type:'photo_del',id:t.dataset.phdel});if(r&&r.ok){PH.cache={};const box=t.closest('[data-phload]');if(box){delete box.dataset.done;phFill(box);}toast('삭제했습니다.');}else toast(errMsg(r&&r.error));}catch(x){toast('네트워크 오류입니다.');}
+},true);
+new MutationObserver(()=>{document.querySelectorAll('[data-phload]:not([data-done])').forEach(phFill);}).observe(document.body,{childList:true,subtree:true});
+/* 이력 등록 마법사: 점검에서 넘어온 경우 현장 사진 표시 */
+const _sb79=stepBody;
+stepBody=function(){const h=_sb79.apply(this,arguments);const W=HC.W;
+  if(W&&W.checkId&&W.checkItem&&/사용 부품/.test(h))return h+'<div data-phload="'+A(W.checkId)+'" data-item="'+A(W.checkItem)+'" class="ph-box"></div>';
+  return h;};
+
+/* C 판정은 사진이 없으면 저장 불가 */
+const _sc79=submitCheck;
+submitCheck=async function(){
+  const K=HC.K;if(K&&!K.saving){
+    const miss=K.items.filter(it=>it.def.mode==='judge'&&it.res==='C'&&!(it.photos&&it.photos.length));
+    if(miss.length){K.err='C 판정 항목에는 현장 사진이 필요합니다: '+miss.map(it=>it.def.id).join(', ')+' — 사진을 추가한 뒤 저장하세요.';refreshChk(true);toast('C 판정 사진을 추가하세요.');return;}
+  }
+  return _sc79.apply(this,arguments);
+};
+document.addEventListener('toggle',e=>{const d=e.target;if(d&&d.tagName==='DETAILS'&&d.open)d.querySelectorAll('[data-phload]:not([data-done])').forEach(phFill);},true);
+/* ===== v79 (9): 목록에 없는 부품 = 제조사 + 모델명 입력 / (14): 이력 빠른 입력 ===== */
+document.addEventListener('click',e=>{
+  const t=e.target.closest&&e.target.closest('[data-h=addfree]');if(!t||!HC.W)return;
+  e.stopPropagation();e.preventDefault();
+  const v=(($('hcFree')||{}).value||'').trim();
+  hxModal('<h3 style="margin:0 0 4px">목록에 없는 부품</h3><p class="hc-hint" style="margin:0 0 10px">제조사와 모델명을 입력하면 나중에 품목으로 등록할 때 이어집니다. 재고는 차감되지 않습니다.</p>'
+   +'<label class="hc-lab" for="npMk">제조사</label><input id="npMk" class="hc-in" maxlength="30" placeholder="예: 테란">'
+   +'<label class="hc-lab" for="npMd" style="margin-top:8px">모델명 <small>(필수)</small></label><input id="npMd" class="hc-in" maxlength="60" placeholder="예: TMV-0608-2K">'
+   +'<label class="hc-lab" for="npNm" style="margin-top:8px">부품명 <small>(선택)</small></label><input id="npNm" class="hc-in" maxlength="60" placeholder="예: 믹싱헤드" value="'+A(v)+'">'
+   +'<label class="hc-lab" for="npQt" style="margin-top:8px">수량</label><input id="npQt" class="hc-in" type="number" min="1" max="999" value="1" inputmode="numeric">'
+   +'<div id="npErr" class="hc-err" hidden></div><div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn" data-np="ok">추가</button><button type="button" class="hc-btn ghost" data-np="x">취소</button></div>','');
+  setTimeout(()=>{const i=$('npMk');if(i)i.focus();},50);
+},true);
+document.addEventListener('click',e=>{
+  const t=e.target.closest&&e.target.closest('[data-np]');if(!t)return;
+  e.stopPropagation();
+  if(t.dataset.np==='x'){hxClose();return;}
+  const g=id=>($(id).value||'').trim(),md=g('npMd');
+  if(!md){const er=$('npErr');er.textContent='모델명을 입력하세요.';er.hidden=false;return;}
+  const mk=g('npMk'),nm=g('npNm'),q=Math.max(1,Math.min(999,Math.floor(Number(g('npQt'))||1)));
+  const W=HC.W,dup=W.parts.find(x=>!x.spec&&x.model===md&&(x.maker||'')===mk);
+  if(dup)dup.qty+=q;else W.parts.push({spec:'',name:nm||((mk?mk+' ':'')+md),qty:q,maker:mk,model:md});
+  hxClose();refreshHist();
+},true);
+/* 저장할 때 제조사·모델명을 함께 보냄 */
+const _hp79b=hcPost;
+hcPost=async function(p){
+  if(p&&p.type==='hist_add'&&HC.W&&Array.isArray(p.parts)&&HC.W.parts.some(x=>x.model)){
+    p.parts=HC.W.parts.map(x=>{const o={spec:x.spec,name:x.name,qty:x.qty};if(!x.spec&&x.model){o.maker=x.maker||'';o.model=x.model;}return o;});
+  }
+  return _hp79b(p);
+};
+/* 서버가 "이미 품목에 있음"이라고 답하면 안내 */
+const _em79=errMsg;
+errMsg=function(c){if(c==='in_items')return '입력한 모델은 이미 품목에 있습니다. 부품 검색에서 골라 주세요.';return _em79(c);};
+/* ===== 이력 빠른 입력 (홈 검색창) ===== */
+const _qi79=qiParse;
+qiParse=function(q){
+  const out=_qi79(q);
+  try{
+    if(typeof LANG!=='undefined'&&LANG!=='ko')return out;
+    const raw=String(q||'').trim();if(raw.length<4||!lvOk(2)||!isMain())return out;
+    if(/^(입고|출고|사용|할\s*일|todo|일정)\s/i.test(raw))return out;
+    const cands=eqCands(raw);if(!cands.length)return out;
+    let act='';for(const a of ACT_KEYS){if(a[1].test(raw)){act=a[0];break;}}
+    if(!act||act==='점검만'&&!partGuess(raw))return out;
+    let min=0;const m=raw.match(/(\d+(?:\.\d+)?)\s*(시간|분)/);if(m)min=Math.round(Number(m[1])*(m[2]==='시간'?60:1));
+    const pg=partGuess(raw),part=pg?pg.filter(Boolean).slice(0,2).join(' › '):'';
+    const leaf=pg?(pg[2]||pg[1]):'';
+    const mk=eq=>({k:'이력',t:eq+'호기 '+(leaf?leaf+' ':'')+act+(min?' · '+(min>=60&&min%60===0?min/60+'시간':min+'분'):''),s:'이력 등록 화면으로 이동 (확인 후 저장)',
+      go:()=>{hxHist({eq:eq,act:act,actText:raw,part:part,title:raw});if(min){HC.W.min=min;}if(typeof refreshHist==='function')refreshHist();}});
+    return mk&&cands.map(mk).concat(out);
+  }catch(e){return out;}
+};
+/* ===== v79 (2): 할 일·일정 입력(종류 먼저 · 층→호기 · 작업·부위) / 할 일 수정 / 설비 일괄 정리 ===== */
+Object.assign(ERR,{locked:'완료되었거나 이력과 연결된 할 일은 제목·기한·담당자를 바꿀 수 없습니다.',no_change:'바뀐 내용이 없습니다.',no_items:'정리할 항목이 없습니다.',photo_limit:'사진은 한 항목에 6장까지 올릴 수 있습니다.',too_big:'사진 용량이 너무 큽니다. 다시 찍어 주세요.',bad_type:'지원하지 않는 사진 형식입니다.',bad_data:'사진을 읽지 못했습니다. 다시 시도하세요.',in_items:'이미 품목에 있는 부품입니다. 목록에서 선택해 주세요.',exists:'이미 품목에 있습니다.'});
+async function srvAtLeast(n){
+  if(HX.srv>=n)return true;
+  try{const r=await fetch(GOOGLE_SHEET_URL+'?type=ping&t='+Date.now(),{cache:'no-store'});const j=await r.json();HX.srv=Number(j&&j.v)||0;}catch(e){}
+  return HX.srv>=n;
+}
+async function srvGate(n,what){
+  if(await srvAtLeast(n))return true;
+  toast((what||'이 기능')+'은(는) 서버(Apps Script)를 v'+n+'로 업데이트한 뒤 사용할 수 있습니다.');return false;
+}
+const K79={fl:{}};   // 층 선택 상태(키별)
+const floorOf=eq=>/^2F/.test(eq||'')?'2층':/^1F/.test(eq||'')?'1층':'';
+function epHtml(key,val){
+  const fl=K79.fl[key]||floorOf(val)||'1층';
+  return '<div class="ep" data-k79box="ep-'+key+'"><div class="ep-fl">'+['1층','2층'].map(f=>'<button type="button" class="'+(f===fl?'on':'')+'" data-k79="fl" data-key="'+key+'" data-v="'+f+'">'+f+'</button>').join('')+'</div>'
+   +'<div class="ep-no">'+EQG[fl].map(e=>'<button type="button" class="'+(e===val?'on':'')+'" data-k79="eq" data-key="'+key+'" data-v="'+e+'">'+e.replace(/^\dF-/,'')+'호기</button>').join('')+'</div>'
+   +'<div class="ep-sel">'+(val?'선택: <b>'+E(val)+'호기</b> · 다시 누르면 해제':'호기를 누르세요')+'</div></div>';
+}
+const actHtml=(key,val)=>'<div class="ac ep-ch" data-k79box="ac-'+key+'">'+ACT.map(a=>'<button type="button" class="'+(a===val?'on':'')+'" data-k79="act" data-key="'+key+'" data-v="'+A(a)+'">'+E(a)+'</button>').join('')+'</div>';
+function partHtml(key,val){
+  const p=String(val||'').split('›').map(x=>x.trim()),a=K79['pa'+key]!=null?K79['pa'+key]:p[0]||'';
+  return '<div data-k79box="pt-'+key+'"><div class="ac ep-ch">'+Object.keys(HC_TREE).map(x=>'<button type="button" class="'+(x===a?'on':'')+'" data-k79="pa" data-key="'+key+'" data-v="'+A(x)+'">'+E(x)+'</button>').join('')+'</div>'
+   +(a&&HC_TREE[a]?'<div class="ac ep-ch" style="margin-top:6px">'+Object.keys(HC_TREE[a]).map(x=>'<button type="button" class="'+(p[0]===a&&p[1]===x?'on':'')+'" data-k79="pb" data-key="'+key+'" data-v="'+A(x)+'">'+E(x)+'</button>').join('')+'</div>':'')
+   +'<div class="ep-sel">'+(val?'부위: <b>'+E(val)+'</b>':'선택 사항입니다')+(val?' <button type="button" class="cl-link" data-k79="pclr" data-key="'+key+'">해제</button>':'')+'</div></div>';
+}
+const actLeaf=part=>{const p=String(part||'').split('›').map(x=>x.trim()).filter(Boolean);return p.length?p[Math.min(p.length,2)-1]:'';};
+function autoTitle(o){
+  const eq=o.eq?o.eq+'호기':'',leaf=actLeaf(o.part);
+  return [eq,leaf,o.act].filter(Boolean).join(' ').trim();
+}
+const ACT_KEYS=[['교체',/교체|교환|바꿈/],['수리',/수리|보수/],['청소',/청소|세척|세정/],['조정·교정',/조정|교정|세팅|셋팅/],['보충',/보충|주입|충전/],['재체결',/재체결|조임|체결/],['점검만',/점검|확인|조사/]];
+/* 입력한 제목에서 설비·작업·부위를 찾아 비어 있는 칸만 채움. 반환: {eqAmb:[후보]} */
+function k79Detect(o,title){
+  const out={eqAmb:[]};
+  if(!o.eq){const c=eqCands(title);if(c.length===1)o.eq=c[0];else if(c.length>1)out.eqAmb=c;}
+  if(!o.act){for(const a of ACT_KEYS){if(a[1].test(title)){o.act=a[0];break;}}}
+  if(!o.part){const g=partGuess(title);if(g)o.part=[g[0],g[1],g[2]].filter(Boolean).slice(0,2).join(' › ');}
+  return out;
+}
+function eqFixHtml(key,c){return c&&c.length?'<div class="eqfix" data-k79box="fix-'+key+'">몇 층인가요? '+c.map(x=>'<button type="button" data-k79="eq" data-key="'+key+'" data-v="'+x+'">'+x+'호기</button>').join('')+'</div>':'';}
+
+/* ===== 할 일 폼 ===== */
+const TDK=[['설비작업','설비 작업','교체·수리·점검'],['행정','행정','발주·견적·보고']];
+function tdKindOf(dr){return dr.kind||'설비작업';}
+function tdFormHtml(){
+  const dr=TD.dr,adm=lvOk(2),edit=!!dr.editId,k=tdKindOf(dr);
+  const lk=edit&&dr.locked;
+  const lockAttr=lk?' disabled':'';
+  const rec=(dr.fixc||[]);
+  return '<div class="hc-card"><h3>'+(edit?'할 일 수정':'할 일 추가')+'</h3><p class="us-gd">'+(edit?(lk?'완료되었거나 이력과 연결된 할 일은 설비·작업·부위·메모만 고칠 수 있습니다.':'바꿀 내용을 고친 뒤 저장하세요.'):'기한까지 끝내야 하는 일입니다. 날짜·시간에 맞춰 가야 하는 일은 \'일정\'에 넣어 주세요.')+'</p><div class="k79-f">'
+   +(edit?'':'<div><span class="lb">어떤 일인가요?</span><div class="kc">'+TDK.map(x=>'<button type="button" class="'+(k===x[0]?'on':'')+'" data-k79="tdk" data-v="'+x[0]+'">'+x[1]+'<small>'+x[2]+'</small></button>').join('')+'</div></div>')
+   +(k==='설비작업'?'<div><span class="lb">설비 <small>(필수)</small></span>'+epHtml('td',dr.eq)+'</div><div><span class="lb">작업</span>'+actHtml('td',dr.act)+'</div><div><span class="lb">부위 <small>(선택)</small></span>'+partHtml('td',dr.part)+'</div>':'<div><span class="lb">설비 <small>(선택 · 설비와 관련된 행정일 때)</small></span>'+epHtml('td',dr.eq)+'</div>')
+   +'<div><label class="lb" for="tdTitle">할 일'+(k==='설비작업'?' <small>(위에서 고르면 자동으로 채워집니다)</small>':'')+'</label><input type="text" id="tdTitle" placeholder="'+(k==='설비작업'?'예: 1F-3 호스 교체':'예: 호스 발주 넣기')+'" maxlength="80" value="'+A(dr.title)+'"'+lockAttr+'></div>'
+   +'<div data-k79box="fix-td">'+eqFixHtml('td',rec)+'</div>'
+   +(k==='행정'?'<div class="us-ex">'+['발주 넣기','견적 받기','보고서 제출','부품 확인'].map(x=>'<button type="button" data-us="ex" data-t="'+A(x)+'" data-f="tdTitle">'+E(x)+'</button>').join('')+'</div>':'')
+   +'<div class="k79-two"><div><label class="lb" for="tdTo">담당자</label><select id="tdTo"'+lockAttr+'><option value="">전체(공용)</option>'+TD.users.map(u=>'<option value="'+A(u.id)+'"'+((dr.to==null?myId():dr.to)===u.id?' selected':'')+'>'+E(u.name)+'</option>').join('')+'</select></div>'
+   +'<div><label class="lb" for="tdDue">기한</label><input type="date" id="tdDue" lang="ko" value="'+A(dr.due)+'"'+lockAttr+'></div></div>'
+   +'<div class="td-pre">'+presetDue().map(p=>'<button type="button" class="'+(dr.due===p[1]?'on':'')+'" data-us="due" data-v="'+p[1]+'"'+lockAttr+'>'+p[0]+(p[1]?' <small>'+mdw(p[1]).replace(/\(.\)/,'')+'</small>':'')+'</button>').join('')+'</div>'
+   +'<div><label class="lb" for="tdMemo">메모 <small>(선택)</small></label><input type="text" id="tdMemo" maxlength="200" value="'+A(dr.memo)+'"></div>'
+   +'</div><input type="hidden" id="tdEq" value="'+A(dr.eq||'')+'">'
+   +'<div class="hm-fa" style="margin-top:12px">'+(edit?'<button type="button" class="hc-btn" data-k79="tdsave">저장</button><button type="button" class="hc-btn ghost" data-k79="tdcancel">취소</button>':'<button type="button" class="hc-btn" data-td="todoadd" style="width:100%">할 일 추가</button>')+'</div></div>';
+}
+const tdBlank=()=>({title:'',to:null,due:'',memo:'',eq:'',kind:'설비작업',act:'',part:'',auto:true});
+function tdOpenEdit(t){
+  const locked=t.status==='완료'||!!t.link;
+  TD.dr={editId:t.id,locked:locked,orig:t,title:t.title,to:t.to||'',due:t.due||'',memo:t.memo||'',eq:t.eq||'',kind:t.kind||(t.eq?'설비작업':'행정'),act:t.act||'',part:t.part||'',auto:false};
+  K79.patd=null;tdRender();try{window.scrollTo({top:0,behavior:'smooth'});}catch(e){}
+}
+/* 목록 행: 원래 모양 + 수정 버튼 */
+function tdRowHtml(t){
+  const canDone=!t.to||t.to===myId()||lvOk(3),canDel=t.by===myName()||lvOk(3),canEdit=lvOk(2)&&(t.by===myName()||lvOk(3));
+  return '<div class="td-r"><div><b>'+E(t.title)+'</b> '+(t.eq?'<i class="td-eq">'+E(t.eq)+'</i> ':'')+(t.act?'<i class="td-eq">'+E(t.act)+'</i> ':'')+(t.link?'<i class="td-lk">이력 등록됨</i> ':'')+(t.status==='진행'?dueBadge(t):'')+'<small>'+(t.to?E(t.toName||t.to):'공용')+' · '+E(t.by)+' 등록'+(t.status==='완료'?' · '+E(t.doneBy)+' 완료 '+E(String(t.doneAt).slice(5,10)):'')+(t.memo?' · '+E(t.memo):'')+'</small></div>'
+   +(canEdit?'<button type="button" class="hc-btn sm ghost td-edit" data-k79="tdedit" data-id="'+A(t.id)+'">수정</button>':'')
+   +(t.status==='진행'?(canDone&&lvOk(2)?'<button type="button" class="hc-btn sm" data-td="done" data-id="'+A(t.id)+'">완료</button>':''):(canDone&&lvOk(2)?'<button type="button" class="hc-btn sm ghost" data-td="undo" data-id="'+A(t.id)+'">되돌리기</button>':''))
+   +(canDel&&lvOk(2)&&t.status==='진행'?'<button type="button" class="hc-btn sm bad" data-td="del" data-id="'+A(t.id)+'">삭제</button>':'')+'</div>';
+}
+function vTodo(){
+  if(!TD.dr||TD.dr.kind===undefined)TD.dr=Object.assign(tdBlank(),TD.dr||{});
+  const dr=TD.dr;
+  if(dr.auto!==false&&!dr.editId&&dr.title&&!dr.touched){const r=k79Detect(dr,dr.title);dr.fixc=r.eqAmb;}
+  const form=lvOk(2)?tdFormHtml():'';
+  const op=visTodos().sort((a,b)=>(a.due||'9')<(b.due||'9')?-1:(a.due||'9')>(b.due||'9')?1:0),dn=TD.todo.filter(t=>t.status==='완료').sort((a,b)=>String(b.doneAt).localeCompare(String(a.doneAt))).slice(0,10);
+  const bf=lvOk(3)?bfCardHtml():'';
+  return form+'<div class="hc-card"><h3>진행 중인 할 일</h3>'+usFlt()+(op.length?op.map(tdRowHtml).join(''):'<div class="empty-note">진행 중인 할 일이 없습니다.</div>')+(dn.length?'<details class="td-dn"><summary>최근 완료 '+dn.length+'건</summary>'+dn.map(tdRowHtml).join('')+'</details>':'')+'</div>'+bf;
+}
+/* ===== 일정 폼 ===== */
+const SCK=[['work','설비 작업','점검·수리·공사'],['meet','회의·교육·출장','설비 없는 일정'],['admin','행정·기타','그 밖의 일정']];
+const scKindOf=f=>f.sk||((f.cat==='점검'||f.cat==='수리·공사')?'work':(f.cat==='출장'||f.cat==='회의·교육')?'meet':(f.id?'admin':'work'));
+function schedFormHtml(){
+  const f=TD.form;if(!f)return '';
+  if(f.id&&f.act===undefined){const s=TD.sched.find(x=>x.id===f.id);if(s){f.act=s.act||'';f.part=s.part||'';}}
+  const sk=scKindOf(f);f.sk=sk;
+  const cat=sk==='work'?(f.act==='점검만'||!f.act&&f.cat==='점검'?'점검':'수리·공사'):sk==='meet'?(f.cat==='출장'?'출장':'회의·교육'):'기타';
+  return '<div class="hc-card sc-form"><h3>'+(f.id?'일정 수정':'일정 추가')+'</h3><p class="us-gd">날짜·시간이 정해진 일입니다. 기한까지 끝내야 하는 일은 \'할 일\'에 넣어 주세요.</p><div class="k79-f">'
+   +'<div><span class="lb">어떤 일정인가요?</span><div class="kc">'+SCK.map(x=>'<button type="button" class="'+(sk===x[0]?'on':'')+'" data-k79="sck" data-v="'+x[0]+'">'+x[1]+'<small>'+x[2]+'</small></button>').join('')+'</div></div>'
+   +(sk==='work'?'<div><span class="lb">설비</span>'+epHtml('sc',f.eq)+'</div><div><span class="lb">작업</span>'+actHtml('sc',f.act)+'</div><div><span class="lb">부위 <small>(선택)</small></span>'+partHtml('sc',f.part)+'</div>'
+    :sk==='meet'?'<div><span class="lb">구분</span><div class="ac ep-ch">'+['회의·교육','출장'].map(c=>'<button type="button" class="'+(cat===c?'on':'')+'" data-k79="scc" data-v="'+c+'">'+c+'</button>').join('')+'</div></div>'
+    :'<div><span class="lb">설비 <small>(선택)</small></span>'+epHtml('sc',f.eq)+'</div>')
+   +'<div><label class="lb" for="scTitle">제목'+(sk==='work'?' <small>(위에서 고르면 자동으로 채워집니다)</small>':'')+'</label><input type="text" id="scTitle" placeholder="'+(sk==='work'?'예: 1F-3 펌프 교체':'제목')+'" maxlength="80" value="'+A(f.title||'')+'"></div>'
+   +'<div data-k79box="fix-sc">'+eqFixHtml('sc',f.fixc)+'</div>'
+   +(f.id||sk==='work'?'':'<div class="us-ex">'+['업체 방문','회의','출장','교육'].map(x=>'<button type="button" data-us="ex" data-t="'+A(x)+'" data-f="scTitle">'+E(x)+'</button>').join('')+'</div>')
+   +'<div class="k79-two"><div><label class="lb" for="scFrom">시작일</label><input type="date" id="scFrom" value="'+A(f.start)+'"></div><div><label class="lb" for="scTo">종료일</label><input type="date" id="scTo" value="'+A(f.end)+'" min="'+A(f.start)+'"'+(f.end&&f.end!==f.start?' data-man="1"':'')+'></div></div>'
+   +'<div class="k79-two"><div><label class="lb" for="scWho">담당자 <small>(선택)</small></label><input type="text" id="scWho" maxlength="40" value="'+A(f.who||'')+'"></div><div><label class="lb" for="scMemo">메모 <small>(선택)</small></label><input type="text" id="scMemo" maxlength="200" value="'+A(f.memo||'')+'"></div></div>'
+   +'</div><select id="scCat" hidden>'+CATS.map(c=>'<option'+(c===cat?' selected':'')+'>'+c+'</option>').join('')+'</select><input type="hidden" id="scEq" value="'+A(f.eq||'')+'">'
+   +'<div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn" data-sc="save">저장</button><button type="button" class="hc-btn ghost" data-sc="cancelform">닫기</button></div></div>';
+}
+/* ===== 칩/입력 이벤트 ===== */
+function k79Obj(key){return key==='td'?TD.dr:TD.form;}
+function k79Sync(key){   // 입력칸 값을 상태에 반영
+  const o=k79Obj(key);if(!o)return;
+  if(key==='td'){const g=id=>document.getElementById(id);if(g('tdTitle'))o.title=g('tdTitle').value;if(g('tdDue'))o.due=g('tdDue').value;if(g('tdMemo'))o.memo=g('tdMemo').value;if(g('tdTo'))o.to=g('tdTo').value;}
+  else{const g=id=>document.getElementById(id);if(g('scTitle'))o.title=g('scTitle').value;if(g('scFrom'))o.start=g('scFrom').value;if(g('scTo'))o.end=g('scTo').value;if(g('scWho'))o.who=g('scWho').value;if(g('scMemo'))o.memo=g('scMemo').value;}
+}
+function k79Retitle(key){
+  const o=k79Obj(key);if(!o)return;
+  const kind=key==='td'?tdKindOf(o):scKindOf(o);const work=key==='td'?kind==='설비작업':kind==='work';
+  if(!work||o.titleManual)return;
+  const t=autoTitle(o);if(t){o.title=t;const el=document.getElementById(key==='td'?'tdTitle':'scTitle');if(el&&!el.disabled)el.value=t;}
+}
+function k79Boxes(key){
+  const o=k79Obj(key);if(!o)return;
+  const kind=key==='td'?tdKindOf(o):scKindOf(o);
+  const set=(n,h)=>{const el=document.querySelector('[data-k79box="'+n+'"]');if(el)el.outerHTML=h;};
+  set('ep-'+key,epHtml(key,o.eq));
+  if(document.querySelector('[data-k79box="ac-'+key+'"]'))set('ac-'+key,actHtml(key,o.act));
+  if(document.querySelector('[data-k79box="pt-'+key+'"]'))set('pt-'+key,partHtml(key,o.part));
+  const eq=document.getElementById(key==='td'?'tdEq':'scEq');if(eq)eq.value=o.eq||'';
+  const fx=document.querySelector('[data-k79box="fix-'+key+'"]');if(fx)fx.innerHTML=eqFixHtml(key,o.fixc);
+}
+document.addEventListener('click',async e=>{
+  const t=e.target.closest&&e.target.closest('[data-k79]');if(!t)return;
+  const a=t.dataset.k79,key=t.dataset.key,v=t.dataset.v;
+  e.stopPropagation();
+  if(a==='tdedit'){const x=TD.todo.find(z=>z.id===t.dataset.id);if(x){if(!(await srvGate(15,'할 일 수정')))return;tdOpenEdit(x);}return;}
+  if(a==='tdcancel'){TD.dr=tdBlank();tdRender();return;}
+  if(a==='tdk'){k79Sync('td');TD.dr.kind=v;tdRender();return;}
+  if(a==='sck'){k79Sync('sc');TD.form.sk=v;if(v==='meet')TD.form.cat=TD.form.cat==='출장'?'출장':'회의·교육';else if(v==='admin')TD.form.cat='기타';else TD.form.cat='점검';scRender();return;}
+  if(a==='scc'){k79Sync('sc');TD.form.cat=v;scRender();return;}
+  const o=k79Obj(key);if(!o)return;
+  k79Sync(key);
+  if(a==='fl'){K79.fl[key]=v;k79Boxes(key);return;}
+  if(a==='eq'){o.eq=(o.eq===v&&t.closest('.ep-no'))?'':v;o.fixc=[];K79.fl[key]=floorOf(o.eq)||K79.fl[key];k79Retitle(key);k79Boxes(key);return;}
+  if(a==='act'){o.act=o.act===v?'':v;k79Retitle(key);k79Boxes(key);return;}
+  if(a==='pa'){K79['pa'+key]=K79['pa'+key]===v?'':v;if(!K79['pa'+key]){o.part='';}k79Boxes(key);return;}
+  if(a==='pb'){const pa=K79['pa'+key]||String(o.part||'').split('›')[0].trim();const nv=pa+' › '+v;o.part=o.part===nv?'':nv;K79['pa'+key]=null;k79Retitle(key);k79Boxes(key);return;}
+  if(a==='pclr'){o.part='';K79['pa'+key]=null;k79Retitle(key);k79Boxes(key);return;}
+  if(a==='tdsave'){await tdSaveEdit();return;}
+},true);
+document.addEventListener('input',e=>{
+  const t=e.target;if(!t||!t.id)return;
+  if(t.id==='tdTitle'||t.id==='scTitle'){
+    const key=t.id==='tdTitle'?'td':'sc',o=k79Obj(key);if(!o)return;
+    o.title=t.value;o.titleManual=true;
+    const kind=key==='td'?tdKindOf(o):scKindOf(o);
+    if(key==='td'&&(o.editId&&o.locked))return;
+    if(kind==='설비작업'||kind==='work'||kind==='admin'||kind==='행정'){const r=k79Detect(o,t.value);o.fixc=r.eqAmb;k79Boxes(key);}
+  }
+},true);
+document.addEventListener('change',e=>{const t=e.target;if(!t||!t.id)return;if(t.id==='tdTo'||t.id==='tdDue'||t.id==='tdMemo')k79Sync('td');},true);
+/* 저장(할 일 추가) — 기존 data-td="todoadd" 처리를 대신함 */
+document.addEventListener('click',async e=>{
+  const b=e.target.closest&&e.target.closest('[data-td=todoadd]');if(!b)return;
+  e.stopPropagation();e.preventDefault();
+  k79Sync('td');const dr=TD.dr,kind=tdKindOf(dr);
+  let title=(dr.title||'').trim();
+  if(kind==='설비작업'&&!dr.eq){toast('설비를 선택하세요.');return;}
+  if(!title&&kind==='설비작업')title=autoTitle(dr);
+  title=eqRewrite(title);
+  if(!title){toast('할 일을 입력하세요.');return;}
+  const p={type:'todo_add',title:title,to:dr.to==null?myId():dr.to,due:dr.due,memo:dr.memo,eq:dr.eq||'',kind:kind,act:dr.act||'',part:dr.part||''};
+  b.disabled=true;
+  const ok=await tdDo(p,'할 일을 추가했습니다.');
+  if(ok){TD.dr=Object.assign(tdBlank(),{to:p.to});K79.patd=null;tdRender();}else b.disabled=false;
+},true);
+/* 일정 저장 — 작업·부위 포함 */
+document.addEventListener('click',async e=>{
+  const b=e.target.closest&&e.target.closest('[data-sc=save]');if(!b)return;
+  e.stopPropagation();e.preventDefault();
+  k79Sync('sc');const f=TD.form,sk=scKindOf(f);
+  let title=(f.title||'').trim();
+  if(sk==='work'&&!title)title=autoTitle(f);
+  title=eqRewrite(title);
+  if(!title){toast('제목을 입력하세요.');return;}
+  if(!f.start){toast('시작일을 선택하세요.');return;}
+  const cat=sk==='work'?(f.act==='점검만'?'점검':'수리·공사'):sk==='meet'?(f.cat==='출장'?'출장':'회의·교육'):'기타';
+  const p={type:f.id?'sched_update':'sched_add',id:f.id,title:title,cat:cat,eq:sk==='meet'?'':(f.eq||''),start:f.start,end:f.end||f.start,who:f.who||'',memo:f.memo||''};
+  if(sk==='work'&&(f.act||f.part)){if(!(await srvAtLeast(15))){p.act=undefined;}else{p.act=f.act||'';p.part=f.part||'';}}
+  b.disabled=true;
+  if(await tdDo(p,'저장했습니다.')){TD.form=null;scRender();}else b.disabled=false;
+},true);
+/* 일정 폼 최초 표시 시 제목에서 설비·작업·부위 인식 */
+const _sf79=schedFormHtml;
+schedFormHtml=function(){const f=TD.form;if(f&&!f.det79){f.det79=true;if(!f.id&&f.title&&scKindOf(f)!=='meet'){const r=k79Detect(f,f.title);f.fixc=r.eqAmb;}}return _sf79();};
+/* 할 일 수정 저장 */
+async function tdSaveEdit(){
+  k79Sync('td');const dr=TD.dr,o=dr.orig||{};
+  const p={type:'todo_update',id:dr.editId};
+  const cmp=(k,v,ov)=>{if(String(v||'')!==String(ov||''))p[k]=v||'';};
+  cmp('eq',dr.eq,o.eq);cmp('act',dr.act,o.act);cmp('part',dr.part,o.part);cmp('memo',dr.memo,o.memo);
+  if(!dr.locked){const t=eqRewrite((dr.title||'').trim());if(!t){toast('할 일을 입력하세요.');return;}cmp('title',t,o.title);cmp('due',dr.due,o.due);cmp('to',dr.to,o.to);}
+  if(Object.keys(p).length<=2){toast(ERR.no_change);return;}
+  if(await tdDo(p,'수정했습니다.')){TD.dr=tdBlank();tdRender();}
+}
+/* ===== 관리자 설비 일괄 정리 ===== */
+const BF={open:false,rows:[],title:false,busy:false};
+function bfScan(){
+  const rows=[];
+  const add=(kind,x)=>{if(x.eq)return;const c=eqCands((x.title||'')+' '+(x.memo||''));if(!c.length)return;rows.push({kind:kind,id:x.id,title:x.title,done:x.status==='완료',c:c,pick:c.length===1?c[0]:'',on:c.length===1,nt:eqRewrite(x.title||'')});};
+  TD.todo.forEach(x=>add('todo',x));TD.sched.forEach(x=>add('sched',x));
+  BF.rows=rows;
+}
+function bfCardHtml(){
+  if(!BF.open)return '<div class="hc-card"><h3>설비 일괄 정리 <small>(관리자)</small></h3><p class="us-gd">설비가 비어 있는 예전 할 일·일정의 제목에서 설비를 찾아 채워 줍니다. 미리 보고 선택한 것만 반영합니다.</p><button type="button" class="hc-btn ghost" data-k79="bfopen">대상 찾기</button></div>';
+  const n=BF.rows.filter(r=>r.on&&r.pick).length;
+  return '<div class="hc-card"><h3>설비 일괄 정리 <small>(관리자)</small></h3>'+(BF.rows.length?'<p class="us-gd">'+BF.rows.length+'건을 찾았습니다. 반영할 항목을 확인하세요. 완료된 항목은 제목을 바꾸지 않습니다.</p>'
+   +BF.rows.map((r,i)=>'<div class="bf-r"><label><input type="checkbox" data-k79="bfon" data-i="'+i+'"'+(r.on&&r.pick?' checked':'')+(r.pick?'':' disabled')+'> <b>'+E(r.title)+'</b> <small>'+(r.kind==='todo'?'할 일':'일정')+(r.done?' · 완료':'')+'</small></label>'
+     +(r.c.length>1?'<div class="eqfix">몇 층? '+r.c.map(c=>'<button type="button" class="'+(r.pick===c?'on':'')+'" data-k79="bfpick" data-i="'+i+'" data-v="'+c+'">'+c+'호기</button>').join('')+'</div>':'<span class="td-eq">'+E(r.pick)+'</span>')+'</div>').join('')
+   +'<label class="bf-t"><input type="checkbox" data-k79="bftitle"'+(BF.title?' checked':'')+'> 제목의 호기 표기도 통일 (예: 2-2호기 → 2F-2호기) <small>진행 중 항목만</small></label>'
+   :'<p class="us-gd">정리할 항목이 없습니다.</p>')
+   +'<div class="hm-fa" style="margin-top:10px">'+(BF.rows.length?'<button type="button" class="hc-btn" data-k79="bfapply"'+(n?'':' disabled')+'>선택한 '+n+'건 반영</button>':'')+'<button type="button" class="hc-btn ghost" data-k79="bfclose">닫기</button></div></div>';
+}
+document.addEventListener('click',async e=>{
+  const t=e.target.closest&&e.target.closest('[data-k79^=bf]');if(!t)return;
+  e.stopPropagation();const a=t.dataset.k79,i=Number(t.dataset.i);
+  if(a==='bfopen'){if(!(await srvGate(15,'일괄 정리')))return;bfScan();BF.open=true;tdRender();return;}
+  if(a==='bfclose'){BF.open=false;tdRender();return;}
+  if(a==='bfpick'){BF.rows[i].pick=t.dataset.v;BF.rows[i].on=true;tdRender();return;}
+  if(a==='bfapply'){
+    if(BF.busy)return;
+    const items=BF.rows.filter(r=>r.on&&r.pick).map(r=>{const o={kind:r.kind,id:r.id,eq:r.pick};if(BF.title&&!r.done&&r.nt&&r.nt!==r.title)o.title=r.nt;return o;});
+    if(!items.length)return;
+    BF.busy=true;
+    const ok=await tdDo({type:'eq_backfill',items:items,title:BF.title},items.length+'건을 정리했습니다.');
+    BF.busy=false;if(ok){bfScan();tdRender();}
+  }
+},true);
+document.addEventListener('change',e=>{
+  const t=e.target;if(!t.dataset||!t.dataset.k79)return;
+  if(t.dataset.k79==='bfon'){BF.rows[Number(t.dataset.i)].on=t.checked;tdRender();}
+  if(t.dataset.k79==='bftitle'){BF.title=t.checked;}
+},true);
+const XL_LOGO='data:image/jpeg;base64,/9j/4QsORXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAIAAAExAAIAAAAiAAAAcgEyAAIAAAAUAAAAlIdpAAQAAAABAAAAqAAAANQALcbAAAAnEAAtxsAAACcQQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpADIwMjM6MDI6MDMgMTM6Mjg6NTEAAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAjWgAwAEAAAAAQAAAFIAAAAAAAAABgEDAAMAAAABAAYAAAEaAAUAAAABAAABIgEbAAUAAAABAAABKgEoAAMAAAABAAIAAAIBAAQAAAABAAABMgICAAQAAAABAAAJ1AAAAAAAAABIAAAAAQAAAEgAAAAB/9j/7QAMQWRvYmVfQ00AAf/uAA5BZG9iZQBkgAAAAAH/2wCEAAwICAgJCAwJCQwRCwoLERUPDAwPFRgTExUTExgRDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwBDQsLDQ4NEA4OEBQODg4UFA4ODg4UEQwMDAwMEREMDAwMDAwRDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDP/AABEIABQAiAMBIgACEQEDEQH/3QAEAAn/xAE/AAABBQEBAQEBAQAAAAAAAAADAAECBAUGBwgJCgsBAAEFAQEBAQEBAAAAAAAAAAEAAgMEBQYHCAkKCxAAAQQBAwIEAgUHBggFAwwzAQACEQMEIRIxBUFRYRMicYEyBhSRobFCIyQVUsFiMzRygtFDByWSU/Dh8WNzNRaisoMmRJNUZEXCo3Q2F9JV4mXys4TD03Xj80YnlKSFtJXE1OT0pbXF1eX1VmZ2hpamtsbW5vY3R1dnd4eXp7fH1+f3EQACAgECBAQDBAUGBwcGBTUBAAIRAyExEgRBUWFxIhMFMoGRFKGxQiPBUtHwMyRi4XKCkkNTFWNzNPElBhaisoMHJjXC0kSTVKMXZEVVNnRl4vKzhMPTdePzRpSkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2JzdHV2d3h5ent8f/2gAMAwEAAhEDEQA/AF9W/r19acWhnVuqMs6z03qBsmvHYPWxrmOeytrGNDd+Lfta33fzf/Gfo8yh1ro3XfrOx3VeqWx1DdvxOluJFFdQ1+yPduY6vIub9O3ez/hv+61r6lEj6s4ZGnuu/wDPjk/1mt214dGVdbidHybvT6rl0N32Mq9vp1/yK8h29ttmyz/i7v6Nfiy5/mcnM/doGMKyyj7h6whKVQl/L1t8ctiji92QMvQDwj96Q3dP6qfVH/F39Z+kt6ljdMfS4PNWRS6+87LWhr31ts9X9KzbYx1dn/oxEzPq90v6q/Wz6uHoLH4f2+6+nLaLbHttrDGFrLGXPs+i525n8v3/AOjW31D6wdE+q3T8DpvR8YZl2S0N6X03EcCbGH3eu639J+hf9N+U/wBT1n/pf0n6axc/m/WXB+sPXvqrdQ12PlY2bfTnYN3tuotDGN9O2sw7buY/07f/AD3d6tNe00G/9c+ofWvJ63V9Vug3Y2Oc7G+0HIm5mRS2t/utdfV+jZVe6v0K/Tqut/nd/prGf9dPrSzp1Y6hkY2Fdg9ax+m5TqZ3GtrLzlvyn5Juq9K3063Mur2fzdy1f8YGL1bKzarujdLy/wBq4TA7D6tjPY1sPJF+Lex3utq9Pf8A9c/4Oy31ea6jiZON0rpPTcvouTj1ZHWMe/Pzs65lzsnIsFjLW2Vt97m2sNn8j9H+k/TXb0lPVZ3Wutdd+tjugdB6kzpuHj4bcw5rKq8k3l5r2ej6jvTdj/pq/fV/wqyj9d+vZP1W6dlC5tOfX1qvpeZfSGllzAx9j7GNc1zGetuq3+n+f/N+nX+iWl9f+ndC6bidMzG4tmPb67Om03YV/wBjdXTcLnvZvbXdW7H9r/0Xp/4T+c+ml9Y+hdMPRek9I+r9mLXV0/qNOS+t17AdjRd6z3Psc51lm+1JTq/Wb6z5mEMjp3Sen5eX1P0ia7hUWYtRc3c3Iuzb9uP6dXuf/Ltq+z/olm/VH63dSOLjYfWKMjqDr3OGN1rDqddjXgve39I6uuqzGspcx9X6XHZ+jp9a1YP1/wCl9Fp+sraK8L7Rl59RyrKxXlXve/dY2yxrcfPxK2/o6voMp9mxZvQfq7iZfXsLCyehub0/IL25Vrqs3F27WPsqh9nUL2O3WNSU9P8AW/r/AFzG+sj+m9L6h1BjhQy/7JhdNozdrSdjrfVuvqv+n/wexij9U+r/AF2yfrLTj9Rf1C3pRpe6yzN6dXhAWAHYzdT638n/ALUf9bQvrh9Wet5F/UOvZuD0nJpxK7X1vN2fXecanfdVW+vHtqx/tHpD3f4P1UL6nfVrrHqdN+sODgdKx6rdtgd9oz32tqsHp3htV112N63oPs2b97N6Sne+tH1ot6Z9bfq90urKFNGa+wZ1O1rtzXllODL3Mc+vdkeq39G5ixejfXPrvUvr/j9Ltzcd+E1t7LsfErtY3dWLi0ZDs+mvI+0M2s3+g70f/BFPM6R9WsL6yf8ANzqeO/qL+u0HIyes52RN7BV6no01O9OvY2v7Mz+bsr3/AOF9Sqllat4vQjT9c+iZOFmtzsHp+HbQ+6/Jbbkue77S/UfTt2+szbt/m6v+LSU6nTeo9U6z1Prt+LkinF6c5/TcCtzR6f2ljQ/Ly8tv85b6dzqq6f0rK/s/qfovUfvXK3fXf6x1dXZhftbBf08uFNnWG4rziMyXBz2Yj8j1fS+g3d6vqbGf9asWn0rpmRm0/WvoDfs4yX9XflW1ZVZtrNGUKsjGLmMfU7c9tW+t+/8ARvVd7frPT1yv6mNt6WMW7Ddl+kMKMfb6j2mj7L6mz3PZ6iSnb6t1HrHRcbo3U8vLryGHIZi9U9JuzHfTkEtrzGbvVfW7Fd6X8279Oksf6xdDyMP6pY/1bt+zi3qnUqaMcYVTq2Ma9wussdW99z3en6V1llu76CSSn//QynfYPVu/5vft79k+rZ9m+zbfQ+kd/wBm3+/0N/8AN+p+l/036VCyfW+zXfav+cX2bY71/V9PZ6cfpPV3+zZ/WXCJKhL+dP8Aub5v0v53fr/XZx8o/ndunyPsn+K3/ml6ln2L7T+1/TG37ft3/Z5MfYPT9n2b/Sbffv8A+DXRX/8AMj/nnV6vof8AOf0/ZG/dG07fU2/q32n0Poet+tfZ/T/wXpL55SV9gfqpZfX/ANg+liftz0/S+1V/ZPVmPtPu9Dbt/P8A5xfNKSSn6R+tP/Nn9n1/85vS+xes30/Xnb6u2zZ9D870/WXMf+ubkR9gmRH014qkkp+gfrP/AMwvt1X/ADn+y/bvRHp+tu3eluftjb+Z6nqqj0v/AMan9pYv7N+xfb/Ub9l2bt3qf4Pbu9u7d9BeGJJKfqHqP2L9n5X7Q2/YvRs+1b/o+ltd6++PzfS3IfR/2Z+y8b9k7P2f6Y+zenO3Z227vcvmJJJT9A/Wj/mF+0K/+c/2X7Z6Q9H1t2/0tztv0fzfV9VV+gf+Nn+18f8AYX2T9p+/7P6W7f8AQf6u2fb/ADHqLwZJJT9Mu/ZH/OBn83+2PsjuJ9X7L6jPpbfb6X2n+b9T/hPR/wAMiP8A2N+12b/s37Y9H9HOz7V6Eu+h/wBqPs/qb/8Agt6+YkklP01k/sb9tYX2r0/2p6d37P8AUndthn2v7Lu/R+t6ez1fT/T+h/wO9JfMqSSn/9n/7RMyUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAACIcAgAAAgAAHAIFABbtmZTsnbjshpTro6jshZhf66Gc6rOgOEJJTQQlAAAAAAAQIpjS6qfozAR63Yvgl1mpAzhCSU0EOgAAAAAA4wAAABAAAAABAAAAAAALcHJpbnRPdXRwdXQAAAAFAAAAAFBzdFNib29sAQAAAABJbnRlZW51bQAAAABJbnRlAAAAAENscm0AAAAPcHJpbnRTaXh0ZWVuQml0Ym9vbAAAAAALcHJpbnRlck5hbWVURVhUAAAAAQAAAAAAD3ByaW50UHJvb2ZTZXR1cE9iamMAAAALyADVdMDBs8QAIMd4wcQAIMEkyBUAAAAAAApwcm9vZlNldHVwAAAAAQAAAABCbHRuZW51bQAAAAxidWlsdGluUHJvb2YAAAAJcHJvb2ZDTVlLADhCSU0EOwAAAAACLQAAABAAAAABAAAAAAAScHJpbnRPdXRwdXRPcHRpb25zAAAAFwAAAABDcHRuYm9vbAAAAAAAQ2xicmJvb2wAAAAAAFJnc01ib29sAAAAAABDcm5DYm9vbAAAAAAAQ250Q2Jvb2wAAAAAAExibHNib29sAAAAAABOZ3R2Ym9vbAAAAAAARW1sRGJvb2wAAAAAAEludHJib29sAAAAAABCY2tnT2JqYwAAAAEAAAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAcsAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEAEsAAAAAQABASwAAAABAAE4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAFo4QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0nEAAAAAAACgABAAAAAAAAAAE4QklNA/UAAAAAAEgAL2ZmAAEAbGZmAAYAAAAAAAEAL2ZmAAEAoZmaAAYAAAAAAAEAMgAAAAEAWgAAAAYAAAAAAAEANQAAAAEALQAAAAYAAAAAAAE4QklNA/gAAAAAAHAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAOEJJTQQAAAAAAAACAAA4QklNBAIAAAAAAAIAADhCSU0EMAAAAAAAAQEAOEJJTQQtAAAAAAAGAAEAAAACOEJJTQQIAAAAAAAQAAAAAQAAAkAAAAJAAAAAADhCSU0EHgAAAAAABAAAAAA4QklNBBoAAAAAA0UAAAAGAAAAAAAAAAAAAABSAAACNQAAAAjWVMd4wZS46MFYAF+4XKzgAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAI1AAAAUgAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAbnVsbAAAAAIAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAAUgAAAABSZ2h0bG9uZwAAAjUAAAAGc2xpY2VzVmxMcwAAAAFPYmpjAAAAAQAAAAAABXNsaWNlAAAAEgAAAAdzbGljZUlEbG9uZwAAAAAAAAAHZ3JvdXBJRGxvbmcAAAAA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Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6eG1wVFBnPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvdC9wZy8iIHhtbG5zOnN0RGltPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvRGltZW5zaW9ucyMiIHhtbG5zOnhtcEc9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9nLyIgeG1sbnM6aWxsdXN0cmF0b3I9Imh0dHA6Ly9ucy5hZG9iZS5jb20vaWxsdXN0cmF0b3IvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHBkZjpQcm9kdWNlcj0iQWRvYmUgUERGIGxpYnJhcnkgMTUuMDAiIHhtcDpDcmVhdGVEYXRlPSIyMDIyLTEyLTIwVDE5OjAyOjM2KzEwOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMy0wMi0wM1QxMzoyODo1MSswOTowMCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBJbGx1c3RyYXRvciAyNS4yIChXaW5kb3dzKSIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMy0wMi0wM1QxMzoyODo1MSswOTowMCIgZGM6Zm9ybWF0PSJpbWFnZS9qcGVnIiB4bXBUUGc6TlBhZ2VzPSIxIiB4bXBUUGc6SGFzVmlzaWJsZVRyYW5zcGFyZW5jeT0iRmFsc2UiIHhtcFRQZzpIYXNWaXNpYmxlT3ZlcnByaW50PSJGYWxzZSIgaWxsdXN0cmF0b3I6Q3JlYXRvclN1YlRvb2w9IkFkb2JlIElsbHVzdHJhdG9yIiB4bXBNTTpEb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6OGQyYzJhMjEtNjQwNS1hNjRlLWI4ZmItMzhiMGFkMTA1NDk5IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjJhY2U0YjRhLTU2MjQtY2M0OC1hMWQxLTBlOGY5MTM2YWI4NCIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjcxODg0RDkzNUZDQ0UwMTFBNDBDRDk4NDZCRDk1QjU5IiB4bXBNTTpSZW5kaXRpb25DbGFzcz0icHJvb2Y6cGRmIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiBwaG90b3Nob3A6SUNDUHJvZmlsZT0ic1JHQiBJRUM2MTk2Ni0yLjEiPiA8ZGM6dGl0bGU+IDxyZGY6QWx0PiA8cmRmOmxpIHhtbDpsYW5nPSJ4LWRlZmF1bHQiPu2ZlOyduOyGlOujqOyFmF/roZzqs6A8L3JkZjpsaT4gPC9yZGY6QWx0PiA8L2RjOnRpdGxlPiA8eG1wVFBnOk1heFBhZ2VTaXplIHN0RGltOnc9IjIxMC4wMDAwMDAiIHN0RGltOmg9IjI5Ny4wMDAwMDAiIHN0RGltOnVuaXQ9Ik1pbGxpbWV0ZXJzIi8+IDx4bXBUUGc6UGxhdGVOYW1lcz4gPHJkZjpTZXE+IDxyZGY6bGk+Q3lhbjwvcmRmOmxpPiA8cmRmOmxpPk1hZ2VudGE8L3JkZjpsaT4gPHJkZjpsaT5ZZWxsb3c8L3JkZjpsaT4gPHJkZjpsaT5CbGFjazwvcmRmOmxpPiA8L3JkZjpTZXE+IDwveG1wVFBnOlBsYXRlTmFtZXM+IDx4bXBUUGc6U3dhdGNoR3JvdXBzPiA8cmRmOlNlcT4gPHJkZjpsaT4gPHJkZjpEZXNjcmlwdGlvbiB4bXBHOmdyb3VwTmFtZT0iRGVmYXVsdCBTd2F0Y2ggR3JvdXAiIHhtcEc6Z3JvdXBUeXBlPSIwIj4gPHhtcEc6Q29sb3JhbnRzPiA8cmRmOlNlcT4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IldoaXRlIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIwLjAwMDAwMCIgeG1wRzp5ZWxsb3c9IjAuMDAwMDAwIiB4bXBHOmJsYWNrPSIwLjAwMDAwMCIvPiA8cmRmOmxpIHhtcEc6c3dhdGNoTmFtZT0iQmxhY2siIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjAuMDAwMDAwIiB4bXBHOm1hZ2VudGE9IjAuMDAwMDAwIiB4bXBHOnllbGxvdz0iMC4wMDAwMDAiIHhtcEc6YmxhY2s9IjEwMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjgwJSBCbGFjayIgeG1wRzptb2RlPSJDTVlLIiB4bXBHOnR5cGU9IlBST0NFU1MiIHhtcEc6Y3lhbj0iMC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMC4wMDAwMDAiIHhtcEc6eWVsbG93PSIwLjAwMDAwMCIgeG1wRzpibGFjaz0iODAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSI2MCUgQmxhY2siIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjAuMDAwMDAwIiB4bXBHOm1hZ2VudGE9IjAuMDAwMDAwIiB4bXBHOnllbGxvdz0iMC4wMDAwMDAiIHhtcEc6YmxhY2s9IjYwLjAwMDAwMCIvPiA8cmRmOmxpIHhtcEc6c3dhdGNoTmFtZT0iNDAlIEJsYWNrIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIwLjAwMDAwMCIgeG1wRzp5ZWxsb3c9IjAuMDAwMDAwIiB4bXBHOmJsYWNrPSI0MC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjIwJSBCbGFjayIgeG1wRzptb2RlPSJDTVlLIiB4bXBHOnR5cGU9IlBST0NFU1MiIHhtcEc6Y3lhbj0iMC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMC4wMDAwMDAiIHhtcEc6eWVsbG93PSIwLjAwMDAwMCIgeG1wRzpibGFjaz0iMjAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSJSZWQgTT0xMDAgWT0xMDAiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjAuMDAwMDAwIiB4bXBHOm1hZ2VudGE9IjEwMC4wMDAwMDAiIHhtcEc6eWVsbG93PSIxMDAuMDAwMDAwIiB4bXBHOmJsYWNrPSIwLjAwMDAwMCIvPiA8cmRmOmxpIHhtcEc6c3dhdGNoTmFtZT0iNzUlIFJlZCBNPTc1IFk9NzUiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjAuMDAwMDAwIiB4bXBHOm1hZ2VudGE9Ijc1LjAwMDAwMCIgeG1wRzp5ZWxsb3c9Ijc1LjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjUwJSBSZWQgTT01MCBZPTUwIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSI1MC4wMDAwMDAiIHhtcEc6eWVsbG93PSI1MC4wMDAwMDAiIHhtcEc6YmxhY2s9IjAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSIyNSUgUmVkIE09MjUgWT0yNSIgeG1wRzptb2RlPSJDTVlLIiB4bXBHOnR5cGU9IlBST0NFU1MiIHhtcEc6Y3lhbj0iMC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMjUuMDAwMDAwIiB4bXBHOnllbGxvdz0iMjUuMDAwMDAwIiB4bXBHOmJsYWNrPSIwLjAwMDAwMCIvPiA8cmRmOmxpIHhtcEc6c3dhdGNoTmFtZT0iR3JlZW4gQz04MCBZPTEwMCIgeG1wRzptb2RlPSJDTVlLIiB4bXBHOnR5cGU9IlBST0NFU1MiIHhtcEc6Y3lhbj0iODAuMDAwMDAwIiB4bXBHOm1hZ2VudGE9IjAuMDAwMDAwIiB4bXBHOnllbGxvdz0iMTAwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9Ijc1JSBHcmVlbiBDPTYwIFk9NzUiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjYwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIwLjAwMDAwMCIgeG1wRzp5ZWxsb3c9Ijc1LjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjUwJSBHcmVlbiBDPTQwIFk9NTAiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjQwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIwLjAwMDAwMCIgeG1wRzp5ZWxsb3c9IjUwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjI1JSBHcmVlbiBDPTIwIFk9MjUiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjIwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIwLjAwMDAwMCIgeG1wRzp5ZWxsb3c9IjI1LjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IkJsdWUgQz0xMDAgTT01MCIgeG1wRzptb2RlPSJDTVlLIiB4bXBHOnR5cGU9IlBST0NFU1MiIHhtcEc6Y3lhbj0iMTAwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSI1MC4wMDAwMDAiIHhtcEc6eWVsbG93PSIwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9Ijc1JSBCbHVlIEM9NzUgTT0zNy41IiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSI3NS4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMzcuNTAwMDAwIiB4bXBHOnllbGxvdz0iMC4wMDAwMDAiIHhtcEc6YmxhY2s9IjAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSI1MCUgQmx1ZSBDPTUwIE09MjUiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjUwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIyNS4wMDAwMDAiIHhtcEc6eWVsbG93PSIwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjI1JSBCbHVlIEM9MjUgTT0xMi41IiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIyNS4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMTIuNTAwMDAwIiB4bXBHOnllbGxvdz0iMC4wMDAwMDAiIHhtcEc6YmxhY2s9IjAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSJPcmFuZ2UgTT01MCBZPTEwMCIgeG1wRzptb2RlPSJDTVlLIiB4bXBHOnR5cGU9IlBST0NFU1MiIHhtcEc6Y3lhbj0iMC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iNTAuMDAwMDAwIiB4bXBHOnllbGxvdz0iMTAwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9Ijc1JSBPcmFuZ2UgTT0zNy41IFk9NzUiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjAuMDAwMDAwIiB4bXBHOm1hZ2VudGE9IjM3LjUwMDAwMCIgeG1wRzp5ZWxsb3c9Ijc1LjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjUwJSBPcmFuZ2UgTT0yNSBZPTUwIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIyNS4wMDAwMDAiIHhtcEc6eWVsbG93PSI1MC4wMDAwMDAiIHhtcEc6YmxhY2s9IjAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSIyNSUgT3JhbmdlIE09MTIuNSBZPTI1IiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIxMi41MDAwMDAiIHhtcEc6eWVsbG93PSIyNS4wMDAwMDAiIHhtcEc6YmxhY2s9IjAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSJWaW9sZXQgQz01MCBNPTkwIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSI1MC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iOTAuMDAwMDAwIiB4bXBHOnllbGxvdz0iMC4wMDAwMDAiIHhtcEc6YmxhY2s9IjAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSI3NSUgVmlvbGV0IEM9MzcuNSBNPTY3LjUiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjM3LjUwMDAwMCIgeG1wRzptYWdlbnRhPSI2Ny41MDAwMDAiIHhtcEc6eWVsbG93PSIwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjUwJSBWaW9sZXQgQz0yNSBNPTQ1ICIgeG1wRzptb2RlPSJDTVlLIiB4bXBHOnR5cGU9IlBST0NFU1MiIHhtcEc6Y3lhbj0iMjUuMDAwMDAwIiB4bXBHOm1hZ2VudGE9IjQ1LjAwMDAwMCIgeG1wRzp5ZWxsb3c9IjAuMDAwMDAwIiB4bXBHOmJsYWNrPSIwLjAwMDAwMCIvPiA8cmRmOmxpIHhtcEc6c3dhdGNoTmFtZT0iMjUlIFZpb2xldCBDPTEyLjUgTT0yMi41IiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIxMi41MDAwMDAiIHhtcEc6bWFnZW50YT0iMjIuNTAwMDAwIiB4bXBHOnllbGxvdz0iMC4wMDAwMDAiIHhtcEc6YmxhY2s9IjAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSJBenVyZSBDPTgwIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSI4MC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMC4wMDAwMDAiIHhtcEc6eWVsbG93PSIwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9Ijc1JSBBenVyZSBDPTYwIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSI2MC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMC4wMDAwMDAiIHhtcEc6eWVsbG93PSIwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjUwJSBBenVyZSBDPTQwIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSI0MC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMC4wMDAwMDAiIHhtcEc6eWVsbG93PSIwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjI1JSBBenVyZSBDPTIwIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIyMC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMC4wMDAwMDAiIHhtcEc6eWVsbG93PSIwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IlllbGxvdyIgeG1wRzptb2RlPSJDTVlLIiB4bXBHOnR5cGU9IlBST0NFU1MiIHhtcEc6Y3lhbj0iMC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMC4wMDAwMDAiIHhtcEc6eWVsbG93PSIxMDAuMDAwMDAwIiB4bXBHOmJsYWNrPSIwLjAwMDAwMCIvPiA8cmRmOmxpIHhtcEc6c3dhdGNoTmFtZT0iNzUlIFllbGxvdyIgeG1wRzptb2RlPSJDTVlLIiB4bXBHOnR5cGU9IlBST0NFU1MiIHhtcEc6Y3lhbj0iMC4wMDAwMDAiIHhtcEc6bWFnZW50YT0iMC4wMDAwMDAiIHhtcEc6eWVsbG93PSI3NS4wMDAwMDAiIHhtcEc6YmxhY2s9IjAuMDAwMDAwIi8+IDxyZGY6bGkgeG1wRzpzd2F0Y2hOYW1lPSI1MCUgWWVsbG93IiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIwLjAwMDAwMCIgeG1wRzp5ZWxsb3c9IjUwLjAwMDAwMCIgeG1wRzpibGFjaz0iMC4wMDAwMDAiLz4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IjI1JSBZZWxsb3ciIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjAuMDAwMDAwIiB4bXBHOm1hZ2VudGE9IjAuMDAwMDAwIiB4bXBHOnllbGxvdz0iMjUuMDAwMDAwIiB4bXBHOmJsYWNrPSIwLjAwMDAwMCIvPiA8L3JkZjpTZXE+IDwveG1wRzpDb2xvcmFudHM+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpsaT4gPC9yZGY6U2VxPiA8L3htcFRQZzpTd2F0Y2hHcm91cHM+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjc4ZmFiNTNjLTVlNDMtNWY0Zi1iNTU0LWMxNWEyZTExZGExZSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3OGZhYjUzYy01ZTQzLTVmNGYtYjU1NC1jMTVhMmUxMWRhMWUiIHN0UmVmOm9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo3MTg4NEQ5MzVGQ0NFMDExQTQwQ0Q5ODQ2QkQ5NUI1OSIgc3RSZWY6cmVuZGl0aW9uQ2xhc3M9InByb29mOnBkZiIvPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo3MTg4NEQ5MzVGQ0NFMDExQTQwQ0Q5ODQ2QkQ5NUI1OSIgc3RFdnQ6d2hlbj0iMjAxMS0wOC0yMlQxNDowMzozNSswOTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgSWxsdXN0cmF0b3IgQ1M0IiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoyZWUwZWEwMC0wZjk1LTM5NDAtYjYwOS0wMGM4ZjllMjI4ZjgiIHN0RXZ0OndoZW49IjIwMjItMTItMjBUMTk6MDI6MzQrMDk6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIElsbHVzdHJhdG9yIDI1LjIgKFdpbmRvd3MpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjb252ZXJ0ZWQiIHN0RXZ0OnBhcmFtZXRlcnM9ImZyb20gYXBwbGljYXRpb24vcGRmIHRvIGFwcGxpY2F0aW9uL3ZuZC5hZG9iZS5waG90b3Nob3AiLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjc4ZmFiNTNjLTVlNDMtNWY0Zi1iNTU0LWMxNWEyZTExZGExZSIgc3RFdnQ6d2hlbj0iMjAyMy0wMi0wM1QxMzoyODo1MSswOTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjb252ZXJ0ZWQiIHN0RXZ0OnBhcmFtZXRlcnM9ImZyb20gYXBwbGljYXRpb24vcGRmIHRvIGltYWdlL2pwZWciLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImRlcml2ZWQiIHN0RXZ0OnBhcmFtZXRlcnM9ImNvbnZlcnRlZCBmcm9tIGFwcGxpY2F0aW9uL3ZuZC5hZG9iZS5waG90b3Nob3AgdG8gaW1hZ2UvanBlZyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6MmFjZTRiNGEtNTYyNC1jYzQ4LWExZDEtMGU4ZjkxMzZhYjg0IiBzdEV2dDp3aGVuPSIyMDIzLTAyLTAzVDEzOjI4OjUxKzA5OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOCAoV2luZG93cykiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw/eHBhY2tldCBlbmQ9InciPz7/4gxYSUNDX1BST0ZJTEUAAQEAAAxITGlubwIQAABtbnRyUkdCIFhZWiAHzgACAAkABgAxAABhY3NwTVNGVAAAAABJRUMgc1JHQgAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLUhQICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABFjcHJ0AAABUAAAADNkZXNjAAABhAAAAGx3dHB0AAAB8AAAABRia3B0AAACBAAAABRyWFlaAAACGAAAABRnWFlaAAACLAAAABRiWFlaAAACQAAAABRkbW5kAAACVAAAAHBkbWRkAAACxAAAAIh2dWVkAAADTAAAAIZ2aWV3AAAD1AAAACRsdW1pAAAD+AAAABRtZWFzAAAEDAAAACR0ZWNoAAAEMAAAAAxyVFJDAAAEPAAACAxnVFJDAAAEPAAACAxiVFJDAAAEPAAACAx0ZXh0AAAAAENvcHlyaWdodCAoYykgMTk5OCBIZXdsZXR0LVBhY2thcmQgQ29tcGFueQAAZGVzYwAAAAAAAAASc1JHQiBJRUM2MTk2Ni0yLjEAAAAAAAAAAAAAABJzUkdCIElFQzYxOTY2LTIuMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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';
+/* ===== v79 (10,11): 품목 미등록 부품 모아 보기 · 사양 변경 이력 ===== */
+const UR={rows:null,busy:false,err:''};
+function urBox(){
+  let b=document.getElementById('unregBox');
+  if(!b){const pn=document.getElementById('panel-register');if(!pn)return null;b=document.createElement('div');b.id='unregBox';pn.appendChild(b);}
+  return b;
+}
+async function urLoad(){
+  const b=urBox();if(!b||!isMain()||!lvOk(2))return;
+  if(!(await srvAtLeast(15))){b.innerHTML='';return;}
+  try{const d=await hcGet('unreg_parts');UR.rows=d&&d.ok?d.rows:[];UR.err=d&&d.ok?'':'조회 실패';}catch(e){UR.err='불러오지 못했습니다.';}
+  urRender();
+}
+function urRender(){
+  const b=urBox();if(!b)return;
+  const rows=UR.rows||[];
+  if(!rows.length&&!UR.err){b.innerHTML='';return;}
+  b.innerHTML='<section class="card ur-card"><h3>품목에 없는 부품 <small>(이력에 직접 입력된 것)</small></h3><p class="us-gd">이력 등록 때 \'목록에 없는 부품\'으로 적은 제조사·모델입니다. 품목으로 등록하면 이후 이력에서 선택·재고 차감이 됩니다.'+(lvOk(3)?'':' 등록은 관리자만 할 수 있습니다.')+'</p>'
+   +(UR.err?'<div class="hc-err">'+E(UR.err)+'</div>':'')
+   +rows.map((r,i)=>'<div class="ur-r"><div><b>'+E((r.maker?r.maker+' ':'')+r.model)+'</b><small>'+r.count+'건 · 수량 '+r.qty+' · 최근 '+E(String(r.last||'').slice(5))+' · '+E((r.eqs||[]).slice(0,4).join(', '))+((r.eqs||[]).length>4?' 외':'')+'</small></div>'
+     +(lvOk(3)?'<button type="button" class="hc-btn sm" data-ur="'+i+'">품목으로 등록</button>':'')+'</div>').join('')+'</section>';
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest&&e.target.closest('[data-ur]');if(!t)return;
+  e.stopPropagation();const r=(UR.rows||[])[Number(t.dataset.ur)];if(!r)return;
+  const cats=[...new Set((typeof partsData!=='undefined'?partsData:[]).map(p=>String(p['제품구분']||'')).filter(Boolean))];
+  hxModal('<h3 style="margin:0 0 4px">품목으로 등록</h3><p class="hc-hint" style="margin:0 0 10px">'+E((r.maker?r.maker+' ':'')+r.model)+' · 지난 이력 '+r.count+'건에 연결됩니다.</p>'
+   +'<label class="hc-lab" for="urCat">제품구분 <small>(선택)</small></label><input id="urCat" class="hc-in" list="urCats" maxlength="30"><datalist id="urCats">'+cats.map(c=>'<option value="'+A(c)+'">').join('')+'</datalist>'
+   +'<label class="hc-lab" for="urForm" style="margin-top:8px">제품형태 <small>(선택)</small></label><input id="urForm" class="hc-in" maxlength="40" placeholder="예: 믹싱헤드">'
+   +'<label class="hc-lab" for="urStock" style="margin-top:8px">현재 실제 재고 <small>(선택)</small></label><input id="urStock" class="hc-in" type="number" min="0" max="9999" inputmode="numeric" placeholder="0">'
+   +'<div class="hc-warn" style="margin-top:10px">지난 이력의 사용량은 재고에서 빼지 않습니다. 재고를 넣는다면 <b>지금 실제로 있는 수량</b>을 입력하세요.</div>'
+   +'<div id="urErr" class="hc-err" hidden></div><div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn" data-urok="'+A(t.dataset.ur)+'">등록</button><button type="button" class="hc-btn ghost" data-urok="x">취소</button></div>','');
+},true);
+document.addEventListener('click',async e=>{
+  const t=e.target.closest&&e.target.closest('[data-urok]');if(!t)return;
+  e.stopPropagation();
+  if(t.dataset.urok==='x'){hxClose();return;}
+  if(UR.busy)return;const r=UR.rows[Number(t.dataset.urok)];if(!r)return;
+  UR.busy=true;t.disabled=true;
+  try{
+    const res=await hcPost({type:'item_register',maker:r.maker,model:r.model,cat:$('urCat').value.trim(),form:$('urForm').value.trim(),stock:Number($('urStock').value)||0});
+    if(res&&res.ok){hxClose();toast('품목으로 등록했습니다. (지난 이력 '+(res.linked||0)+'건 연결)');try{if(typeof loadPartsFromSheet==='function')await loadPartsFromSheet();}catch(x){}try{await loadHist();}catch(x){}urLoad();}
+    else{const er=$('urErr');er.textContent=errMsg(res&&res.error);er.hidden=false;t.disabled=false;}
+  }catch(x){const er=$('urErr');if(er){er.textContent='네트워크 오류입니다. 다시 시도하세요.';er.hidden=false;}t.disabled=false;}
+  UR.busy=false;
+},true);
+(function(){const _sp=showPanel;showPanel=function(name){const r=_sp.apply(this,arguments);if(name==='register')setTimeout(urLoad,300);return r;};})();
+
+/* 설비 상세: 사양 변경 이력 */
+const _hec79=hxEqCard;
+hxEqCard=function(no){
+  let h=_hec79.apply(this,arguments);
+  try{if(isMain())h+='<div class="card hx-eqc"><h3>사양 변경 이력</h3><div data-speclog="'+A(hxEq(no))+'"></div></div>';}catch(e){}
+  return h;
+};
+async function slFill(el){
+  if(el.dataset.done)return;el.dataset.done='1';
+  el.innerHTML='<small class="hc-muted">불러오는 중...</small>';
+  if(!(await srvAtLeast(15))){el.innerHTML='<small class="hc-muted">서버 v15 업데이트 후 표시됩니다.</small>';return;}
+  let rows;try{const d=await hcGet('spec_log','&eq='+encodeURIComponent(el.dataset.speclog));rows=d&&d.ok?d.rows:null;}catch(e){rows=null;}
+  if(!rows){el.innerHTML='<small class="hc-muted">불러오지 못했습니다.</small>';return;}
+  if(!rows.length){el.innerHTML='<small class="hc-muted">기록된 변경이 없습니다.</small>';return;}
+  el.innerHTML=rows.slice(0,20).map(r=>'<div class="sp-r"><span class="d">'+E(String(r.at||'').slice(0,10))+'</span><span><b>'+E(r.item)+'</b> '+E(r.from||'(없음)')+' → '+E(r.to||'(없음)')+'<small>'+E(r.by||'')+(r.memo?' · '+E(r.memo):'')+'</small></span></div>').join('');
+}
+new MutationObserver(()=>{document.querySelectorAll('[data-speclog]:not([data-done])').forEach(slFill);}).observe(document.body,{childList:true,subtree:true});
+/* ===== v79 (6): 채팅 질문 — 개수 묻기·부정("말고/안 쓰는") ===== */
+const ASK_COUNT=/몇\s*(?:개|대|곳|호기)|수량|총\s*(?:몇|개수|대수)|개수|대수|몇\s*$/;
+const ASK_NEG=/말고|안\s*쓰|안쓰|제외|빼고|아닌|없는/;
+const _aa79=askAnswer;
+askAnswer=function(q){
+  const res=_aa79(q);
+  try{
+    const s=String(q||'');
+    if(res.kind==='value'&&ASK_COUNT.test(s)&&!ASK_NEG.test(s)){
+      const by={};let iso=0,pol=0,etc=0;
+      res.list.forEach(h=>{by[h.no]=1;if(/POL/i.test(h.label))pol++;else if(/ISO|MDI/i.test(h.label))iso++;else etc++;});
+      res.kind='count';res.cnt={tk:res.note,total:res.list.length,iso:iso,pol:pol,etc:etc,units:Object.keys(by).length};
+    }else if(res.p&&res.p.tokens.length&&ASK_NEG.test(s)&&!res.p.units.length){
+      const rows=equipVisibleRows(),tk=askNormVal(res.p.tokens[0]);
+      const has=r=>equipHeaders.some((h,i)=>i>0&&askNormVal(r[i]).indexOf(tk)>=0);
+      const list=rows.filter(r=>!has(r)).map(eqNo);
+      res.kind='valueNot';res.note=res.p.tokens[0];res.list=list;res.nHas=rows.length-list.length;
+    }
+  }catch(e){}
+  return res;
+};
+const _ar79=askRender;
+askRender=function(res){
+  if(res.kind==='count'){
+    const c=res.cnt,parts=[];if(c.iso)parts.push('ISO '+c.iso);if(c.pol)parts.push('POL '+c.pol);if(c.etc)parts.push('기타 '+c.etc);
+    return '<div class="ask-msg ask-cnt"><b>'+escapeHtml(c.tk)+' '+c.total+'대</b>'+(parts.length>1?' ('+escapeHtml(parts.join(' / '))+')':'')+' · '+c.units+'개 호기</div>'+_ar79(Object.assign({},res,{kind:'value'}));
+  }
+  if(res.kind==='valueNot'){
+    return '<div class="ask-msg"><b>'+escapeHtml(res.note)+'</b>을(를) 쓰지 않는 호기 '+res.list.length+'개 <small>(쓰는 호기 '+res.nHas+'개)</small></div>'
+     +(res.list.length?'<div class="chip-row ask-chips">'+res.list.map(n=>'<button type="button" class="cat-chip" data-eq="'+escapeAttr(n)+'">'+escapeHtml(n)+'</button>').join('')+'</div>':'');
+  }
+  return _ar79.apply(this,arguments);
+};
+/* ===== v79: 엑셀 내려받기 6종 (점검표 주간·월간·연간 / 설비 이력 / 설비 사양 / 재고현황) =====
+   ExcelJS는 처음 사용할 때만 내려받아 쓴다(약 1MB). 모든 파일은 이 기기에서 만들어지며 서버 변경은 필요 없다. */
+const XL={lib:null,busy:false,st:{type:'주간',month:'',year:'',from:'',to:'',eqs:[]}};
+const XL_TYPES=[['주간','주간 점검표','1개월 · 주차별'],['월간','월간 점검표','1년 · 월별'],['연간','연간 점검표','3개년'],['이력','설비 이력','기간 선택'],['사양','설비 사양','사양판 형식'],['재고','재고현황','부족 부품 먼저']];
+function xlLoad(){
+  if(window.ExcelJS)return Promise.resolve(window.ExcelJS);
+  if(XL.lib)return XL.lib;
+  return XL.lib=new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js';s.onload=()=>window.ExcelJS?res(window.ExcelJS):rej(new Error('lib'));s.onerror=()=>{XL.lib=null;rej(new Error('net'));};document.head.appendChild(s);});
+}
+const XC={teal:'FF0F7690',tealD:'FF0B5A6F',tealL:'FFE6F1F5',grey:'FFF2F4F6',line:'FF8A98A3',red:'FFBF3A2C',redL:'FFFBE9E6',ok:'FF23805F',okL:'FFE2F3EC',warm:'FFB35A0E',warmL:'FFFDF0E2',ink:'FF0B2A3D',mut:'FF566B7B',w:'FFFFFFFF'};
+const xBd=(c)=>{const s={style:'thin',color:{argb:c||XC.line}};return{top:s,left:s,bottom:s,right:s};};
+const xFont=(o)=>Object.assign({name:'맑은 고딕',size:10,color:{argb:XC.ink}},o||{});
+const xFill=a=>({type:'pattern',pattern:'solid',fgColor:{argb:a}});
+const xEqName=eq=>String(eq||'').replace(/호기/g,'')+'호기';
+function xColL(n){let s='';while(n>0){const m=(n-1)%26;s=String.fromCharCode(65+m)+s;n=Math.floor((n-1)/26);}return s;}
+function xCell(ws,r,c,v,o){const x=ws.getCell(r,c);if(v!==undefined)x.value=v;o=o||{};x.font=xFont(o.font);x.alignment=Object.assign({vertical:'middle',wrapText:true},o.al||{});if(o.fill)x.fill=xFill(o.fill);if(o.bd!==false)x.border=xBd();return x;}
+function xMerge(ws,r1,c1,r2,c2,v,o){ws.mergeCells(r1,c1,r2,c2);const x=xCell(ws,r1,c1,v,o);for(let r=r1;r<=r2;r++)for(let c=c1;c<=c2;c++){if(r===r1&&c===c1)continue;const y=ws.getCell(r,c);y.border=xBd();if(o&&o.fill)y.fill=xFill(o.fill);}return x;}
+function xPrint(ws,o){
+  o=o||{};
+  ws.pageSetup=Object.assign({paperSize:9,orientation:o.land?'landscape':'portrait',fitToPage:true,fitToWidth:1,fitToHeight:o.oneP?1:0,horizontalCentered:true,margins:{left:.4,right:.4,top:.5,bottom:.6,header:.25,footer:.3}},o.titles?{printTitlesRow:o.titles}:{},o.area?{printArea:o.area}:{});
+  ws.headerFooter={oddFooter:'&L&8출력일시 &D &T&C&8&P / &N&R&8화인솔루션(주) · EMQ'};
+}
+function xLogo(wb,ws,c1,r1,c2,r2){
+  try{const id=wb.addImage({base64:XL_LOGO,extension:'jpeg'});ws.addImage(id,{tl:{col:c1-1+.1,row:r1-1+(r2-r1+1)*.5-.35},ext:{width:138,height:20},editAs:'oneCell'});}catch(e){}
+}
+const xNow=()=>{const n=new Date();return n.getFullYear()+'-'+pad(n.getMonth()+1)+'-'+pad(n.getDate())+' '+pad(n.getHours())+':'+pad(n.getMinutes());};
+function xSafe(n){return String(n).replace(/[\\\/\?\*\[\]:]/g,'-').slice(0,31);}
+
+/* ---------- 점검표 ---------- */
+const MD=d=>(d.getMonth()+1)+'/'+d.getDate();
+function xWeeks(ym){   // 'YYYY-MM' → [{key,from,to,label}] (월요일 시작 주)
+  const [y,m]=ym.split('-').map(Number),first=new Date(y,m-1,1),last=new Date(y,m,0);
+  const out=[];let s=wkStart(first),i=1;
+  while(s<=last){const e=new Date(s);e.setDate(e.getDate()+6);out.push({key:ymd(s),label:i+'주차',range:MD(s)+'~'+MD(e)});s=new Date(s);s.setDate(s.getDate()+7);i++;}
+  return out;
+}
+function xLatest(rows){return rows.slice().sort((a,b)=>String(b['일시']).localeCompare(String(a['일시'])))[0]||null;}
+function xRes(it,r){
+  if(!r)return {t:'',k:''};
+  const m=it.mode;
+  if(m==='judge'){const v=r['결과'];return {t:v==='A'?'○':v==='B'?'△':v==='C'?'×':'',k:v};}
+  if(m==='measure'){const a=r['측정값1'],b=r['측정값2'];return {t:[a!==''&&a!=null?a+'℃':'',b!==''&&b!=null?b+'dB':''].filter(Boolean).join(' / '),k:'M'};}
+  return {t:'✓'+(r['조치시간(분)']?' '+r['조치시간(분)']+'분':''),k:'D'};
+}
+function xCheckSheet(wb,kind,eq,opt){
+  const ws=wb.addWorksheet(xSafe(xEqName(eq)),{views:[{showGridLines:false}]});
+  const items=HC_ITEMS.filter(i=>i.kind===kind&&applies(i,eq));
+  let cols=[];     // {head,sub,keyOf}
+  if(kind==='주간'){xWeeks(opt.month).forEach(w=>cols.push({head:w.label,sub:w.range,pk:w.key}));}
+  else if(kind==='월간'){for(let m=1;m<=12;m++)cols.push({head:m+'월',sub:'',pk:opt.year+'-'+pad(m)});}
+  else{const y=Number(opt.year);for(let k=y-2;k<=y;k++)cols.push({head:k+'년',sub:'',pk:String(k),two:true});}
+  const fixedN=4,perCol=kind==='연간'?2:1,nC=fixedN+cols.length*perCol;
+  const last=Math.max(nC,fixedN+4);
+  const widths=[11,12,24,34];ws.columns=Array.from({length:last},(_,i)=>({width:i<fixedN?widths[i]:(kind==='월간'?10:kind==='연간'?11:15)}));
+  const title=kind+' 점검표';
+  const per=kind==='주간'?opt.month.replace('-','년 ')+'월':kind==='월간'?opt.year+'년':(Number(opt.year)-2)+'년 ~ '+opt.year+'년';
+  /* 머리: 로고 · 제목 · 결재란 */
+  [1,2,3].forEach(r=>ws.getRow(r).height=r===1?20:r===2?22:22);
+  xMerge(ws,1,1,3,2,'',{bd:false});xLogo(wb,ws,1,1,2,3);
+  xMerge(ws,1,3,3,last-3,'설비 '+title,{font:{size:20,bold:true,color:{argb:XC.tealD}},al:{horizontal:'center'},bd:false});
+  /* 결재란 */
+  const rowsAll=HC.chkX.filter(r=>r['설비']===eq&&r['종류']===kind);
+  const inPer=r=>cols.some(c=>pkey(kind,pdt(r['일시'])||new Date(0))===c.pk);
+  const mine=rowsAll.filter(inPer);
+  const topName=(arr)=>{const m={};arr.forEach(x=>{if(x)m[x]=(m[x]||0)+1;});const k=Object.keys(m).sort((a,b)=>m[b]-m[a]);return k[0]||'';};
+  const writer=topName(mine.map(r=>r['작업자'])),checker=topName(mine.map(r=>r['확인자']));
+  [['작성',writer],['검토',checker],['승인','']].forEach((a,i)=>{const c=last-2+i;xCell(ws,1,c,a[0],{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}});xMerge(ws,2,c,3,c,a[1],{al:{horizontal:'center'}});});
+  ws.getRow(4).height=6;
+  /* 설비·기간 */
+  xCell(ws,5,1,'설비명',{fill:XC.tealL,font:{bold:true},al:{horizontal:'center'}});xMerge(ws,5,2,5,3,xEqName(eq)+' ('+eqType(eq)+')',{font:{bold:true}});
+  xCell(ws,5,4,'점검 기간',{fill:XC.tealL,font:{bold:true},al:{horizontal:'center'}});xMerge(ws,5,5,5,last,per,{font:{bold:true}});
+  ws.getRow(5).height=22;ws.getRow(6).height=6;
+  /* 표 머리 */
+  const H=7;ws.getRow(H).height=20;ws.getRow(H+1).height=kind==='주간'?16:4;
+  ['구분','점검부위','점검항목','점검 기준'].forEach((t,i)=>{xMerge(ws,H,i+1,H+1,i+1,t,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}});});
+  cols.forEach((c,i)=>{const c0=fixedN+1+i*perCol;
+    if(c.two){xMerge(ws,H,c0,H,c0+1,c.head,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}});xCell(ws,H+1,c0,'실시일',{fill:XC.tealL,font:{size:9},al:{horizontal:'center'}});xCell(ws,H+1,c0+1,'결과',{fill:XC.tealL,font:{size:9},al:{horizontal:'center'}});ws.getRow(H+1).height=16;}
+    else{xCell(ws,H,c0,c.head,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}});xCell(ws,H+1,c0,c.sub,{fill:XC.tealL,font:{size:9},al:{horizontal:'center'}});}});
+  for(let c=nC+1;c<=last;c++){xMerge(ws,H,c,H+1,c,'',{fill:XC.teal});}
+  /* 항목 */
+  let r=H+2;const areaStart={},recMap={};
+  items.forEach(it=>{
+    const sub=ws.getRow(r);sub.height=Math.max(21,Math.ceil(String(it.desc||'').length/34)*13+5);
+    xCell(ws,r,1,it.area,{fill:XC.grey,font:{bold:true},al:{horizontal:'center'}});
+    xCell(ws,r,2,it.part,{al:{horizontal:'center'}});xCell(ws,r,3,it.name);xCell(ws,r,4,it.desc||'',{font:{size:9,color:{argb:XC.mut}}});
+    cols.forEach((c,i)=>{const c0=fixedN+1+i*perCol;
+      const rs=rowsAll.filter(x=>x['항목번호']===it.id&&pkey(kind,pdt(x['일시'])||new Date(0))===c.pk),rec=xLatest(rs),v=xRes(it,rec);
+      if(c.two){xCell(ws,r,c0,rec?String(rec['일시']).slice(0,10):'',{al:{horizontal:'center'},font:{size:9}});}
+      const x=xCell(ws,r,c0+(c.two?1:0),v.t,{al:{horizontal:'center'},font:{bold:v.k==='B'||v.k==='C',size:v.k==='M'?9:12}});
+      if(v.k==='B'){x.fill=xFill(XC.warmL);x.font=xFont({bold:true,size:12,color:{argb:XC.warm}});}
+      if(v.k==='C'){x.fill=xFill(XC.redL);x.font=xFont({bold:true,size:12,color:{argb:XC.red}});}
+      if(v.k==='A'){x.font=xFont({size:12,color:{argb:XC.ok}});}
+      if(rec&&(v.k==='B'||v.k==='C'))recMap[it.id+'|'+c.pk]={it:it,rec:rec,c:c};
+    });
+    for(let c=nC+1;c<=last;c++)xCell(ws,r,c,'');
+    areaStart[it.area]=areaStart[it.area]||[r,r];areaStart[it.area][1]=r;r++;
+  });
+  Object.keys(areaStart).forEach(k=>{const [a,b]=areaStart[k];if(b>a){const v=ws.getCell(a,1).value;ws.mergeCells(a,1,b,1);const x=ws.getCell(a,1);x.value=v;x.alignment={vertical:'middle',horizontal:'center',wrapText:true};}});
+  /* 점검일 / 담당자 확인 */
+  [['점검일',c=>{const rs=rowsAll.filter(x=>pkey(kind,pdt(x['일시'])||new Date(0))===c.pk),l=xLatest(rs);return l?String(l['일시']).slice(5,10).replace('-','/'):'';}],['담당자 확인',c=>{const rs=rowsAll.filter(x=>pkey(kind,pdt(x['일시'])||new Date(0))===c.pk);return topName(rs.map(x=>x['작업자']));}]].forEach(a=>{
+    ws.getRow(r).height=22;xMerge(ws,r,1,r,fixedN,a[0],{fill:XC.tealL,font:{bold:true},al:{horizontal:'center'}});
+    cols.forEach((c,i)=>{const c0=fixedN+1+i*perCol;if(c.two){xMerge(ws,r,c0,r,c0+1,a[1](c),{al:{horizontal:'center'},font:{size:9}});}else xCell(ws,r,c0,a[1](c),{al:{horizontal:'center'},font:{size:9}});});
+    for(let c=nC+1;c<=last;c++)xCell(ws,r,c,'');r++;});
+  const tableEnd=r-1;
+  /* 범례 */
+  ws.getRow(r).height=18;xMerge(ws,r,1,r,last,'○ 정상(A)   △ 관찰(B)   × 조치 필요(C)   측정 항목은 측정값 기록   빈 칸 = 미점검',{font:{size:9,color:{argb:XC.mut}},bd:false});r+=2;
+  /* 문제점 및 조치내용 */
+  xMerge(ws,r,1,r,last,'문제점 및 조치내용',{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}});r++;
+  [['일자',1,1],['점검항목',2,3],['판정',4,4],['내용 · 조치',5,last-1],['담당',last,last]].forEach(a=>{xMerge(ws,r,a[1],r,a[2],a[0],{fill:XC.tealL,font:{bold:true},al:{horizontal:'center'}});});r++;
+  const probs=Object.values(recMap).sort((a,b)=>String(a.rec['일시']).localeCompare(String(b.rec['일시']))).slice(0,14);
+  const nProb=Math.max(5,probs.length);
+  for(let i=0;i<nProb;i++){const p=probs[i];ws.getRow(r).height=24;
+    xCell(ws,r,1,p?String(p.rec['일시']).slice(5,10).replace('-','/'):'',{al:{horizontal:'center'}});
+    xMerge(ws,r,2,r,3,p?p.it.id+' '+p.it.area+' '+p.it.part+' '+p.it.name:'');
+    xCell(ws,r,4,p?(p.rec['결과']==='C'?'× 조치필요':'△ 관찰'):'',{al:{horizontal:'center'},font:{bold:true,color:{argb:p&&p.rec['결과']==='C'?XC.red:XC.warm}}});
+    xMerge(ws,r,5,r,last-1,p?String(p.rec['메모']||'')+(p.rec['연결이력ID']?' (이력 연결됨)':''):'');
+    xCell(ws,r,last,p?p.rec['작업자']:'',{al:{horizontal:'center'}});r++;}
+  ws.views=[{showGridLines:false,state:'frozen',xSplit:fixedN,ySplit:H+1}];
+  xPrint(ws,{land:true,titles:H+':'+(H+1),area:'A1:'+xColL(last)+(r-1)});
+  return ws;
+}
+
+/* ---------- 설비 이력 ---------- */
+function xParts(r){let a=r['_parts'];if(!a){try{a=JSON.parse(String(r['사용부품']||'[]'));}catch(e){a=[];}}return Array.isArray(a)?a:[];}
+function xHistSheets(wb,opt){
+  const set=opt.eqs.length?new Set(opt.eqs):null;
+  const rows=(HC.hist||[]).filter(r=>String(r['상태']||'정상')!=='취소').map(r=>({r:r,d:String(r['_occ']||r['발생일시']||'').slice(0,10),eq:hxEq(r['설비'])}))
+    .filter(x=>x.d>=opt.from&&x.d<=opt.to&&(!set||set.has(x.eq))).sort((a,b)=>String(b.r['_occ']||b.r['발생일시']).localeCompare(String(a.r['_occ']||a.r['발생일시'])));
+  const ws=wb.addWorksheet('설비 이력',{views:[{showGridLines:false}]});
+  ws.columns=[{width:11},{width:9},{width:22},{width:22},{width:30},{width:30},{width:9},{width:9},{width:7}];
+  xMerge(ws,1,1,3,2,'',{bd:false});xLogo(wb,ws,1,1,2,3);
+  xMerge(ws,1,3,3,9,'설비 이력',{font:{size:20,bold:true,color:{argb:XC.tealD}},al:{horizontal:'center'},bd:false});
+  ws.getRow(1).height=20;ws.getRow(2).height=22;ws.getRow(3).height=22;
+  xMerge(ws,4,1,4,9,'기간 '+opt.from+' ~ '+opt.to+' · '+(set?opt.eqs.map(xEqName).join(', '):'전체 설비')+' · 출력 '+xNow(),{font:{size:9,color:{argb:XC.mut}},bd:false});
+  const T=8,n=rows.length,L=T+n;
+  const kp=[['총 건수','=COUNTA(A'+(T+1)+':A'+Math.max(T+1,L)+')',n],['총 조치시간(분)','=SUM(G'+(T+1)+':G'+Math.max(T+1,L)+')',rows.reduce((a,x)=>a+(Number(x.r['조치시간(분)'])||0),0)],['설비 수',null,new Set(rows.map(x=>x.eq)).size],['작업자 수',null,new Set(rows.map(x=>x.r['작업자']).filter(Boolean)).size]];
+  kp.forEach((k,i)=>{const c=1+i*2+(i>=2?1:0);
+    const c1=i===0?1:i===1?3:i===2?5:7;const c2=i===0?2:i===1?4:i===2?6:9;
+    xMerge(ws,5,c1,5,c2,k[0],{fill:XC.tealL,font:{size:9,bold:true,color:{argb:XC.mut}},al:{horizontal:'center'}});
+    xMerge(ws,6,c1,6,c2,'',{al:{horizontal:'center'},font:{size:16,bold:true,color:{argb:XC.tealD}}});
+    ws.getCell(6,c1).value=k[1]?{formula:k[1].slice(1),result:k[2]}:k[2];});
+  ws.getRow(6).height=30;ws.getRow(7).height=6;
+  ['일자','설비','부위','현상','조치','사용 부품','시간(분)','작업자','상태'].forEach((t,i)=>xCell(ws,T,i+1,t,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}}));
+  rows.forEach((x,i)=>{const r=x.r,rr=T+1+i,pa=xParts(r);
+    const act=[r['조치유형'],r['조치내용']].filter(Boolean).join(' · ');
+    const vals=[x.d,xEqName(x.eq),[r['대분류'],r['중분류'],r['소분류']].filter(Boolean).join(' › '),r['고장현상']||'',act,pa.map(p=>(p.n||p.s||'')+(p.q>1?'×'+p.q:'')).join(', '),Number(r['조치시간(분)'])||null,r['작업자']||'',r['상태']||'정상'];
+    const WD=[11,9,22,22,30,30,9,9,7];ws.getRow(rr).height=Math.max(20,Math.max.apply(null,vals.map((v,c)=>Math.ceil(String(v==null?'':v).length*1.15/WD[c])))*13+6);
+    vals.forEach((v,c)=>{const cell=xCell(ws,rr,c+1,v,{al:{horizontal:c===6?'right':c===0||c===1||c===7||c===8?'center':'left'},fill:i%2?XC.grey:undefined});if(c===6)cell.numFmt='#,##0';});
+  });
+  if(!n){xMerge(ws,T+1,1,T+1,9,'선택한 기간에 이력이 없습니다.',{al:{horizontal:'center'},font:{color:{argb:XC.mut}}});}
+  ws.autoFilter={from:{row:T,column:1},to:{row:Math.max(T,L),column:9}};
+  ws.views=[{showGridLines:false,state:'frozen',ySplit:T}];
+  xPrint(ws,{land:true,titles:T+':'+T,area:'A1:I'+Math.max(T+1,L)});
+  /* 설비별 집계 */
+  const by={};rows.forEach(x=>{const o=by[x.eq]=by[x.eq]||{n:0,m:0,last:'',ph:{}};o.n++;o.m+=Number(x.r['조치시간(분)'])||0;if(x.d>o.last)o.last=x.d;String(x.r['고장현상']||'').split(/[,\/]/).map(s=>s.trim()).filter(Boolean).forEach(p=>o.ph[p]=(o.ph[p]||0)+1);});
+  const w2=wb.addWorksheet('설비별 집계',{views:[{showGridLines:false,state:'frozen',ySplit:2}]});
+  w2.columns=[{width:12},{width:9},{width:14},{width:12},{width:40}];
+  xMerge(w2,1,1,1,5,'설비별 집계 ('+opt.from+' ~ '+opt.to+')',{font:{size:14,bold:true,color:{argb:XC.tealD}},bd:false});
+  ['설비','건수','총 조치시간(분)','최근 일자','주요 현상'].forEach((t,i)=>xCell(w2,2,i+1,t,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}}));
+  Object.keys(by).sort((a,b)=>by[b].n-by[a].n).forEach((k,i)=>{const o=by[k],r=3+i;
+    xCell(w2,r,1,xEqName(k),{al:{horizontal:'center'}});
+    xCell(w2,r,2,{formula:'COUNTIF(\'설비 이력\'!B'+(T+1)+':B'+Math.max(T+1,L)+',A'+r+')',result:o.n},{al:{horizontal:'center'}});
+    xCell(w2,r,3,{formula:'SUMIF(\'설비 이력\'!B'+(T+1)+':B'+Math.max(T+1,L)+',A'+r+',\'설비 이력\'!G'+(T+1)+':G'+Math.max(T+1,L)+')',result:o.m},{al:{horizontal:'right'}}).numFmt='#,##0';
+    xCell(w2,r,4,o.last,{al:{horizontal:'center'}});
+    xCell(w2,r,5,Object.keys(o.ph).sort((a,b)=>o.ph[b]-o.ph[a]).slice(0,3).map(p=>p+' '+o.ph[p]).join(', '));});
+  xPrint(w2,{});
+  /* 부품 사용 집계 */
+  const pu={};rows.forEach(x=>xParts(x.r).forEach(p=>{const k=(p.n||p.s||'').trim();if(!k)return;const o=pu[k]=pu[k]||{c:0,q:0,mk:p.mk||'',md:p.md||p.s||''};o.c++;o.q+=Number(p.q)||0;}));
+  const w3=wb.addWorksheet('부품 사용 집계',{views:[{showGridLines:false,state:'frozen',ySplit:2}]});
+  w3.columns=[{width:34},{width:10},{width:10},{width:30}];
+  xMerge(w3,1,1,1,4,'부품 사용 집계 ('+opt.from+' ~ '+opt.to+')',{font:{size:14,bold:true,color:{argb:XC.tealD}},bd:false});
+  ['부품','사용 건수','사용 수량','비고(규격)'].forEach((t,i)=>xCell(w3,2,i+1,t,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}}));
+  Object.keys(pu).sort((a,b)=>pu[b].q-pu[a].q).forEach((k,i)=>{const o=pu[k],r=3+i;xCell(w3,r,1,k);xCell(w3,r,2,o.c,{al:{horizontal:'center'}});xCell(w3,r,3,o.q,{al:{horizontal:'center'}});xCell(w3,r,4,[o.mk,o.md].filter(Boolean).join(' '),{font:{size:9,color:{argb:XC.mut}}});});
+  if(!Object.keys(pu).length)xMerge(w3,3,1,3,4,'사용 부품 기록이 없습니다.',{al:{horizontal:'center'},font:{color:{argb:XC.mut}}});
+  xPrint(w3,{});
+  return n;
+}
+
+/* ---------- 설비 사양 (사양판 형식, 1설비 1장) ---------- */
+const XSEC={basic:'기본',head:'믹싱헤드',drive:'모터 · 펌프',heat:'히터 · 온도',meas:'계측 · 필터 · 액추에이터',valve:'밸브',turn:'턴테이블',etc:'기타'};
+const XUNIT=/^(-?[\d.,]+)\s*(kW|W|V|A|Hz|rpm|bar|MPa|kgf?\/?cm²?|℃|mm|㎜|L|cc|Nm|%|dB|HP)\s*$/i;
+function xSpecItems(row){
+  const secs=eqBuildSections(row),out=[];
+  EQ_GROUP_ORDER.forEach(g=>{
+    const its=(secs[g]||[]).filter(it=>it.pair?true:true);if(!its.length)return;
+    const rows=[];
+    its.forEach(it=>{
+      if(it.pair){it.pair.forEach(p=>rows.push({ko:it.label+' ('+p[0]+')',en:(EQ_EN[it.label]?EQ_EN[it.label]+' ('+p[0]+')':''),v:p[1]}));}
+      else rows.push({ko:it.label,en:EQ_EN[it.label]||'',v:it.v});
+    });
+    out.push({id:g,title:XSEC[g]||g,rows:rows});
+  });
+  return out;
+}
+function xSpecSheet(wb,eq){
+  const row=equipVisibleRows().find(r=>hxEq(eqNo(r))===eq);if(!row)return false;
+  const ws=wb.addWorksheet(xSafe(xEqName(eq)+' 사양'),{views:[{showGridLines:false}]});
+  ws.columns=[{width:5},{width:26},{width:28},{width:8},{width:30}];
+  [1,2,3,4].forEach(r=>ws.getRow(r).height=r<3?22:24);
+  xMerge(ws,1,1,2,2,'',{bd:false});xLogo(wb,ws,1,1,2,2);
+  xMerge(ws,1,3,2,5,'SPECIFICATION  (사양판)',{font:{size:20,bold:true,color:{argb:XC.tealD}},al:{horizontal:'center'},bd:false});
+  xMerge(ws,3,1,3,2,'PRODUCTION',{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}});
+  xMerge(ws,3,3,3,5,'화인솔루션(주)  ·  '+xEqName(eq),{font:{bold:true,size:12},al:{horizontal:'center'}});
+  xMerge(ws,4,1,4,2,'MFG. DATE',{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}});
+  xMerge(ws,4,3,4,5,'입력 필요',{font:{italic:true,color:{argb:XC.mut}},al:{horizontal:'center'}});
+  ws.getRow(5).height=6;
+  let r=6,no=1;
+  ws.getRow(r).height=20;
+  [['No.',1],['항목 / Item',2],['',3],['단위',4],['값 / Value',5]].forEach(a=>{});
+  xCell(ws,r,1,'No.',{fill:XC.tealL,font:{bold:true},al:{horizontal:'center'}});xMerge(ws,r,2,r,3,'항목 / Item',{fill:XC.tealL,font:{bold:true},al:{horizontal:'center'}});xCell(ws,r,4,'단위',{fill:XC.tealL,font:{bold:true},al:{horizontal:'center'}});xCell(ws,r,5,'값 / Value',{fill:XC.tealL,font:{bold:true},al:{horizontal:'center'}});r++;
+  const hdrRow=6;
+  const type=eqV(row,/^발포기\s*형식$/);
+  if(type){xCell(ws,r,1,no++,{al:{horizontal:'center'}});xCell(ws,r,2,'발포기 형식',{font:{bold:true}});xCell(ws,r,3,'Foamer type',{font:{color:{argb:XC.mut}}});xCell(ws,r,4,'');xCell(ws,r,5,type,{font:{bold:true}});ws.getRow(r).height=21;r++;}
+  xSpecItems(row).forEach(sec=>{
+    xMerge(ws,r,1,r,5,sec.title,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}}});ws.getRow(r).height=20;r++;
+    sec.rows.forEach(it=>{
+      const raw=String(it.v==null?'':it.v).trim(),m=XUNIT.exec(raw);
+      ws.getRow(r).height=raw.length>30?32:21;
+      xCell(ws,r,1,no++,{al:{horizontal:'center'},font:{size:9,color:{argb:XC.mut}}});
+      xCell(ws,r,2,it.ko,{font:{bold:true}});xCell(ws,r,3,it.en,{font:{size:9,color:{argb:XC.mut}}});
+      xCell(ws,r,4,m?m[2]:'',{al:{horizontal:'center'},font:{size:9}});
+      xCell(ws,r,5,raw?(m?m[1]:raw):'입력 필요',raw?{}:{font:{italic:true,color:{argb:XC.mut}}});
+      r++;});
+  });
+  const note=eqV(row,/^비고$/);
+  if(note){xMerge(ws,r,1,r,5,'비고',{fill:XC.grey,font:{bold:true}});r++;ws.getRow(r).height=Math.max(24,Math.ceil(note.length/40)*16);xMerge(ws,r,1,r,5,note);r++;}
+  xPrint(ws,{titles:'1:6',area:'A1:E'+(r-1)});
+  return true;
+}
+function xSpecCompare(wb,eqs){
+  const rows=equipVisibleRows().filter(r=>eqs.indexOf(hxEq(eqNo(r)))>=0);if(rows.length<2)return;
+  const ws=wb.addWorksheet('호기 비교',{views:[{showGridLines:false,state:'frozen',xSplit:1,ySplit:3}]});
+  ws.columns=[{width:30}].concat(rows.map(()=>({width:20})));
+  xMerge(ws,1,1,1,rows.length+1,'설비 사양 비교 — 다른 값은 주황색',{font:{size:14,bold:true,color:{argb:XC.tealD}},bd:false});
+  ws.getRow(2).height=6;
+  xCell(ws,3,1,'항목',{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}});
+  rows.forEach((x,i)=>xCell(ws,3,i+2,xEqName(hxEq(eqNo(x))),{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}}));
+  const maps=rows.map(x=>{const m={};xSpecItems(x).forEach(s=>s.rows.forEach(it=>{m[s.title+'|'+it.ko]=String(it.v==null?'':it.v).trim();}));return m;});
+  const keys=[];xSpecItems(rows[0]).forEach(s=>s.rows.forEach(it=>keys.push(s.title+'|'+it.ko)));
+  maps.forEach(m=>Object.keys(m).forEach(k=>{if(keys.indexOf(k)<0)keys.push(k);}));
+  let r=4,cur='';
+  keys.forEach(k=>{const [t,l]=k.split('|');
+    if(t!==cur){cur=t;xMerge(ws,r,1,r,rows.length+1,t,{fill:XC.tealL,font:{bold:true}});r++;}
+    xCell(ws,r,1,l,{font:{bold:true}});
+    const vals=maps.map(m=>m[k]||'');const diff=new Set(vals.map(v=>v.toUpperCase())).size>1;
+    vals.forEach((v,i)=>{const c=xCell(ws,r,i+2,v||'입력 필요',{al:{horizontal:'center'},font:v?{}:{italic:true,color:{argb:XC.mut}}});if(diff){c.fill=xFill(XC.warmL);}});
+    r++;});
+  xPrint(ws,{land:true,titles:'3:3'});
+}
+
+/* ---------- 재고현황 ---------- */
+async function xStockSheets(wb){
+  if(typeof partsData==='undefined'||!partsData.length){try{await loadPartsFromSheet();}catch(e){}}
+  const num=v=>Number(v)||0,src=(typeof partsData!=='undefined'?partsData:[]).map(p=>({cat:String(p['제품구분']||''),nm:String(p['제품형태']||''),spec:String(p['제품규격']||''),st:num(p['현재고']),mn:num(p['최소보유수량']),rp:num(p['수리중수량'])}));
+  const stat=p=>p.mn>0&&p.st<p.mn?'부족':p.rp>0?'수리 중':'정상';
+  src.sort((a,b)=>{const sa=stat(a)==='부족'?0:1,sb=stat(b)==='부족'?0:1;return sa-sb||(sa===0?(a.st-a.mn)-(b.st-b.mn):0)||a.cat.localeCompare(b.cat,'ko')||a.spec.localeCompare(b.spec);});
+  const ws=wb.addWorksheet('재고현황',{views:[{showGridLines:false}]});
+  ws.columns=[{width:14},{width:20},{width:30},{width:10},{width:12},{width:9},{width:9}];
+  xMerge(ws,1,1,3,2,'',{bd:false});xLogo(wb,ws,1,1,2,3);
+  xMerge(ws,1,3,3,7,'재고현황',{font:{size:20,bold:true,color:{argb:XC.tealD}},al:{horizontal:'center'},bd:false});
+  ws.getRow(1).height=20;ws.getRow(2).height=22;ws.getRow(3).height=22;
+  xMerge(ws,4,1,4,7,'기준 '+xNow()+' · 수량은 앱의 재고 시트 기준',{font:{size:9,color:{argb:XC.mut}},bd:false});
+  const T=8,n=src.length,L=Math.max(T+1,T+n),rg='G'+(T+1)+':G'+L;
+  const cnt={t:n,low:src.filter(p=>stat(p)==='부족').length,rp:src.filter(p=>stat(p)==='수리 중').length};cnt.ok=n-cnt.low-cnt.rp;
+  [['등록 부품','COUNTA(C'+(T+1)+':C'+L+')',cnt.t,XC.tealD],['재고 부족','COUNTIF('+rg+',"부족")',cnt.low,XC.red],['수리 중','COUNTIF('+rg+',"수리 중")',cnt.rp,XC.warm],['정상','COUNTIF('+rg+',"정상")',cnt.ok,XC.ok]].forEach((k,i)=>{
+    const a=[[1,2],[3,3],[4,5],[6,7]][i];
+    xMerge(ws,5,a[0],5,a[1],k[0],{fill:XC.tealL,font:{size:9,bold:true,color:{argb:XC.mut}},al:{horizontal:'center'}});
+    xMerge(ws,6,a[0],6,a[1],'',{al:{horizontal:'center'},font:{size:16,bold:true,color:{argb:k[3]}}});
+    ws.getCell(6,a[0]).value={formula:k[1],result:k[2]};});
+  ws.getRow(6).height=30;ws.getRow(7).height=6;
+  ['구분','품목','규격','현재고','적정재고(최소보유)','수리 중','상태'].forEach((t,i)=>xCell(ws,T,i+1,t,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}}));
+  ws.getRow(T).height=30;
+  src.forEach((p,i)=>{const r=T+1+i,s=stat(p);ws.getRow(r).height=20;
+    xCell(ws,r,1,p.cat);xCell(ws,r,2,p.nm);xCell(ws,r,3,p.spec);
+    xCell(ws,r,4,p.st,{al:{horizontal:'right'}}).numFmt='#,##0';xCell(ws,r,5,p.mn||null,{al:{horizontal:'right'}}).numFmt='#,##0';xCell(ws,r,6,p.rp||null,{al:{horizontal:'right'}});
+    const c=xCell(ws,r,7,{formula:'IF(AND(E'+r+'>0,D'+r+'<E'+r+'),"부족",IF(F'+r+'>0,"수리 중","정상"))',result:s},{al:{horizontal:'center'},font:{bold:s!=='정상'}});
+    if(s==='부족'){for(let k=1;k<=7;k++){ws.getCell(r,k).fill=xFill(XC.redL);}c.font=xFont({bold:true,color:{argb:XC.red}});}
+    else if(s==='수리 중'){c.fill=xFill(XC.warmL);c.font=xFont({bold:true,color:{argb:XC.warm}});}
+  });
+  if(!n)xMerge(ws,T+1,1,T+1,7,'재고 데이터를 불러오지 못했습니다.',{al:{horizontal:'center'},font:{color:{argb:XC.mut}}});
+  ws.addConditionalFormatting({ref:'A'+(T+1)+':G'+L,rules:[{type:'expression',formulae:['$G'+(T+1)+'="부족"'],style:{fill:{type:'pattern',pattern:'solid',bgColor:{argb:XC.redL}},font:{color:{argb:XC.red}}}}]});
+  ws.autoFilter={from:{row:T,column:1},to:{row:L,column:7}};
+  ws.views=[{showGridLines:false,state:'frozen',ySplit:T}];
+  xPrint(ws,{titles:T+':'+T,area:'A1:G'+L});
+  /* 입출고 이력 · 수리 중 */
+  try{const j=await hcGet('stock_log');if(j&&j.ok&&j.rows.length){const w=wb.addWorksheet('입출고 이력',{views:[{showGridLines:false,state:'frozen',ySplit:2}]});
+    w.columns=[{width:16},{width:11},{width:28},{width:8},{width:16},{width:24},{width:10}];
+    xMerge(w,1,1,1,7,'입출고 이력 (최근 '+j.rows.length+'건)',{font:{size:14,bold:true,color:{argb:XC.tealD}},bd:false});
+    ['일시','구분','규격','수량','거래처/설비','메모','작업자'].forEach((t,i)=>xCell(w,2,i+1,t,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}}));
+    j.rows.forEach((x,i)=>{const r=3+i;[String(x.at).slice(0,16),x.kind,x.spec,x.qty,x.party,x.memo,x.worker].forEach((v,c)=>xCell(w,r,c+1,v,{al:{horizontal:c===3?'right':c<2?'center':'left'},fill:String(x.kind).indexOf('입고')===0?undefined:undefined}));});
+    xPrint(w,{titles:'2:2'});}}catch(e){}
+  try{const j=await hcGet('repair_pending');if(j&&j.ok&&j.rows.length){const w=wb.addWorksheet('수리 중',{views:[{showGridLines:false,state:'frozen',ySplit:2}]});
+    w.columns=[{width:12},{width:30},{width:18},{width:8},{width:30}];
+    xMerge(w,1,1,1,5,'수리 중인 부품',{font:{size:14,bold:true,color:{argb:XC.tealD}},bd:false});
+    ['출고일','규격','거래처','수량','메모'].forEach((t,i)=>xCell(w,2,i+1,t,{fill:XC.teal,font:{bold:true,color:{argb:XC.w}},al:{horizontal:'center'}}));
+    j.rows.forEach((x,i)=>{[x.date,x.spec,x.vendor,x.qty,x.memo].forEach((v,c)=>xCell(w,3+i,c+1,v,{al:{horizontal:c===3?'right':c===0?'center':'left'}}));});
+    xPrint(w,{titles:'2:2'});}}catch(e){}
+  return {n:n,low:cnt.low};
+}
+
+/* ---------- 만들기 · 내려받기 ---------- */
+function xDownload(wb,name){
+  return wb.xlsx.writeBuffer().then(buf=>{
+    const blob=new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+    const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();
+    setTimeout(()=>{a.remove();URL.revokeObjectURL(url);},4000);
+    return {blob:blob,url:null};
+  });
+}
+async function xBuild(){
+  const S=XL.st,type=S.type,eqs=S.eqs.slice().sort((a,b)=>EQ.indexOf(a)-EQ.indexOf(b));
+  const E1=await xlLoad();const wb=new E1.Workbook();wb.creator='EMQ';wb.created=new Date();
+  let name='',info='';
+  if(type==='주간'||type==='월간'||type==='연간'){
+    const y=type==='주간'?Number(S.month.slice(0,4)):type==='월간'?Number(S.year):Number(S.year)-2;
+    const since=type==='주간'?(y-1)+'-12-01':y+'-01-01';
+    const d=await hcGet('check','&since='+since);if(!d||!d.ok)throw new Error('점검 기록을 불러오지 못했습니다.');
+    HC.chkX=d.rows;
+    eqs.forEach(eq=>xCheckSheet(wb,type,eq,{month:S.month,year:S.year}));
+    name='EMQ_'+type+'점검표_'+(type==='주간'?S.month:type==='월간'?S.year:(Number(S.year)-2)+'-'+S.year)+(eqs.length===1?'_'+eqs[0]:'')+'.xlsx';info=eqs.length+'개 호기';
+  }else if(type==='이력'){
+    if(!HC.histOk)await loadHist();
+    const n=xHistSheets(wb,{from:S.from,to:S.to,eqs:eqs});
+    name='EMQ_설비이력_'+S.from+'_'+S.to+'.xlsx';info=n+'건';
+  }else if(type==='사양'){
+    if(!equipRows.length){try{await loadEquip();}catch(e){}}
+    if(!equipRows.length)throw new Error('설비 사양을 불러오지 못했습니다. 인터넷 연결을 확인하세요.');
+    let n=0;eqs.forEach(eq=>{if(xSpecSheet(wb,eq))n++;});
+    if(!n)throw new Error('선택한 호기의 사양 데이터가 없습니다.');
+    xSpecCompare(wb,eqs);
+    name='EMQ_설비사양_'+(eqs.length===1?eqs[0]:eqs.length+'대')+'.xlsx';info=n+'개 호기';
+  }else{
+    const r=await xStockSheets(wb);name='EMQ_재고현황_'+todayK()+'.xlsx';info='부품 '+r.n+'개 · 부족 '+r.low+'개';
+  }
+  await xDownload(wb,name);
+  return {name:name,info:info};
+}
+function xInit(){
+  const S=XL.st,n=new Date();
+  if(!S.month)S.month=n.getFullYear()+'-'+pad(n.getMonth()+1);
+  if(!S.year)S.year=String(n.getFullYear());
+  if(!S.to)S.to=todayK();
+  if(!S.from)S.from=n.getFullYear()+'-'+pad(n.getMonth()+1)+'-01';
+}
+function xDlgHtml(){
+  const S=XL.st,needEq=S.type!=='재고',eqOpt=S.type==='이력';
+  const per=S.type==='주간'?'<div><span class="lb">기간 (월)</span><input type="month" id="xlMonth" class="hc-in" value="'+A(S.month)+'"></div>'
+    :(S.type==='월간'||S.type==='연간')?'<div><span class="lb">'+(S.type==='연간'?'기준 연도 (3개년)':'연도')+'</span><select id="xlYear" class="hc-in">'+[0,1,2,3,4].map(k=>{const y=new Date().getFullYear()-k;return '<option value="'+y+'"'+(String(y)===S.year?' selected':'')+'>'+y+'년'+(S.type==='연간'?' (~'+(y-2)+')':'')+'</option>';}).join('')+'</select></div>'
+    :S.type==='이력'?'<div><span class="lb">기간</span><div style="display:flex;gap:6px;align-items:center"><input type="date" id="xlFrom" class="hc-in" value="'+A(S.from)+'"><span>~</span><input type="date" id="xlTo" class="hc-in" value="'+A(S.to)+'"></div></div>':'';
+  const eqs=needEq?'<div><span class="lb">설비 '+(eqOpt?'<small>(선택 안 하면 전체)</small>':'<small>(여러 대 선택 가능)</small>')+'</span>'
+    +['1층','2층'].map(f=>'<div class="xl-eq"><span>'+f+'</span><div class="xl-ch">'+EQG[f].map(e=>'<button type="button" class="'+(S.eqs.indexOf(e)>=0?'on':'')+'" data-xl="eq" data-v="'+e+'">'+e.replace(/^\dF-/,'')+'호기</button>').join('')+'</div></div>').join('')
+    +'<div class="xl-ch" style="margin-top:8px"><button type="button" data-xl="all" data-v="1층">1층 전체</button><button type="button" data-xl="all" data-v="2층">2층 전체</button><button type="button" data-xl="clear">해제</button></div>'
+    +'<div class="hc-hint" style="margin:8px 0 0">선택 '+S.eqs.length+'대'+(S.type==='이력'?' · 한 파일(설비별 집계 시트 포함)':' · 한 파일에 호기별 시트')+'</div></div>':'<div class="hc-hint" style="margin:0">단가는 포함하지 않습니다. 재고 부족 부품이 맨 위에 표시됩니다.</div>';
+  const ok=!needEq||eqOpt||S.eqs.length>0;
+  return '<h3 style="margin:0 0 10px">엑셀 내려받기</h3><div class="xl-box"><div><span class="lb">종류</span><div class="xl-ch">'+XL_TYPES.map(x=>'<button type="button" class="'+(S.type===x[0]?'on':'')+'" data-xl="type" data-v="'+x[0]+'">'+x[1]+'</button>').join('')+'</div></div>'+per+eqs
+    +'<div id="xlMsg" class="hc-err" hidden></div><div class="hm-fa"><button type="button" class="hc-btn" data-xl="go"'+(ok?'':' disabled')+'>'+(XL.busy?'만드는 중...':'내려받기')+'</button><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div>'
+    +(XL.busy?'':'<p class="hc-hint" style="margin:8px 0 0">처음 한 번은 엑셀 도구를 내려받느라 몇 초 걸릴 수 있습니다.</p>')+'</div>';
+}
+function xOpen(type){
+  xInit();if(type)XL.st.type=type;
+  hxModal(xDlgHtml(),'xl-pop');
+}
+function xRedraw(){if(!HX.m)return;const sc=HX.m.querySelector('.hx-pop');const y=sc?sc.scrollTop:0;sc.innerHTML=xDlgHtml();sc.scrollTop=y;}
+document.addEventListener('click',async e=>{
+  const t=e.target.closest&&e.target.closest('[data-xl]');if(!t)return;
+  e.stopPropagation();const a=t.dataset.xl,v=t.dataset.v,S=XL.st;
+  if(a==='open'){xOpen();return;}
+  if(XL.busy&&a!=='close')return;
+  if(a==='close'){hxClose();return;}
+  const sync=()=>{const g=id=>document.getElementById(id);if(g('xlMonth')&&g('xlMonth').value)S.month=g('xlMonth').value;if(g('xlYear'))S.year=g('xlYear').value;if(g('xlFrom')&&g('xlFrom').value)S.from=g('xlFrom').value;if(g('xlTo')&&g('xlTo').value)S.to=g('xlTo').value;};
+  sync();
+  if(a==='type'){S.type=v;xRedraw();return;}
+  if(a==='eq'){const i=S.eqs.indexOf(v);if(i>=0)S.eqs.splice(i,1);else S.eqs.push(v);xRedraw();return;}
+  if(a==='all'){EQG[v].forEach(x=>{if(S.eqs.indexOf(x)<0)S.eqs.push(x);});xRedraw();return;}
+  if(a==='clear'){S.eqs=[];xRedraw();return;}
+  if(a==='go'){
+    if(S.type==='이력'&&S.from>S.to){const m=$('xlMsg');m.textContent='시작일이 종료일보다 늦습니다.';m.hidden=false;return;}
+    XL.busy=true;xRedraw();
+    try{const r=await xBuild();XL.busy=false;hxClose();toast('내려받았습니다 · '+r.name+' ('+r.info+')');}
+    catch(err){XL.busy=false;xRedraw();const m=$('xlMsg');if(m){m.textContent=(err&&err.message==='net'?'엑셀 도구를 불러오지 못했습니다. 인터넷 연결을 확인하세요.':(err&&err.message)||'만들지 못했습니다.');m.hidden=false;}}
+  }
+},true);
+/* 진입 메뉴: 사이드 메뉴(점검·이력 묶음)에 "엑셀 내려받기" */
+(function(){
+  const _md=menuDef;
+  menuDef=function(){const d=_md.apply(this,arguments);try{const g=d.find(x=>x.items&&x.items.some(m=>m.id==='hist'));if(g&&!g.items.some(m=>m.id==='xlsx'))g.items.push({id:'xlsx',t:'엑셀 내려받기',i:'history'});}catch(e){}return d;};
+  const _sp=showPanel;
+  showPanel=function(name){if(name==='xlsx'){try{setDrawer(false);}catch(e){}xOpen();return;}return _sp.apply(this,arguments);};
+})();
 init();
 setTimeout(loadItems,0);
 })();
