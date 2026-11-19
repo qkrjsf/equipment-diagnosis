@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sulbi-jindan-v79';
+const CACHE_NAME = 'sulbi-jindan-v80';
 const ASSETS = [
   './index.html',
   './manifest.json',
@@ -26,7 +26,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+      Promise.all(keys.filter((k) => k !== CACHE_NAME && k.indexOf('emq-libs') !== 0).map((k) => caches.delete(k)))
     )
   );
   self.clients.claim();
