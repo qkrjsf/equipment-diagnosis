@@ -1341,6 +1341,10 @@ body.dp-open{overflow:hidden}
 @media(min-width:900px){.pk-grid{grid-template-columns:repeat(4,1fr)}}
 .ph-none{display:inline-block;margin-top:6px;padding:3px 8px;border-radius:8px;background:#fbe9e6;color:#bf3a2c;font-size:12px;font-weight:700}
 .xl-done{padding:12px;border:1px solid var(--line,#cfd8de);border-radius:12px;background:#f2f9fb;margin-bottom:10px}.xl-done b{display:block;word-break:break-all}.xl-done small{color:var(--muted,#6a7f8c)}
+
+.xl-msds{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:11px 12px;border:1px solid var(--line,#d6e3ea);border-radius:12px;background:var(--tint,#e6f1f5);color:var(--ink,#0b2a3d);font:inherit;cursor:pointer}
+.xl-msds b{font-size:14px}.xl-msds small{color:var(--muted,#566b7b);font-size:12px;flex:1;min-width:0}.xl-msds i{font-style:normal;font-size:20px;color:var(--accent,#0e7c9a)}
+.dr-sub{font-size:11px;font-weight:400;opacity:.7;white-space:normal}
 </style>
 </head>
 <body>
@@ -1595,7 +1599,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v80</span></div>
+    <div class="sb-foot"><span id="verLabel">v81</span></div>
   </nav>
 
   <div class="content">
@@ -1693,7 +1697,7 @@ start();
 
   <div class="panel" id="panel-msds">
     <h1 class="page-title" data-i18n="tabMsds">MSDS</h1>
-    <div class="hint" data-i18n="msdsHint">필요한 MSDS를 선택해서 내려받을 수 있습니다. 다운로드할 때 비밀번호가 필요합니다.</div>
+    <div class="hint" data-i18n="msdsHint">필요한 MSDS를 선택해서 받을 수 있습니다. 받은 기록은 자동으로 남습니다.</div>
 
     <div class="parts-search">
       <input type="text" id="msdsSearch" data-i18n-placeholder="msdsSearchPlaceholder" placeholder="제품명·제조사로 검색..." />
@@ -1821,7 +1825,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v80</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v81</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -5388,7 +5392,7 @@ const UI_STRINGS = {
     fbCat1: "오류·불편", fbCat2: "기능 요청", fbCat3: "화면·사용성", fbCat4: "기타",
     setAppH: "앱 정보",
     tabMsds: "MSDS",
-    msdsHint: "필요한 MSDS를 선택해서 내려받을 수 있습니다. 다운로드할 때 비밀번호가 필요합니다.",
+    msdsHint: "필요한 MSDS를 선택해서 받을 수 있습니다. 받은 기록은 자동으로 남습니다.",
     msdsSearchPlaceholder: "제품명·제조사로 검색...",
     msdsAll: "전체",
     msdsSelectAll: "전체 선택",
@@ -5536,7 +5540,7 @@ const UI_STRINGS = {
     fbCat1: "Bug / issue", fbCat2: "Feature request", fbCat3: "Usability", fbCat4: "Other",
     setAppH: "App info",
     tabMsds: "MSDS",
-    msdsHint: "Select the MSDS files you need and download them. A password is required to download.",
+    msdsHint: "Select the MSDS files you need and download them. Downloads are logged.",
     msdsSearchPlaceholder: "Search by product or maker...",
     msdsAll: "All",
     msdsSelectAll: "Select all",
@@ -6584,6 +6588,10 @@ function pumpCsv(){
   const head = ['접수번호','접수일시','탈거호기','고장사유','교체자','설치원료','직전수명(일)','수리일시','수리내용','샌딩착색','사용부품','수리비','USD부품비','적용환율','시험결과','수리자','메모'];
   const q = v => { let s = String(v == null ? '' : v); if(/^[=+\-@]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
   const csv = '﻿' + [head.map(h => q(h === '수리비' ? '수리비(원,부가세별도)' : (h === 'USD부품비' ? '달러부품비(USD)' : h))).join(',')].concat(rows.map(r => head.map(h => q(r[h])).join(','))).join('\r\n');
+  if(/Android/i.test(navigator.userAgent) && typeof docDeliver === 'function'){
+    docDeliver(new Blob([csv], { type:'text/csv;charset=utf-8' }), 'A2VK_pump_repairs.csv', '수리목록', 'csv', 'L').then(r => { if(r.mode === 'link') docLinkDialog({ name:r.name, url:r.url }); }).catch(e => { if(typeof toast === 'function') toast(e.message || '만들지 못했습니다.'); });
+    return;
+  }
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([csv], { type:'text/csv;charset=utf-8' }));
   a.download = 'A2VK_pump_repairs.csv';
@@ -7637,7 +7645,7 @@ document.getElementById('msdsClearAll').addEventListener('click', () => {
   msdsSelected.clear();
   renderMsds();
 });
-document.getElementById('msdsDownloadBtn').addEventListener('click', showMsdsDownloadModal);
+document.getElementById('msdsDownloadBtn').addEventListener('click', () => { if(typeof msdsGetLinks === 'function') msdsGetLinks(); else showMsdsDownloadModal(); });
 document.querySelector('.tab[data-tab="msds"]').addEventListener('click', () => { loadMsds(!msdsLoaded && !msdsLoading); });
 
 /* ---------- 부품 조회 (구글시트 재고현황 연동) ---------- */
@@ -8792,12 +8800,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v80', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v81', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v80';
+const PAGE_CACHE = 'sulbi-jindan-v81';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -11346,6 +11354,7 @@ function hxEqCard(no){
 }
 /* ===== v79 (1): 업데이트 내용 · 표기 보정 · 부위 자동 인식 ===== */
 const CHANGELOG=[
+ {v:'v81',d:'2026-11-19',items:['메뉴 이름을 "문서 받기"로 변경 · 엑셀 또는 PDF 선택','안드로이드 앱에서도 받을 수 있게 파일을 임시 링크로 제공 (2일 뒤 자동 삭제)','MSDS 비밀번호 입력 제거 · 받은 기록을 "문서다운로드이력" 시트에 저장','수리 목록 CSV도 같은 방식으로 받기']},
  {v:'v80',d:'2026-11-19',items:['설비·작업·부위를 선택 창에서 고르도록 변경 (1층/2층/프레스/기타, 프레스·기타는 직접 입력)','설비 작업에서 설비 미선택 시 안내 + 행정으로 바꾸기','메뉴에 다시 들어가면 기본 화면으로 시작','앱 버전이 다르면 자동으로 캐시를 정리하고 새로고침','사진 업로드 실패 시 보관 후 재시도 · 사진 없는 C 기록 표시','엑셀: 조회 범위 안내, 다운로드/공유 버튼, 오프라인 라이브러리 보관','미등록 부품 목록을 재고 화면 상단에 표시','출장은 근태에서만 등록']},
  {v:'v79',d:'2026-11-18',items:[
   '<b>할 일·일정 입력 개선</b> · 종류(설비 작업 / 회의·교육·출장 / 행정)를 먼저 고르고, 설비는 층→호기 버튼으로 선택합니다. 설비 작업은 작업·부위를 고르면 제목이 자동으로 만들어집니다.',
@@ -11488,7 +11497,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 
 /* ===== v80: 화면 코드와 서비스워커 버전이 다르면 캐시를 정리하고 한 번만 새로고침 ===== */
-const APP_VER='v80';
+const APP_VER='v81';
 (function(){
   const KEY='emq-vfix-'+APP_VER;
   function swVer(){return new Promise(res=>{try{
@@ -12079,7 +12088,7 @@ askRender=function(res){
 };
 /* ===== v79: 엑셀 내려받기 6종 (점검표 주간·월간·연간 / 설비 이력 / 설비 사양 / 재고현황) =====
    ExcelJS는 처음 사용할 때만 내려받아 쓴다(약 1MB). 모든 파일은 이 기기에서 만들어지며 서버 변경은 필요 없다. */
-const XL={lib:null,busy:false,st:{type:'주간',month:'',year:'',from:'',to:'',eqs:[]}};
+const XL={lib:null,busy:false,st:{type:'주간',fmt:'xlsx',month:'',year:'',from:'',to:'',eqs:[]}};
 const XL_TYPES=[['주간','주간 점검표','1개월 · 주차별'],['월간','월간 점검표','1년 · 월별'],['연간','연간 점검표','3개년'],['이력','설비 이력','기간 선택'],['사양','설비 사양','사양판 형식'],['재고','재고현황','부족 부품 먼저']];
 const XL_URL='https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js';
 function xlInject(src,revoke){return new Promise((res,rej)=>{const sc=document.createElement('script');sc.src=src;sc.onload=()=>{if(revoke)URL.revokeObjectURL(src);window.ExcelJS?res(window.ExcelJS):rej(new Error('lib'));};sc.onerror=()=>rej(new Error('net'));document.head.appendChild(sc);});}
@@ -12392,14 +12401,49 @@ async function xStockSheets(wb){
 }
 
 /* ---------- 만들기 · 내려받기 ---------- */
-function xDownload(wb,name){
-  return wb.xlsx.writeBuffer().then(buf=>{
-    const blob=new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
-    const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();
-    setTimeout(()=>{a.remove();URL.revokeObjectURL(url);},4000);
-    return {blob:blob};
-  });
+/* ===== v81: 문서 받기 - 파일을 직접 저장하지 못하는 기기(안드로이드 앱)에서는 서버가 임시 링크를 돌려준다 ===== */
+const IS_AND=/Android/i.test(navigator.userAgent||'');
+function docB64(blob){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]||'');r.onerror=()=>rej(new Error('파일을 읽지 못했습니다.'));r.readAsDataURL(blob);});}
+function docSaveBlob(blob,name){const u=URL.createObjectURL(blob),k=document.createElement('a');k.href=u;k.download=name;k.style.display='none';document.body.appendChild(k);k.click();setTimeout(()=>{k.remove();URL.revokeObjectURL(u);},4000);}
+const DOC_ERR={too_big:'파일이 너무 커서 보낼 수 없습니다. 기간이나 설비를 줄여 보세요.',rate:'잠시 후 다시 시도해 주세요.',bad_format:'지원하지 않는 형식입니다.',bad_data:'파일을 만들지 못했습니다.',auth:'로그인이 필요합니다.',server_error:'서버에서 파일을 만들지 못했습니다. 잠시 후 다시 시도해 주세요.'};
+/* 반환: {mode:'blob'} 직접 저장 시도 / {mode:'link',url,view,name} 서버 링크 */
+async function docDeliver(blob,name,kind,fmt,orient){
+  const needSrv=fmt==='pdf'||IS_AND;
+  if(!needSrv){docSaveBlob(blob,name);return {mode:'blob',name:name};}
+  if(!(await srvAtLeast(16))){
+    if(fmt==='pdf')throw new Error('PDF는 서버(Apps Script)를 v16으로 업데이트한 뒤 사용할 수 있습니다.');
+    docSaveBlob(blob,name);return {mode:'blob',name:name};
+  }
+  const b64=await docB64(blob);
+  const r=await hcPost({type:'doc_export',kind:kind,format:fmt,name:name,b64:b64,orient:orient||'L'});
+  if(!r||!r.ok)throw new Error(DOC_ERR[r&&r.error]||'서버에서 파일을 만들지 못했습니다.');
+  return {mode:'link',url:r.url,view:r.view,name:r.name||name};
 }
+function docDoneHtml(L,act){
+  return '<div class="xl-done"><b>'+E(L.name)+'</b>'+(L.info?'<small>'+E(L.info)+'</small>':'')+'</div>'
+   +'<p class="hc-hint" style="margin:0">아래 [열기]를 누르면 브라우저에서 받을 수 있습니다. 열리지 않으면 [링크 복사] 후 크롬 주소창에 붙여 넣으세요. 링크는 2일 뒤 사라집니다.</p>'
+   +'<div class="hm-fa" style="flex-wrap:wrap"><a class="hc-btn" href="'+A(L.url)+'" target="_blank" rel="noopener" data-'+act+'="open2" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">열기</a><button type="button" class="hc-btn ghost" data-'+act+'="copy">링크 복사</button>'
+   +(act==='xl'?'<button type="button" class="hc-btn ghost" data-xl="again">다른 파일 만들기</button>':'')+'<button type="button" class="hc-btn ghost" data-'+act+'="close">닫기</button></div>';
+}
+async function docCopy(url){try{await navigator.clipboard.writeText(url);toast('링크를 복사했습니다. 크롬 주소창에 붙여 넣으세요.');return;}catch(e){}
+  try{const t=document.createElement('textarea');t.value=url;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('링크를 복사했습니다.');}catch(e){toast('복사하지 못했습니다. 열기 버튼을 눌러 주세요.');}}
+/* MSDS · CSV 등 다른 곳에서 쓰는 링크 안내 창 */
+function docLinkDialog(L){
+  const ov=hxModal('<h3 style="margin:0 0 10px">파일을 만들었습니다</h3><div class="xl-box">'+docDoneHtml(L,'dl')+'</div>','xl-pop');
+  ov.addEventListener('click',e=>{const b=e.target.closest('[data-dl]');if(!b)return;const a=b.dataset.dl;if(a==='open2')return;e.preventDefault();if(a==='copy')docCopy(L.url);else hxClose();});
+}
+async function msdsGetLinks(){
+  const ids=Array.from(msdsSelected);if(!ids.length)return;
+  if(!(await srvAtLeast(16))){showMsdsDownloadModal();return;}
+  const btn=document.getElementById('msdsDownloadBtn');btn.disabled=true;btn.textContent='준비 중...';
+  try{const r=await hcPost({type:'msds_download',mode:'link',ids:ids});
+    if(r&&r.ok&&r.url)docLinkDialog({name:r.filename,info:r.count+'개 파일',url:r.url});
+    else toast(r&&r.error==='not_found'?'선택한 파일을 찾지 못했습니다.':'MSDS를 준비하지 못했습니다. 잠시 후 다시 시도해 주세요.');
+  }catch(e){toast('MSDS를 준비하지 못했습니다. 인터넷 연결을 확인하세요.');}
+  btn.disabled=false;updateMsdsFooter();
+}
+window.msdsGetLinks=msdsGetLinks;window.docDeliver=docDeliver;window.docLinkDialog=docLinkDialog;
+function xBlob(wb){return wb.xlsx.writeBuffer().then(buf=>new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));}
 async function xBuild(){
   const S=XL.st,type=S.type,eqs=S.eqs.slice().sort((a,b)=>EQ.indexOf(a)-EQ.indexOf(b));
   const E1=await xlLoad();const wb=new E1.Workbook();wb.creator='EMQ';wb.created=new Date();
@@ -12425,8 +12469,10 @@ async function xBuild(){
   }else{
     const r=await xStockSheets(wb);name='EMQ_재고현황_'+todayK()+'.xlsx';info='부품 '+r.n+'개 · 부족 '+r.low+'개';
   }
-  const dl=await xDownload(wb,name);
-  return {name:name,info:info,blob:dl.blob};
+  const blob=await xBlob(wb),fmt=S.fmt==='pdf'?'pdf':'xlsx';
+  const outName=fmt==='pdf'?name.replace(/\.xlsx$/,'.pdf'):name;
+  const res=await docDeliver(blob,name,'점검표·사양·이력·재고 · '+type,fmt,(type==='사양'||type==='재고')?'P':'L');
+  return {name:res.name||outName,info:info+(fmt==='pdf'?' · PDF':''),blob:res.mode==='blob'?blob:null,link:res.mode==='link'?res:null,fmt:fmt};
 }
 function xInit(){
   const S=XL.st,n=new Date();
@@ -12436,7 +12482,9 @@ function xInit(){
   if(!S.from)S.from=n.getFullYear()+'-'+pad(n.getMonth()+1)+'-01';
 }
 function xDlgHtml(){
-  if(XL.last){const L=XL.last;return '<h3 style="margin:0 0 10px">엑셀 파일을 만들었습니다</h3><div class="xl-box"><div class="xl-done"><b>'+E(L.name)+'</b><small>'+E(L.info)+'</small></div><p class="hc-hint" style="margin:0">저장이 시작되지 않았다면 아래 버튼을 눌러 주세요.</p><div class="hm-fa" style="flex-wrap:wrap"><button type="button" class="hc-btn" data-xl="dl">다시 저장</button>'+(window.File&&navigator.canShare?'<button type="button" class="hc-btn" data-xl="share">공유 · 다른 앱으로 열기</button>':'')+'<button type="button" class="hc-btn ghost" data-xl="again">다른 파일 만들기</button><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div></div>';}
+  if(XL.last){const L=XL.last;
+    if(L.link)return '<h3 style="margin:0 0 10px">파일을 만들었습니다</h3><div class="xl-box">'+docDoneHtml({name:L.name,info:L.info,url:L.link.url},'xl')+'</div>';
+    return '<h3 style="margin:0 0 10px">엑셀 파일을 만들었습니다</h3><div class="xl-box"><div class="xl-done"><b>'+E(L.name)+'</b><small>'+E(L.info)+'</small></div><p class="hc-hint" style="margin:0">저장이 시작되지 않았다면 아래 버튼을 눌러 주세요.</p><div class="hm-fa" style="flex-wrap:wrap"><button type="button" class="hc-btn" data-xl="dl">다시 저장</button>'+(window.File&&navigator.canShare?'<button type="button" class="hc-btn" data-xl="share">공유 · 다른 앱으로 열기</button>':'')+'<button type="button" class="hc-btn ghost" data-xl="again">다른 파일 만들기</button><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div></div>';}
   const S=XL.st,needEq=S.type!=='재고',eqOpt=S.type==='이력';
   const per=S.type==='주간'?'<div><span class="lb">기간 (월)</span><input type="month" id="xlMonth" class="hc-in" value="'+A(S.month)+'"></div>'
     :(S.type==='월간'||S.type==='연간')?'<div><span class="lb">'+(S.type==='연간'?'기준 연도 (3개년)':'연도')+'</span><select id="xlYear" class="hc-in">'+[0,1,2,3,4].map(k=>{const y=new Date().getFullYear()-k;return '<option value="'+y+'"'+(String(y)===S.year?' selected':'')+'>'+y+'년'+(S.type==='연간'?' (~'+(y-2)+')':'')+'</option>';}).join('')+'</select></div>'
@@ -12446,9 +12494,9 @@ function xDlgHtml(){
     +'<div class="xl-ch" style="margin-top:8px"><button type="button" data-xl="all" data-v="1층">1층 전체</button><button type="button" data-xl="all" data-v="2층">2층 전체</button><button type="button" data-xl="clear">해제</button></div>'
     +'<div class="hc-hint" style="margin:8px 0 0">선택 '+S.eqs.length+'대'+(S.type==='이력'?' · 한 파일(설비별 집계 시트 포함)':' · 한 파일에 호기별 시트')+'</div></div>':'<div class="hc-hint" style="margin:0">단가는 포함하지 않습니다. 재고 부족 부품이 맨 위에 표시됩니다.</div>';
   const ok=!needEq||eqOpt||S.eqs.length>0;
-  return '<h3 style="margin:0 0 10px">엑셀 내려받기</h3><div class="xl-box"><div><span class="lb">종류</span><div class="xl-ch">'+XL_TYPES.map(x=>'<button type="button" class="'+(S.type===x[0]?'on':'')+'" data-xl="type" data-v="'+x[0]+'">'+x[1]+'</button>').join('')+'</div></div>'+per+eqs
-    +'<div id="xlMsg" class="hc-err" hidden></div><div class="hm-fa"><button type="button" class="hc-btn" data-xl="go"'+(ok?'':' disabled')+'>'+(XL.busy?'만드는 중...':'내려받기')+'</button><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div>'
-    +(XL.busy?'':'<p class="hc-hint" style="margin:8px 0 0">처음 한 번은 엑셀 도구를 내려받느라 몇 초 걸릴 수 있습니다.</p>')+'</div>';
+  return '<h3 style="margin:0 0 10px">문서 받기</h3><div class="xl-box"><button type="button" class="xl-msds" data-xl="msds"><b>MSDS 받기</b><small>제품별 안전보건자료 (PDF)</small><i aria-hidden="true">›</i></button><div><span class="lb">종류</span><div class="xl-ch">'+XL_TYPES.map(x=>'<button type="button" class="'+(S.type===x[0]?'on':'')+'" data-xl="type" data-v="'+x[0]+'">'+x[1]+'</button>').join('')+'</div></div>'+'<div><span class="lb">받을 형식</span><div class="xl-ch"><button type="button" class="'+(S.fmt!=='pdf'?'on':'')+'" data-xl="fmt" data-v="xlsx">엑셀 파일</button><button type="button" class="'+(S.fmt==='pdf'?'on':'')+'" data-xl="fmt" data-v="pdf">PDF 파일</button></div></div>'+per+eqs
+    +'<div id="xlMsg" class="hc-err" hidden></div><div class="hm-fa"><button type="button" class="hc-btn" data-xl="go"'+(ok?'':' disabled')+'>'+(XL.busy?'만드는 중...':(S.fmt==='pdf'?'PDF 만들기':'내려받기'))+'</button><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div>'
+    +(XL.busy?'':'<p class="hc-hint" style="margin:8px 0 0">처음 한 번은 엑셀 도구를 내려받느라 몇 초 걸릴 수 있습니다. PDF는 서버에서 변환하므로 조금 더 걸립니다.</p>')+'</div>';
 }
 function xOpen(type){
   xInit();XL.last=null;if(type)XL.st.type=type;
@@ -12459,6 +12507,9 @@ document.addEventListener('click',async e=>{
   const t=e.target.closest&&e.target.closest('[data-xl]');if(!t)return;
   e.stopPropagation();const a=t.dataset.xl,v=t.dataset.v,S=XL.st;
   if(a==='open'){xOpen();return;}
+  if(a==='open2')return;
+  if(a==='copy'){e.preventDefault();if(XL.last&&XL.last.link)docCopy(XL.last.link.url);return;}
+  if(a==='msds'){hxClose();showPanel('msds');return;}
   if(XL.busy&&a!=='close')return;
   if(a==='close'){XL.last=null;hxClose();return;}
   if(a==='again'){XL.last=null;xRedraw();return;}
@@ -12467,6 +12518,7 @@ document.addEventListener('click',async e=>{
   const sync=()=>{const g=id=>document.getElementById(id);if(g('xlMonth')&&g('xlMonth').value)S.month=g('xlMonth').value;if(g('xlYear'))S.year=g('xlYear').value;if(g('xlFrom')&&g('xlFrom').value)S.from=g('xlFrom').value;if(g('xlTo')&&g('xlTo').value)S.to=g('xlTo').value;};
   sync();
   if(a==='type'){S.type=v;xRedraw();return;}
+  if(a==='fmt'){S.fmt=v==='pdf'?'pdf':'xlsx';xRedraw();return;}
   if(a==='eq'){const i=S.eqs.indexOf(v);if(i>=0)S.eqs.splice(i,1);else S.eqs.push(v);xRedraw();return;}
   if(a==='all'){EQG[v].forEach(x=>{if(S.eqs.indexOf(x)<0)S.eqs.push(x);});xRedraw();return;}
   if(a==='clear'){S.eqs=[];xRedraw();return;}
@@ -12480,7 +12532,7 @@ document.addEventListener('click',async e=>{
 /* 진입 메뉴: 사이드 메뉴(점검·이력 묶음)에 "엑셀 내려받기" */
 (function(){
   const _md=menuDef;
-  menuDef=function(){const d=_md.apply(this,arguments);try{const g=d.find(x=>x.items&&x.items.some(m=>m.id==='hist'));if(g&&!g.items.some(m=>m.id==='xlsx'))g.items.push({id:'xlsx',t:'엑셀 내려받기',i:'history'});}catch(e){}return d;};
+  menuDef=function(){const d=_md.apply(this,arguments);try{const g=d.find(x=>x.items&&x.items.some(m=>m.id==='hist'));if(g&&!g.items.some(m=>m.id==='xlsx'))g.items.push({id:'xlsx',t:'문서 받기<small class="dr-sub"> (점검표·사양서·MSDS 등)</small>',i:'history'});}catch(e){}return d;};
   const _sp=showPanel;
   showPanel=function(name){if(name==='xlsx'){try{setDrawer(false);}catch(e){}xOpen();return;}return _sp.apply(this,arguments);};
 })();
