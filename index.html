@@ -1345,6 +1345,24 @@ body.dp-open{overflow:hidden}
 .xl-msds{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:11px 12px;border:1px solid var(--line,#d6e3ea);border-radius:12px;background:var(--tint,#e6f1f5);color:var(--ink,#0b2a3d);font:inherit;cursor:pointer}
 .xl-msds b{font-size:14px}.xl-msds small{color:var(--muted,#566b7b);font-size:12px;flex:1;min-width:0}.xl-msds i{font-style:normal;font-size:20px;color:var(--accent,#0e7c9a)}
 .dr-sub{font-size:11px;font-weight:400;opacity:.7;white-space:normal}
+
+/* v82: 부품 목록 열 정렬 - 재고·사진·버튼 칸 너비를 고정해 카드마다 같은 위치에 오게 함 */
+.pt-row{grid-template-columns:minmax(0,1fr) 84px 44px}
+.pt-th.ph{visibility:hidden;border:0;pointer-events:none}
+.pt-st{min-width:0}
+@media (min-width:900px){.pt-row.reg{grid-template-columns:minmax(0,1fr) 84px 44px 210px}.pt-row.reg .pt-acts{min-width:0;width:210px}}
+.ni-row{display:flex;align-items:center;gap:10px;margin:0 0 10px;flex-wrap:wrap}
+.ni-row[hidden]{display:none}
+.ni-none{grid-column:1/-1;display:flex;justify-content:center;padding:6px 0 14px}
+.pt-row:not(.low){padding-left:15px}
+.ni-row .hc-btn,.ni-none .hc-btn{font:inherit;font-weight:700;font-size:14px;padding:9px 16px;border-radius:10px;border:1.5px solid #0E7C95;background:#0E7C95;color:#fff;cursor:pointer;min-height:40px}
+.ni-row .hc-btn:active,.ni-none .hc-btn:active{filter:brightness(.92)}
+.ni-row .hc-hint{margin:0;font-size:12.5px;color:var(--text-muted,#566B7B)}
+/* v82: PC 화면 폭·칸 정리 */
+.hc{max-width:none}
+.kc{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+@media (min-width:1100px){.hm-grid>.hm-sec:not(.o3),.hm-col>.hm-sec,.hm-col>.ask-box{max-height:440px}}
+@media (min-width:900px){.pk-btn{font-size:15px;min-height:44px}}
 </style>
 </head>
 <body>
@@ -1599,7 +1617,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v81</span></div>
+    <div class="sb-foot"><span id="verLabel">v82</span></div>
   </nav>
 
   <div class="content">
@@ -1825,7 +1843,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v81</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v82</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8800,12 +8818,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v81', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v82', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v81';
+const PAGE_CACHE = 'sulbi-jindan-v82';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -10983,7 +11001,7 @@ setTimeout(()=>{try{loadHitems();loadXtabs();}catch(e){}},60);
     return '<div class="pt-row'+(low?' low':'')+(reg?' reg':'')+'" data-idx="'+i+'" tabindex="0" role="button">'
       +'<div class="pt-main"><b>'+eh(nm(p))+'</b><small>'+eh(p['제품규격']||'')+(p['제품구분']?' · '+eh(p['제품구분']):'')+'</small></div>'
       +'<div class="pt-st"><b class="'+(low?'low':'')+'">'+stock+'</b><small>재고'+(min?' · 최소 '+min:'')+'</small>'+(rp?'<small class="rp">수리 중 '+rp+'</small>':'')+(rep?'<small class="rp">🔧 수리가능</small>':'')+'</div>'
-      +(ph?'<button type="button" class="pt-th" data-pa="photo" aria-label="사진 보기"><img src="'+ph+'" alt="" loading="lazy"></button>':'')
+      +(ph?'<button type="button" class="pt-th" data-pa="photo" aria-label="사진 보기"><img src="'+ph+'" alt="" loading="lazy"></button>':'<span class="pt-th ph" aria-hidden="true"></span>')
       +(reg?'<div class="pt-acts"><button type="button" class="u" data-pa="use">사용</button><button type="button" class="o" data-pa="out">출고</button><button type="button" class="i" data-pa="in">입고</button></div>':'')
       +'</div>';
   }
@@ -11354,6 +11372,7 @@ function hxEqCard(no){
 }
 /* ===== v79 (1): 업데이트 내용 · 표기 보정 · 부위 자동 인식 ===== */
 const CHANGELOG=[
+ {v:'v82',d:'2026-11-19',items:['부품 입출고에 "+ 신품 등록" 추가 (검색 결과가 없을 때도 바로 등록)','부품 목록·PC 화면의 열과 칸 정렬 정리','PC 홈 카드 높이 조정']},
  {v:'v81',d:'2026-11-19',items:['메뉴 이름을 "문서 받기"로 변경 · 엑셀 또는 PDF 선택','안드로이드 앱에서도 받을 수 있게 파일을 임시 링크로 제공 (2일 뒤 자동 삭제)','MSDS 비밀번호 입력 제거 · 받은 기록을 "문서다운로드이력" 시트에 저장','수리 목록 CSV도 같은 방식으로 받기']},
  {v:'v80',d:'2026-11-19',items:['설비·작업·부위를 선택 창에서 고르도록 변경 (1층/2층/프레스/기타, 프레스·기타는 직접 입력)','설비 작업에서 설비 미선택 시 안내 + 행정으로 바꾸기','메뉴에 다시 들어가면 기본 화면으로 시작','앱 버전이 다르면 자동으로 캐시를 정리하고 새로고침','사진 업로드 실패 시 보관 후 재시도 · 사진 없는 C 기록 표시','엑셀: 조회 범위 안내, 다운로드/공유 버튼, 오프라인 라이브러리 보관','미등록 부품 목록을 재고 화면 상단에 표시','출장은 근태에서만 등록']},
  {v:'v79',d:'2026-11-18',items:[
@@ -11497,7 +11516,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 
 /* ===== v80: 화면 코드와 서비스워커 버전이 다르면 캐시를 정리하고 한 번만 새로고침 ===== */
-const APP_VER='v81';
+const APP_VER='v82';
 (function(){
   const KEY='emq-vfix-'+APP_VER;
   function swVer(){return new Promise(res=>{try{
@@ -12086,6 +12105,66 @@ askRender=function(res){
   }
   return _ar79.apply(this,arguments);
 };
+
+
+/* ===== v82: 부품 입출고 - 신품 등록 ===== */
+const NI={busy:false};
+function niRow(){
+  const pn=document.getElementById('panel-register');if(!pn)return;
+  let r=document.getElementById('niRow');
+  if(!r){const ps=pn.querySelector('.parts-search');if(!ps)return;r=document.createElement('div');r.id='niRow';r.className='ni-row';ps.insertAdjacentElement('afterend',r);}
+  r.hidden=!lvOk(3);
+  r.innerHTML='<button type="button" class="hc-btn sm" data-ni="open">+ 신품 등록</button><span class="hc-hint">목록에 없는 새 부품을 품목에 추가합니다.</span>';
+}
+function niOpen(q){
+  const cats=[...new Set((typeof partsData!=='undefined'?partsData:[]).map(p=>String(p['제품구분']||'')).filter(Boolean))];
+  hxModal('<h3 style="margin:0 0 4px">신품 등록</h3><p class="hc-hint" style="margin:0 0 10px">새 부품을 품목에 추가합니다. 등록 뒤 사용·출고·입고를 바로 할 수 있습니다.</p>'
+   +'<label class="hc-lab" for="niMk">제조사 <small>(선택)</small></label><input id="niMk" class="hc-in" maxlength="30" placeholder="예: 테란">'
+   +'<label class="hc-lab" for="niMd" style="margin-top:8px">모델 · 규격 <small>(필수)</small></label><input id="niMd" class="hc-in" maxlength="60" value="'+A(q||'')+'" placeholder="예: TMV-0608-2K">'
+   +'<label class="hc-lab" for="niCat" style="margin-top:8px">제품구분 <small>(선택)</small></label><input id="niCat" class="hc-in" list="niCats" maxlength="30" placeholder="목록에서 고르거나 직접 입력"><datalist id="niCats">'+cats.map(c=>'<option value="'+A(c)+'">').join('')+'</datalist>'
+   +'<label class="hc-lab" for="niForm" style="margin-top:8px">제품형태 <small>(선택)</small></label><input id="niForm" class="hc-in" maxlength="40" placeholder="예: 믹싱헤드">'
+   +'<label class="hc-lab" for="niStock" style="margin-top:8px">현재 재고 <small>(선택)</small></label><input id="niStock" class="hc-in" type="number" min="0" max="9999" inputmode="numeric" placeholder="0">'
+   +'<div id="niErr" class="hc-err" hidden></div><div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn" data-niok="go">등록</button><button type="button" class="hc-btn ghost" data-niok="x">취소</button></div>','');
+  setTimeout(()=>{const i=document.getElementById(q?'niMk':'niMd');if(i)i.focus();},50);
+}
+document.addEventListener('click',async e=>{
+  const o=e.target.closest&&e.target.closest('[data-ni]');
+  if(o){e.stopPropagation();if(!(await srvGate(15,'신품 등록')))return;niOpen(o.dataset.q||'');return;}
+  const t=e.target.closest&&e.target.closest('[data-niok]');if(!t)return;
+  e.stopPropagation();
+  if(t.dataset.niok==='x'){hxClose();return;}
+  if(NI.busy)return;
+  const er=document.getElementById('niErr'),model=document.getElementById('niMd').value.trim();
+  const fail=m=>{er.textContent=m;er.hidden=false;};
+  if(!model){fail('모델 · 규격을 입력하세요.');return;}
+  NI.busy=true;t.disabled=true;er.hidden=true;
+  try{
+    const res=await hcPost({type:'item_register',maker:document.getElementById('niMk').value.trim(),model:model,cat:document.getElementById('niCat').value.trim(),form:document.getElementById('niForm').value.trim(),stock:Number(document.getElementById('niStock').value)||0});
+    if(res&&res.ok){
+      hxClose();toast('신품으로 등록했습니다. 목록 맨 위에서 확인하세요.');
+      try{if(typeof loadPartsFromSheet==='function')await loadPartsFromSheet();}catch(x){}
+      const si=document.getElementById('partsSearchReg');if(si){si.value=model;}
+      try{renderPartsReg(model);}catch(x){}
+    }else if(res&&res.error==='exists'){
+      fail('이미 등록된 품목입니다.');
+      er.insertAdjacentHTML('beforeend',' <button type="button" class="cl-link" data-niok="find" data-m="'+A(model)+'">해당 부품 보기</button>');t.disabled=false;
+    }else{fail(typeof errMsg==='function'?errMsg(res&&res.error):'등록하지 못했습니다.');t.disabled=false;}
+  }catch(x){fail('네트워크 오류입니다. 다시 시도하세요.');t.disabled=false;}
+  NI.busy=false;
+},true);
+document.addEventListener('click',e=>{
+  const f=e.target.closest&&e.target.closest('[data-niok="find"]');if(!f)return;
+  e.stopPropagation();hxClose();const si=document.getElementById('partsSearchReg');if(si){si.value=f.dataset.m;}try{renderPartsReg(f.dataset.m);}catch(x){}
+},true);
+(function(){
+  const _sp=showPanel;showPanel=function(name){const r=_sp.apply(this,arguments);if(name==='register')setTimeout(niRow,50);return r;};
+  const _rp=window.renderPartsReg;
+  if(typeof _rp==='function'){window.renderPartsReg=function(f){
+    const r=_rp.apply(this,arguments);
+    try{niRow();const g=document.getElementById('partsGridReg'),q=String(f||'').trim();
+      if(g&&q&&lvOk(3)&&g.querySelector('.parts-empty')&&!g.querySelector('[data-ni]'))g.insertAdjacentHTML('beforeend','<div class="ni-none"><button type="button" class="hc-btn" data-ni="open" data-q="'+A(q)+'">\''+E(q)+'\' 신품으로 등록</button></div>');}catch(x){}
+    return r;};}
+})();
 /* ===== v79: 엑셀 내려받기 6종 (점검표 주간·월간·연간 / 설비 이력 / 설비 사양 / 재고현황) =====
    ExcelJS는 처음 사용할 때만 내려받아 쓴다(약 1MB). 모든 파일은 이 기기에서 만들어지며 서버 변경은 필요 없다. */
 const XL={lib:null,busy:false,st:{type:'주간',fmt:'xlsx',month:'',year:'',from:'',to:'',eqs:[]}};

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sulbi-jindan-v81';
+const CACHE_NAME = 'sulbi-jindan-v82';
 const ASSETS = [
   './index.html',
   './manifest.json',
