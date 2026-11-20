@@ -570,6 +570,7 @@ body.dr-open .dr-scrim{opacity:1;pointer-events:auto;}
 .hc-b.on small{color:#D7EEF5;}
 .hc-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
 .hc-seg.n2{grid-template-columns:repeat(2,1fr);}
+.hc-seg.n3{grid-template-columns:repeat(3,minmax(0,1fr));}.hc-seg.hc-sub{margin-top:-4px}
 .hc-crumbs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
 .hc-crumbs button{border:0;background:var(--tint);color:var(--accent);border-radius:99px;padding:6px 12px;font-size:13px;cursor:pointer;}
 .hc-btn{min-height:44px;border-radius:12px;border:1px solid var(--accent);background:var(--accent);color:#fff;font-weight:600;font-size:15px;padding:0 18px;cursor:pointer;}
@@ -1336,7 +1337,7 @@ body.dp-open{overflow:hidden}
 .pk-pop{max-height:86vh;overflow:auto;max-width:520px}
 .pk-tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
 .pk-tabs button{flex:1;min-width:64px;min-height:44px;border:1.5px solid var(--line,#cfd8de);border-radius:10px;background:#fff;font:inherit;font-weight:700;color:var(--ink,#0b2a3d);cursor:pointer}
-.pk-tabs button.on{background:var(--accent,#0f7690);border-color:var(--accent,#0f7690);color:#fff}
+.pk-tabs.pk-sub{margin-top:-6px}.pk-tabs button.on{background:var(--accent,#0f7690);border-color:var(--accent,#0f7690);color:#fff}
 .pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .pk-grid button{min-height:56px;border:1.5px solid var(--line,#cfd8de);border-radius:12px;background:#fff;font:inherit;font-size:20px;font-weight:800;color:var(--ink,#0b2a3d);cursor:pointer}
 .pk-grid button small{font-size:11px;font-weight:600;color:var(--muted,#6a7f8c);margin-left:2px}
@@ -1682,7 +1683,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v84</span></div>
+    <div class="sb-foot"><span id="verLabel">v85</span></div>
   </nav>
 
   <div class="content">
@@ -1908,7 +1909,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v84</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v85</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8873,12 +8874,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v84', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v85', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v84';
+const PAGE_CACHE = 'sulbi-jindan-v85';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -8967,6 +8968,11 @@ if ('serviceWorker' in navigator) {
 </script>
 <script>
 const HC_TREE={"발포기":{"탱크":["교반기·감속기","레귤레이터","탱크 히터","탱크 본체","온도센서","안전변"],"필터":[],"배관":["심레스 파이프","고압호스","에어 호스","클램프","커플러"],"센서":["바코드 리더기","동기화센서","레벨센서","고압센서","디지털게이지","플로우메타","유압센서"],"펌프":["원료펌프(POL/MDI)","이송펌프","유압펌프"],"모터":["모터(POL)","모터(MDI)","유압모터","믹싱모터"],"전기":["마그네틱 스위치","과전류방지기","차단기","릴레이","스위치","SSR","인버터","PLC 파워서플라이"],"믹싱헤드":[],"유압":["유압유","유압 필터","유압 호스","압력스위치","유압유닛","솔레노이드 밸브","솔레노이드 블럭"]},"로봇":{"로봇 본체":["엔코더"],"제어기":[],"티치펜던트":[]},"칠러":{"칠러":["칠러 본체","냉매(가스)","라디에이터","순환펌프","본체 오일 누유","온도제어기","분배기","압축기","압력스위치","전자변","드라이어","레벨스위치","플로우스위치","컨트롤러","물탱크·볼탑","전기(EOCR·차단기)"]},"턴테이블":{"체인":["체인 장력","체인 탈거·탈락","스프로킷·체인 탈거"],"베어링":[],"모터":[],"전기":["엔코더","동기화 리밋스위치"],"온조기":["히터봉","순환펌프","릴레이·차단기·컨트롤러","수위센서","온수 수질","온수 호스(저수위 알람)"]},"금형":{"몰드":["몰드 제작불량"],"밸브":["메카니컬 밸브"],"센서":["근접센서"]}};
+/* v85: 프레스 전용 부위표 (대분류›중분류). 칠러는 발포기와 같은 항목을 공유 */
+const PRESS_TREE={"프레스 본체":{"프레임":[],"슬라이드":[],"가이드":[],"클램프":[]},"유압":{"유압유":[],"유압펌프":[],"실린더":[],"밸브":[],"호스":[]},"열성형기":{"상형":[],"하형":[],"테프론 시트":[],"실린더":[],"히터":[],"가이드":[],"센서":[]},"전기·제어":{"모터":[],"인버터":[],"PLC":[],"스위치":[],"릴레이":[]},"에어·윤활":{"에어":[],"급유":[]},"안전":{"광전센서":[],"비상정지":[],"안전도어":[]},"칠러":HC_TREE["칠러"],"금형 히터":{"히터":[],"센서":[],"PLC":[],"스위치":[],"커넥터":[],"퓨즈":[],"마그네틱스위치":[]},"기타":{"기타":[]}};
+const TREE_ALL=Object.assign({},HC_TREE,PRESS_TREE);
+function trFor(g){return g==='프레스'?PRESS_TREE:HC_TREE;}
+
 const HC_ALARMS=[{"n":"고압차단","alias":"","causes":[{"c":"냉각수 온도가 높거나 순환유량이 부족","a":"냉각수 상태 확인 요청","sub":"칠러 본체","cause":"기타","act":"점검만"},{"c":"냉매 과충전","a":"냉매량 조절","sub":"냉매(가스)","cause":"설정·조정","act":"조정·교정"},{"c":"응축기 동관 내부에 스케일 발생","a":"응축기 청소","sub":"라디에이터","cause":"이물질·오염·막힘","act":"청소"},{"c":"고압스위치 설정값이 너무 낮음","a":"설정값 조절","sub":"압력스위치","cause":"설정·조정","act":"조정·교정"}],"sub":"","prot":"고압스위치 차단, 펌프 정지, 압축기 정지","note":"고압스위치 설정 초기값 25kg/cm². 알람 해제는 고압스위치 리셋버튼"},{"n":"저압차단","alias":"","causes":[{"c":"냉매 부족","a":"냉매 누설 점검 및 주입","sub":"냉매(가스)","cause":"부품 불량·파손","act":"보충"},{"c":"펌프 순환유량 부족","a":"물배관 막힘 여부 점검","sub":"순환펌프","cause":"이물질·오염·막힘","act":"점검만"},{"c":"드라이어 막힘","a":"드라이어 교체","sub":"드라이어","cause":"이물질·오염·막힘","act":"교체"},{"c":"전자변 작동불량","a":"전자변 점검 또는 교체","sub":"전자변","cause":"부품 불량·파손","act":"점검만"},{"c":"저압스위치 설정값이 너무 높음","a":"저압스위치 설정값 조절","sub":"압력스위치","cause":"설정·조정","act":"조정·교정"}],"sub":"","prot":"저압스위치 차단, 압축기 정지","note":"저압스위치 설정 초기값 3kg/cm²"},{"n":"콤프과부하","alias":"화면: 콤프이상","causes":[{"c":"고압이 높음","a":"응축기 청소 및 고압차단 원인 제거","sub":"라디에이터","cause":"이물질·오염·막힘","act":"청소"},{"c":"삼상모터에 단상이 입력됨","a":"입력전원 체크","sub":"전기(EOCR·차단기)","cause":"기타","act":"점검만"},{"c":"EOCR 설정값이 너무 낮음","a":"설정값 확인","sub":"전기(EOCR·차단기)","cause":"설정·조정","act":"조정·교정"},{"c":"EOCR 고장","a":"EOCR 교체","sub":"전기(EOCR·차단기)","cause":"부품 불량·파손","act":"교체"}],"sub":"","prot":"압축기 정지, 펌프 정지","note":"압축기 EOCR 설정: 전류 30A, 지연시간 5초. 알람 해제는 EOCR 리셋"},{"n":"펌프과부하","alias":"화면: 순환펌프","causes":[{"c":"EOCR 전류 설정값 낮음","a":"EOCR 전류 설정값 조정","sub":"전기(EOCR·차단기)","cause":"설정·조정","act":"조정·교정"},{"c":"지연시간 짧음","a":"EOCR 지연시간 설정값 조정","sub":"전기(EOCR·차단기)","cause":"설정·조정","act":"조정·교정"},{"c":"순환유량 너무 많음 (수압이 너무 낮음)","a":"매체회수 밸브 개도율 조정","sub":"순환펌프","cause":"설정·조정","act":"조정·교정"},{"c":"과전류 발생","a":"모터 수리","sub":"순환펌프","cause":"부품 불량·파손","act":"수리"},{"c":"베어링 소손","a":"베어링 교체","sub":"순환펌프","cause":"부품 불량·파손","act":"교체"}],"sub":"","prot":"압축기 정지, 펌프 정지","note":"펌프 EOCR 설정: 전류 12A, 지연시간 5초. 알람 해제는 EOCR 리셋"},{"n":"저수위 이상","alias":"화면: 저수위(이상)","causes":[{"c":"물탱크에 물이 적음","a":"물 보충","sub":"물탱크·볼탑","cause":"기타","act":"보충"},{"c":"레벨스위치 이물질로 구속","a":"레벨스위치 세척","sub":"레벨스위치","cause":"이물질·오염·막힘","act":"청소"},{"c":"레벨스위치 이상","a":"레벨스위치 교환","sub":"레벨스위치","cause":"부품 불량·파손","act":"교체"},{"c":"보급수 밸브 잠김","a":"보급수 밸브 개방","sub":"물탱크·볼탑","cause":"작업자 조작","act":"조정·교정"}],"sub":"","prot":"압축기 정지, 펌프 정지","note":""},{"n":"FLOW 이상","alias":"화면: FLOW이상","causes":[{"c":"유량 부족","a":"밸브 잠김 및 배관 폐쇄 여부 확인","sub":"칠러 본체","cause":"이물질·오염·막힘","act":"점검만"},{"c":"플로우 스위치 고장","a":"플로우 스위치 교체","sub":"플로우스위치","cause":"부품 불량·파손","act":"교체"}],"sub":"","prot":"압축기 정지, 펌프 정지","note":""},{"n":"역상이상","alias":"","causes":[{"c":"1차전원 R,S,T상이 바뀜","a":"임의의 두 상을 서로 바꿈","sub":"전기(EOCR·차단기)","cause":"체결·조임 불량","act":"재체결"}],"sub":"","prot":"압축기 정지, 펌프 정지","note":""},{"n":"통신에러","alias":"","causes":[{"c":"모니터-메인보드 연결케이블 불량","a":"연결케이블 교체","sub":"컨트롤러","cause":"부품 불량·파손","act":"교체"},{"c":"고주파장비 등으로 인한 노이즈 발생","a":"장비 위치 변경","sub":"컨트롤러","cause":"기타","act":"조정·교정"},{"c":"컨트롤러 이상","a":"컨트롤러 교체","sub":"컨트롤러","cause":"부품 불량·파손","act":"교체"}],"sub":"","prot":"컨트롤러 조작 안됨","note":""},{"n":"저압경고","alias":"저압차단과 같은 원인","causes":[{"c":"냉매 부족","a":"냉매 누설 점검 및 주입","sub":"냉매(가스)","cause":"부품 불량·파손","act":"보충"},{"c":"펌프 순환유량 부족","a":"물배관 막힘 여부 점검","sub":"순환펌프","cause":"이물질·오염·막힘","act":"점검만"},{"c":"드라이어 막힘","a":"드라이어 교체","sub":"드라이어","cause":"이물질·오염·막힘","act":"교체"},{"c":"전자변 작동불량","a":"전자변 점검 또는 교체","sub":"전자변","cause":"부품 불량·파손","act":"점검만"},{"c":"저압스위치 설정값이 너무 높음","a":"저압스위치 설정값 조절","sub":"압력스위치","cause":"설정·조정","act":"조정·교정"}],"sub":"","prot":"저압스위치 차단, 압축기 정지","note":"저압스위치 설정 초기값 3kg/cm²"},{"n":"저수위 경고","alias":"저수위 이상과 같은 원인","causes":[{"c":"물탱크에 물이 적음","a":"물 보충","sub":"물탱크·볼탑","cause":"기타","act":"보충"},{"c":"레벨스위치 이물질로 구속","a":"레벨스위치 세척","sub":"레벨스위치","cause":"이물질·오염·막힘","act":"청소"},{"c":"레벨스위치 이상","a":"레벨스위치 교환","sub":"레벨스위치","cause":"부품 불량·파손","act":"교체"},{"c":"보급수 밸브 잠김","a":"보급수 밸브 개방","sub":"물탱크·볼탑","cause":"작업자 조작","act":"조정·교정"}],"sub":"","prot":"압축기 정지, 펌프 정지","note":""},{"n":"콤프과열","alias":"","causes":[],"sub":"압축기","prot":"","note":""},{"n":"휀 모터","alias":"","causes":[],"sub":"라디에이터","prot":"","note":""},{"n":"오일압력","alias":"","causes":[],"sub":"압축기","prot":"","note":""},{"n":"히터과열","alias":"","causes":[],"sub":"칠러 본체","prot":"","note":""},{"n":"공급펌프","alias":"","causes":[],"sub":"순환펌프","prot":"","note":""}];
 let HC_ITEMS=[{"id":"W-01","kind":"주간","area":"발포기","part":"호스","name":"마모상태","desc":"표면마모 및 내부와이어의 드러난 상태","H":true,"L":true,"S":true,"mode":"judge","path":["발포기","배관","고압호스"]},{"id":"W-02","kind":"주간","area":"발포기","part":"호스","name":"꼬임상태","desc":"호스연결, 작동에 의해 꼬이는 문제확인","H":true,"L":true,"S":true,"mode":"judge","path":["발포기","배관","고압호스"]},{"id":"W-03","kind":"주간","area":"발포기","part":"유압","name":"누유상태","desc":"유압 오일 누유 상태, 유압유 레벨 [육안점검]","H":true,"L":false,"S":true,"mode":"judge","path":["발포기","유압",""]},{"id":"W-04","kind":"주간","area":"로봇","part":"판넬","name":"냉각시스템","desc":"내부열 환기용 냉각팬 작동유무","H":true,"L":true,"S":false,"mode":"judge","path":["로봇","제어기",""]},{"id":"W-05","kind":"주간","area":"로봇","part":"모터","name":"소음상태","desc":"동작시 이상소음 유무","H":true,"L":true,"S":true,"mode":"judge","path":["로봇","로봇 본체",""]},{"id":"W-06","kind":"주간","area":"턴테이블","part":"베어링","name":"체인","desc":"장력확인","H":true,"L":true,"S":true,"mode":"judge","path":["턴테이블","체인","체인 장력"]},{"id":"W-07","kind":"주간","area":"턴테이블","part":"체인","name":"소음상태","desc":"턴테이블 회전 시 이상소음 유무","H":true,"L":true,"S":true,"mode":"judge","path":["턴테이블","체인",""]},{"id":"W-08","kind":"주간","area":"칠러","part":"냉각수","name":"수질상태","desc":"냉각수량 및 수질의 오염상태","H":true,"L":true,"S":true,"mode":"judge","path":["칠러","칠러",""]},{"id":"W-09","kind":"주간","area":"칠러","part":"냉각수","name":"압력점검","desc":"저압(가스), 고압(콤프) 압력 상태 확인","H":true,"L":true,"S":true,"mode":"judge","path":["칠러","칠러","압력스위치"]},{"id":"M-01","kind":"월간","area":"발포기","part":"배관","name":"심레스 파이프·붐대 구간 호스","desc":"고정 상태, 마모, 금형 간섭 흔적 확인","H":true,"L":true,"S":true,"mode":"judge","path":["발포기","배관","심레스 파이프"]},{"id":"M-02","kind":"월간","area":"발포기","part":"믹싱헤드","name":"인젝션 피스톤·에어","desc":"작동 상태, 누출, 클린 피스톤 동작 확인","H":true,"L":true,"S":true,"mode":"judge","path":["발포기","믹싱헤드",""]},{"id":"M-03","kind":"월간","area":"발포기","part":"펌프","name":"원료펌프 (POL)","desc":"온도·소음 측정, 커플러 발열·누출 확인","H":true,"L":true,"S":true,"mode":"measure","path":["발포기","펌프","원료펌프(POL/MDI)"]},{"id":"M-04","kind":"월간","area":"발포기","part":"펌프","name":"원료펌프 (MDI)","desc":"온도·소음 측정, 커플러 발열·누출 확인","H":true,"L":true,"S":true,"mode":"measure","path":["발포기","펌프","원료펌프(POL/MDI)"]},{"id":"M-05","kind":"월간","area":"턴테이블","part":"온조기","name":"필터","desc":"필터 막힘 확인 및 청소","H":true,"L":true,"S":true,"mode":"judge","path":["턴테이블","온조기",""]},{"id":"M-06","kind":"월간","area":"발포기·턴테이블","part":"히터","name":"히터류 누전 점검","desc":"탱크 히터, 히터봉, 온조기 히터의 누전 여부 확인","H":true,"L":true,"S":true,"mode":"judge","path":["발포기","탱크","탱크 히터"]},{"id":"M-07","kind":"월간","area":"턴테이블","part":"체인","name":"체인 늘어남","desc":"체인 늘어남을 확인하고 1단 단축 필요 여부 판단","H":true,"L":true,"S":true,"mode":"judge","path":["턴테이블","체인","체인 장력"]},{"id":"M-08","kind":"월간","area":"턴테이블","part":"레일","name":"레일 크랙","desc":"레일의 균열(크랙) 유무 확인","H":true,"L":true,"S":true,"mode":"judge","path":["턴테이블","체인",""]},{"id":"Y-01","kind":"연간","area":"발포기·로봇·턴테이블","part":"청소","name":"분진 청소","desc":"발포기(판넬 내부, 모터·펌프·교반기팬 등 동작부), 로봇 판넬 내부, 턴테이블 모터 내부 분진 청소. 일괄 진행. 전원OFF 후 실시 [주말 비가동 시]","H":true,"L":true,"S":true,"mode":"done","path":["","",""]},{"id":"Y-02","kind":"연간","area":"발포기","part":"유압","name":"유압유","desc":"유압유 교체","H":true,"L":false,"S":true,"mode":"done","path":["","",""]},{"id":"Y-03","kind":"연간","area":"발포기","part":"탱크","name":"안전변","desc":"작동 점검","H":true,"L":true,"S":true,"mode":"done","path":["","",""]},{"id":"Y-04","kind":"연간","area":"칠러","part":"청소","name":"라지에이터","desc":"냉각관 사이 이물질 제거, 스팀 청소","H":true,"L":true,"S":true,"mode":"done","path":["","",""]}];
 let HC_QUARTERS={"1F-1":1,"1F-2":1,"1F-3":1,"1F-4":1,"1F-5":1,"1F-6":2,"1F-7":2,"1F-8":2,"1F-9":2,"1F-10":2,"1F-11":3,"2F-1":3,"2F-2":3,"2F-3":3,"2F-4":4,"2F-5":4,"2F-6":4,"2F-7":4};
@@ -9032,7 +9038,7 @@ function hitemsOf(kind,parent){return (HC.hitems||[]).filter(i=>i.kind===kind&&(
 function hiddenSet(kind){const s={};hitemsOf(kind).forEach(i=>{if(i.status==='숨김')s[i.value]=1;});return s;}
 function dutyKinds(){const hid=hiddenSet('공무작업');const out=DUTY_DEF.filter(x=>!hid[x]);hitemsOf('공무작업').forEach(i=>{if(i.status!=='숨김'&&out.indexOf(i.value)<0)out.splice(Math.max(0,out.length-(out.indexOf('기타')>=0?1:0)),0,i.value);});return out;}
 function phenList(){const hid=hiddenSet('고장현상');const out=PHEN.filter(x=>x!=='기타'&&!hid[x]);hitemsOf('고장현상').forEach(i=>{if(i.status!=='숨김'&&out.indexOf(i.value)<0)out.push(i.value);});out.push('기타');return out;}
-function subsOf(a,b){const base=[...((HC_TREE[a]||{})[b]||[])];(HC.subs[a+'|'+b]||[]).forEach(x=>{if(base.indexOf(x)<0)base.push(x);});hitemsOf('소분류',a+'|'+b).forEach(i=>{if(i.status!=='숨김'&&base.indexOf(i.value)<0)base.push(i.value);});return base.filter(Boolean);}
+function subsOf(a,b){const base=[...((TREE_ALL[a]||{})[b]||[])];(HC.subs[a+'|'+b]||[]).forEach(x=>{if(base.indexOf(x)<0)base.push(x);});hitemsOf('소분류',a+'|'+b).forEach(i=>{if(i.status!=='숨김'&&base.indexOf(i.value)<0)base.push(i.value);});return base.filter(Boolean);}
 function pressTab(){return (HC.xtabs||[]).find(t=>t.name==='프레스')||null;}
 function pressNames(){const t=pressTab();return t?t.rows.map(r=>String(r[0]||'').trim()).filter(Boolean):[];}
 function syncPress(){EQG['프레스']=pressNames();}
@@ -9077,6 +9083,7 @@ const STEPS=['설비','부위','고장 현상','조치','확인'];
 function newW(keep){HC.W={step:1,g:'',eq:'',p:[],alarm:'',noAlarm:false,cidx:-2,ph:[],act:'',actText:'',duty:false,dk:'',min:null,cause:'',causeText:'',parts:[],src:'점검 중',link:'',todoId:'',checkId:'',checkItem:'',occ:'',memo:'',preset:false,saving:false,err:'',done:false,last:null};
   if(keep){HC.W.g=keep.g;HC.W.eq=keep.eq;HC.W.step=2;if(keep.eq===DUTY){HC.W.duty=true;}}HC.pk=false;HC.csq='';HC.csList=[];}
 const gOf=eq=>EQG['1층'].indexOf(eq)>=0?'1층':EQG['2층'].indexOf(eq)>=0?'2층':eq===DUTY?DUTY:'프레스';
+function trW(){return trFor((HC.W||{}).g);}
 const B=(cls,attr,txt)=>'<button type="button" class="hc-b '+cls+'" '+attr+'>'+txt+'</button>';
 function alarmDef(){return HC_ALARMS.find(a=>a.n===HC.W.alarm);}
 function stepHead(q,hint){const W=HC.W;return '<div class="hc-h"><button type="button" class="hc-back" data-h="back" aria-label="이전" '+(W.step===1&&!W.alarm?'disabled':'')+'>‹</button><div class="hc-pg"><b>'+W.step+' / 5 · '+STEPS[W.step-1]+'</b><div class="hc-bar"><i style="width:'+W.step*20+'%"></i></div></div></div><h2 class="hc-q">'+q+'</h2>'+(hint?'<p class="hc-hint">'+hint+'</p>':'');}
@@ -9085,9 +9092,9 @@ function stepBody(){
   const W=HC.W;
   if(W.duty&&W.step>=2)return dutyBody();
   if(W.step===1){
-    const SEGS=Object.keys(EQG).concat([DUTY]);
-    return stepHead('어느 설비인가요?','구분을 고른 뒤 호기를 누르세요. 설비가 아닌 공무 업무는 기타(공무)를 고르세요.')+'<div class="hc-seg n4">'+SEGS.map(g=>B(W.g===g?'on':'','data-g="'+g+'"',g)).join('')+'</div>'
-      +(W.g===DUTY?nextBtn(true,'작업 입력'):W.g==='프레스'&&!EQG['프레스'].length?'<div class="hc-auto" style="margin-top:10px">'+(HC.xtabsOk?'설비(프레스) 시트에 등록된 프레스가 없습니다.':HC.xtabsErr?'프레스 목록을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.':'프레스 목록을 불러오는 중입니다...')+'</div>':W.g?'<div class="hc-grid">'+EQG[W.g].map(e=>B(W.eq===e?'on':'','data-eq="'+A(e)+'"',E(e))).join('')+'</div>':'');
+    const SEGS=['발포기','프레스',DUTY];const fo=(W.g==='1층'||W.g==='2층'||W.fo);const topG=fo?'발포기':W.g;
+    return stepHead('어느 설비인가요?','발포기는 층을 고른 뒤 호기를 누르세요. 설비가 아닌 공무 업무는 기타(공무)를 고르세요.')+'<div class="hc-seg n3">'+SEGS.map(g=>B(topG===g?'on':'','data-g="'+g+'"',g)).join('')+'</div>'+(fo?'<div class="hc-seg n2 hc-sub">'+['1층','2층'].map(g=>B(W.g===g?'on':'','data-g="'+g+'"',g)).join('')+'</div>':'')
+      +(W.g===DUTY?nextBtn(true,'작업 입력'):fo&&!(W.g==='1층'||W.g==='2층')?'<div class="hc-auto" style="margin-top:6px">층을 고른 뒤 호기를 누르세요.</div>':W.g==='프레스'&&!EQG['프레스'].length?'<div class="hc-auto" style="margin-top:10px">'+(HC.xtabsOk?'설비(프레스) 시트에 등록된 프레스가 없습니다.':HC.xtabsErr?'프레스 목록을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.':'프레스 목록을 불러오는 중입니다...')+'</div>':W.g?'<div class="hc-grid">'+EQG[W.g].map(e=>B(W.eq===e?'on':'','data-eq="'+A(e)+'"',E(e))).join('')+'</div>':'');
   }
   if(W.step===2){
     const a=W.p[0],b=W.p[1];
@@ -9103,8 +9110,8 @@ function stepBody(){
         +'<div class="hc-grid one">'+al.causes.map((c,i)=>B('left','data-ci="'+i+'"',E(c.c)+'<small>→ '+E(c.a)+'</small>')).join('')+B('soft left','data-ci="-1"','기타 · 원인을 직접 입력')+'</div>';
     }
     let body;
-    if(!a)body='<div class="hc-cs"><input id="hcCs" class="hc-in" type="search" autocomplete="off" placeholder="검색 · 예) 유압펌프, 고압호스, 믹싱헤드" aria-label="부위 또는 부품 검색" value="'+A(HC.csq||'')+'"><div id="hcCsr">'+csResultsHtml(HC.csq||'')+'</div>'+(W.csNote?'<div class="hc-auto" style="margin-top:8px">'+E(W.csNote)+'</div>':'')+'</div>'+'<div class="hc-grid two">'+Object.keys(HC_TREE).map(x=>B('','data-l1="'+A(x)+'"',E(x))).join('')+'</div>';
-    else if(!b)body='<div class="hc-grid two">'+Object.keys(HC_TREE[a]).map(x=>B('','data-l2="'+A(x)+'"',E(x))).join('')+'</div>';
+    if(!a)body='<div class="hc-cs"><input id="hcCs" class="hc-in" type="search" autocomplete="off" placeholder="검색 · 예) 유압펌프, 고압호스, 믹싱헤드" aria-label="부위 또는 부품 검색" value="'+A(HC.csq||'')+'"><div id="hcCsr">'+csResultsHtml(HC.csq||'')+'</div>'+(W.csNote?'<div class="hc-auto" style="margin-top:8px">'+E(W.csNote)+'</div>':'')+'</div>'+'<div class="hc-grid two">'+Object.keys(trW()).map(x=>B('','data-l1="'+A(x)+'"',E(x))).join('')+'</div>';
+    else if(!b)body='<div class="hc-grid two">'+Object.keys(trW()[a]||{}).map(x=>B('','data-l2="'+A(x)+'"',E(x))).join('')+'</div>';
     else body='<div class="hc-grid two">'+subsOf(a,b).map(x=>B('','data-l3="'+A(x)+'"',E(x))).join('')+B('soft','data-l3=""','소분류 없음')+'</div>'
       +'<div style="display:flex;gap:6px;margin-top:10px"><input id="hcNewSub" class="hc-in" maxlength="30" placeholder="목록에 없으면 직접 입력"><button type="button" class="hc-btn ghost sm" data-h="addsub" style="flex:none">추가</button></div>';
     return stepHead(!a?'어느 부위인가요? (대분류)':!b?'어떤 부품군인가요? (중분류)':'세부 부위를 고르세요 (소분류)','큰 분류부터 차례로 고릅니다.')+crumbs()+body;
@@ -9163,8 +9170,8 @@ const csNorm=x=>String(x||'').toLowerCase().replace(/[\s·\-_()\/]/g,'');
 function csMatch(q,text){const t=csNorm(text);return q.split(/\s+/).filter(Boolean).every(w=>t.indexOf(csNorm(w))>=0);}
 function csFind(q){
   q=String(q||'').trim();const out=[];if(!q)return out;
-  const paths=[];
-  Object.keys(HC_TREE).forEach(a=>Object.keys(HC_TREE[a]).forEach(b=>{
+  const paths=[];const TR=trW();
+  Object.keys(TR).forEach(a=>Object.keys(TR[a]).forEach(b=>{
     paths.push({p:[a,b,''],label:a+' › '+b,key:a+' '+b});
     subsOf(a,b).forEach(c=>paths.push({p:[a,b,c],label:a+' › '+b+' › '+c,key:a+' '+b+' '+c,leaf:c}));
   }));
@@ -9188,8 +9195,8 @@ function csResultsHtml(q){
 // 부품 설명/이름에서 분류 후보를 추정 (유일하게 하나로 좁혀질 때만 사용)
 function csGuessPath(p){
   const txt=csNorm(String(p['제품형태']||'')+' '+String(p['제품구분']||'')+' '+String(p['제품규격']||'')+' '+String(p['설명']||''));
-  const hits=[];
-  Object.keys(HC_TREE).forEach(a=>Object.keys(HC_TREE[a]).forEach(b=>{
+  const hits=[];const TR=trW();
+  Object.keys(TR).forEach(a=>Object.keys(TR[a]).forEach(b=>{
     subsOf(a,b).forEach(c=>{if(csNorm(c).length>=2&&txt.indexOf(csNorm(c))>=0)hits.push({p:[a,b,c],n:csNorm(c).length});});
     if(!subsOf(a,b).length&&csNorm(b).length>=2&&txt.indexOf(csNorm(b))>=0)hits.push({p:[a,b,''],n:csNorm(b).length});
   }));
@@ -9272,7 +9279,8 @@ function wizClick(ev){
   if(d.h==='follow'){if(typeof hxFollow==='function'){const r=W.last||{};hxFollow({eq:r.eq,title:r.eq+'호기 '+((r.p&&(r.p[1]||r.p[0]))||'')+' '+(r.act||'작업')+' 후 확인'});}return;}
   if(d.h==='again'){newW(d.v==='same'?{g:W.g,eq:W.eq}:null);refreshHist();return;}
   if(d.h==='tolist'){HC.tabH='list';refreshHist();return;}
-  if(d.g!=null){W.g=d.g;W.duty=(d.g===DUTY);W.eq=W.duty?DUTY:'';if(W.duty){go(2);return;}if(d.g==='프레스'&&!HC.xtabsOk)loadXtabs();refreshHist();return;}
+  if(d.g==='발포기'){W.fo=true;if(W.g!=='1층'&&W.g!=='2층'){W.g='';W.eq='';W.duty=false;}refreshHist();return;}
+  if(d.g!=null){W.fo=(d.g==='1층'||d.g==='2층');W.g=d.g;W.duty=(d.g===DUTY);W.eq=W.duty?DUTY:'';if(W.duty){go(2);return;}if(d.g==='프레스'&&!HC.xtabsOk)loadXtabs();refreshHist();return;}
   if(d.eq){W.eq=d.eq;W.duty=false;go(2);return;}
   if(d.dk!=null){W.dk=W.dk===d.dk?'':d.dk;refreshHist();return;}
   if(d.cs!=null){
@@ -9330,7 +9338,7 @@ function perSel(id,v){return '<select id="'+id+'" aria-label="기간"><option va
 function listHtml(){
   const f=HC.lf;
   let rows=HC.hist.filter(r=>(!f.eq||r['설비']===f.eq)&&(!f.g||r['대분류']===f.g)&&inPer(r,f.per)).sort((a,b)=>b._occ.localeCompare(a._occ));
-  const head='<div class="hc-filters"><select id="hcFe" aria-label="설비"><option value="">설비 전체</option>'+eqOptHtml(f.eq,HC.hist.map(r=>r['설비']))+'</select><select id="hcFg" aria-label="대분류"><option value="">대분류 전체</option>'+Object.keys(HC_TREE).map(e=>'<option'+(f.g===e?' selected':'')+'>'+e+'</option>').join('')+'</select>'+perSel('hcFp',f.per)+'</div>';
+  const head='<div class="hc-filters"><select id="hcFe" aria-label="설비"><option value="">설비 전체</option>'+eqOptHtml(f.eq,HC.hist.map(r=>r['설비']))+'</select><select id="hcFg" aria-label="대분류"><option value="">대분류 전체</option>'+Object.keys(f.eq?trFor(gOf(f.eq)):TREE_ALL).map(e=>'<option'+(f.g===e?' selected':'')+'>'+e+'</option>').join('')+'</select>'+perSel('hcFp',f.per)+'</div>';
   const body=rows.length?rows.slice(0,200).map(itemHtml).join(''):'<div class="hc-empty">'+(HC.histLoading?'불러오는 중입니다...':HC.histErr?'이력을 불러오지 못했습니다. ('+E(HC.histErr)+') <br><button type="button" class="hc-btn ghost sm" data-h="reload" style="margin-top:8px">다시 불러오기</button>':'조건에 맞는 이력이 없습니다.')+'</div>';
   return head+'<div class="hc-muted" style="margin-bottom:8px">'+rows.length+'건'+(rows.length>200?' (최근 200건 표시)':'')+'</div>'+body;
 }
@@ -9405,7 +9413,7 @@ async function histCancel(id){
 }
 function histChange(ev){
   const t=ev.target;
-  if(t.id==='hcFe')HC.lf.eq=t.value;else if(t.id==='hcFg')HC.lf.g=t.value;else if(t.id==='hcFp')HC.lf.per=t.value;else if(t.id==='hcSp')HC.sp=t.value;else return;
+  if(t.id==='hcFe'){HC.lf.eq=t.value;if(HC.lf.g&&!(t.value?trFor(gOf(t.value)):TREE_ALL)[HC.lf.g])HC.lf.g='';}else if(t.id==='hcFg')HC.lf.g=t.value;else if(t.id==='hcFp')HC.lf.per=t.value;else if(t.id==='hcSp')HC.sp=t.value;else return;
   refreshHist(true);
 }
 
@@ -9784,7 +9792,7 @@ function admHiRows(){
 function admHiHtml(){
   const k=CA.hk,rows=admHiRows();CA.hrows=rows;
   const chips=HKINDS.map(x=>'<button type="button" class="hc-chip'+(k===x[0]?' on':'')+'" data-ca="hk|'+x[0]+'">'+x[1]+'</button>').join('');
-  const tree=(typeof HC_TREE!=='undefined'&&HC_TREE)||{};
+  const tree=(typeof TREE_ALL!=='undefined'&&TREE_ALL)||{};
   const sel=k==='소분류'?'<select class="hc-in" id="caHp0" aria-label="대분류"><option value="">대분류 선택</option>'+Object.keys(tree).map(a=>'<option'+(CA.hp0===a?' selected':'')+'>'+E(a)+'</option>').join('')+'</select>'
     +'<select class="hc-in" id="caHp1" aria-label="중분류"'+(CA.hp0?'':' disabled')+'><option value="">중분류 선택</option>'+Object.keys(tree[CA.hp0]||{}).map(b=>'<option'+(CA.hp1===b?' selected':'')+'>'+E(b)+'</option>').join('')+'</select>':'';
   const info={'공무작업':'기타(공무) 이력의 작업 종류 버튼입니다. 기본 항목도 숨길 수 있습니다.','고장현상':'설비 이력의 고장 현상 선택지입니다. 추가한 항목은 목록의 "기타" 앞에 표시됩니다.','소분류':'부위 선택의 소분류입니다. 대분류와 중분류를 고른 뒤 이름을 추가합니다.'}[k];
@@ -11452,6 +11460,7 @@ function hxEqCard(no){
 }
 /* ===== v79 (1): 업데이트 내용 · 표기 보정 · 부위 자동 인식 ===== */
 const CHANGELOG=[
+ {v:'v85',d:'2026-11-20',items:['설비 이력 등록: 발포기를 고르면 1층·2층 → 호기 순서로 선택 (1층/2층 칩 통합)','프레스 전용 부위 분류 추가: 프레스 본체·유압·열성형기·전기·제어·에어·윤활·안전·칠러·금형 히터·기타','부위 검색·이력 목록 대분류 필터도 선택한 설비(발포기/프레스)에 맞게 표시']},
  {v:'v84',d:'2026-11-20',items:['문서 받기 화면 개편: 종류 카드(점검표·이력·사양·재고현황·MSDS)와 설비 구분(발포기·프레스·기타) 선택','MSDS: 호기를 고르면 그 설비가 쓰는 POL·MDI를 함께 받기 (전체 MSDS 목록 바로가기)','"받은 문서" 탭 추가: 받은 문서를 6시간 동안 다시 받기 · 임시 링크 보관 6시간으로 단축 · 다운로드 전용 주소 사용','매주 금요일 16시 고정 알림 폐지 (이미 예약된 알림은 앱을 열면 자동 취소)']},
  {v:'v83',d:'2026-11-19',items:['부품 입출고: 사용 팝업을 출고·입고와 같은 모양·너비로 통일',
     '메뉴 점검 보정: 일정 주 보기의 "다가오는 일정" 중복 제거, 범례 줄바꿈, 펌프 탭 크기, 작은 글자(10~11px) 키움','PC에서 날짜 선택 달력·금요일 확인 창이 화면 전체 너비로 뜨던 문제 수정, 기한 칩에서 같은 날짜(내일=금요일) 중복 제거','홈 오늘·내일: 둘 다 비면 다음 일정이 있는 날을 표시, "기한 없는 할 일 N건 보기"는 누르면 창으로 목록·완료 (일정·할 일 화면에는 "기한 없음 N" 칩)','신품 등록: 제품구분·제품형태를 칩으로 골라 입력 (선택한 구분의 기존 형태만 제안, 직접 입력도 가능)','신품 등록: "제조사" 입력을 "거래처"로 변경 (품목 시트 거래처 열에 저장, 서버 v17 필요)','통계: 공무 작업 통계를 설비 현황 통계(KPI) 바로 아래로, 홈에서는 설비 현황 옆으로 배치','다른 메뉴로 갔다가 다시 들어오면 부품 조회·입출고·MSDS·펌프 수리·코드 검색도 검색어·분류·선택이 초기화되어 기본 화면으로 시작']},
@@ -11514,9 +11523,9 @@ function eqRewrite(txt){
 }
 
 /* 제목에서 부위(대분류›중분류›소분류) 하나로 좁혀 인식 — 애매하면 null */
-function partGuess(text){
-  const t=csNorm(text);if(!t)return null;const hits=[];
-  Object.keys(HC_TREE).forEach(a=>Object.keys(HC_TREE[a]).forEach(b=>{
+function partGuess(text,g){
+  const t=csNorm(text);if(!t)return null;const hits=[];const TR=trFor(g);
+  Object.keys(TR).forEach(a=>Object.keys(TR[a]).forEach(b=>{
     const subs=subsOf(a,b);
     subs.forEach(c=>{const n=csNorm(c);if(n.length>=2&&t.indexOf(n)>=0)hits.push({p:[a,b,c],n:n.length});});
     const nb=csNorm(b);if(nb.length>=2&&t.indexOf(nb)>=0)hits.push({p:[a,b,''],n:nb.length+(subs.length?0:1)});
@@ -11539,8 +11548,8 @@ function hxHist(p){
   if(p.memo)W.memo=p.memo;
   if(p.date){const n=new Date(),hh=('0'+n.getHours()).slice(-2)+':'+('0'+n.getMinutes()).slice(-2);W.occ=p.date+'T'+hh;}
   let pp=null;
-  if(p.part){const parts=String(p.part).split('›').map(x=>x.trim());if(parts[0]&&HC_TREE[parts[0]])pp=[parts[0],parts[1]||'',parts[2]||''];}
-  if(!pp)pp=partGuess((p.title||'')+' '+(p.memo||''));
+  if(p.part){const parts=String(p.part).split('›').map(x=>x.trim());if(parts[0]&&trW()[parts[0]])pp=[parts[0],parts[1]||'',parts[2]||''];}
+  if(!pp)pp=partGuess((p.title||'')+' '+(p.memo||''),W.g);
   if(pp&&W.g!==DUTY){W.p=pp[2]?[pp[0],pp[1],pp[2]]:[pp[0],pp[1],''];if(!subsOf(pp[0],pp[1]).length)W.p=[pp[0],pp[1],''];W.step=3;W.partAuto=true;}
   showPanel('hist');
 }
@@ -11608,7 +11617,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 
 /* ===== v80: 화면 코드와 서비스워커 버전이 다르면 캐시를 정리하고 한 번만 새로고침 ===== */
-const APP_VER='v84';
+const APP_VER='v85';
 (function(){
   const KEY='emq-vfix-'+APP_VER;
   function swVer(){return new Promise(res=>{try{
@@ -11853,7 +11862,7 @@ function epHtml(key,val){
 const actHtml=(key,val)=>'<div data-k79box="ac-'+key+'">'+pkBtn('act',key,val||'작업을 선택하세요',!!val)+'</div>';
 const partHtml=(key,val)=>'<div data-k79box="pt-'+key+'">'+pkBtn('part',key,val||'부위를 선택하세요 (선택)',!!val)+(val?'<button type="button" class="cl-link pk-clr" data-k79="pclr" data-key="'+key+'">해제</button>':'')+'</div>';
 /* ===== 선택 창 (설비 · 작업 · 부위) ===== */
-const PKT=['1층','2층','프레스','기타'];
+const PKT=['발포기','프레스','기타'];
 function pkHtml(){
   const P=K79.pk;if(!P)return '';const o=k79Obj(P.key)||{};
   if(P.w==='eq'){
@@ -11861,13 +11870,14 @@ function pkHtml(){
     let body;
     if(tab==='1층'||tab==='2층')body='<div class="pk-grid">'+EQG[tab].map(e=>'<button type="button" class="'+(e===o.eq?'on':'')+'" data-k79="eq" data-key="'+P.key+'" data-v="'+e+'">'+e.replace(/^\dF-/,'')+'<small>호기</small></button>').join('')+'</div>';
     else body='<div class="pk-free"><label class="lb" for="pkX">'+(tab==='프레스'?'프레스 이름':'설비 · 장소 이름')+' 직접 입력</label><input type="text" id="pkX" class="hc-in" maxlength="30" value="'+A(o.eqx||'')+'" placeholder="'+(tab==='프레스'?'예: 100톤 프레스':'예: 공조실, 사무실')+'"><button type="button" class="hc-btn" data-k79="eqx" data-key="'+P.key+'" style="margin-top:10px;width:100%">확인</button><p class="hc-hint">직접 입력한 이름은 제목에만 들어가고 설비 이력과는 연결되지 않습니다.</p></div>';
-    return '<h3 style="margin:0 0 10px">설비 선택</h3><div class="pk-tabs">'+PKT.map(t=>'<button type="button" class="'+(t===tab?'on':'')+'" data-k79="pktab" data-v="'+t+'">'+t+'</button>').join('')+'</div>'+body+'<div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn ghost" data-k79="pkx">닫기</button></div>';
+    const isFo=(tab==='1층'||tab==='2층');
+    return '<h3 style="margin:0 0 10px">설비 선택</h3><div class="pk-tabs">'+PKT.map(t=>{const on=t==='발포기'?isFo:t===tab;const v=t==='발포기'?(isFo?tab:'1층'):t;return '<button type="button" class="'+(on?'on':'')+'" data-k79="pktab" data-v="'+v+'">'+t+'</button>';}).join('')+'</div>'+(isFo?'<div class="pk-tabs pk-sub">'+['1층','2층'].map(t=>'<button type="button" class="'+(t===tab?'on':'')+'" data-k79="pktab" data-v="'+t+'">'+t+'</button>').join('')+'</div>':'')+body+'<div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn ghost" data-k79="pkx">닫기</button></div>';
   }
   if(P.w==='act')return '<h3 style="margin:0 0 10px">작업 선택</h3><div class="pk-grid pk-act">'+ACT.map(a=>'<button type="button" class="'+(a===o.act?'on':'')+'" data-k79="act" data-key="'+P.key+'" data-v="'+A(a)+'">'+E(a)+'</button>').join('')+'</div><div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn ghost" data-k79="pkx">닫기</button></div>';
   const pa=P.pa;
-  if(!pa)return '<h3 style="margin:0 0 10px">부위 선택 <small>(1/2 큰 분류)</small></h3><div class="pk-list">'+Object.keys(HC_TREE).map(x=>'<button type="button" data-k79="pa" data-key="'+P.key+'" data-v="'+A(x)+'">'+E(x)+'<i>›</i></button>').join('')+'</div><div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn ghost" data-k79="pkx">닫기</button></div>';
+  if(!pa)return '<h3 style="margin:0 0 10px">부위 선택 <small>(1/2 큰 분류)</small></h3><div class="pk-list">'+Object.keys(o.eq?trFor(gOf(o.eq)):TREE_ALL).map(x=>'<button type="button" data-k79="pa" data-key="'+P.key+'" data-v="'+A(x)+'">'+E(x)+'<i>›</i></button>').join('')+'</div><div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn ghost" data-k79="pkx">닫기</button></div>';
   const cur=String(o.part||'').split('›').map(x=>x.trim());
-  return '<h3 style="margin:0 0 10px"><button type="button" class="cl-link" data-k79="pkback" style="font-size:14px">‹ 뒤로</button> '+E(pa)+' <small>(2/2 세부)</small></h3><div class="pk-list">'+Object.keys(HC_TREE[pa]||{}).map(x=>'<button type="button" class="'+(cur[0]===pa&&cur[1]===x?'on':'')+'" data-k79="pb" data-key="'+P.key+'" data-v="'+A(x)+'">'+E(x)+'</button>').join('')+'</div><div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn ghost" data-k79="pkx">닫기</button></div>';
+  return '<h3 style="margin:0 0 10px"><button type="button" class="cl-link" data-k79="pkback" style="font-size:14px">‹ 뒤로</button> '+E(pa)+' <small>(2/2 세부)</small></h3><div class="pk-list">'+Object.keys((o.eq?trFor(gOf(o.eq)):TREE_ALL)[pa]||{}).map(x=>'<button type="button" class="'+(cur[0]===pa&&cur[1]===x?'on':'')+'" data-k79="pb" data-key="'+P.key+'" data-v="'+A(x)+'">'+E(x)+'</button>').join('')+'</div><div class="hm-fa" style="margin-top:12px"><button type="button" class="hc-btn ghost" data-k79="pkx">닫기</button></div>';
 }
 function pkOpen(w,key){
   const o=k79Obj(key)||{};
@@ -11887,7 +11897,7 @@ function k79Detect(o,title){
   const out={eqAmb:[]};
   if(!o.eq){const c=eqCands(title);if(c.length===1)o.eq=c[0];else if(c.length>1)out.eqAmb=c;}
   if(!o.act){for(const a of ACT_KEYS){if(a[1].test(title)){o.act=a[0];break;}}}
-  if(!o.part){const g=partGuess(title);if(g)o.part=[g[0],g[1],g[2]].filter(Boolean).slice(0,2).join(' › ');}
+  if(!o.part){const g=partGuess(title,o.eq?gOf(o.eq):'');if(g)o.part=[g[0],g[1],g[2]].filter(Boolean).slice(0,2).join(' › ');}
   return out;
 }
 function eqFixHtml(key,c){return c&&c.length?'<div class="eqfix" data-k79box="fix-'+key+'">몇 층인가요? '+c.map(x=>'<button type="button" data-k79="eq" data-key="'+key+'" data-v="'+x+'">'+x+'호기</button>').join('')+'</div>':'';}
