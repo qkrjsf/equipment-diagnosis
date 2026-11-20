@@ -1298,7 +1298,15 @@ body.dp-open{overflow:hidden}
 .bf-r input[type=checkbox]{width:18px;height:18px}.bf-r small{color:#566B7B;display:block}
 .bf-r select{font:inherit;font-size:13px;padding:6px;border:1px solid #C9D3DC;border-radius:8px;min-width:0}
 .bf-r.bad select{border-color:#D9731A}
-@media (max-width:520px){.bf-r{grid-template-columns:22px minmax(0,1fr)}.bf-r select{grid-column:2}}
+.bf-r{grid-template-columns:minmax(0,1fr) auto}
+.bf-r>label{display:flex!important;flex-direction:row!important;flex-wrap:wrap;align-items:flex-start;gap:4px 8px;margin:0!important;min-width:0;font-size:13px;color:inherit}
+.bf-r>label input[type=checkbox]{flex:none;margin-top:2px}
+.bf-r>label b{min-width:0;overflow-wrap:anywhere;font-weight:600}
+.bf-r>label small{display:inline;margin-left:2px}
+.bf-r>.eqfix{grid-column:1/-1}
+.bf-r>.td-eq{white-space:nowrap}
+.bf-t{display:flex!important;flex-direction:row!important;align-items:flex-start;flex-wrap:wrap;gap:4px 8px;margin:10px 0 0!important;font-size:13px;color:inherit}
+.bf-t input[type=checkbox]{flex:none;margin-top:2px}
 /* 현장 사진 */
 .ph-box{margin-top:8px;display:flex;flex-direction:column;gap:6px}
 .ph-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
@@ -1683,7 +1691,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v87</span></div>
+    <div class="sb-foot"><span id="verLabel">v88</span></div>
   </nav>
 
   <div class="content">
@@ -1909,7 +1917,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v87</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v88</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8874,12 +8882,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v87', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v88', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v87';
+const PAGE_CACHE = 'sulbi-jindan-v88';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -11487,6 +11495,7 @@ function hxEqCard(no){
 }
 /* ===== v79 (1): 업데이트 내용 · 표기 보정 · 부위 자동 인식 ===== */
 const CHANGELOG=[
+ {v:'v88',d:'2026-11-20',items:['설비 일괄 정리(관리자): 대상 목록의 글자가 세로로 한 글자씩 나오던 표시 수정']},
  {v:'v87',d:'2026-11-20',items:['설비 선택을 단계마다 화면이 바뀌도록 변경: 고른 칩은 위쪽 경로로 남고 다음 칩만 표시 (이력 등록, 빠른 등록)','뒤로(‹)로 한 단계씩 되돌아가기']},
  {v:'v86',d:'2026-11-20',items:['프레스 선택: 1~4라인·트리밍·톰슨·금형 히터·칠러 구분 → 설비 순서로 선택 (이력 등록, 빠른 등록 모두)','시트 탭 설비(열성형기)·설비(금형히터)·설비(칠러)를 읽어 설비별 대분류를 다르게 표시','칠러·금형 히터는 대분류 단계를 건너뜀 / 빠른 등록에서 프레스를 목록으로 선택 (직접 입력은 접어 둠)']},
  {v:'v85',d:'2026-11-20',items:['설비 이력 등록: 발포기를 고르면 1층·2층 → 호기 순서로 선택 (1층/2층 칩 통합)','프레스 전용 부위 분류 추가: 프레스 본체·유압·열성형기·전기·제어·에어·윤활·안전·칠러·금형 히터·기타','부위 검색·이력 목록 대분류 필터도 선택한 설비(발포기/프레스)에 맞게 표시']},
@@ -11646,7 +11655,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 
 /* ===== v80: 화면 코드와 서비스워커 버전이 다르면 캐시를 정리하고 한 번만 새로고침 ===== */
-const APP_VER='v87';
+const APP_VER='v88';
 (function(){
   const KEY='emq-vfix-'+APP_VER;
   function swVer(){return new Promise(res=>{try{
