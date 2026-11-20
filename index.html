@@ -1384,6 +1384,44 @@ body.dp-open{overflow:hidden}
 @media (min-width:700px){.dp-pop.hc{max-width:400px}}
 .hm-mb.hc{max-width:460px}
 
+/* v84: 문서 받기 개편 */
+.dq-top{display:flex;align-items:center;justify-content:space-between;margin:0 0 8px}.dq-top h3{margin:0;font-size:17px}
+.dq-x{border:0;background:none;font-size:20px;line-height:1;color:#566b7b;cursor:pointer;min-width:44px;min-height:44px;margin:-8px -10px -8px 0}
+.dq-seg{display:flex;gap:4px;padding:4px;background:#F3F5F8;border-radius:12px;margin:0 0 12px}
+.dq-seg button{flex:1;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:#566b7b;padding:10px 6px;border-radius:9px;cursor:pointer;min-height:44px}
+.dq-seg button.on{background:#fff;color:#0b2a3d;box-shadow:0 1px 3px rgba(0,0,0,.14)}
+.dq-seg em{font-style:normal;font-size:11px;background:#0E7C9A;color:#fff;border-radius:999px;padding:1px 7px;margin-left:4px}
+.dq-body{display:flex;flex-direction:column;gap:12px}
+.dq-lab{font-size:12.5px;font-weight:700;color:#566b7b;display:block}
+.dq-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dq-card{border:1.5px solid #cfd8de;border-radius:14px;padding:12px;background:#fff;min-height:84px;text-align:left;font:inherit;color:#0b2a3d;cursor:pointer}
+.dq-card b{display:block;font-size:14.5px}.dq-card small{color:#566b7b;font-size:12px}
+.dq-card .dq-ic{font-size:18px;display:block;margin-bottom:2px}
+.dq-card:hover,.dq-card:active{border-color:#0E7C9A;background:#e6f1f5}
+.dq-card.wide{grid-column:1/-1;display:flex;align-items:center;gap:12px;min-height:0;padding:12px 14px}.dq-card.wide .dq-ic{margin:0;font-size:22px}
+.dq-crumb{display:block;border:0;background:none;font:inherit;padding:0 0 6px;font-size:13px;color:#0E7C9A;font-weight:600;cursor:pointer;min-height:36px}
+.dq-ttl{margin:0 0 10px;font-size:16px}
+.dq-none{border:1px dashed #cfd8de;border-radius:14px;padding:16px 14px;text-align:center;color:#566b7b;font-size:13.5px}.dq-none b{display:block;color:#0b2a3d;margin-bottom:2px;font-size:14px}
+.dq-doc{border:1px solid #cfd8de;border-radius:14px;padding:12px;background:#fff}
+.dq-t{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.dq-t b{font-size:14px;word-break:break-all}
+.dq-k{font-size:11px;font-weight:700;border-radius:6px;padding:2px 7px;background:#e6f1f5;color:#0E7C9A;white-space:nowrap}
+.dq-m{display:flex;justify-content:space-between;color:#566b7b;font-size:12px;margin:4px 0 8px}
+.dq-l{font-weight:600}.dq-l.low{color:#C2570A}
+.dq-life{height:5px;border-radius:5px;background:#F3F5F8;overflow:hidden;margin-bottom:10px}.dq-life i{display:block;height:100%;background:#0E7C9A}.dq-life.low i{background:#C2570A}
+.dq-acts{display:flex;gap:6px}
+.dq-b{flex:1;display:inline-flex;align-items:center;justify-content:center;border:1px solid #cfd8de;background:#fff;color:#0b2a3d;font:inherit;border-radius:10px;padding:10px 4px;font-size:13.5px;font-weight:600;cursor:pointer;min-height:44px;text-decoration:none}
+.dq-b.p{background:#0E7C9A;border-color:#0E7C9A;color:#fff}
+.dq-hint{font-size:12px;color:#566b7b;margin:0}
+.dq-all{border:1px dashed #0E7C9A!important;color:#0E7C9A!important;font-weight:600}
+.dq-eqb{border:1px solid #cfd8de;border-radius:14px;overflow:hidden}
+.dq-eqb h4{margin:0;padding:9px 12px;background:#F3F5F8;font-size:13.5px;display:flex;justify-content:space-between;gap:8px}.dq-eqb h4 span{color:#566b7b;font-weight:400;font-size:12px}
+.hx-pop .dq-mr{display:flex!important;flex-direction:row!important;gap:10px;align-items:flex-start;padding:10px 12px;border-top:1px solid #cfd8de;cursor:pointer;margin:0}
+.hx-pop .dq-mr>div{flex:1;min-width:0}
+.hx-pop .dq-mr input{width:20px!important;height:20px!important;margin:2px 0 0!important;accent-color:#0E7C9A;flex:none}
+.dq-mr b{font-size:14px;display:block;word-break:break-all}.dq-mr small{color:#566b7b;font-size:12px}
+.dq-c{font-size:11px;font-weight:700;border-radius:6px;padding:1px 7px;margin-right:6px;background:#e6f1f5;color:#0E7C9A}.dq-c.mdi{background:#FBE9DC;color:#C2570A}
+.dq-sum{font-size:12px;color:#566b7b}
+
 /* v83: 메뉴 점검 보정 */
 .sc-lg{flex-wrap:wrap!important;overflow:visible!important}
 @media (max-width:600px){.ptabs{gap:0}.ptab{padding:10px 10px;font-size:13.5px}}
@@ -1644,7 +1682,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v83</span></div>
+    <div class="sb-foot"><span id="verLabel">v84</span></div>
   </nav>
 
   <div class="content">
@@ -1870,7 +1908,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v83</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v84</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8835,12 +8873,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v83', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v84', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v83';
+const PAGE_CACHE = 'sulbi-jindan-v84';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -10432,19 +10470,13 @@ document.addEventListener('click',async ev=>{
   setInterval(()=>{if(!document.hidden&&Date.now()-last>30*60000)again();},5*60000);
 })();
 
-/* ----- APK 알림: 매주 금요일 16:00 "알림이 있습니다" (서버 푸시가 아닌 기기 로컬 알림) ----- */
+/* ----- APK 알림: (v84에서 폐지) 이전 버전이 예약해 둔 금요일 16:00 알림을 취소 ----- */
 let alarmUser='';
+/* v84: 금요일 16:00 고정 알림은 폐지 - 이미 예약된 알림(id 1001)을 취소만 한다 */
 async function nativeAlarm(){
   const LN=window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.LocalNotifications;if(!LN)return;
-  const who=(window.EMQ&&EMQ.user&&isMain())?EMQ.user.id:'-';if(who===alarmUser)return;
-  try{
-    await LN.cancel({notifications:[{id:1001}]});
-    if(who!=='-'){
-      let pm=await LN.checkPermissions();if(pm.display!=='granted')pm=await LN.requestPermissions();
-      if(pm.display==='granted')await LN.schedule({notifications:[{id:1001,title:'EMQ',body:'알림이 있습니다. 다음 주 연차·당직 변경이 있는지 확인하세요.',schedule:{on:{weekday:6,hour:16,minute:0},allowWhileIdle:true}}]});
-    }
-    alarmUser=who;
-  }catch(e){}
+  if(alarmUser==='off')return;
+  try{await LN.cancel({notifications:[{id:1001}]});alarmUser='off';}catch(e){}
 }
 /* ----- 연결 ----- */
 {
@@ -11420,6 +11452,7 @@ function hxEqCard(no){
 }
 /* ===== v79 (1): 업데이트 내용 · 표기 보정 · 부위 자동 인식 ===== */
 const CHANGELOG=[
+ {v:'v84',d:'2026-11-20',items:['문서 받기 화면 개편: 종류 카드(점검표·이력·사양·재고현황·MSDS)와 설비 구분(발포기·프레스·기타) 선택','MSDS: 호기를 고르면 그 설비가 쓰는 POL·MDI를 함께 받기 (전체 MSDS 목록 바로가기)','"받은 문서" 탭 추가: 받은 문서를 6시간 동안 다시 받기 · 임시 링크 보관 6시간으로 단축 · 다운로드 전용 주소 사용','매주 금요일 16시 고정 알림 폐지 (이미 예약된 알림은 앱을 열면 자동 취소)']},
  {v:'v83',d:'2026-11-19',items:['부품 입출고: 사용 팝업을 출고·입고와 같은 모양·너비로 통일',
     '메뉴 점검 보정: 일정 주 보기의 "다가오는 일정" 중복 제거, 범례 줄바꿈, 펌프 탭 크기, 작은 글자(10~11px) 키움','PC에서 날짜 선택 달력·금요일 확인 창이 화면 전체 너비로 뜨던 문제 수정, 기한 칩에서 같은 날짜(내일=금요일) 중복 제거','홈 오늘·내일: 둘 다 비면 다음 일정이 있는 날을 표시, "기한 없는 할 일 N건 보기"는 누르면 창으로 목록·완료 (일정·할 일 화면에는 "기한 없음 N" 칩)','신품 등록: 제품구분·제품형태를 칩으로 골라 입력 (선택한 구분의 기존 형태만 제안, 직접 입력도 가능)','신품 등록: "제조사" 입력을 "거래처"로 변경 (품목 시트 거래처 열에 저장, 서버 v17 필요)','통계: 공무 작업 통계를 설비 현황 통계(KPI) 바로 아래로, 홈에서는 설비 현황 옆으로 배치','다른 메뉴로 갔다가 다시 들어오면 부품 조회·입출고·MSDS·펌프 수리·코드 검색도 검색어·분류·선택이 초기화되어 기본 화면으로 시작']},
  {v:'v82',d:'2026-11-19',items:['부품 입출고에 "+ 신품 등록" 추가 (검색 결과가 없을 때도 바로 등록)','부품 목록·PC 화면의 열과 칸 정렬 정리','PC 홈 카드 높이 조정']},
@@ -11575,7 +11608,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 
 /* ===== v80: 화면 코드와 서비스워커 버전이 다르면 캐시를 정리하고 한 번만 새로고침 ===== */
-const APP_VER='v83';
+const APP_VER='v84';
 (function(){
   const KEY='emq-vfix-'+APP_VER;
   function swVer(){return new Promise(res=>{try{
@@ -12246,7 +12279,7 @@ document.addEventListener('click',e=>{
 })();
 /* ===== v79: 엑셀 내려받기 6종 (점검표 주간·월간·연간 / 설비 이력 / 설비 사양 / 재고현황) =====
    ExcelJS는 처음 사용할 때만 내려받아 쓴다(약 1MB). 모든 파일은 이 기기에서 만들어지며 서버 변경은 필요 없다. */
-const XL={lib:null,busy:false,st:{type:'주간',fmt:'xlsx',month:'',year:'',from:'',to:'',eqs:[]}};
+const XL={lib:null,busy:false,tab:'make',scr:'cards',ms:{eqs:[],pick:{}},recv:{rows:[],ok:false,loading:false,err:'',old:false},st:{type:'주간',fmt:'xlsx',cat:'발포기',month:'',year:'',from:'',to:'',eqs:[]}};
 const XL_TYPES=[['주간','주간 점검표','1개월 · 주차별'],['월간','월간 점검표','1년 · 월별'],['연간','연간 점검표','3개년'],['이력','설비 이력','기간 선택'],['사양','설비 사양','사양판 형식'],['재고','재고현황','부족 부품 먼저']];
 const XL_URL='https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js';
 function xlInject(src,revoke){return new Promise((res,rej)=>{const sc=document.createElement('script');sc.src=src;sc.onload=()=>{if(revoke)URL.revokeObjectURL(src);window.ExcelJS?res(window.ExcelJS):rej(new Error('lib'));};sc.onerror=()=>rej(new Error('net'));document.head.appendChild(sc);});}
@@ -12269,7 +12302,7 @@ const XC={teal:'FF0F7690',tealD:'FF0B5A6F',tealL:'FFE6F1F5',grey:'FFF2F4F6',line
 const xBd=(c)=>{const s={style:'thin',color:{argb:c||XC.line}};return{top:s,left:s,bottom:s,right:s};};
 const xFont=(o)=>Object.assign({name:'맑은 고딕',size:10,color:{argb:XC.ink}},o||{});
 const xFill=a=>({type:'pattern',pattern:'solid',fgColor:{argb:a}});
-const xEqName=eq=>String(eq||'').replace(/호기/g,'')+'호기';
+const xEqName=eq=>{const e=String(eq||'').replace(/호기/g,'').trim();return /^\dF-\d/.test(e)?e+'호기':e;};
 function xColL(n){let s='';while(n>0){const m=(n-1)%26;s=String.fromCharCode(65+m)+s;n=Math.floor((n-1)/26);}return s;}
 function xCell(ws,r,c,v,o){const x=ws.getCell(r,c);if(v!==undefined)x.value=v;o=o||{};x.font=xFont(o.font);x.alignment=Object.assign({vertical:'middle',wrapText:true},o.al||{});if(o.fill)x.fill=xFill(o.fill);if(o.bd!==false)x.border=xBd();return x;}
 function xMerge(ws,r1,c1,r2,c2,v,o){ws.mergeCells(r1,c1,r2,c2);const x=xCell(ws,r1,c1,v,o);for(let r=r1;r<=r2;r++)for(let c=c1;c<=c2;c++){if(r===r1&&c===c1)continue;const y=ws.getCell(r,c);y.border=xBd();if(o&&o.fill)y.fill=xFill(o.fill);}return x;}
@@ -12579,12 +12612,12 @@ async function docDeliver(blob,name,kind,fmt,orient){
 }
 function docDoneHtml(L,act){
   return '<div class="xl-done"><b>'+E(L.name)+'</b>'+(L.info?'<small>'+E(L.info)+'</small>':'')+'</div>'
-   +'<p class="hc-hint" style="margin:0">아래 [열기]를 누르면 브라우저에서 받을 수 있습니다. 열리지 않으면 [링크 복사] 후 크롬 주소창에 붙여 넣으세요. 링크는 2일 뒤 사라집니다.</p>'
-   +'<div class="hm-fa" style="flex-wrap:wrap"><a class="hc-btn" href="'+A(L.url)+'" target="_blank" rel="noopener" data-'+act+'="open2" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">열기</a><button type="button" class="hc-btn ghost" data-'+act+'="copy">링크 복사</button>'
-   +(act==='xl'?'<button type="button" class="hc-btn ghost" data-xl="again">다른 파일 만들기</button>':'')+'<button type="button" class="hc-btn ghost" data-'+act+'="close">닫기</button></div>';
+   +'<p class="hc-hint" style="margin:0">아래 [다운로드]를 누르면 파일을 받을 수 있습니다. 받아지지 않으면 [링크 복사] 후 크롬 주소창에 붙여 넣으세요. 링크는 6시간 뒤 사라지며, [받은 문서]에서 다시 받을 수 있습니다.</p>'
+   +'<div class="hm-fa" style="flex-wrap:wrap"><a class="hc-btn" href="'+A(L.url)+'" target="_blank" rel="noopener" data-'+act+'="open2" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">다운로드</a><button type="button" class="hc-btn ghost" data-'+act+'="copy">링크 복사</button>'
+   +(act==='xl'?'<button type="button" class="hc-btn ghost" data-xl="again">다른 파일 만들기</button><button type="button" class="hc-btn ghost" data-xl="tab" data-v="recv">받은 문서</button>':'')+'<button type="button" class="hc-btn ghost" data-'+act+'="close">닫기</button></div>';
 }
 async function docCopy(url){try{await navigator.clipboard.writeText(url);toast('링크를 복사했습니다. 크롬 주소창에 붙여 넣으세요.');return;}catch(e){}
-  try{const t=document.createElement('textarea');t.value=url;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('링크를 복사했습니다.');}catch(e){toast('복사하지 못했습니다. 열기 버튼을 눌러 주세요.');}}
+  try{const t=document.createElement('textarea');t.value=url;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('링크를 복사했습니다.');}catch(e){toast('복사하지 못했습니다. 다운로드 버튼을 눌러 주세요.');}}
 /* MSDS · CSV 등 다른 곳에서 쓰는 링크 안내 창 */
 function docLinkDialog(L){
   const ov=hxModal('<h3 style="margin:0 0 10px">파일을 만들었습니다</h3><div class="xl-box">'+docDoneHtml(L,'dl')+'</div>','xl-pop');
@@ -12603,7 +12636,7 @@ async function msdsGetLinks(){
 window.msdsGetLinks=msdsGetLinks;window.docDeliver=docDeliver;window.docLinkDialog=docLinkDialog;
 function xBlob(wb){return wb.xlsx.writeBuffer().then(buf=>new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));}
 async function xBuild(){
-  const S=XL.st,type=S.type,eqs=S.eqs.slice().sort((a,b)=>EQ.indexOf(a)-EQ.indexOf(b));
+  const S=XL.st,type=S.type,eqs=(S.eqsRun||S.eqs).slice().sort((a,b)=>EQ.indexOf(a)-EQ.indexOf(b));
   const E1=await xlLoad();const wb=new E1.Workbook();wb.creator='EMQ';wb.created=new Date();
   let name='',info='';
   if(type==='주간'||type==='월간'||type==='연간'){
@@ -12639,26 +12672,118 @@ function xInit(){
   if(!S.to)S.to=todayK();
   if(!S.from)S.from=n.getFullYear()+'-'+pad(n.getMonth()+1)+'-01';
 }
+/* ===== v84: 문서 받기 개편 - 종류 카드 → 설정 / MSDS(호기별) / 받은 문서(6시간) ===== */
+const XL_CATS={'주간':['발포기','프레스'],'월간':['발포기','프레스'],'연간':['발포기','프레스'],'이력':['발포기','프레스','기타(공무)'],'사양':['발포기','프레스']};
+const XL_SUB={'주간':'발포기·프레스','월간':'발포기·프레스','연간':'발포기·프레스','이력':'발포기·프레스·기타','사양':'발포기·프레스','재고':'전체 · 바로 받기'};
+const XL_IC={'주간':'📋','월간':'🗓️','연간':'📆','이력':'🛠️','사양':'📐','재고':'📦'};
+const DQ_KEEP=360;
+const dqLeft=at=>DQ_KEEP-Math.floor((Date.now()-at)/60000);
+const dqAgo=at=>{const m=Math.max(0,Math.floor((Date.now()-at)/60000));return m<1?'방금 받음':m<60?m+'분 전 받음':Math.floor(m/60)+'시간 전 받음';};
+const dqLeftTxt=m=>{if(m<=0)return '곧 사라짐';const h=Math.floor(m/60),mm=m%60;return (h?h+'시간 ':'')+mm+'분 남음';};
+async function xRecvLoad(){
+  const R=XL.recv;if(R.loading)return;R.loading=true;
+  try{
+    if(!(await srvAtLeast(21))){R.old=true;R.rows=[];R.err='';}
+    else{R.old=false;const r=await hcPost({type:'doc_list'});if(r&&r.ok){R.rows=Array.isArray(r.rows)?r.rows:[];R.err='';}else R.err='목록을 불러오지 못했습니다.';}
+  }catch(e){R.err='목록을 불러오지 못했습니다. 인터넷 연결을 확인하세요.';}
+  R.loading=false;R.ok=true;if(HX.m&&HX.m.querySelector('.dq-top')&&!XL.busy)xRedraw();
+}
+function dqTop(){
+  const n=XL.recv.rows.filter(d=>dqLeft(d.at)>0).length;
+  return '<div class="dq-top"><h3>문서 받기</h3><button type="button" class="dq-x" data-xl="close" aria-label="닫기">✕</button></div>'
+   +'<div class="dq-seg"><button type="button" class="'+(XL.tab==='make'?'on':'')+'" data-xl="tab" data-v="make">만들기</button><button type="button" class="'+(XL.tab==='recv'?'on':'')+'" data-xl="tab" data-v="recv">받은 문서'+(n?' <em>'+n+'</em>':'')+'</button></div>';
+}
+function dqRecvHtml(){
+  const R=XL.recv;let h='<div class="dq-body">';
+  const rows=R.rows.filter(d=>dqLeft(d.at)>0);
+  if(R.old)h+='<div class="dq-none"><b>서버 업데이트가 필요합니다</b>서버(Apps Script)를 v21로 올리면 받은 문서를 볼 수 있습니다.</div>';
+  else if(!R.ok)h+='<div class="dq-none">불러오는 중…</div>';
+  else if(R.err)h+='<div class="dq-none"><b>'+E(R.err)+'</b></div>';
+  else if(!rows.length)h+='<div class="dq-none"><b>받은 문서가 없습니다</b>받은 뒤 6시간 동안 이곳에서 다시 받을 수 있습니다.</div>';
+  else h+=rows.map((d,i)=>{const left=dqLeft(d.at),low=left<=60;
+    return '<div class="dq-doc"><div class="dq-t"><b>'+E(d.name)+'</b><span class="dq-k">'+E(d.fmt||d.kind||'')+'</span></div><div class="dq-m"><span>'+dqAgo(d.at)+'</span><span class="dq-l'+(low?' low':'')+'">'+dqLeftTxt(left)+'</span></div><div class="dq-life'+(low?' low':'')+'"><i style="width:'+Math.max(4,Math.min(100,left/DQ_KEEP*100))+'%"></i></div><div class="dq-acts"><a class="dq-b p" href="'+A(d.url)+'" target="_blank" rel="noopener" data-xl="open2">다운로드</a><button type="button" class="dq-b" data-xl="rcopy" data-v="'+A(d.id)+'">링크 복사</button></div></div>';}).join('');
+  if(rows.length&&R.ok&&!R.old&&!R.err)h+='<p class="dq-hint" style="text-align:center">6시간이 지난 문서는 자동으로 사라집니다. 다시 필요하면 새로 받으세요.</p>';
+  return h+'<div class="hm-fa"><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div></div>';
+}
+function dqCards(){
+  return '<div class="dq-body"><span class="dq-lab" style="margin-top:0">무엇을 받을까요?</span><div class="dq-grid">'
+   +XL_TYPES.map(x=>'<button type="button" class="dq-card" data-xl="type" data-v="'+x[0]+'"><span class="dq-ic" aria-hidden="true">'+XL_IC[x[0]]+'</span><b>'+E(x[1])+'</b><small>'+E(XL_SUB[x[0]])+'</small></button>').join('')
+   +'<button type="button" class="dq-card wide" data-xl="msds"><span class="dq-ic" aria-hidden="true">🧪</span><div><b>MSDS</b><small>발포기 호기별 사용 물질 · 전체 목록</small></div></button></div>'
+   +'<div class="hm-fa"><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div></div>';
+}
+function dqEqFloors(sel,act){
+  return ['1층','2층'].map(f=>'<div class="xl-eq"><span>'+f+'</span><div class="xl-ch">'+EQG[f].map(e=>'<button type="button" class="'+(sel.indexOf(e)>=0?'on':'')+'" data-xl="'+act+'" data-v="'+e+'">'+e.replace(/^\dF-/,'')+'호기</button>').join('')+'</div></div>').join('');
+}
+function dqCfg(){
+  const S=XL.st,T=XL_TYPES.filter(x=>x[0]===S.type)[0]||XL_TYPES[0];
+  const needEq=S.type!=='재고',eqOpt=S.type==='이력',cats=XL_CATS[S.type]||[];
+  const per=S.type==='주간'?'<div><span class="lb">기간 (월)</span><input type="month" id="xlMonth" class="hc-in" value="'+A(S.month)+'"></div>'
+    :(S.type==='월간'||S.type==='연간')?'<div><span class="lb">'+(S.type==='연간'?'기준 연도 (3개년)':'연도')+'</span><select id="xlYear" class="hc-in">'+[0,1,2,3,4].map(k=>{const y=new Date().getFullYear()-k;return '<option value="'+y+'"'+(String(y)===S.year?' selected':'')+'>'+y+'년'+(S.type==='연간'?' (~'+(y-2)+')':'')+'</option>';}).join('')+'</select></div>'
+    :S.type==='이력'?'<div><span class="lb">기간</span><div style="display:flex;gap:6px;align-items:center"><input type="date" id="xlFrom" class="hc-in" value="'+A(S.from)+'"><span>~</span><input type="date" id="xlTo" class="hc-in" value="'+A(S.to)+'"></div></div>':'';
+  let eqs='',blocked=false;
+  if(!needEq)eqs='<div class="hc-hint" style="margin:0">단가는 포함하지 않습니다. 재고 부족 부품이 맨 위에 표시됩니다.</div>';
+  else{
+    const catChips='<div><span class="lb">설비 구분</span><div class="xl-ch">'+cats.map(c=>'<button type="button" class="'+(S.cat===c?'on':'')+'" data-xl="cat" data-v="'+c+'">'+c+'</button>').join('')+'</div></div>';
+    let area='';
+    if(S.cat==='발포기'){
+      area='<div><span class="lb">설비 '+(eqOpt?'<small>(선택 안 하면 발포기 전체)</small>':'<small>(여러 대 선택 가능)</small>')+'</span>'+dqEqFloors(S.eqs,'eq')
+       +'<div class="xl-ch" style="margin-top:8px"><button type="button" data-xl="all" data-v="1층">1층 전체</button><button type="button" data-xl="all" data-v="2층">2층 전체</button><button type="button" data-xl="clear">해제</button></div>'
+       +'<div class="hc-hint" style="margin:8px 0 0">선택 '+S.eqs.length+'대'+(S.type==='이력'?' · 한 파일(설비별 집계 시트 포함)':' · 한 파일에 호기별 시트')+'</div></div>';
+    }else if(S.cat==='프레스'){
+      if(S.type==='이력'){
+        const pl=EQG['프레스']||[];
+        area=pl.length?'<div><span class="lb">프레스 <small>(선택 안 하면 프레스 전체)</small></span><div class="xl-ch">'+pl.map(e=>'<button type="button" class="'+(S.eqs.indexOf(e)>=0?'on':'')+'" data-xl="eq" data-v="'+A(e)+'">'+E(e)+'</button>').join('')+'</div><div class="hc-hint" style="margin:8px 0 0">선택 '+S.eqs.length+'대</div></div>'
+          :'<div class="dq-none"><b>'+(HC.xtabsOk?'등록된 프레스가 없습니다':'프레스 목록을 불러오는 중…')+'</b>설비(프레스) 시트에 등록된 프레스가 여기에 나옵니다.</div>';
+      }else{blocked=true;area='<div class="dq-none"><b>프레스는 아직 '+(S.type==='사양'?'설비 사양':'점검표')+' 양식이 없습니다</b>준비 중입니다. 양식이 만들어지면 이곳에서 받을 수 있습니다.</div>';}
+    }else{area='<div class="dq-none"><b>공무 작업 이력 전체를 받습니다</b>전등·수전 교체 같은 공무 업무 기록입니다.</div>';}
+    eqs=catChips+area;
+  }
+  const ok=!blocked&&(!needEq||eqOpt||S.cat==='기타(공무)'||S.eqs.length>0);
+  return '<button type="button" class="dq-crumb" data-xl="home">‹ 종류 다시 고르기</button><div class="dq-ttl"><b>'+E(T[1])+'</b></div><div class="dq-body"><div class="xl-box">'
+    +'<div><span class="lb">받을 형식</span><div class="xl-ch"><button type="button" class="'+(S.fmt!=='pdf'?'on':'')+'" data-xl="fmt" data-v="xlsx">엑셀 파일</button><button type="button" class="'+(S.fmt==='pdf'?'on':'')+'" data-xl="fmt" data-v="pdf">PDF 파일</button></div></div>'+per+eqs
+    +'<div id="xlMsg" class="hc-err" hidden></div><div class="hm-fa"><button type="button" class="hc-btn" data-xl="go"'+(ok?'':' disabled')+'>'+(XL.busy?'만드는 중...':(S.fmt==='pdf'?'PDF 만들기':'내려받기'))+'</button><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div>'
+    +(XL.busy?'':'<p class="hc-hint" style="margin:8px 0 0">처음 한 번은 엑셀 도구를 내려받느라 몇 초 걸릴 수 있습니다. PDF는 서버에서 변환하므로 조금 더 걸립니다.</p>')+'</div></div>';
+}
+const dqNorm=l=>String(l||'').replace(/호기/g,'').trim();
+function dqMsdsGroups(){
+  const sel=XL.ms.eqs.slice().sort((a,b)=>EQ.indexOf(a)-EQ.indexOf(b)),ORD=['POL','MDI','기타'];
+  const by=m=>{const i=ORD.indexOf(m.cat);return i<0?9:i;};
+  const g=sel.map(eq=>({eq:eq,items:msdsData.filter(m=>!msdsIsCommon(m)&&(m.lines||[]).some(l=>dqNorm(l)===eq)).sort((a,b)=>by(a)-by(b))}));
+  const common=sel.length?msdsData.filter(m=>msdsIsCommon(m)).sort((a,b)=>by(a)-by(b)):[];
+  return {g:g,common:common};
+}
+const dqOn=m=>{const v=XL.ms.pick[m.id];return v===undefined?(m.cat==='POL'||m.cat==='MDI'):!!v;};
+function dqMsdsIds(){
+  const G=dqMsdsGroups(),ids=[];
+  G.g.forEach(x=>x.items.forEach(m=>{if(dqOn(m)&&ids.indexOf(m.id)<0)ids.push(m.id);}));
+  G.common.forEach(m=>{if(dqOn(m)&&ids.indexOf(m.id)<0)ids.push(m.id);});
+  return ids;
+}
+function dqMsds(){
+  const M=XL.ms,G=dqMsdsGroups(),n=dqMsdsIds().length;
+  const row=m=>'<label class="dq-mr"><input type="checkbox" data-xl="mp" data-v="'+A(m.id)+'"'+(dqOn(m)?' checked':'')+'><div><b><span class="dq-c'+(m.cat==='MDI'?' mdi':'')+'">'+E(m.cat||'기타')+'</span>'+E(m.name)+'</b><small>'+E([m.maker,m.date?'개정 '+m.date:''].filter(Boolean).join(' · '))+'</small></div></label>';
+  let h='<button type="button" class="dq-crumb" data-xl="home">‹ 종류 다시 고르기</button><div class="dq-ttl"><b>MSDS 받기</b></div><div class="dq-body"><div class="xl-box">'
+   +'<div><span class="lb">설비 <small>(여러 대 선택 가능)</small></span>'+dqEqFloors(M.eqs,'mq')+'</div>'
+   +'<div class="xl-ch"><button type="button" class="dq-all" data-xl="mall">전체 MSDS 목록 ›</button></div><div class="hc-hint" style="margin:0">MDI만 여러 개가 필요하면 전체 목록에서 골라 받습니다.</div>';
+  if(!msdsData.length)h+='<div class="dq-none">'+(msdsLoading||!msdsLoaded?'MSDS 목록을 불러오는 중…':'등록된 MSDS가 없습니다')+'</div>';
+  else if(!M.eqs.length)h+='<div class="dq-none"><b>설비를 고르면 쓰는 물질이 나옵니다</b>POL·MDI는 자동으로 체크됩니다.</div>';
+  else{
+    G.g.forEach(x=>{h+='<div class="dq-eqb"><h4>'+E(x.eq)+'호기 <span>사용 물질 '+x.items.length+'개</span></h4>'+(x.items.length?x.items.map(row).join(''):'<div class="dq-mr" style="cursor:default"><div><b style="font-weight:500;color:#566b7b">등록된 MSDS가 없습니다</b><small>MSDS 시트의 「사용설비」 열을 확인하세요</small></div></div>')+'</div>';});
+    if(G.common.length)h+='<div class="dq-eqb"><h4>전 호기 공통 <span>필요하면 체크</span></h4>'+G.common.map(row).join('')+'</div>';
+  }
+  h+='<div class="dq-sum">'+(M.eqs.length?'같은 물질은 한 번만 받습니다 · 기타 물질은 필요하면 체크':'')+'</div>'
+   +'<div class="hm-fa"><button type="button" class="hc-btn" data-xl="mget"'+(n&&!XL.busy?'':' disabled')+'>'+(XL.busy?'준비 중...':'선택한 '+n+'개 받기')+'</button><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div><p class="hc-hint" style="margin:8px 0 0">여러 파일은 하나로 묶어서(zip) 받습니다.</p></div></div>';
+  return h;
+}
 function xDlgHtml(){
   if(XL.last){const L=XL.last;
     if(L.link)return '<h3 style="margin:0 0 10px">파일을 만들었습니다</h3><div class="xl-box">'+docDoneHtml({name:L.name,info:L.info,url:L.link.url},'xl')+'</div>';
     return '<h3 style="margin:0 0 10px">엑셀 파일을 만들었습니다</h3><div class="xl-box"><div class="xl-done"><b>'+E(L.name)+'</b><small>'+E(L.info)+'</small></div><p class="hc-hint" style="margin:0">저장이 시작되지 않았다면 아래 버튼을 눌러 주세요.</p><div class="hm-fa" style="flex-wrap:wrap"><button type="button" class="hc-btn" data-xl="dl">다시 저장</button>'+(window.File&&navigator.canShare?'<button type="button" class="hc-btn" data-xl="share">공유 · 다른 앱으로 열기</button>':'')+'<button type="button" class="hc-btn ghost" data-xl="again">다른 파일 만들기</button><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div></div>';}
-  const S=XL.st,needEq=S.type!=='재고',eqOpt=S.type==='이력';
-  const per=S.type==='주간'?'<div><span class="lb">기간 (월)</span><input type="month" id="xlMonth" class="hc-in" value="'+A(S.month)+'"></div>'
-    :(S.type==='월간'||S.type==='연간')?'<div><span class="lb">'+(S.type==='연간'?'기준 연도 (3개년)':'연도')+'</span><select id="xlYear" class="hc-in">'+[0,1,2,3,4].map(k=>{const y=new Date().getFullYear()-k;return '<option value="'+y+'"'+(String(y)===S.year?' selected':'')+'>'+y+'년'+(S.type==='연간'?' (~'+(y-2)+')':'')+'</option>';}).join('')+'</select></div>'
-    :S.type==='이력'?'<div><span class="lb">기간</span><div style="display:flex;gap:6px;align-items:center"><input type="date" id="xlFrom" class="hc-in" value="'+A(S.from)+'"><span>~</span><input type="date" id="xlTo" class="hc-in" value="'+A(S.to)+'"></div></div>':'';
-  const eqs=needEq?'<div><span class="lb">설비 '+(eqOpt?'<small>(선택 안 하면 전체)</small>':'<small>(여러 대 선택 가능)</small>')+'</span>'
-    +['1층','2층'].map(f=>'<div class="xl-eq"><span>'+f+'</span><div class="xl-ch">'+EQG[f].map(e=>'<button type="button" class="'+(S.eqs.indexOf(e)>=0?'on':'')+'" data-xl="eq" data-v="'+e+'">'+e.replace(/^\dF-/,'')+'호기</button>').join('')+'</div></div>').join('')
-    +'<div class="xl-ch" style="margin-top:8px"><button type="button" data-xl="all" data-v="1층">1층 전체</button><button type="button" data-xl="all" data-v="2층">2층 전체</button><button type="button" data-xl="clear">해제</button></div>'
-    +'<div class="hc-hint" style="margin:8px 0 0">선택 '+S.eqs.length+'대'+(S.type==='이력'?' · 한 파일(설비별 집계 시트 포함)':' · 한 파일에 호기별 시트')+'</div></div>':'<div class="hc-hint" style="margin:0">단가는 포함하지 않습니다. 재고 부족 부품이 맨 위에 표시됩니다.</div>';
-  const ok=!needEq||eqOpt||S.eqs.length>0;
-  return '<h3 style="margin:0 0 10px">문서 받기</h3><div class="xl-box"><button type="button" class="xl-msds" data-xl="msds"><b>MSDS 받기</b><small>제품별 안전보건자료 (PDF)</small><i aria-hidden="true">›</i></button><div><span class="lb">종류</span><div class="xl-ch">'+XL_TYPES.map(x=>'<button type="button" class="'+(S.type===x[0]?'on':'')+'" data-xl="type" data-v="'+x[0]+'">'+x[1]+'</button>').join('')+'</div></div>'+'<div><span class="lb">받을 형식</span><div class="xl-ch"><button type="button" class="'+(S.fmt!=='pdf'?'on':'')+'" data-xl="fmt" data-v="xlsx">엑셀 파일</button><button type="button" class="'+(S.fmt==='pdf'?'on':'')+'" data-xl="fmt" data-v="pdf">PDF 파일</button></div></div>'+per+eqs
-    +'<div id="xlMsg" class="hc-err" hidden></div><div class="hm-fa"><button type="button" class="hc-btn" data-xl="go"'+(ok?'':' disabled')+'>'+(XL.busy?'만드는 중...':(S.fmt==='pdf'?'PDF 만들기':'내려받기'))+'</button><button type="button" class="hc-btn ghost" data-xl="close">닫기</button></div>'
-    +(XL.busy?'':'<p class="hc-hint" style="margin:8px 0 0">처음 한 번은 엑셀 도구를 내려받느라 몇 초 걸릴 수 있습니다. PDF는 서버에서 변환하므로 조금 더 걸립니다.</p>')+'</div>';
+  return dqTop()+(XL.tab==='recv'?dqRecvHtml():XL.scr==='cfg'?dqCfg():XL.scr==='msds'?dqMsds():dqCards());
 }
 function xOpen(type){
-  xInit();XL.last=null;if(type)XL.st.type=type;
-  hxModal(xDlgHtml(),'xl-pop');
+  xInit();XL.last=null;XL.tab='make';XL.scr=type?'cfg':'cards';if(type){XL.st.type=type;XL.st.cat='발포기';XL.st.eqs=[];}
+  hxModal(xDlgHtml(),'xl-pop');xRecvLoad();
 }
 function xRedraw(){if(!HX.m)return;const sc=HX.m.querySelector('.hx-pop');const y=sc?sc.scrollTop:0;sc.innerHTML=xDlgHtml();sc.scrollTop=y;}
 document.addEventListener('click',async e=>{
@@ -12667,23 +12792,45 @@ document.addEventListener('click',async e=>{
   if(a==='open'){xOpen();return;}
   if(a==='open2')return;
   if(a==='copy'){e.preventDefault();if(XL.last&&XL.last.link)docCopy(XL.last.link.url);return;}
-  if(a==='msds'){hxClose();showPanel('msds');return;}
+  if(a==='mall'){XL.last=null;hxClose();showPanel('msds');return;}
+  if(a==='rcopy'){e.preventDefault();const d=XL.recv.rows.find(x=>x.id===v);if(d)docCopy(d.url);return;}
   if(XL.busy&&a!=='close')return;
+  if(a==='tab'){XL.last=null;XL.tab=v;if(v==='recv')xRecvLoad();xRedraw();return;}
+  if(a==='home'){XL.scr='cards';xRedraw();return;}
+  if(a==='msds'){XL.scr='msds';xRedraw();if(!msdsData.length||!msdsLoaded){loadMsds().then(()=>{if(HX.m&&XL.scr==='msds'&&!XL.last)xRedraw();}).catch(()=>{});}return;}
+  if(a==='mq'){const i=XL.ms.eqs.indexOf(v);if(i>=0)XL.ms.eqs.splice(i,1);else XL.ms.eqs.push(v);xRedraw();return;}
+  if(a==='mp'){XL.ms.pick[v]=!!t.checked;xRedraw();return;}
+  if(a==='mget'){
+    const ids=dqMsdsIds();if(!ids.length)return;XL.busy=true;xRedraw();
+    try{
+      if(!(await srvAtLeast(16)))throw new Error('서버(Apps Script)를 업데이트한 뒤 사용할 수 있습니다.');
+      const r=await hcPost({type:'msds_download',mode:'link',ids:ids});
+      if(!(r&&r.ok&&r.url))throw new Error(r&&r.error==='not_found'?'선택한 파일을 찾지 못했습니다.':'MSDS를 준비하지 못했습니다. 잠시 후 다시 시도해 주세요.');
+      XL.busy=false;XL.last={name:r.filename,info:r.count+'개 파일 · MSDS',link:{url:r.url}};xRedraw();xRecvLoad();
+    }catch(err){XL.busy=false;xRedraw();toast((err&&err.message)||'MSDS를 준비하지 못했습니다. 인터넷 연결을 확인하세요.');}
+    return;
+  }
   if(a==='close'){XL.last=null;hxClose();return;}
-  if(a==='again'){XL.last=null;xRedraw();return;}
+  if(a==='again'){XL.last=null;XL.tab='make';xRedraw();return;}
   if(a==='dl'&&XL.last){const u=URL.createObjectURL(XL.last.blob),k=document.createElement('a');k.href=u;k.download=XL.last.name;k.style.display='none';document.body.appendChild(k);k.click();setTimeout(()=>{k.remove();URL.revokeObjectURL(u);},4000);return;}
   if(a==='share'&&XL.last){try{const f=new File([XL.last.blob],XL.last.name,{type:XL.last.blob.type});if(navigator.canShare({files:[f]}))await navigator.share({files:[f],title:XL.last.name});else toast('이 기기에서는 공유를 지원하지 않습니다.');}catch(er){if(er&&er.name!=='AbortError')toast('공유하지 못했습니다.');}return;}
   const sync=()=>{const g=id=>document.getElementById(id);if(g('xlMonth')&&g('xlMonth').value)S.month=g('xlMonth').value;if(g('xlYear'))S.year=g('xlYear').value;if(g('xlFrom')&&g('xlFrom').value)S.from=g('xlFrom').value;if(g('xlTo')&&g('xlTo').value)S.to=g('xlTo').value;};
   sync();
-  if(a==='type'){S.type=v;xRedraw();return;}
+  if(a==='type'){S.type=v;S.cat='발포기';S.eqs=[];XL.scr='cfg';xRedraw();return;}
+  if(a==='cat'){S.cat=v;S.eqs=[];xRedraw();if(v==='프레스'&&!HC.xtabsOk){try{loadXtabs().then(()=>{if(HX.m&&XL.scr==='cfg'&&XL.st.cat==='프레스')xRedraw();});}catch(er){}}return;}
   if(a==='fmt'){S.fmt=v==='pdf'?'pdf':'xlsx';xRedraw();return;}
   if(a==='eq'){const i=S.eqs.indexOf(v);if(i>=0)S.eqs.splice(i,1);else S.eqs.push(v);xRedraw();return;}
   if(a==='all'){EQG[v].forEach(x=>{if(S.eqs.indexOf(x)<0)S.eqs.push(x);});xRedraw();return;}
   if(a==='clear'){S.eqs=[];xRedraw();return;}
   if(a==='go'){
     if(S.type==='이력'&&S.from>S.to){const m=$('xlMsg');m.textContent='시작일이 종료일보다 늦습니다.';m.hidden=false;return;}
+    S.eqsRun=null;
+    if(S.type==='이력'){
+      if(S.cat==='기타(공무)')S.eqsRun=[DUTY];
+      else if(!S.eqs.length){S.eqsRun=(S.cat==='프레스'?(EQG['프레스']||[]):EQ).slice();if(!S.eqsRun.length){const m=$('xlMsg');m.textContent='등록된 프레스가 없습니다.';m.hidden=false;S.eqsRun=null;return;}}
+    }
     XL.busy=true;xRedraw();
-    try{const r=await xBuild();XL.busy=false;XL.last=r;xRedraw();}
+    try{const r=await xBuild();XL.busy=false;XL.last=r;xRedraw();if(r&&r.link)xRecvLoad();}
     catch(err){XL.busy=false;xRedraw();const m=$('xlMsg');if(m){m.textContent=(err&&err.message==='net'?'엑셀 도구를 불러오지 못했습니다. 인터넷 연결을 확인하세요.':(err&&err.message)||'만들지 못했습니다.');m.hidden=false;}}
   }
 },true);
