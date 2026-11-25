@@ -777,6 +777,19 @@ body:not([data-team="other"]) #emqPumpStock{display:none}
 .td-l{display:flex;flex-direction:column;gap:3px;font-size:11.5px;color:#566B7B}
 .td-de{background:#F4F8FA;border-radius:10px;padding:10px;margin:0 0 8px}.td-de .emq-f{display:grid;grid-template-columns:1fr auto;gap:8px}
 .td-dn summary{cursor:pointer;font-size:13px;color:#566B7B;padding:8px 0}
+.td-fold{padding:0!important}
+.td-fb{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:48px;padding:12px 16px;background:none;border:0;font:inherit;color:#127BA0;cursor:pointer;text-align:left}
+.td-fb b{font-size:15px}.td-fb small{font-size:12px;color:#566B7B}
+.td-fh{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.td-tt{display:flex;gap:8px;margin:0 0 10px}
+.td-tt button{flex:1;min-height:44px;padding:8px 12px;border:1px solid #C9D3DC;border-radius:10px;background:#fff;font:inherit;font-size:14px;font-weight:600;color:#33485A;cursor:pointer}
+.td-tt button b{display:inline-block;min-width:20px;margin-left:4px;padding:1px 6px;border-radius:10px;background:#EDF1F4;font-size:12px}
+.td-tt button.on{background:#127BA0;border-color:#127BA0;color:#fff}
+.td-tt button.on b{background:rgba(255,255,255,.25);color:#fff}
+.td-mf{display:flex;align-items:center;gap:8px;margin:0 0 8px;flex-wrap:wrap}
+.td-mf label{font-size:13px;color:#566B7B;margin:0}
+.td-mf select{font:inherit;font-size:14px;padding:7px 10px;border:1px solid #C9D3DC;border-radius:8px;min-height:40px}
+.td-mf small{color:#566B7B;font-size:12px}
 /* 스케줄표 */
 .sc-wrap{display:grid;grid-template-columns:1fr;gap:12px;align-items:start}
 .sc-h{display:flex;align-items:center;gap:8px;margin-bottom:10px}.sc-h b{flex:1;text-align:center;font-size:16px}
@@ -1691,7 +1704,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v88</span></div>
+    <div class="sb-foot"><span id="verLabel">v89</span></div>
   </nav>
 
   <div class="content">
@@ -1917,7 +1930,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v88</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v89</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8882,12 +8895,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v88', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v89', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v88';
+const PAGE_CACHE = 'sulbi-jindan-v89';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -10437,7 +10450,7 @@ document.addEventListener('click',async ev=>{
     else if(a==='cancelatt'){TD.attForm=null;usRender();}
     else if(a==='flt'){TD.flt=t.dataset.v;usRender();}
     else if(a==='due'){const v=t.dataset.v;TD.dr.due=v;const i=$('tdDue');if(i)i.value=v;t.parentElement.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===t));}
-    else if(a==='addtodo'){TD.v='todo';TD.dr.due=t.dataset.d||'';usRender();window.scrollTo(0,0);setTimeout(()=>{const i=$('tdTitle');if(i)i.focus();},50);}
+    else if(a==='addtodo'){TD.v='todo';TD.fo=true;TD.tt='op';TD.dr.due=t.dataset.d||'';usRender();window.scrollTo(0,0);setTimeout(()=>{const i=$('tdTitle');if(i)i.focus();},50);}
     else if(a==='dutymore'){TD.dutyAll=!TD.dutyAll;usRender();}
     else if(a==='ex'){const i=$(t.dataset.f);if(i){const cur=i.value.trim();i.value=cur?(cur.indexOf(t.dataset.t)<0?cur+' '+t.dataset.t:cur):t.dataset.t+' ';i.focus();if(t.dataset.f==='tdTitle')TD.dr.title=i.value;}}
     return;}
@@ -10603,7 +10616,7 @@ function qiParse(q){
   const team=isMain(),w=lvOk(2),d=qiDate(raw);let rest=d.rest;const tk=todayK();
   const eqIn=t=>(EQ.find(e=>t.toUpperCase().indexOf(e.toUpperCase())>=0)||'');
   const catIn=t=>/점검/.test(t)?'점검':/수리|공사|교체|보수/.test(t)?'수리·공사':/회의|교육|미팅/.test(t)?'회의·교육':/출장/.test(t)?'회의·교육':'기타';
-  const goTodo=(title,due)=>()=>{TD.dr={title:title,to:TD.dr.to,due:due||'',memo:'',eq:(typeof eqFind==='function'?eqFind(title):'')};TD.form=null;TD.attForm=null;TD.vNext='todo';TD.v='todo';showPanel('sched');setTimeout(()=>{const i=$('tdTitle');if(i)i.scrollIntoView({block:'center'});},200);};
+  const goTodo=(title,due)=>()=>{TD.dr={title:title,to:TD.dr.to,due:due||'',memo:'',eq:(typeof eqFind==='function'?eqFind(title):'')};TD.form=null;TD.attForm=null;TD.fo=true;TD.tt='op';TD.vNext='todo';TD.v='todo';showPanel('sched');setTimeout(()=>{const i=$('tdTitle');if(i)i.scrollIntoView({block:'center'});},200);};
   const goSched=(title,a,b)=>()=>{TD.attForm=null;TD.form={start:a,end:b,cat:catIn(title),title:title,eq:eqIn(title)};TD.vNext='cal';TD.v='cal';TD.sel=a;TD.ym=a.slice(0,7);showPanel('sched');setTimeout(()=>{const f=document.querySelector('.sc-form');if(f)f.scrollIntoView({block:'start'});},250);};
   const goAtt=(kind,a,b,memo)=>()=>{TD.form=null;TD.attForm={from:a,to:b,kind:kind,memo:memo};TD.vNext='cal';TD.v='cal';TD.sel=a;TD.ym=a.slice(0,7);showPanel('sched');setTimeout(()=>{const f=document.querySelector('.sc-form');if(f)f.scrollIntoView({block:'start'});},250);};
   let m,hit=false;
@@ -11495,6 +11508,7 @@ function hxEqCard(no){
 }
 /* ===== v79 (1): 업데이트 내용 · 표기 보정 · 부위 자동 인식 ===== */
 const CHANGELOG=[
+ {v:'v89',d:'2026-11-25',items:['할 일: 카드를 "진행 중 / 완료" 탭으로 나눠 완료한 할 일을 달별로 확인','할 일 추가 카드를 접고 펼 수 있게 함 (평소엔 접힘, 수정할 땐 자동으로 펼침)']},
  {v:'v88',d:'2026-11-20',items:['설비 일괄 정리(관리자): 대상 목록의 글자가 세로로 한 글자씩 나오던 표시 수정']},
  {v:'v87',d:'2026-11-20',items:['설비 선택을 단계마다 화면이 바뀌도록 변경: 고른 칩은 위쪽 경로로 남고 다음 칩만 표시 (이력 등록, 빠른 등록)','뒤로(‹)로 한 단계씩 되돌아가기']},
  {v:'v86',d:'2026-11-20',items:['프레스 선택: 1~4라인·트리밍·톰슨·금형 히터·칠러 구분 → 설비 순서로 선택 (이력 등록, 빠른 등록 모두)','시트 탭 설비(열성형기)·설비(금형히터)·설비(칠러)를 읽어 설비별 대분류를 다르게 표시','칠러·금형 히터는 대분류 단계를 건너뜀 / 빠른 등록에서 프레스를 목록으로 선택 (직접 입력은 접어 둠)']},
@@ -11655,7 +11669,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 
 /* ===== v80: 화면 코드와 서비스워커 버전이 다르면 캐시를 정리하고 한 번만 새로고침 ===== */
-const APP_VER='v88';
+const APP_VER='v89';
 (function(){
   const KEY='emq-vfix-'+APP_VER;
   function swVer(){return new Promise(res=>{try{
@@ -11956,7 +11970,8 @@ function tdFormHtml(){
   const lk=edit&&dr.locked;
   const lockAttr=lk?' disabled':'';
   const rec=(dr.fixc||[]);
-  return '<div class="hc-card"><h3>'+(edit?'할 일 수정':'할 일 추가')+'</h3><p class="us-gd">'+(edit?(lk?'완료되었거나 이력과 연결된 할 일은 설비·작업·부위·메모만 고칠 수 있습니다.':'바꿀 내용을 고친 뒤 저장하세요.'):'기한까지 끝내야 하는 일입니다. 날짜·시간에 맞춰 가야 하는 일은 \'일정\'에 넣어 주세요.')+'</p><div class="k79-f">'
+  if(!edit&&TD.fo!==true)return '<div class="hc-card td-fold"><button type="button" class="td-fb" data-k79="tdfo"><b>+ 할 일 추가</b><small>눌러서 펼치기</small></button></div>';
+  return '<div class="hc-card"><h3 class="td-fh">'+(edit?'할 일 수정':'할 일 추가')+(edit?'':'<button type="button" class="hc-btn sm ghost" data-k79="tdfo">접기</button>')+'</h3><p class="us-gd">'+(edit?(lk?'완료되었거나 이력과 연결된 할 일은 설비·작업·부위·메모만 고칠 수 있습니다.':'바꿀 내용을 고친 뒤 저장하세요.'):'기한까지 끝내야 하는 일입니다. 날짜·시간에 맞춰 가야 하는 일은 \'일정\'에 넣어 주세요.')+'</p><div class="k79-f">'
    +(edit?'':'<div><span class="lb">어떤 일인가요?</span><div class="kc">'+TDK.map(x=>'<button type="button" class="'+(k===x[0]?'on':'')+'" data-k79="tdk" data-v="'+x[0]+'">'+x[1]+'<small>'+x[2]+'</small></button>').join('')+'</div></div>')
    +(k==='설비작업'?'<div><span class="lb">설비 <small>(필수)</small></span>'+epHtml('td',dr.eq)+'</div><div><span class="lb">작업</span>'+actHtml('td',dr.act)+'</div><div><span class="lb">부위 <small>(선택)</small></span>'+partHtml('td',dr.part)+'</div>':'<div><span class="lb">설비 <small>(선택 · 설비와 관련된 행정일 때)</small></span>'+epHtml('td',dr.eq)+'</div>')
    +'<div><label class="lb" for="tdTitle">할 일'+(k==='설비작업'?' <small>(위에서 고르면 자동으로 채워집니다)</small>':'')+'</label><input type="text" id="tdTitle" placeholder="'+(k==='설비작업'?'예: 1F-3 호스 교체':'예: 호스 발주 넣기')+'" maxlength="80" value="'+A(dr.title)+'"'+lockAttr+'></div>'
@@ -11990,7 +12005,22 @@ function vTodo(){
   const form=lvOk(2)?tdFormHtml():'';
   const op=visTodos().sort((a,b)=>(a.due||'9')<(b.due||'9')?-1:(a.due||'9')>(b.due||'9')?1:0),dn=TD.todo.filter(t=>t.status==='완료').sort((a,b)=>String(b.doneAt).localeCompare(String(a.doneAt))).slice(0,10);
   const bf=lvOk(3)?bfCardHtml():'';
-  return form+'<div class="hc-card"><h3>진행 중인 할 일</h3>'+usFlt()+(op.length?op.map(tdRowHtml).join(''):'<div class="empty-note">진행 중인 할 일이 없습니다.</div>')+(dn.length?'<details class="td-dn"><summary>최근 완료 '+dn.length+'건</summary>'+dn.map(tdRowHtml).join('')+'</details>':'')+'</div>'+bf;
+  const tt=TD.tt==='dn'?'dn':'op';
+  const allDn=TD.todo.filter(t=>t.status==='완료').sort((a,b)=>String(b.doneAt).localeCompare(String(a.doneAt)));
+  const tabs='<div class="td-tt" role="tablist"><button type="button" role="tab" aria-selected="'+(tt==='op')+'" class="'+(tt==='op'?'on':'')+'" data-k79="tdtt" data-v="op">진행 중 <b>'+op.length+'</b></button><button type="button" role="tab" aria-selected="'+(tt==='dn')+'" class="'+(tt==='dn'?'on':'')+'" data-k79="tdtt" data-v="dn">완료 <b>'+allDn.length+'</b></button></div>';
+  let body;
+  if(tt==='op'){
+    body=usFlt()+(op.length?op.map(tdRowHtml).join(''):'<div class="empty-note">진행 중인 할 일이 없습니다.</div>');
+  }else{
+    const mk=t=>String(t.doneAt||'').slice(0,7);
+    const ms=[...new Set(allDn.map(mk).filter(Boolean))];
+    if(TD.tm&&TD.tm!=='all'&&ms.indexOf(TD.tm)<0)TD.tm='all';
+    const cur=TD.tm||'all',shown=cur==='all'?allDn:allDn.filter(t=>mk(t)===cur);
+    body='<div class="td-mf"><label for="tdMon">완료한 달</label><select id="tdMon"><option value="all"'+(cur==='all'?' selected':'')+'>전체</option>'+ms.map(m=>'<option value="'+m+'"'+(cur===m?' selected':'')+'>'+m.slice(0,4)+'년 '+Number(m.slice(5))+'월</option>').join('')+'</select><small>'+shown.length+'건</small></div>'
+      +(shown.length?shown.map(tdRowHtml).join(''):'<div class="empty-note">완료한 할 일이 없습니다.</div>')
+      +'<div class="us-gd" style="margin-top:8px">최근 완료한 건만 보관해 불러옵니다.</div>';
+  }
+  return form+'<div class="hc-card">'+tabs+body+'</div>'+bf;
 }
 /* ===== 일정 폼 ===== */
 const SCK=[['work','설비 작업','점검·수리·공사'],['meet','회의·교육','설비 없는 일정'],['admin','행정·기타','그 밖의 일정']];
@@ -12041,7 +12071,9 @@ document.addEventListener('click',async e=>{
   const a=t.dataset.k79,key=t.dataset.key,v=t.dataset.v;
   e.stopPropagation();
   if(a==='tdedit'){const x=TD.todo.find(z=>z.id===t.dataset.id);if(x){if(!(await srvGate(15,'할 일 수정')))return;tdOpenEdit(x);}return;}
-  if(a==='tdcancel'){TD.dr=tdBlank();tdRender();return;}
+  if(a==='tdfo'){k79Sync('td');TD.fo=!(TD.fo===true);tdRender();return;}
+  if(a==='tdtt'){TD.tt=v==='dn'?'dn':'op';tdRender();return;}
+  if(a==='tdcancel'){TD.dr=tdBlank();TD.fo=false;tdRender();return;}
   if(a==='tdk'){k79Sync('td');TD.dr.kind=v;TD.dr.needEq=false;tdRender();return;}
   if(a==='sck'){k79Sync('sc');TD.form.sk=v;if(v==='meet')TD.form.cat=(TD.form.id&&TD.form.cat==='출장')?'출장':'회의·교육';else if(v==='admin')TD.form.cat='기타';else TD.form.cat='점검';scRender();return;}
   if(a==='scc'){k79Sync('sc');TD.form.cat=v;scRender();return;}
@@ -12075,6 +12107,7 @@ document.addEventListener('input',e=>{
   }
 },true);
 document.addEventListener('change',e=>{const t=e.target;if(!t||!t.id)return;if(t.id==='tdTo'||t.id==='tdDue'||t.id==='tdMemo')k79Sync('td');},true);
+document.addEventListener('change',e=>{const t=e.target;if(t&&t.id==='tdMon'){TD.tm=t.value;tdRender();}});
 /* 저장(할 일 추가) — 기존 data-td="todoadd" 처리를 대신함 */
 document.addEventListener('click',async e=>{
   const b=e.target.closest&&e.target.closest('[data-td=todoadd]');if(!b)return;
@@ -12088,7 +12121,7 @@ document.addEventListener('click',async e=>{
   const p={type:'todo_add',title:title,to:dr.to==null?myId():dr.to,due:dr.due,memo:dr.memo,eq:dr.eq||'',kind:kind,act:dr.act||'',part:dr.part||''};
   b.disabled=true;
   const ok=await tdDo(p,'할 일을 추가했습니다.');
-  if(ok){TD.dr=Object.assign(tdBlank(),{to:p.to});K79.patd=null;tdRender();}else b.disabled=false;
+  if(ok){TD.dr=Object.assign(tdBlank(),{to:p.to});K79.patd=null;TD.fo=false;tdRender();}else b.disabled=false;
 },true);
 /* 일정 저장 — 작업·부위 포함 */
 document.addEventListener('click',async e=>{
@@ -12117,7 +12150,7 @@ async function tdSaveEdit(){
   cmp('eq',dr.eq,o.eq);cmp('act',dr.act,o.act);cmp('part',dr.part,o.part);cmp('memo',dr.memo,o.memo);
   if(!dr.locked){const t=eqRewrite((dr.title||'').trim());if(!t){toast('할 일을 입력하세요.');return;}cmp('title',t,o.title);cmp('due',dr.due,o.due);cmp('to',dr.to,o.to);}
   if(Object.keys(p).length<=2){toast(ERR.no_change);return;}
-  if(await tdDo(p,'수정했습니다.')){TD.dr=tdBlank();tdRender();}
+  if(await tdDo(p,'수정했습니다.')){TD.dr=tdBlank();TD.fo=false;tdRender();}
 }
 /* ===== 관리자 설비 일괄 정리 ===== */
 const BF={open:false,rows:[],title:false,busy:false};
