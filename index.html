@@ -271,6 +271,21 @@ body.update-ready .tab.more .dot{display:inline-block;}
 .pq-row.on{border-color:var(--amber);background:var(--surface2);}
 .pq-line{font-weight:600;min-width:46px;}
 .pq-d{flex:1;font-size:12.5px;color:var(--text-muted);}
+/* v91 */
+.pq-top{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 10px}
+.pq2{flex-wrap:wrap;align-items:flex-start;padding:10px 12px}
+.pq-main{flex:1 1 220px;min-width:0}
+.pq-t{font-size:13.5px;font-weight:600;color:var(--text);overflow-wrap:anywhere}
+.pq-s{font-size:12.5px;color:var(--text-muted);margin-top:2px;overflow-wrap:anywhere}
+.pq-tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:10px;border:1px solid var(--amber);color:var(--amber);margin-right:6px}
+.pq-act{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 100%}
+.pq-act .restart-btn,.pq-act .repair-popup-btn{margin:0;min-height:40px;padding:6px 12px;font-size:13px}
+.pm-note{font-size:12.5px;color:var(--text-muted);margin:8px 0}
+.pm-hint{margin:10px 0 0;padding:8px 10px;border-radius:8px;background:var(--surface2);color:var(--text-muted);font-size:12.5px}
+.psort{display:flex;gap:6px;align-items:center;margin:6px 0 8px;font-size:12.5px;color:var(--text-muted)}
+.psort button{font-family:inherit;font-size:12.5px;min-height:34px;padding:0 12px;border-radius:17px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer}
+.psort button.on{border-color:var(--amber);color:var(--amber);font-weight:700;background:var(--surface2)}
+
 .pchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
 .pchip{font-family:inherit;font-size:13px;min-height:40px;padding:0 13px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;}
 .pchip.on{border-color:var(--amber);background:var(--surface2);color:var(--amber);font-weight:700;}
@@ -1787,7 +1802,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v90</span></div>
+    <div class="sb-foot"><span id="verLabel">v91</span></div>
   </nav>
 
   <div class="content">
@@ -2018,7 +2033,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v90</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v91</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -6452,6 +6467,12 @@ function showUsageModal(part){
 
 /* ===== A2VK12CC 펌프 관리 ===== */
 const PUMP_SPARE_SPEC = 'A2VK12CC';
+let pumpVendors = [], pumpSrvV = 0;
+async function pumpSrvOk(n){
+  if(pumpSrvV >= n) return true;
+  try{ const r = await fetch(GOOGLE_SHEET_URL + '?type=ping&t=' + Date.now(), { cache:'no-store' }); const j = await r.json(); pumpSrvV = Number(j && j.v) || 0; }catch(e){}
+  return pumpSrvV >= n;
+}
 const PUMP_REPAIRER = '김대연';
 const PUMP_BASE_COST = 235360, PUMP_SAND_COST = 80000;   // 부가세 별도
 const PUMP_REASONS = [['베어링 소음','Bearing noise'],['압력 저하','Low pressure'],['누유','Oil leak'],['유량 불량','Flow problem'],['기타','Other']];
@@ -6469,7 +6490,7 @@ const PUMP_CATALOG = [
 ];
 const PUMP_TESTS = [['이상 없음','OK'],['소음','Noise'],['압력 부족','Low pressure']];
 let pumpRows = [], pumpLoaded = false, pumpLoading = false, pumpErr = '';
-let pumpTab = 'status', pumpSelId = null, pumpFilter = { year:'', line:'' };
+let pumpTab = 'status', pumpSelId = null, pumpFilter = { year:'', line:'', meth:'' };
 let pumpForm = null;
 function PP(ko, en){ return LANG === 'ko' ? ko : en; }
 function pumpIsSpare(part){ return part && String(part['제품규격'] || '').trim() === PUMP_SPARE_SPEC; }
@@ -6488,6 +6509,10 @@ function pumpErrMsg(code){
     repair_row_missing: ['수리이력의 출고 행을 찾지 못했습니다.','Repair-out row not found.'],
     insufficient_stock: ['부품 재고가 부족합니다. 수량을 줄이거나 먼저 입고하세요.','Not enough part stock. Reduce qty or add stock first.'],
     no_name: ['부품명을 입력하세요.','Enter the part name.'],
+    no_from: ['보낸 곳을 선택하세요.','Select where it came from.'],
+    no_vendor: ['외주 업체를 입력하세요.','Enter the vendor.'],
+    no_cost: ['수리 금액을 입력하세요.','Enter the repair amount.'],
+    pump_row: ['펌프는 펌프 수리 화면에서 처리합니다.','Pumps are handled in the Pump repair screen.'],
     dup_invoice: ['이미 입고된 인보이스 번호입니다.','Invoice already received.'],
     no_invoice_no: ['인보이스 번호를 입력하세요.','Enter the invoice no.'],
     bad_rate: ['환율이 올바르지 않습니다.','Invalid exchange rate.'],
@@ -6547,6 +6572,7 @@ async function loadPump(){
     const data = await res.json();
     if(data && data.ok && Array.isArray(data.rows)){
       pumpRows = data.rows; pumpLoaded = true; pumpErr = '';
+      if(Array.isArray(data.vendors)) pumpVendors = data.vendors;
       try{ localStorage.setItem('cache-pump', JSON.stringify({ t:Date.now(), d:pumpRows })); }catch(e){}
     } else pumpErr = (data && data.error) || 'bad_response';
   }catch(e){ pumpErr = pumpRows.length ? 'offline' : 'fail'; }
@@ -6655,14 +6681,152 @@ function pumpStatusHtml(){
   h += '</div>';
   return h;
 }
+/* ---- v91: 지점 고장품 · 외주 보냄 · 수리 방식 ---- */
+const pumpIsBranch = r => String(r['탈거호기'] || '').indexOf('지점·') === 0;
+const pumpMethodOf = r => (r && r['수리방식'] === '외주') ? '외주' : '자체';
+function pumpWho(){ try{ return (window.EMQ && EMQ.user && EMQ.user.name) || localStorage.getItem('msds-worker') || ''; }catch(e){ return ''; } }
+function pumpVendorList(){
+  let loc = []; try{ loc = JSON.parse(localStorage.getItem('emq-vendors') || '[]'); }catch(e){}
+  const seen = {}, out = [];
+  (pumpVendors || []).concat(Array.isArray(loc) ? loc : []).forEach(v => { v = String(v || '').trim(); if(v && !seen[v]){ seen[v] = 1; out.push(v); } });
+  return out.slice(0, 12);
+}
+function pumpRememberVendor(v){
+  v = String(v || '').trim(); if(!v) return;
+  try{ const a = JSON.parse(localStorage.getItem('emq-vendors') || '[]'); const l = [v].concat((Array.isArray(a) ? a : []).filter(x => x !== v)).slice(0, 20); localStorage.setItem('emq-vendors', JSON.stringify(l)); }catch(e){}
+  if(pumpVendors.indexOf(v) < 0) pumpVendors = [v].concat(pumpVendors);
+}
+function pumpVendorBlock(cur, idIn){
+  const vs = pumpVendorList();
+  return '<div class="pchips" data-vchips="1">' + vs.map(v => '<button type="button" class="pchip' + (v === cur ? ' on' : '') + '" data-pv="' + escapeAttr(v) + '">' + escapeHtml(v) + '</button>').join('') + '</div>' +
+    '<input id="' + idIn + '" class="pump-in" type="text" maxlength="40" autocomplete="off" placeholder="' + escapeAttr(PP('업체 이름 직접 입력', 'Type vendor name')) + '" value="' + escapeAttr(cur || '') + '">';
+}
+function pumpOverlay(html){
+  const ov = document.createElement('div');
+  ov.className = 'repair-popup-overlay';
+  ov.innerHTML = '<div class="repair-popup pump-pop" role="dialog" aria-modal="true">' + html + '</div>';
+  document.body.appendChild(ov);
+  const close = () => ov.remove();
+  ov.addEventListener('click', e => { if(e.target === ov) close(); });
+  const err = m => { const e = ov.querySelector('.pump-err'); if(e){ e.textContent = m; e.style.display = 'block'; } };
+  return { ov, close, err };
+}
+function bindVendorPick(ov, inputId){
+  ov.addEventListener('click', e => {
+    const b = e.target.closest('[data-pv]'); if(!b) return;
+    const inp = ov.querySelector('#' + inputId); if(inp) inp.value = b.getAttribute('data-pv');
+    ov.querySelectorAll('[data-pv]').forEach(x => x.classList.toggle('on', x === b));
+  });
+  const inp = ov.querySelector('#' + inputId);
+  if(inp) inp.addEventListener('input', () => { ov.querySelectorAll('[data-pv]').forEach(x => x.classList.toggle('on', x.getAttribute('data-pv') === inp.value.trim())); });
+}
+
+/* 지점 고장품 받기 */
+function showPumpBranchModal(){
+  const rid = 'pb' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  const sel = { from:'', reason:'' };
+  const chips = (arr, name) => arr.map(x => '<button type="button" class="pchip" data-pg="' + name + '" data-v="' + escapeAttr(x[0]) + '">' + escapeHtml(PP(x[0], x[1])) + '</button>').join('');
+  const w = pumpOverlay('<div style="font-weight:700;font-size:15px;">' + escapeHtml(PP('지점 고장품 받기', 'Receive a broken pump from a branch')) + '</div>' +
+    '<div class="pump-sub">' + escapeHtml(PP('A2VK12CC 1대가 수리 대기에 들어갑니다. 재고는 그대로이고, 수리가 끝나면 재고 +1 됩니다.', 'One A2VK12CC goes to the repair queue. Stock is unchanged until the repair is done.')) + '</div>' +
+    '<label class="pump-l">' + escapeHtml(PP('보낸 곳', 'From')) + '</label><div class="pchips">' + chips([['2공장', '2nd plant'], ['경주공장', 'Gyeongju plant']], 'from') + '</div>' +
+    '<label class="pump-l">' + escapeHtml(PP('증상 (선택)', 'Symptom (optional)')) + '</label><div class="pchips">' + chips(PUMP_REASONS, 'reason') + '</div>' +
+    '<label class="pump-l">' + escapeHtml(PP('작업자', 'Worker')) + '</label><input id="pbWorker" class="pump-in" type="text" maxlength="30" value="' + escapeAttr(pumpWho()) + '">' +
+    '<label class="pump-l">' + escapeHtml(PP('메모 (선택)', 'Memo (optional)')) + '</label><input id="pbMemo" class="pump-in" type="text" maxlength="100">' +
+    '<div class="pump-err" role="alert"></div>' +
+    '<div style="display:flex;gap:8px;margin-top:14px;"><button class="repair-popup-btn" id="pbOk" style="flex:1;">' + escapeHtml(PP('받기 등록', 'Register')) + '</button><button class="restart-btn" id="pbNo">' + escapeHtml(PP('취소', 'Cancel')) + '</button></div>');
+  w.ov.addEventListener('click', e => {
+    const b = e.target.closest('.pchip[data-pg]'); if(!b) return;
+    const g = b.getAttribute('data-pg'), v = b.getAttribute('data-v');
+    sel[g] = (g === 'reason' && sel[g] === v) ? '' : v;
+    w.ov.querySelectorAll('.pchip[data-pg="' + g + '"]').forEach(x => x.classList.toggle('on', x.getAttribute('data-v') === sel[g]));
+  });
+  w.ov.querySelector('#pbNo').addEventListener('click', w.close);
+  w.ov.querySelector('#pbOk').addEventListener('click', async () => {
+    const worker = w.ov.querySelector('#pbWorker').value.trim();
+    if(!sel.from) return w.err(PP('보낸 곳을 선택하세요.', 'Select where it came from.'));
+    if(!worker) return w.err(PP('작업자 이름을 입력하세요.', 'Enter the worker name.'));
+    if(!(await pumpSrvOk(25))) return w.err(PP('서버(Apps Script)를 v25로 업데이트한 뒤 사용할 수 있습니다.', 'Update the server (Apps Script) to v25 first.'));
+    const btn = w.ov.querySelector('#pbOk'); btn.disabled = true; btn.textContent = PP('저장 중...', 'Saving...');
+    try{
+      const r = await pumpPost({ type:'pump_branch_in', rid, from:sel.from, worker, reason:sel.reason, memo:w.ov.querySelector('#pbMemo').value.trim() });
+      if(!r || !r.ok){ btn.disabled = false; btn.textContent = PP('받기 등록', 'Register'); return w.err(pumpErrMsg(r && r.error)); }
+      w.close();
+      showIconPopup('✅', PP(sel.from + ' 고장품을 수리 대기에 추가했습니다. 재고는 수리가 끝나면 +1 됩니다.', 'Added to the repair queue. Stock +1 when repaired.'));
+      pumpTab = 'queue'; pumpRefreshAll();
+    }catch(e){
+      btn.disabled = false; btn.textContent = PP('받기 등록', 'Register');
+      w.err(PP('통신 오류입니다. 저장되었는지 확인 후 다시 시도하세요.', 'Network error. Check whether it saved before retrying.'));
+    }
+  });
+}
+
+/* 외주 보냄 (업체 지정) */
+function showPumpOutModal(id){
+  const r = pumpPending().find(x => x['접수번호'] === id); if(!r) return;
+  const w = pumpOverlay('<div style="font-weight:700;font-size:15px;">' + escapeHtml(PP('외주 보냄', 'Sent out for repair')) + '</div>' +
+    '<div class="pump-sub">' + escapeHtml(String(r['탈거호기'] || '') + ' · ' + String(r['접수일시']).slice(0, 10)) + ' · ' + escapeHtml(PP('재고는 바뀌지 않습니다.', 'Stock does not change.')) + '</div>' +
+    '<label class="pump-l">' + escapeHtml(PP('외주 업체', 'Vendor')) + '</label>' + pumpVendorBlock('', 'poVendor') +
+    '<div class="pump-err" role="alert"></div>' +
+    '<div style="display:flex;gap:8px;margin-top:14px;"><button class="repair-popup-btn" id="poOk" style="flex:1;">' + escapeHtml(PP('외주 보냄 표시', 'Mark as sent')) + '</button><button class="restart-btn" id="poNo">' + escapeHtml(PP('취소', 'Cancel')) + '</button></div>');
+  bindVendorPick(w.ov, 'poVendor');
+  w.ov.querySelector('#poNo').addEventListener('click', w.close);
+  w.ov.querySelector('#poOk').addEventListener('click', async () => {
+    const vendor = w.ov.querySelector('#poVendor').value.trim();
+    if(!vendor) return w.err(PP('외주 업체를 선택하거나 입력하세요.', 'Select or type a vendor.'));
+    if(!(await pumpSrvOk(25))) return w.err(PP('서버(Apps Script)를 v25로 업데이트한 뒤 사용할 수 있습니다.', 'Update the server (Apps Script) to v25 first.'));
+    const btn = w.ov.querySelector('#poOk'); btn.disabled = true;
+    try{
+      const x = await pumpPost({ type:'pump_out', id, vendor });
+      if(!x || !x.ok){ btn.disabled = false; return w.err(pumpErrMsg(x && x.error)); }
+      pumpRememberVendor(vendor); w.close(); await pumpRefreshAll();
+    }catch(e){ btn.disabled = false; w.err(PP('통신 오류입니다.', 'Network error.')); }
+  });
+}
+async function pumpClearOut(btn){
+  const id = btn.getAttribute('data-pqoc'); if(!id) return;
+  if(!confirm(PP('외주 보냄 표시를 지울까요?', 'Clear the "sent out" mark?'))) return;
+  btn.disabled = true;
+  try{
+    const x = await pumpPost({ type:'pump_out', id, clear:true });
+    if(!x || !x.ok){ btn.disabled = false; alert(pumpErrMsg(x && x.error)); return; }
+    await pumpRefreshAll();
+  }catch(e){ btn.disabled = false; }
+}
+async function pumpSubmitScrap(btn){
+  const id = btn.getAttribute('data-pqs'); if(!id) return;
+  if(!confirm(PP('이 펌프를 수리 불가(폐기)로 처리할까요?\n재고는 그대로(이미 빠져 있음)이고, 수리 대기에서 빠집니다.', 'Mark this pump as unrepairable (scrapped)? Stock stays the same and it leaves the queue.'))) return;
+  if(!(await pumpSrvOk(25))){ alert(PP('서버(Apps Script)를 v25로 업데이트한 뒤 사용할 수 있습니다.', 'Update the server (Apps Script) to v25 first.')); return; }
+  btn.disabled = true;
+  try{
+    const x = await pumpPost({ type:'pump_scrap', id, worker:pumpWho() || PUMP_REPAIRER });
+    if(!x || !x.ok){ btn.disabled = false; alert(pumpErrMsg(x && x.error)); return; }
+    await pumpRefreshAll();
+  }catch(e){ btn.disabled = false; }
+}
+function pumpSyncForm(){
+  const f = pumpForm; if(!f) return;
+  const q = document.getElementById('pfQty'); if(q) f.qty = Math.floor(Number(q.value)) || 1;
+  const m = document.getElementById('pfMemo'); if(m) f.memo = m.value;
+  const v = document.getElementById('pfVendor'); if(v) f.vendor = v.value.trim();
+  const c = document.getElementById('pfOutCost'); if(c) f.outCost = c.value;
+}
 function pumpQueueHtml(){
   const pend = pumpPending();
   let h = '<div class="card"><h3>' + escapeHtml(PP('수리 대기', 'Awaiting repair')) + ' · ' + pend.length + '</h3>';
-  if(!pend.length) h += '<div class="empty-note">' + escapeHtml(PP('수리 대기 중인 펌프가 없습니다. 교체는 [부품 사용 등록]에서 "A2VK12CC"를 선택해 등록합니다.', 'No pumps waiting. Register swaps via Parts usage → "A2VK12CC".')) + '</div>';
-  else {
-    if(pumpSelId !== '*') h += '<div style="margin:2px 0 10px"><button type="button" class="repair-popup-btn" id="pqStart" style="padding:8px 16px">' + escapeHtml(PP('수리 완료 등록', 'Record repair done')) + '</button></div>';
-    h += pend.map(r => '<div class="pq-row" style="cursor:default"><span class="pq-d" style="flex:1">' + escapeHtml(String(r['접수일시']).slice(0, 10)) + ' · ' + escapeHtml(r['설치원료'] || '–') + ' · ' + escapeHtml(r['고장사유'] || '') + ' · ' + escapeHtml(r['교체자'] || '') + '</span><button type="button" class="restart-btn" data-pqc="' + escapeAttr(r['접수번호']) + '">' + escapeHtml(PP('교체 취소', 'Cancel')) + '</button></div>').join('');
-  }
+  h += '<div class="pq-top">' + (pend.length && pumpSelId !== '*' ? '<button type="button" class="repair-popup-btn" id="pqStart" style="padding:8px 16px">' + escapeHtml(PP('수리 완료 등록', 'Record repair done')) + '</button>' : '') +
+    '<button type="button" class="restart-btn" id="pqBranch" style="margin:0">+ ' + escapeHtml(PP('지점 고장품 받기', 'Receive from branch')) + '</button></div>';
+  if(!pend.length) h += '<div class="empty-note">' + escapeHtml(PP('수리 대기 중인 펌프가 없습니다. 우리 라인 교체는 [부품 사용 등록]에서 "A2VK12CC"를 선택해 등록하고, 지점에서 받은 고장품은 위 버튼으로 등록합니다.', 'No pumps waiting. Register line swaps via Parts usage → "A2VK12CC"; broken pumps from branches with the button above.')) + '</div>';
+  else h += pend.map(r => {
+    const br = pumpIsBranch(r), out = r['수리방식'] === '외주';
+    const title = (br ? String(r['탈거호기']).replace('지점·', '') + ' ' + PP('지점 고장품', 'branch pump') : String(r['탈거호기'] || '') + ' ' + PP('교체', 'swap')) + ' · ' + String(r['접수일시']).slice(0, 10);
+    const sub = [r['설치원료'] || '', r['고장사유'] || '', r['교체자'] || ''].filter(Boolean).join(' · ');
+    const tag = out ? '<span class="pq-tag">' + escapeHtml(PP('외주', 'Outsourced')) + ' · ' + escapeHtml(r['업체'] || '') + (r['외주보낸일'] ? ' · ' + escapeHtml(String(r['외주보낸일']).slice(5, 10).replace(/^0/, '').replace('-0', '-').replace('-', '/')) + PP(' 보냄', ' sent') : '') + '</span>' : '';
+    return '<div class="pq-row pq2" style="cursor:default"><div class="pq-main"><div class="pq-t">' + escapeHtml(title) + '</div><div class="pq-s">' + tag + escapeHtml(sub) + '</div></div><div class="pq-act">' +
+      '<button type="button" class="repair-popup-btn" data-pqd="' + escapeAttr(r['접수번호']) + '">' + escapeHtml(PP('수리 완료', 'Done')) + '</button>' +
+      (out ? '<button type="button" class="restart-btn" data-pqoc="' + escapeAttr(r['접수번호']) + '">' + escapeHtml(PP('외주 취소', 'Undo sent')) + '</button>' : '<button type="button" class="restart-btn" data-pqo="' + escapeAttr(r['접수번호']) + '">' + escapeHtml(PP('외주 보냄', 'Send out')) + '</button>') +
+      '<button type="button" class="restart-btn" data-pqs="' + escapeAttr(r['접수번호']) + '">' + escapeHtml(PP('수리 불가', 'Unrepairable')) + '</button>' +
+      '<button type="button" class="restart-btn" data-pqc="' + escapeAttr(r['접수번호']) + '" data-br="' + (br ? '1' : '') + '">' + escapeHtml(br ? PP('접수 취소', 'Cancel intake') : PP('교체 취소', 'Cancel swap')) + '</button></div></div>';
+  }).join('');
   h += '</div>';
   if(pend.length && pumpSelId === '*') h += pumpFormHtml(pend);
   return h;
@@ -6721,32 +6885,42 @@ function pumpSearchHtml(q){
 function pumpFormHtml(pend){
   const f = pumpForm;
   let h = '<div class="card" id="pumpForm"><h3>' + escapeHtml(PP('수리 완료 기록', 'Repair completion')) + '</h3>';
-  h += '<div class="pump-l">' + escapeHtml(PP('수리 완료 수량 (대기 ' + pend.length + '대 중, 오래된 건부터 처리)', 'Repaired qty (of ' + pend.length + ' waiting, oldest first)')) + '</div><input id="pfQty" class="pump-in" type="number" min="1" max="' + pend.length + '" value="' + (f.qty || 1) + '" style="max-width:120px">';
-  h += '<div class="pump-sub" style="margin:4px 0 8px">' + escapeHtml(PP('아래 수리 내용·수리비는 1대 기준이며 수량만큼 각각 기록됩니다. 내용이 다르면 나눠서 등록하세요.', 'Details and cost below are per pump and recorded for each. Register separately if they differ.')) + '</div>';
-  h += '<details class="pump-base" style="display:block"><summary style="display:flex;align-items:center;gap:6px;cursor:pointer"><b>' + escapeHtml(PP(PUMP_BASE_SET, 'Inner bearing set replacement')) + '</b> <span class="pump-sub">' + escapeHtml(PP('(필수 ' + PUMP_BASE_PARTS.length + '종 자동 포함)', '(' + PUMP_BASE_PARTS.length + ' required parts, auto)')) + '</span><span class="mono" style="margin-left:auto">' + fmtWon(PUMP_BASE_COST) + PP('원', ' KRW') + '</span></summary>' + pumpBaseListHtml() + '</details>';
-  h += '<label class="pump-chk"><input type="checkbox" id="pfSand"' + (f.sanding ? ' checked' : '') + '> ' + escapeHtml(PP('샌딩·착색 포함 (급한 수리는 해제)', 'Sanding & coloring (uncheck if rushed)')) + ' <span class="mono" style="margin-left:auto">+' + fmtWon(PUMP_SAND_COST) + PP('원', ' KRW') + '</span></label>';
-  h += '<div class="pump-l">' + escapeHtml(PP('추가로 교체한 부품 (번호·이름 검색)', 'Extra parts replaced (search by no./name)')) + '</div>';
-  h += '<input id="pfSearch" class="pump-in" type="search" autocomplete="off" placeholder="' + escapeAttr(PP('예: 27, cylinder, 실린더', 'e.g. 27, cylinder')) + '"><div id="pfResults" class="px-results"></div>';
-  h += '<div id="pfExtras" style="margin-top:6px">' + pumpExtrasHtml() + '</div>';
-  h += '<div class="pump-l">' + escapeHtml(PP('시험 결과', 'Test result')) + '</div><div class="pchips">' + PUMP_TESTS.map(k => '<button type="button" class="pchip' + (f.test === k[0] ? ' on' : '') + '" data-pt2="' + escapeAttr(k[0]) + '">' + escapeHtml(PP(k[0], k[1])) + '</button>').join('') + '</div>';
-  h += '<div class="pump-l">' + escapeHtml(PP('추가 부품 달러 합계', 'Extra parts total (USD)')) + '</div><div class="mono" id="pfUsd" style="font-weight:700">' + fmtUsd(pumpUsd()) + '</div>';
-  h += '<div class="pump-l">' + escapeHtml(PP('수리비 (원화 합계, 부가세 별도)', 'Cost (KRW total, excl. VAT)')) + '</div><div style="display:flex;align-items:center;gap:8px"><input id="pfCost" class="pump-in" type="number" min="0" value="' + pumpCostTotal() + '" style="flex:1"><span class="mono" style="white-space:nowrap;font-weight:700">' + PP('원', 'KRW') + '</span></div><div id="pfCostFmt" class="mono pump-sub" style="margin-top:2px;font-weight:700">= ' + fmtWon(pumpCostTotal()) + PP('원', ' KRW') + '</div>';
-  h += '<div id="pfBreak" class="pump-sub" style="margin-top:4px">' + pumpBreakHtml() + '</div>';
-  h += '<div class="pump-l">' + escapeHtml(PP('메모', 'Memo')) + '</div><input id="pfMemo" class="pump-in" type="text" maxlength="100" value="' + escapeAttr(f.memo) + '">';
-  h += '<div class="pump-sub" style="margin-top:8px">' + escapeHtml(PP('수리자', 'Repairer')) + ': <b>' + escapeHtml(PUMP_REPAIRER) + '</b></div>';
+  if(!f.only) h += '<div class="pump-l">' + escapeHtml(PP('수리 완료 수량 (대기 ' + pend.length + '대 중, 오래된 건부터 처리)', 'Repaired qty (of ' + pend.length + ' waiting, oldest first)')) + '</div><input id="pfQty" class="pump-in" type="number" min="1" max="' + pend.length + '" value="' + (f.qty || 1) + '" style="max-width:120px">';
+  if(!f.only) h += '<div class="pump-sub" style="margin:4px 0 8px">' + escapeHtml(PP('아래 수리 내용·수리비는 1대 기준이며 수량만큼 각각 기록됩니다. 내용이 다르면 나눠서 등록하세요.', 'Details and cost below are per pump and recorded for each. Register separately if they differ.')) + '</div>';
+  if(f.only){ const tr = pend.find(r => r['접수번호'] === f.only); h += '<div class="pump-sub" style="margin:2px 0 6px">' + escapeHtml(PP('대상', 'Target')) + ': <b>' + escapeHtml(tr ? ((pumpIsBranch(tr) ? String(tr['탈거호기']).replace('지점·', '') + ' ' + PP('지점 고장품', 'branch pump') : String(tr['탈거호기']) + ' ' + PP('교체', 'swap')) + ' · ' + String(tr['접수일시']).slice(0, 10)) : '') + '</b></div>'; }
+  h += '<div class="pump-l">' + escapeHtml(PP('수리 방식 (필수)', 'Repair method (required)')) + '</div><div class="pchips">' + [['자체','In-house'],['외주','Outsourced']].map(m => '<button type="button" class="pchip' + (f.method === m[0] ? ' on' : '') + '" data-pm="' + m[0] + '">' + escapeHtml(PP(m[0] === '자체' ? '자체 수리' : '외주 수리', m[1])) + '</button>').join('') + '</div>';
+  if(!f.method) h += '<div class="pm-hint">' + escapeHtml(PP('먼저 자체 수리인지 외주 수리인지 골라 주세요.', 'Choose in-house or outsourced first.')) + '</div>';
+  if(f.method === '외주'){
+    h += '<div class="pump-l">' + escapeHtml(PP('외주 업체', 'Vendor')) + '</div>' + pumpVendorBlock(f.vendor, 'pfVendor');
+    h += '<div class="pump-l">' + escapeHtml(PP('수리 금액 (원, 부가세 별도)', 'Repair amount (KRW, excl. VAT)')) + '</div><div style="display:flex;align-items:center;gap:8px"><input id="pfOutCost" class="pump-in" type="number" min="1" inputmode="numeric" placeholder="0" value="' + escapeAttr(f.outCost) + '" style="flex:1"><span class="mono" style="white-space:nowrap;font-weight:700">' + PP('원', 'KRW') + '</span></div>';
+    h += '<div class="pump-sub">' + escapeHtml(PP('저장하면 외주 이력에도 자동으로 등록됩니다. (문서번호는 외주 이력에서 나중에 입력)', 'Also added to Outsourcing history automatically.')) + '</div>';
+  }
+  if(f.method === '자체') h += '<details class="pump-base" style="display:block"><summary style="display:flex;align-items:center;gap:6px;cursor:pointer"><b>' + escapeHtml(PP(PUMP_BASE_SET, 'Inner bearing set replacement')) + '</b> <span class="pump-sub">' + escapeHtml(PP('(필수 ' + PUMP_BASE_PARTS.length + '종 자동 포함)', '(' + PUMP_BASE_PARTS.length + ' required parts, auto)')) + '</span><span class="mono" style="margin-left:auto">' + fmtWon(PUMP_BASE_COST) + PP('원', ' KRW') + '</span></summary>' + pumpBaseListHtml() + '</details>';
+  if(f.method === '자체') h += '<label class="pump-chk"><input type="checkbox" id="pfSand"' + (f.sanding ? ' checked' : '') + '> ' + escapeHtml(PP('샌딩·착색 포함 (급한 수리는 해제)', 'Sanding & coloring (uncheck if rushed)')) + ' <span class="mono" style="margin-left:auto">+' + fmtWon(PUMP_SAND_COST) + PP('원', ' KRW') + '</span></label>';
+  if(f.method === '자체') h += '<div class="pump-l">' + escapeHtml(PP('추가로 교체한 부품 (번호·이름 검색)', 'Extra parts replaced (search by no./name)')) + '</div>';
+  if(f.method === '자체') h += '<input id="pfSearch" class="pump-in" type="search" autocomplete="off" placeholder="' + escapeAttr(PP('예: 27, cylinder, 실린더', 'e.g. 27, cylinder')) + '"><div id="pfResults" class="px-results"></div>';
+  if(f.method === '자체') h += '<div id="pfExtras" style="margin-top:6px">' + pumpExtrasHtml() + '</div>';
+  if(f.method) h += '<div class="pump-l">' + escapeHtml(PP('시험 결과', 'Test result')) + '</div><div class="pchips">' + PUMP_TESTS.map(k => '<button type="button" class="pchip' + (f.test === k[0] ? ' on' : '') + '" data-pt2="' + escapeAttr(k[0]) + '">' + escapeHtml(PP(k[0], k[1])) + '</button>').join('') + '</div>';
+  if(f.method === '자체') h += '<div class="pump-l">' + escapeHtml(PP('추가 부품 달러 합계', 'Extra parts total (USD)')) + '</div><div class="mono" id="pfUsd" style="font-weight:700">' + fmtUsd(pumpUsd()) + '</div>';
+  if(f.method === '자체') h += '<div class="pump-l">' + escapeHtml(PP('수리비 (원화 합계, 부가세 별도)', 'Cost (KRW total, excl. VAT)')) + '</div><div style="display:flex;align-items:center;gap:8px"><input id="pfCost" class="pump-in" type="number" min="0" value="' + pumpCostTotal() + '" style="flex:1"><span class="mono" style="white-space:nowrap;font-weight:700">' + PP('원', 'KRW') + '</span></div><div id="pfCostFmt" class="mono pump-sub" style="margin-top:2px;font-weight:700">= ' + fmtWon(pumpCostTotal()) + PP('원', ' KRW') + '</div>';
+  if(f.method === '자체') h += '<div id="pfBreak" class="pump-sub" style="margin-top:4px">' + pumpBreakHtml() + '</div>';
+  if(f.method) h += '<div class="pump-l">' + escapeHtml(PP('메모', 'Memo')) + '</div><input id="pfMemo" class="pump-in" type="text" maxlength="100" value="' + escapeAttr(f.memo) + '">';
+  if(f.method) h += '<div class="pump-sub" style="margin-top:8px">' + escapeHtml(PP('수리자', 'Repairer')) + ': <b>' + escapeHtml(PUMP_REPAIRER) + '</b></div>';
   h += '<div id="pfErr" class="pump-err" style="display:none"></div>';
   h += '<div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end;align-items:center"><button class="restart-btn" id="pfCancel" style="margin:0">' + escapeHtml(PP('닫기', 'Close')) + '</button><button class="repair-popup-btn" id="pfOk" style="padding:8px 16px">' + escapeHtml(PP('수리 완료 → 재고로', 'Done → back to stock')) + '</button></div></div>';
   return h;
 }
 
-function pumpOpenForm(){
+function pumpOpenForm(only){
+  const pe = pumpPending(), tg = (typeof only === 'string' && only) ? pe.find(r => r['접수번호'] === only) : pe[0];
+  const sentOut = tg && tg['수리방식'] === '외주';
   pumpSelId = '*';
-  pumpForm = { qty:1, sanding:true, test:PUMP_TESTS[0][0], adjust:0, memo:'', extras:[] };
+  pumpForm = { qty:1, only:(typeof only === 'string' ? only : ''), sanding:true, test:PUMP_TESTS[0][0], adjust:0, memo:'', extras:[], method:(sentOut ? '외주' : ''), vendor:(sentOut ? (tg['업체'] || '') : ''), outCost:'' };
   renderPump();
   const el = document.getElementById('pumpForm'); if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 function pumpHistRows(){
-  return pumpDone().filter(r => (!pumpFilter.year || String(r['수리일시']).indexOf(pumpFilter.year) === 0) && (!pumpFilter.line || r['탈거호기'] === pumpFilter.line));
+  return pumpDone().filter(r => (!pumpFilter.year || String(r['수리일시']).indexOf(pumpFilter.year) === 0) && (!pumpFilter.line || r['탈거호기'] === pumpFilter.line) && (!pumpFilter.meth || pumpMethodOf(r) === pumpFilter.meth));
 }
 function pumpHistHtml(){
   const all = pumpDone();
@@ -6757,18 +6931,21 @@ function pumpHistHtml(){
   const usdT = rows.reduce((s, r) => s + (Number(r['USD부품비']) || 0), 0);
   let h = '<div class="pump-filters"><select id="phYear" class="pump-in"><option value="">' + escapeHtml(PP('전체 연도', 'All years')) + '</option>' + years.map(y => '<option' + (pumpFilter.year === y ? ' selected' : '') + '>' + y + '</option>').join('') + '</select>' +
     '<select id="phLine" class="pump-in"><option value="">' + escapeHtml(PP('전체 호기', 'All units')) + '</option>' + lns.map(y => '<option' + (pumpFilter.line === y ? ' selected' : '') + '>' + escapeHtml(y) + '</option>').join('') + '</select>' +
-    '<button type="button" class="restart-btn" id="phCsv">' + escapeHtml(PP('CSV 내려받기', 'Download CSV')) + '</button></div>';
+    '<select id="phMeth" class="pump-in"><option value="">' + escapeHtml(PP('전체 방식', 'All methods')) + '</option><option value="자체"' + (pumpFilter.meth === '자체' ? ' selected' : '') + '>' + escapeHtml(PP('자체 수리', 'In-house')) + '</option><option value="외주"' + (pumpFilter.meth === '외주' ? ' selected' : '') + '>' + escapeHtml(PP('외주 수리', 'Outsourced')) + '</option></select>' + '<button type="button" class="restart-btn" id="phCsv">' + escapeHtml(PP('CSV 내려받기', 'Download CSV')) + '</button></div>';
   h += '<div class="pump-cards"><div class="pump-card"><div class="pc-l">' + escapeHtml(PP('수리 건수', 'Repairs')) + '</div><div class="pc-v">' + rows.length + '</div></div><div class="pump-card"><div class="pc-l">' + escapeHtml(PP('수리비 합계 (부가세 별도)', 'Total cost (excl. VAT)')) + '</div><div class="pc-v">' + fmtWon(cost) + '<small> ' + PP('원', 'KRW') + '</small></div></div><div class="pump-card"><div class="pc-l">' + escapeHtml(PP('달러 부품비 합계', 'USD parts total')) + '</div><div class="pc-v">' + fmtUsd(usdT) + '</div></div></div>';
+  { const avgOf = m => { const a = rows.filter(r => pumpMethodOf(r) === m && Number(r['수리비']) > 0); return a.length ? { n:a.length, v:Math.round(a.reduce((t, r) => t + Number(r['수리비']), 0) / a.length) } : null; };
+    const aS = avgOf('자체'), aO = avgOf('외주');
+    if(aS || aO) h += '<div class="pump-cards">' + [[PP('자체 평균 수리비', 'In-house avg'), aS], [PP('외주 평균 수리비', 'Outsourced avg'), aO]].map(c => '<div class="pump-card"><div class="pc-l">' + escapeHtml(c[0]) + '</div><div class="pc-v">' + (c[1] ? fmtWon(c[1].v) + '<small> ' + PP('원', 'KRW') + ' · ' + c[1].n + PP('건', '') + '</small>' : '–') + '</div></div>').join('') + '</div>'; }
   if(!rows.length) return h + '<div class="empty-note">' + escapeHtml(PP('수리 이력이 없습니다.', 'No repair history.')) + '</div>';
-  h += '<div class="card" style="padding:6px 0"><div class="ptable-wrap"><table class="ptable"><thead><tr><th>' + PP('수리일', 'Date') + '</th><th>' + PP('호기', 'Unit') + '</th><th>' + PP('수리 내용', 'Work') + '</th><th>' + PP('수명', 'Life') + '</th><th style="text-align:right">' + PP('수리비(원, VAT별도)', 'Cost (KRW, excl. VAT)') + '</th><th style="text-align:right">' + PP('달러 부품', 'USD parts') + '</th><th>' + PP('원료', 'Mat.') + '</th><th>' + PP('시험', 'Test') + '</th></tr></thead><tbody>';
+  h += '<div class="card" style="padding:6px 0"><div class="ptable-wrap"><table class="ptable"><thead><tr><th>' + PP('수리일', 'Date') + '</th><th>' + PP('호기', 'Unit') + '</th><th>' + PP('수리 내용', 'Work') + '</th><th>' + PP('방식', 'Method') + '</th><th>' + PP('수명', 'Life') + '</th><th style="text-align:right">' + PP('수리비(원, VAT별도)', 'Cost (KRW, excl. VAT)') + '</th><th style="text-align:right">' + PP('달러 부품', 'USD parts') + '</th><th>' + PP('원료', 'Mat.') + '</th><th>' + PP('시험', 'Test') + '</th></tr></thead><tbody>';
   rows.forEach(r => {
-    h += '<tr><td class="mono">' + escapeHtml(String(r['수리일시']).slice(0, 10)) + '</td><td class="mono"><b>' + escapeHtml(r['탈거호기']) + '</b></td><td>' + escapeHtml(r['수리내용'] || '') + (r['샌딩착색'] ? ' / ' + PP('샌딩,착색', 'sand/color') : '') + '</td><td class="mono">' + (r['직전수명(일)'] === '' ? '–' : escapeHtml(String(r['직전수명(일)'])) + PP('일', 'd')) + '</td><td class="mono" style="text-align:right">' + fmtWon(r['수리비']) + '</td><td class="mono" style="text-align:right">' + (Number(r['USD부품비']) ? fmtUsd(r['USD부품비']) + (Number(r['적용환율']) ? '<div class="pump-sub">@' + fmtWon(r['적용환율']) + '</div>' : '') : '–') + '</td><td>' + escapeHtml(r['설치원료'] || '–') + '</td><td>' + escapeHtml(r['시험결과'] || '') + '</td></tr>';
+    h += '<tr><td class="mono">' + escapeHtml(String(r['수리일시']).slice(0, 10)) + '</td><td class="mono"><b>' + escapeHtml(r['탈거호기']) + '</b></td><td>' + escapeHtml(r['수리내용'] || '') + (r['샌딩착색'] ? ' / ' + PP('샌딩,착색', 'sand/color') : '') + '</td><td style="white-space:nowrap">' + escapeHtml(pumpMethodOf(r) === '외주' ? PP('외주', 'Out') + (r['업체'] ? ' · ' + r['업체'] : '') : PP('자체', 'In-house')) + '</td><td class="mono">' + (r['직전수명(일)'] === '' ? '–' : escapeHtml(String(r['직전수명(일)'])) + PP('일', 'd')) + '</td><td class="mono" style="text-align:right">' + fmtWon(r['수리비']) + '</td><td class="mono" style="text-align:right">' + (Number(r['USD부품비']) ? fmtUsd(r['USD부품비']) + (Number(r['적용환율']) ? '<div class="pump-sub">@' + fmtWon(r['적용환율']) + '</div>' : '') : '–') + '</td><td>' + escapeHtml(r['설치원료'] || '–') + '</td><td>' + escapeHtml(r['시험결과'] || '') + '</td></tr>';
   });
   return h + '</tbody></table></div></div>';
 }
 function pumpCsv(){
   const rows = pumpHistRows();
-  const head = ['접수번호','접수일시','탈거호기','고장사유','교체자','설치원료','직전수명(일)','수리일시','수리내용','샌딩착색','사용부품','수리비','USD부품비','적용환율','시험결과','수리자','메모'];
+  const head = ['접수번호','접수일시','탈거호기','고장사유','교체자','설치원료','직전수명(일)','수리일시','수리내용','샌딩착색','사용부품','수리비','USD부품비','적용환율','시험결과','수리자','수리방식','업체','외주보낸일','메모'];
   const q = v => { let s = String(v == null ? '' : v); if(/^[=+\-@]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
   const csv = '﻿' + [head.map(h => q(h === '수리비' ? '수리비(원,부가세별도)' : (h === 'USD부품비' ? '달러부품비(USD)' : h))).join(',')].concat(rows.map(r => head.map(h => q(r[h])).join(','))).join('\r\n');
   if(/Android/i.test(navigator.userAgent) && typeof docDeliver === 'function'){
@@ -7153,6 +7330,19 @@ document.addEventListener('click', async e => {
   const padj = e.target.closest('[data-padj]');
   if(padj){ showPumpAdjustModal(padj.getAttribute('data-padj'), false); return; }
   if(e.target.id === 'pqStart'){ pumpOpenForm(); return; }
+  if(e.target.id === 'pqBranch'){ showPumpBranchModal(); return; }
+  const pqd = e.target.closest('[data-pqd]');
+  if(pqd){ pumpOpenForm(pqd.getAttribute('data-pqd')); return; }
+  const pqo = e.target.closest('[data-pqo]');
+  if(pqo){ showPumpOutModal(pqo.getAttribute('data-pqo')); return; }
+  const pqoc = e.target.closest('[data-pqoc]');
+  if(pqoc){ pumpClearOut(pqoc); return; }
+  const pqs = e.target.closest('[data-pqs]');
+  if(pqs){ pumpSubmitScrap(pqs); return; }
+  const pm = e.target.closest('[data-pm]');
+  if(pm && pumpForm){ pumpSyncForm(); pumpForm.method = pm.getAttribute('data-pm'); renderPump(); return; }
+  const pv = e.target.closest('[data-pv]');
+  if(pv && pumpForm){ const vi = document.getElementById('pfVendor'); if(vi) vi.value = pv.getAttribute('data-pv'); pumpForm.vendor = pv.getAttribute('data-pv'); root.querySelectorAll('[data-pv]').forEach(x => x.classList.toggle('on', x === pv)); return; }
   const pqc = e.target.closest('[data-pqc]');
   if(pqc){ pumpSubmitCancel(pqc); return; }
   const pt2 = e.target.closest('[data-pt2]');
@@ -7174,7 +7364,9 @@ document.addEventListener('click', async e => {
 document.addEventListener('input', e => {
   const root = document.getElementById('panel-pump');
   if(!root || !root.contains(e.target)) return;
-  if(e.target.id === 'pfSearch' && pumpForm){ const rs = document.getElementById('pfResults'); if(rs) rs.innerHTML = pumpSearchHtml(e.target.value); }
+  if(e.target.id === 'pfVendor' && pumpForm){ pumpForm.vendor = e.target.value.trim(); root.querySelectorAll('[data-pv]').forEach(x => x.classList.toggle('on', x.getAttribute('data-pv') === pumpForm.vendor)); }
+  else if(e.target.id === 'pfOutCost' && pumpForm){ pumpForm.outCost = e.target.value; }
+  else if(e.target.id === 'pfSearch' && pumpForm){ const rs = document.getElementById('pfResults'); if(rs) rs.innerHTML = pumpSearchHtml(e.target.value); }
   else if(e.target.id === 'pcSearch'){ const b = document.getElementById('pcBody'); if(b) b.innerHTML = pumpCatalogRows(e.target.value); }
 });
 document.addEventListener('change', e => {
@@ -7183,6 +7375,7 @@ document.addEventListener('change', e => {
   if(e.target.id === 'pcFile'){ const f = e.target.files && e.target.files[0]; if(f) pumpInvoiceStart(f); return; }
   if(e.target.id === 'phYear'){ pumpFilter.year = e.target.value; renderPump(); }
   else if(e.target.id === 'phLine'){ pumpFilter.line = e.target.value; renderPump(); }
+  else if(e.target.id === 'phMeth'){ pumpFilter.meth = e.target.value; renderPump(); }
   else if(e.target.id === 'pfSand' && pumpForm){ pumpForm.sanding = e.target.checked; pumpUpdateForm(); }
   else if(e.target.classList && e.target.classList.contains('pf-xq') && pumpForm){
     const x = pumpForm.extras[Number(e.target.getAttribute('data-xi'))];
@@ -7193,30 +7386,43 @@ document.addEventListener('change', e => {
 });
 
 async function pumpSubmitDone(btn){
-  const f = pumpForm, pend = pumpPending().slice().sort((a, b) => String(a['접수일시']).localeCompare(String(b['접수일시'])));
+  const f = pumpForm, pend0 = pumpPending().slice().sort((a, b) => String(a['접수일시']).localeCompare(String(b['접수일시']))), pend = (f && f.only) ? pend0.filter(r => r['접수번호'] === f.only) : pend0;
   const err = m => { const x = document.getElementById('pfErr'); if(x){ x.textContent = m; x.style.display = 'block'; } };
   if(!f || !pend.length) return;
   const qEl = document.getElementById('pfQty');
-  const qty = Math.floor(Number(qEl ? qEl.value : f.qty));
+  const qty = f.only ? 1 : Math.floor(Number(qEl ? qEl.value : f.qty));
   if(!(qty >= 1) || qty > pend.length) return err(PP('수량은 1~' + pend.length + ' 사이로 입력하세요.', 'Quantity must be 1-' + pend.length + '.'));
   const memoEl = document.getElementById('pfMemo');
   const memo = memoEl ? memoEl.value.trim() : f.memo;
-  const kind = PUMP_BASE_SET + (f.extras.length ? ' + 추가 교체 ' + f.extras.length + '종' : '');
-  const parts = [{ spec:'기본 세트(필수 ' + PUMP_BASE_PARTS.length + '종)', qty:1 }].concat(f.extras.map(x => { const c = pumpCat(x.id); return { spec: c[0] + '.' + c[1] + ' ' + c[2], qty:x.qty }; }));
+  pumpSyncForm();
+  if(!f.method) return err(PP('수리 방식을 선택하세요 (자체 수리 / 외주 수리).', 'Choose the repair method.'));
+  const isOut = f.method === '외주';
+  const vendor = isOut ? String(f.vendor || '').trim() : '';
+  const outCost = isOut ? Math.round(Number(f.outCost) || 0) : 0;
+  if(isOut){
+    if(!vendor) return err(PP('외주 업체를 선택하거나 입력하세요.', 'Select or type the vendor.'));
+    if(!(outCost >= 1)) return err(PP('수리 금액을 입력하세요.', 'Enter the repair amount.'));
+    if(!(await pumpSrvOk(25))) return err(PP('서버(Apps Script)를 v25로 업데이트한 뒤 외주 수리를 기록할 수 있습니다.', 'Update the server (Apps Script) to v25 first.'));
+  }
+  const kind = isOut ? '외주 수리 · ' + vendor : PUMP_BASE_SET + (f.extras.length ? ' + 추가 교체 ' + f.extras.length + '종' : '');
+  const parts = isOut ? [{ spec:'외주 수리 · ' + vendor, qty:1 }] : [{ spec:'기본 세트(필수 ' + PUMP_BASE_PARTS.length + '종)', qty:1 }].concat(f.extras.map(x => { const c = pumpCat(x.id); return { spec: c[0] + '.' + c[1] + ' ' + c[2], qty:x.qty }; }));
   btn.disabled = true; const txt = btn.textContent; btn.textContent = PP('저장 중...', 'Saving...');
   // 재고를 관리하는 품번만 서버에서 자동 차감한다 (기본 세트 중 카탈로그 번호가 있는 부품 + 추가 교체 부품)
   const use = [];
-  PUMP_BASE_PARTS.forEach(b => { const mm = b[0].match(/^([0-9]+[A-Z]?|[A-Z])\.\s/); if(mm) use.push({ id:mm[1], qty:b[1] }); });
-  f.extras.forEach(x => use.push({ id:x.id, qty:x.qty }));
+  if(!isOut){
+    PUMP_BASE_PARTS.forEach(b => { const mm = b[0].match(/^([0-9]+[A-Z]?|[A-Z])\.\s/); if(mm) use.push({ id:mm[1], qty:b[1] }); });
+    f.extras.forEach(x => use.push({ id:x.id, qty:x.qty }));
+  }
   let done = 0; const shortIds = {};
   try{
     for(let k = 0; k < qty; k++){
-      const r = await pumpPost({ type:'pump_done', id:pend[k]['접수번호'], worker:PUMP_REPAIRER, kind, sanding:f.sanding, test:f.test, cost:pumpCostTotal(), usd:pumpUsd(), rate:0, memo, parts, use });
+      const r = await pumpPost({ type:'pump_done', id:pend[k]['접수번호'], worker:PUMP_REPAIRER, kind, sanding:(isOut ? false : f.sanding), test:f.test, cost:(isOut ? outCost : pumpCostTotal()), usd:(isOut ? 0 : pumpUsd()), rate:0, memo, parts, use, method:f.method, vendor });
       if(!r || !r.ok){ btn.disabled = false; btn.textContent = txt; if(done) await pumpRefreshAll(); return err((done ? PP(done + '대까지 저장됨. ', done + ' saved. ') : '') + pumpErrMsg(r && r.error)); }
       done++;
       (r.short || []).forEach(x => { shortIds[x] = 1; });
     }
     const sh = Object.keys(shortIds);
+    if(isOut){ pumpRememberVendor(vendor); try{ toast('외주 이력에도 등록했습니다. 문서번호는 외주 이력에서 입력해 주세요.'); }catch(e){} }
     showIconPopup(sh.length ? '⚠️' : '✅', PP('펌프 ' + done + '대 수리를 기록했습니다. 재고에 +' + done + ' 반영됩니다.', done + ' pump(s) recorded. Stock +' + done + '.') + (sh.length ? PP(' 부품 재고가 부족했던 품번: ' + sh.join(', ') + ' (0으로 보정됨, 재고를 확인하세요)', ' Low part stock: ' + sh.join(', ')) : ''));
     pumpSelId = null; pumpForm = null; pumpTab = 'queue';
     await pumpRefreshAll();
@@ -7224,7 +7430,8 @@ async function pumpSubmitDone(btn){
 }
 async function pumpSubmitCancel(btn){
   const id = btn.getAttribute('data-pqc'), sel = pumpPending().find(r => r['접수번호'] === id); if(!sel) return;
-  if(!confirm(PP('이 교체 등록을 취소할까요? 재고가 +1 복원되고 수리 대기에서 제외됩니다.', 'Cancel this swap? Stock is restored and the item leaves the queue.'))) return;
+  const isBr = btn.getAttribute('data-br') === '1';
+  if(!confirm(isBr ? PP('이 지점 고장품 접수를 취소할까요? 재고는 바뀌지 않고 수리 대기에서 제외됩니다.', 'Cancel this branch intake? Stock is unchanged.') : PP('이 교체 등록을 취소할까요? 재고가 +1 복원되고 수리 대기에서 제외됩니다.', 'Cancel this swap? Stock is restored and the item leaves the queue.'))) return;
   btn.disabled = true;
   try{
     const r = await pumpPost({ type:'pump_cancel', id, worker:PUMP_REPAIRER });
@@ -7941,7 +8148,34 @@ function renderCategoryChipsReg(){
   }, { passive: false });
 })();
 
+/* v91: 자주 쓰는 품목 위로 (최근 90일 사용·입출고 이력 횟수) */
+let PSORT = 'freq'; try{ PSORT = localStorage.getItem('emq-psort') === 'name' ? 'name' : 'freq'; }catch(e){}
+const partsHasFreq = () => partsData.some(p => Number(p['이력횟수90']) > 0);
+function partsOrder(list, f){
+  if(f) return list;
+  if(PSORT === 'name') return list.slice().sort((a, b) => String(a['제품형태'] || a['제품규격'] || '').localeCompare(String(b['제품형태'] || b['제품규격'] || ''), 'ko'));
+  if(!partsHasFreq()) return list;
+  return list.map((p, i) => [p, i]).sort((a, b) => (Number(b[0]['이력횟수90']) || 0) - (Number(a[0]['이력횟수90']) || 0) || String(a[0]['제품형태'] || a[0]['제품규격'] || '').localeCompare(String(b[0]['제품형태'] || b[0]['제품규격'] || ''), 'ko') || a[1] - b[1]).map(x => x[0]);
+}
+function partsSortBarSync(){
+  ['partsGridReg', 'partsGrid'].forEach(id => {
+    const g = document.getElementById(id); if(!g || !g.parentNode) return;
+    let b = document.getElementById('psort_' + id);
+    if(!b){
+      b = document.createElement('div'); b.className = 'psort'; b.id = 'psort_' + id; g.parentNode.insertBefore(b, g);
+      b.addEventListener('click', e => {
+        const x = e.target.closest('[data-ps]'); if(!x) return;
+        PSORT = x.getAttribute('data-ps'); try{ localStorage.setItem('emq-psort', PSORT); }catch(_){}
+        const a = document.getElementById('partsSearchReg'), c = document.getElementById('partsSearch');
+        renderPartsReg(a ? a.value : ''); renderParts(c ? c.value : '');
+      });
+    }
+    b.hidden = !partsHasFreq();
+    b.innerHTML = '정렬 <button type="button" data-ps="freq" class="' + (PSORT === 'freq' ? 'on' : '') + '">자주 쓰는 순</button><button type="button" data-ps="name" class="' + (PSORT === 'name' ? 'on' : '') + '">이름순</button>';
+  });
+}
 function renderPartsReg(filter){
+  partsSortBarSync();
   const grid = document.getElementById('partsGridReg');
   const f = (filter || '').toLowerCase().trim();
   let list = partsData;
@@ -7956,6 +8190,7 @@ function renderPartsReg(filter){
       (p['설명']||'').toLowerCase().includes(f)
     );
   }
+  list = partsOrder(list, f);
   if(list.length === 0){
     grid.innerHTML = '<div class="parts-empty">' + escapeHtml(t('partsEmpty')) + '</div>';
     return;
@@ -7996,6 +8231,7 @@ function renderPartsReg(filter){
 document.getElementById('partsSearchReg').addEventListener('input', (e) => renderPartsReg(e.target.value));
 
 function renderParts(filter){
+  partsSortBarSync();
   const grid = document.getElementById('partsGrid');
   const f = (filter || '').toLowerCase().trim();
   let list = partsData;
@@ -8010,6 +8246,7 @@ function renderParts(filter){
       (p['설명']||'').toLowerCase().includes(f)
     );
   }
+  list = partsOrder(list, f);
   if(list.length === 0){
     grid.innerHTML = '<div class="parts-empty">' + escapeHtml(t('partsEmpty')) + '</div>';
     return;
@@ -8983,12 +9220,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v90', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v91', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v90';
+const PAGE_CACHE = 'sulbi-jindan-v91';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -10963,7 +11200,7 @@ document.addEventListener('click',ev=>{
   const num=x=>Number(x)||0;
   const nm=p=>String(p['제품형태']||p['제품규격']||'');
   const who=()=>{try{return (window.EMQ&&EMQ.user&&EMQ.user.name)||localStorage.getItem('msds-worker')||'';}catch(e){return '';}};
-  const MV_ERR={over_stock:'현재고보다 많이 출고할 수 없습니다.',no_dest:'이동처를 선택하거나 입력해 주세요.',bad_qty:'수량을 확인해 주세요.',unknown_spec:'품목에 없는 부품입니다.',stale:'그 사이 다른 곳에서 이미 처리된 건입니다. 목록을 새로 불러와 주세요.',busy:'다른 요청을 처리 중입니다. 잠시 후 다시 시도해 주세요.',bad_request:'요청이 올바르지 않습니다.',no_spec:'부품이 선택되지 않았습니다.'};
+  const MV_ERR={no_memo:'사유를 입력해 주세요.',pump_row:'펌프는 펌프 수리 화면에서 처리합니다.',over_stock:'현재고보다 많이 출고할 수 없습니다.',no_dest:'이동처를 선택하거나 입력해 주세요.',bad_qty:'수량을 확인해 주세요.',unknown_spec:'품목에 없는 부품입니다.',stale:'그 사이 다른 곳에서 이미 처리된 건입니다. 목록을 새로 불러와 주세요.',busy:'다른 요청을 처리 중입니다. 잠시 후 다시 시도해 주세요.',bad_request:'요청이 올바르지 않습니다.',no_spec:'부품이 선택되지 않았습니다.'};
   const errT=e=>MV_ERR[e]||sheetErrText(e);
   function overlay(html){
     const o=document.createElement('div');o.className='repair-popup-overlay';
@@ -11008,7 +11245,7 @@ document.addEventListener('click',ev=>{
   function showStockOutModal(part){
     const stock=num(part['현재고']);let kind='지점이동',dest='경주공장';
     const box=overlay('<div class="mv-t">출고 · '+eh(nm(part))+'</div><div class="mv-sub">'+eh(part['제품규격']||'')+'</div>'+stockLine(part)
-      +'<div class="mv-l">구분</div>'+chips('kind',['지점 이동','기타'],'지점 이동')
+      +'<div class="mv-l">구분</div>'+chips('kind',['지점 이동','기타','재고조정'],'지점 이동')
       +'<div class="mv-l" id="mvDestL">이동처</div>'+chips('dest',['경주공장','지점','직접 입력'],'경주공장')
       +'<input type="text" id="mvDest" class="mv-in" maxlength="40" placeholder="이동처 직접 입력" hidden>'
       +'<div class="mv-l">수량</div>'+stepper('mvQty',1,stock||0)
@@ -11016,19 +11253,21 @@ document.addEventListener('click',ev=>{
       +'<div class="mv-who">작업자 <b>'+eh(who()||'-')+'</b></div><div class="mv-err" role="alert"></div>'
       +'<div class="mv-foot"><button type="button" class="repair-popup-btn" id="mvGo">출고 등록</button><button type="button" class="restart-btn" id="mvNo">취소</button></div>');
     const o=box.o,dIn=o.querySelector('#mvDest');
-    const sync=()=>{const free=dest==='직접 입력'||kind==='기타';dIn.hidden=!free;o.querySelector('[data-chips="dest"]').hidden=(kind==='기타');
-      o.querySelector('#mvDestL').textContent=kind==='기타'?'사유 · 대상':'이동처';dIn.placeholder=kind==='기타'?'예) 폐기, 타 부서 대여':'이동처 직접 입력';};
-    bindChips(o,'kind',v=>{kind=(v==='기타')?'기타':'지점이동';sync();});
+    const sync=()=>{const adj=kind==='재고조정';const free=!adj&&(dest==='직접 입력'||kind==='기타');dIn.hidden=!free;o.querySelector('[data-chips="dest"]').hidden=(kind!=='지점이동');
+      const dl=o.querySelector('#mvDestL');dl.hidden=adj;dl.textContent=kind==='기타'?'사유 · 대상':'이동처';dIn.placeholder=kind==='기타'?'예) 폐기, 타 부서 대여':'이동처 직접 입력';
+      const mm=o.querySelector('#mvMemo');if(mm)mm.placeholder=adj?'사유 (필수) 예) 실사 결과 1개 부족':'예) 긴급 요청으로 발송';};
+    bindChips(o,'kind',v=>{kind=(v==='기타')?'기타':(v==='재고조정'?'재고조정':'지점이동');sync();});
     bindChips(o,'dest',v=>{dest=v;sync();});bindStepper(o,'mvQty',stock||0);sync();
     o.querySelector('#mvNo').addEventListener('click',box.close);
     o.querySelector('#mvGo').addEventListener('click',()=>{
       const qty=parseInt(o.querySelector('#mvQty').value)||0;
       if(qty<1){o.querySelector('.mv-err').textContent='수량을 확인해 주세요.';return;}
       if(qty>stock){o.querySelector('.mv-err').textContent='현재고('+stock+')보다 많이 출고할 수 없습니다.';return;}
-      const to=(kind==='지점이동')?(dest==='직접 입력'?dIn.value.trim():dest):dIn.value.trim();
+      const to=(kind==='재고조정')?'':(kind==='지점이동')?(dest==='직접 입력'?dIn.value.trim():dest):dIn.value.trim();
+      if(kind==='재고조정'&&!o.querySelector('#mvMemo').value.trim()){o.querySelector('.mv-err').textContent='사유를 입력해 주세요. (예: 실사 결과 1개 부족)';return;}
       if(kind==='지점이동'&&!to){o.querySelector('.mv-err').textContent='이동처를 입력해 주세요.';return;}
       sendMv(box,{type:'stock_out',category:part['제품구분']||'',spec:part['제품규격'],qty:qty,kind:kind,dest:to,memo:o.querySelector('#mvMemo').value.trim(),worker:who()},
-        '"'+nm(part)+'" '+qty+'개 출고 등록했습니다.'+(kind==='지점이동'?' ('+to+')':''));
+        kind==='재고조정'?'"'+nm(part)+'" 재고를 −'+qty+' 조정했습니다.':'"'+nm(part)+'" '+qty+'개 출고 등록했습니다.'+(kind==='지점이동'?' ('+to+')':''));
     });
   }
 
@@ -11040,7 +11279,7 @@ document.addEventListener('click',ev=>{
     let kind=startKind||'구매',pend=null,sel=pickRow||0;
     const spec=String(part['제품규격']||'');
     const box=overlay('<div class="mv-t">입고 · '+eh(nm(part))+'</div><div class="mv-sub">'+eh(spec)+'</div>'+stockLine(part)
-      +'<div class="mv-l">구분</div>'+chips('kind',['구매','수리 입고','기타'],kind)
+      +'<div class="mv-l">구분</div>'+chips('kind',['구매','수리 입고','기타','재고조정'],kind)
       +'<div id="mvBody"></div>'
       +'<div class="mv-who">작업자 <b>'+eh(who()||'-')+'</b></div><div class="mv-err" role="alert"></div>'
       +'<div class="mv-foot"><button type="button" class="repair-popup-btn" id="mvGo">입고 등록</button><button type="button" class="restart-btn" id="mvNo">취소</button></div>');
@@ -11051,7 +11290,7 @@ document.addEventListener('click',ev=>{
       if(kind==='수리 입고'){
         if(pend===null){body.innerHTML='<div class="mv-note">수리 중인 건을 불러오는 중입니다…</div>';go.disabled=true;return;}
         const mine=pend.filter(x=>x.spec===spec);
-        if(!mine.length){body.innerHTML='<div class="mv-note">이 부품은 수리 중인 건이 없습니다.</div>';go.disabled=true;return;}
+        if(!mine.length){body.innerHTML='<div class="mv-note">'+(spec===PUMP_SPARE_SPEC?'펌프(A2VK12CC)는 [펌프 수리] 화면에서 수리 완료로 처리합니다. 여기서는 입고하지 않습니다.':'이 부품은 수리 중인 건이 없습니다.')+'</div>';go.disabled=true;return;}
         if(!mine.some(x=>x.row===sel))sel=mine[0].row;
         const cur=mine.find(x=>x.row===sel);
         body.innerHTML='<div class="mv-l">수리 중인 건 (돌아온 건을 선택)</div><div class="mv-list">'
@@ -11063,6 +11302,11 @@ document.addEventListener('click',ev=>{
         body.querySelectorAll('input[name=mvRow]').forEach(r=>r.addEventListener('change',()=>{sel=Number(r.value);renderBody();}));
         const sc=body.querySelector('#mvScrap');const upd=()=>{go.textContent=sc.checked?'폐기 처리 등록':'수리 입고 등록';};sc.addEventListener('change',upd);upd();
       }else{
+        if(kind==='재고조정'){
+          body.innerHTML='<div class="mv-note">실사 결과와 장부 수량이 다를 때만 사용합니다. 사유가 기록으로 남습니다.</div><div class="mv-l">늘릴 수량</div>'+stepper('mvQty',1,0)
+            +'<div class="mv-l">사유 (필수)</div><input type="text" id="mvMemo" class="mv-in" maxlength="120" placeholder="예) 실사 결과 1개 더 있음">';
+          bindStepper(o,'mvQty',0);go.textContent='재고 조정 등록';return;
+        }
         const buy=(kind==='구매');
         body.innerHTML='<div class="mv-l">'+(buy?'거래처':'입고 사유 · 출처')+'</div><input type="text" id="mvVendor" class="mv-in" maxlength="40" placeholder="'+(buy?'예) 거래처 이름':'예) 지점에서 받음')+'" value="'+ea(buy?(part['거래처']||''):'')+'">'
           +'<div class="mv-l">수량</div>'+stepper('mvQty',1,0)
@@ -11083,8 +11327,9 @@ document.addEventListener('click',ev=>{
         const scrap=!!o.querySelector('#mvScrap').checked;
         sendMv(box,{type:'repair_in',spec:spec,row:r.row,qty:qty,scrap:scrap,memo:memo},scrap?'"'+nm(part)+'" '+qty+'개를 수리 불가(폐기)로 처리했습니다.':'"'+nm(part)+'" '+qty+'개 수리 입고 처리했습니다.');
       }else{
-        sendMv(box,{type:'stock_in',category:part['제품구분']||'',spec:spec,qty:qty,kind:kind==='구매'?'구매':'기타',vendor:((o.querySelector('#mvVendor')||{}).value||'').trim(),memo:memo,worker:who()},
-          '"'+nm(part)+'" '+qty+'개 입고 등록했습니다.');
+        if(kind==='재고조정'&&!memo){err.textContent='사유를 입력해 주세요. (예: 실사 결과 1개 더 있음)';return;}
+        sendMv(box,{type:'stock_in',category:part['제품구분']||'',spec:spec,qty:qty,kind:kind==='구매'?'구매':(kind==='재고조정'?'재고조정':'기타'),vendor:((o.querySelector('#mvVendor')||{}).value||'').trim(),memo:memo,worker:who()},
+          kind==='재고조정'?'"'+nm(part)+'" 재고를 +'+qty+' 조정했습니다.':'"'+nm(part)+'" '+qty+'개 입고 등록했습니다.');
       }
     });
     renderBody();if(kind==='수리 입고')fetchPend();
@@ -11121,9 +11366,10 @@ document.addEventListener('click',ev=>{
     let el=document.getElementById('mvBar');
     if(!el){el=document.createElement('div');el.id='mvBar';el.className='mv-bar';const h=p.querySelector('.hint');if(h)h.insertAdjacentElement('afterend',el);else p.appendChild(el);
       el.addEventListener('click',e=>{const b=e.target.closest('[data-mvb]');if(!b)return;if(b.dataset.mvb==='rp')showRepairList();else showStockLog();});}
-    const rp=(partsData||[]).reduce((a,x)=>a+num(x['수리중수량']),0);
+    const rp=(partsData||[]).reduce((a,x)=>a+(x['수리중부품']!=null&&x['수리중부품']!==''?num(x['수리중부품']):num(x['수리중수량'])),0);
     el.innerHTML='<button type="button" data-mvb="rp"'+(rp?' class="warn"':'')+'><b>수리 중 '+rp+'개</b><small>돌아온 부품 입고 처리</small></button><button type="button" data-mvb="lg"><b>최근 입출고</b><small>내역 보기</small></button>';
   }
+  window.emqMvBar=function(){try{bar();}catch(e){}};
   const orig=window.renderPartsReg;
   if(typeof orig==='function'){window.renderPartsReg=function(f){const r=orig.apply(this,arguments);try{bar();}catch(e){}return r;};}
   setTimeout(()=>{try{bar();}catch(e){}},800);
@@ -11217,7 +11463,7 @@ setTimeout(()=>{try{loadHitems();loadXtabs();}catch(e){}},60);
     let list=typeof partsData!=='undefined'?partsData:[];
     if(cat!=='__all__')list=list.filter(p=>p['제품구분']===cat);
     if(f)list=list.filter(p=>['제품구분','제품형태','제품규격','설명'].some(k=>String(p[k]||'').toLowerCase().includes(f)));
-    return list;
+    return typeof partsOrder==='function'?partsOrder(list,f):list;
   }
   function rowHtml(p,i,reg){
     const stock=num(p['현재고']),min=num(p['최소보유수량']),rp=num(p['수리중수량']),low=stock<min;
@@ -11245,7 +11491,7 @@ setTimeout(()=>{try{loadHitems();loadXtabs();}catch(e){}},60);
     };
     grid.onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('pt-row')){e.preventDefault();e.target.click();}};
   }
-  window.renderParts=function(filter){draw('partsGrid',filtered(typeof activeCategory!=='undefined'?activeCategory:'__all__',filter),false);};
+  window.renderParts=function(filter){try{partsSortBarSync();}catch(e){}draw('partsGrid',filtered(typeof activeCategory!=='undefined'?activeCategory:'__all__',filter),false);};
   function renderToday(){
     const grid=document.getElementById('partsGridReg');if(!grid)return;
     let el=document.getElementById('ptToday');
@@ -11257,8 +11503,9 @@ setTimeout(()=>{try{loadHitems();loadXtabs();}catch(e){}},60);
     el.open=open;
   }
   window.renderPartsReg=function(filter){
+    try{partsSortBarSync();}catch(e){}
     draw('partsGridReg',filtered(typeof activeCategoryReg!=='undefined'?activeCategoryReg:'__all__',filter),true);
-    try{if(typeof bar==='function')bar();}catch(e){}
+    try{if(window.emqMvBar)window.emqMvBar();}catch(e){}
     renderToday();
   };
   /* 이미 그려진 화면 갱신 */
@@ -11597,6 +11844,7 @@ function hxEqCard(no){
 }
 /* ===== v79 (1): 업데이트 내용 · 표기 보정 · 부위 자동 인식 ===== */
 const CHANGELOG=[
+ {v:'v91',d:'2026-11-25',items:['펌프 수리: "지점 고장품 받기" 추가 (2공장·경주공장에서 온 고장 펌프를 수리 대기에 등록, 재고는 수리 완료 때 +1)','펌프 수리: 수리 대기 카드마다 [수리 완료] [외주 보냄] [수리 불가] 버튼 추가, 외주 보낸 건은 업체·보낸 날 표시','펌프 수리 완료 때 수리 방식(자체/외주) 필수 선택, 외주는 업체·금액을 적으면 외주 이력에도 자동 등록','펌프 수리 이력에 수리 방식 열·필터, 자체/외주 평균 수리비 표시','부품 입출고: 수리 입고 목록과 "수리 중 N개"에서 펌프 제외(펌프는 펌프 수리 화면에서만 처리), 입고·출고에 "재고조정" 구분 추가(사유 필수)','부품 입출고·부품 조회: 최근 90일 많이 쓴 부품이 위로 (자주 쓰는 순 / 이름순 선택)','"품목에 없는 부품"은 최근 30일 안에 쓴 것만 표시','서버(Apps Script) v25 필요']},
  {v:'v90',d:'2026-11-25',items:['외주 이력 메뉴 추가(점검·이력): 위하고 결재 PDF를 불러와 업체·금액·문서번호 자동 입력, 업체별 월·연 사용 금액 집계, 엑셀 내보내기 (점검자 이상, 수정·삭제는 관리자 이상)','새 버전 첫 접속 때 이번 업데이트 내용을 그림과 함께 보여주는 안내 창 추가 ("이 버전은 다시 보지 않기" 선택 가능)']},
  {v:'v89',d:'2026-11-25',items:['할 일: 카드를 "진행 중 / 완료" 탭으로 나눠 완료한 할 일을 달별로 확인','할 일 추가 카드를 접고 펼 수 있게 함 (평소엔 접힘, 수정할 땐 자동으로 펼침)']},
  {v:'v88',d:'2026-11-20',items:['설비 일괄 정리(관리자): 대상 목록의 글자가 세로로 한 글자씩 나오던 표시 수정']},
@@ -11927,13 +12175,15 @@ document.addEventListener('change',e=>{
 });
 
 /* ===== v90: 새 버전 첫 접속 시 '이번 업데이트' 팝업 (이미지 + 설명). 매 업데이트마다 UPDATE_POP 을 새 버전 내용으로 교체한다 ===== */
-const UPDATE_POP={v:'v90',items:[
- {tag:'신규',title:'외주 이력',sub:'업체별 금액과 외주 작업 기록',hl:'점검·이력 › 외주 이력',img:'updates/v90-outsrc',alt:'외주 이력 화면: 업체별 사용 금액과 이력 목록',
-  lines:['위하고 결재 PDF를 올리면 업체·금액·문서번호가 자동으로 채워집니다.','설비와 구분만 고르면 저장됩니다.','업체별 월·연 사용 금액을 한눈에 볼 수 있고, 엑셀로 받을 수 있습니다.','점검자 이상만 볼 수 있습니다.']},
- {tag:'개선',title:'할 일 완료 내역 확인',sub:'완료한 할 일을 달별로 조회',hl:'일정·할 일 › 할 일',img:'updates/v89-todo',alt:'할 일 화면: 진행 중 / 완료 탭과 달 선택',
-  lines:['목록 위 "진행 중 / 완료" 탭으로 바꿔 봅니다.','완료한 달을 골라 지난 기록을 확인합니다.','"할 일 추가"는 평소 접혀 있어 목록이 바로 보입니다.']},
- {tag:'개선',title:'프레스 설비 선택',sub:'라인별로 고르기',hl:'설비 이력 › 프레스',img:'updates/v87-press',alt:'프레스 설비 선택 화면: 라인별 선택',
-  lines:['프레스를 라인별로 고른 뒤 해당 라인의 설비를 고릅니다.','고른 단계는 위쪽에 요약되고, 뒤로(‹)로 한 단계씩 돌아갑니다.']}
+const UPDATE_POP={v:'v91',items:[
+ {tag:'신규',title:'지점 고장품 받기',sub:'2공장·경주공장에서 온 고장 펌프 등록',hl:'펌프 수리 › 수리 대기·완료',img:'updates/v91-branch',alt:'펌프 수리 화면: 지점 고장품 받기 창',
+  lines:['"+ 지점 고장품 받기"를 눌러 보낸 곳(2공장·경주공장)만 고르면 수리 대기에 1대 들어갑니다.','받았을 때는 재고가 늘지 않고, 수리가 끝나는 순간 재고 +1 됩니다.','우리 라인에서 교체한 펌프는 지금처럼 [부품 사용 등록]에서 등록합니다.']},
+ {tag:'신규',title:'외주 보냄 · 수리 방식',sub:'자체/외주를 구분해 수리비 비교',hl:'펌프 수리 › 수리 대기',img:'updates/v91-outsource',alt:'펌프 수리 대기 카드: 외주 보냄 표시와 수리 완료 방식 선택',
+  lines:['수리 대기 카드의 [외주 보냄]에서 업체를 고르면 "외주 · 업체 · 보낸 날"이 표시됩니다.','수리 완료 때 자체/외주를 꼭 골라야 저장됩니다.','외주는 업체와 금액을 적으면 외주 이력에도 자동으로 등록됩니다.','수리 이력에서 자체·외주 평균 수리비를 비교할 수 있습니다.']},
+ {tag:'개선',title:'자주 쓰는 부품이 위로',sub:'최근 90일 많이 쓴 순',hl:'부품 입출고 · 부품 조회',img:'updates/v91-freq',alt:'부품 입출고 화면: 자주 쓰는 순 / 이름순 정렬 선택',
+  lines:['최근 90일 동안 사용·입출고가 많았던 부품이 맨 위에 나옵니다.','"이름순"으로 바꿔 볼 수도 있고, 검색할 때는 검색 결과 순서 그대로입니다.']},
+ {tag:'개선',title:'입출고 정리',sub:'재고조정 · 수리 입고 · 미등록 부품',hl:'부품 입출고',img:'updates/v91-adjust',alt:'입고 창: 재고조정 구분 선택',
+  lines:['입고·출고에 "재고조정" 구분이 생겼습니다. 실사 때 수량이 다르면 사유를 적고 맞춥니다.','수리 입고 목록과 "수리 중 N개"에는 펌프가 나오지 않습니다. (펌프는 펌프 수리 화면에서만)','"품목에 없는 부품"은 최근 30일 안에 쓴 것만 보입니다.']}
 ]};
 const CL_SKIP='emq-cl-skip',CL2={i:0};
 const clSkipGet=()=>{try{return localStorage.getItem(CL_SKIP)||'';}catch(e){return '';}};
@@ -12052,7 +12302,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
       else if(id==='register'){activeCategoryReg='__all__';clr('partsSearchReg');renderCategoryChipsReg();renderPartsReg('');}
       else if(id==='msds'){msdsCat='__all__';msdsFloor='__all__';msdsLine='__all__';msdsSelected.clear();clr('msdsSearch');renderMsds();}
       else if(id==='codesearch'){clr('codeSearchInput');const r=document.getElementById('codeSearchResults');if(r)r.innerHTML='';}
-      else if(id==='pump'){pumpTab='status';pumpSelId=null;pumpFilter={year:'',line:''};renderPump();}
+      else if(id==='pump'){pumpTab='status';pumpSelId=null;pumpFilter={year:'',line:'',meth:''};renderPump();}
     }catch(e){}
     document.querySelectorAll('#panel-'+id+' details[open]').forEach(d=>d.open=false);
     document.querySelectorAll('#panel-'+id+' .hc-scr').forEach(e=>{e.scrollTop=0;});
@@ -12080,7 +12330,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 
 /* ===== v80: 화면 코드와 서비스워커 버전이 다르면 캐시를 정리하고 한 번만 새로고침 ===== */
-const APP_VER='v90';
+const APP_VER='v91';
 (function(){
   const KEY='emq-vfix-'+APP_VER;
   function swVer(){return new Promise(res=>{try{
@@ -12617,11 +12867,12 @@ async function urLoad(){
 }
 function urRender(){
   const b=urBox();if(!b)return;
-  const rows=UR.rows||[];
-  if(!rows.length&&!UR.err){b.innerHTML='';return;}
-  b.innerHTML='<section class="card ur-card"><h3>품목에 없는 부품 <small>(이력에 직접 입력된 것)</small></h3><p class="us-gd">이력 등록 때 \'목록에 없는 부품\'으로 적은 제조사·모델입니다. 품목으로 등록하면 이후 이력에서 선택·재고 차감이 됩니다.'+(lvOk(3)?'':' 등록은 관리자만 할 수 있습니다.')+'</p>'
+  const lim=Date.now()-30*86400000;
+  const vis=(UR.rows||[]).map((r,i)=>({r:r,i:i})).filter(x=>{const t=Date.parse(String(x.r.last||'').replace(' ','T'));return !isFinite(t)||t>=lim;});
+  if(!vis.length&&!UR.err){b.innerHTML='';return;}
+  b.innerHTML='<section class="card ur-card"><h3>품목에 없는 부품 <small>(최근 30일 이력에 직접 입력된 것)</small></h3><p class="us-gd">이력 등록 때 \'목록에 없는 부품\'으로 적은 제조사·모델입니다. 품목으로 등록하면 이후 이력에서 선택·재고 차감이 됩니다.'+(lvOk(3)?'':' 등록은 관리자만 할 수 있습니다.')+'</p>'
    +(UR.err?'<div class="hc-err">'+E(UR.err)+'</div>':'')
-   +rows.map((r,i)=>'<div class="ur-r"><div><b>'+E((r.maker?r.maker+' ':'')+r.model)+'</b><small>'+r.count+'건 · 수량 '+r.qty+' · 최근 '+E(String(r.last||'').slice(5))+' · '+E((r.eqs||[]).slice(0,4).join(', '))+((r.eqs||[]).length>4?' 외':'')+'</small></div>'
+   +vis.map(({r,i})=>'<div class="ur-r"><div><b>'+E((r.maker?r.maker+' ':'')+r.model)+'</b><small>'+r.count+'건 · 수량 '+r.qty+' · 최근 '+E(String(r.last||'').slice(5))+' · '+E((r.eqs||[]).slice(0,4).join(', '))+((r.eqs||[]).length>4?' 외':'')+'</small></div>'
      +(lvOk(3)?'<button type="button" class="hc-btn sm" data-ur="'+i+'">품목으로 등록</button>':'')+'</div>').join('')+'</section>';
 }
 document.addEventListener('click',e=>{

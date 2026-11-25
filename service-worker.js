@@ -1,15 +1,17 @@
-const CACHE_NAME = 'sulbi-jindan-v90';
+const CACHE_NAME = 'sulbi-jindan-v91';
 const ASSETS = [
   './index.html',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
-  './updates/v90-outsrc-pc.png',
-  './updates/v90-outsrc-mo.png',
-  './updates/v89-todo-pc.png',
-  './updates/v89-todo-mo.png',
-  './updates/v87-press-pc.png',
-  './updates/v87-press-mo.png'
+  './updates/v91-branch-pc.png',
+  './updates/v91-branch-mo.png',
+  './updates/v91-outsource-pc.png',
+  './updates/v91-outsource-mo.png',
+  './updates/v91-freq-pc.png',
+  './updates/v91-freq-mo.png',
+  './updates/v91-adjust-pc.png',
+  './updates/v91-adjust-mo.png'
 ];
 
 self.addEventListener('install', (event) => {
