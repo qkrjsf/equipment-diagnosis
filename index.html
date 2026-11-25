@@ -1291,6 +1291,89 @@ body.dp-open{overflow:hidden}
 .cl-pop h3{margin:0 0 4px;font-size:17px}.cl-pop h4{margin:14px 0 4px;font-size:14px;color:#0E7C9A}.cl-pop h4 small{color:#566B7B;font-weight:400;margin-left:6px}
 .cl-pop ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.65}.cl-pop li b{font-weight:600}
 .cl-f{margin-top:12px}.cl-f .hc-btn{width:100%}
+/* v90: 외주 이력 */
+#panel-outsrc .os-hd{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.os-per{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.os-seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.os-seg button{min-height:40px;padding:4px 16px;border:0;background:#fff;color:inherit;font:inherit;font-size:14px;cursor:pointer}
+.os-seg button[aria-pressed=true]{background:var(--accent);color:#fff;font-weight:700}
+.os-nav{display:inline-flex;align-items:center;gap:6px}
+.os-nav button{width:40px;min-height:40px;border:1px solid var(--line);border-radius:10px;background:#fff;color:inherit;font:inherit;font-size:16px;cursor:pointer}
+.os-lab{font-weight:700;min-width:92px;text-align:center}
+.os-chips{display:flex;flex-wrap:wrap;gap:6px}
+.os-chips button{min-height:38px;padding:4px 12px;border:1px solid var(--line);background:#fff;color:inherit;border-radius:20px;font:inherit;font-size:13px;cursor:pointer}
+.os-chips button[aria-pressed=true]{background:#E6F1F5;border-color:var(--accent);color:var(--accent);font-weight:700}
+.os-chips button.rec::after{content:'추천';margin-left:6px;font-size:10.5px;background:#E2F3EC;color:#23805F;border-radius:5px;padding:0 5px;font-weight:700}
+.os-vr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:9px 6px;border:0;border-bottom:1px solid var(--line);background:none;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;border-radius:8px}
+.os-vr:hover{background:#EEF6F9}
+.os-vr[aria-pressed=true]{background:#E6F1F5;outline:2px solid var(--accent);outline-offset:-2px}
+.os-vr b{font-size:14.5px;overflow-wrap:anywhere}
+.os-vr small{color:var(--muted);font-size:12.5px}
+.os-amt{font-variant-numeric:tabular-nums;text-align:right;font-size:14px;white-space:nowrap;font-weight:600}
+.os-meter{grid-column:1/-1;height:6px;border-radius:3px;background:#9FD0E2;margin-top:2px}
+.os-tot{display:flex;justify-content:space-between;gap:8px;font-weight:700;padding:10px 6px 2px}
+.os-fl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+.os-fl label{font-size:12.5px;color:var(--muted)}
+.os-fl select{min-height:40px;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:4px 10px;max-width:100%}
+.os-x{display:inline-flex;align-items:center;gap:6px;background:#E6F1F5;color:var(--accent);border:1px solid var(--accent);border-radius:20px;padding:0 6px 0 12px;min-height:34px;font-size:13px;font-weight:700}
+.os-x button{border:0;background:none;color:inherit;font-size:16px;cursor:pointer;min-width:28px;min-height:28px}
+.os-rw{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 10px;padding:10px 4px;border:0;border-bottom:1px solid var(--line);background:none;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.os-rw:last-child{border-bottom:0}
+.os-rw:hover{background:#F4F9FB}
+.os-rw .t{font-weight:600;font-size:14.5px;overflow-wrap:anywhere}
+.os-rw .m{grid-column:1/-1;color:var(--muted);font-size:12.5px;display:flex;flex-wrap:wrap;gap:2px 10px}
+.os-rw .n{grid-column:1/-1;font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+.os-tag{display:inline-block;font-size:11px;border-radius:6px;padding:0 6px;font-weight:700;background:#E6F1F5;color:var(--accent)}
+.os-rw .os-tag{background:#fff;border:1px solid var(--line);color:var(--muted)}
+.os-no{font-variant-numeric:tabular-nums}
+.os-empty{color:var(--muted);font-size:13.5px;padding:8px 2px}
+.os-pop{max-width:560px}
+.os-form{display:flex;flex-direction:column;gap:8px;margin:8px 0}
+.os-l{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:#4A5967}
+.os-l textarea{resize:vertical}
+.os-lt{display:block}
+.os-auto,.os-miss,.os-req{display:inline-block;font-style:normal;font-size:10.5px;border-radius:5px;padding:0 6px;margin-left:4px;font-weight:700}
+.os-auto{background:#E2F3EC;color:#23805F}.os-miss{background:#FDF0E2;color:#B35A0E}
+.os-req{font-size:10.5px;background:#FDF0E2;color:#B35A0E;border-radius:5px;padding:0 6px;margin-left:4px;font-weight:700}
+.os-err{color:#BF3A2C;font-size:13px;min-height:18px;margin:2px 0 6px}
+.hx-pop .os-chips button{display:inline-block}
+/* v90: 업데이트 팝업 (그림 + 설명) */
+.cl2-ov{z-index:280}
+.cl2{background:#fff;color:#0B2A3D;border-radius:14px;width:100%;max-width:900px;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,.3);overflow:hidden}
+.cl2-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border-bottom:1px solid #D6E3EA}
+.cl2-h h3{margin:0;font-size:17px}
+.cl2-v{font-size:12px;background:#E6F1F5;color:#0E7C9A;border-radius:20px;padding:2px 10px;font-weight:700}
+.cl2-b{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:0;flex:1;overflow:hidden}
+.cl2-list{border-right:1px solid #D6E3EA;padding:10px;display:flex;flex-direction:column;gap:6px;overflow:auto;background:#F4F8FA}
+.cl2-list button{text-align:left;border:1px solid #D6E3EA;background:#fff;color:inherit;border-radius:10px;padding:10px 12px;font:inherit;cursor:pointer;min-height:56px}
+.cl2-list button b{display:block;font-size:14px}.cl2-list button small{color:#566B7B;font-size:12.5px}
+.cl2-list button[aria-pressed=true]{border-color:#0E7C9A;background:#E6F1F5;outline:2px solid #0E7C9A;outline-offset:-2px}
+.cl2-det{padding:14px 18px;overflow:auto;min-width:0}
+.cl2-shot{position:relative;border:1px solid #D6E3EA;border-radius:10px;overflow:hidden;background:#F4F8FA;margin-bottom:12px}
+.cl2-shot img{display:block;width:100%;height:auto}
+.cl2-hl{position:absolute;left:8px;bottom:8px;background:#0B2A3D;color:#fff;font-size:11.5px;border-radius:6px;padding:2px 8px;z-index:1;font-weight:600}
+.cl2-det h4{margin:0 0 6px;font-size:15.5px}
+.cl2-det ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.cl2-tag{display:inline-block;font-size:10.5px;border-radius:5px;padding:0 6px;margin-right:6px;font-weight:700;background:#E6F1F5;color:#0E7C9A;vertical-align:middle}
+.cl2-tag.n{background:#D9731A;color:#fff}
+.cl2-ctl{display:none}
+.cl2-f{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 18px;border-top:1px solid #D6E3EA;background:#F4F8FA}
+.cl2-f label{display:flex;align-items:center;gap:8px;font-size:13.5px;cursor:pointer;min-height:44px}
+.cl2-f input{width:20px;height:20px;accent-color:#0E7C9A}
+.cl2-f .hc-btn{min-width:96px}
+@media (max-width:720px){
+  .cl2-ov{align-items:flex-end;padding:0}
+  .cl2{border-radius:16px 16px 0 0;max-height:96vh}
+  .cl2-b{grid-template-columns:minmax(0,1fr)}
+  .cl2-list{display:none}
+  .cl2-shot img{max-height:34vh;object-fit:cover;object-position:top;width:100%}
+  .cl2-ctl{display:block;position:sticky;bottom:-14px;background:#fff;padding:2px 0 4px;margin-top:6px}
+  .cl2-dots{display:flex;gap:6px;justify-content:center;margin:8px 0}
+  .cl2-dots i{width:8px;height:8px;border-radius:50%;background:#D6E3EA}.cl2-dots i.on{background:#0E7C9A}
+  .cl2-nv{display:flex;gap:8px}.cl2-nv .hc-btn{flex:1}
+  .cl2-f{padding-bottom:max(10px,env(safe-area-inset-bottom,0px))}
+}
+
 /* 층→호기 칩 */
 .ep{display:flex;flex-direction:column;gap:6px}
 .ep-fl,.ep-no,.ep-ch{display:flex;gap:6px;flex-wrap:wrap}
@@ -1515,7 +1598,7 @@ function busy(d,type){
 }
 /* v78: 저장 요청에 요청 번호(rid)를 붙여 더블탭·재시도로 두 번 저장되지 않게 함.
    같은 내용의 요청이 3분 안에 다시 가면 같은 번호를 재사용 → 서버가 이미 처리한 요청은 다시 처리하지 않음 */
-const IDEMP={photo_add:1,item_register:1,todo_update:1,hist_add:1,stock_in:1,stock_out:1,usage:1,repair_out:1,todo_add:1,equip_swap:1};
+const IDEMP={outsrc_add:1,photo_add:1,item_register:1,todo_update:1,hist_add:1,stock_in:1,stock_out:1,usage:1,repair_out:1,todo_add:1,equip_swap:1};
 const RIDS={};
 function ridFor(b){
   const k=Object.keys(b).filter(x=>x!=='token'&&x!=='rid'&&x!=='force'&&x!=='worker').sort().map(x=>x+'='+JSON.stringify(b[x])).join('&'),now=Date.now();
@@ -1704,7 +1787,7 @@ start();
     <div class="tab" data-tab="codesearch" role="button" tabindex="0" id="codesearchTab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg><span data-i18n="tabCodeSearch">에러코드</span></div>
     <div class="tab" data-tab="settings" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-i18n="tabSettings">설정</span><i class="dot"></i></div>
     <div class="tab more" data-tab="more" role="button" tabindex="0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg><span data-i18n="tabMore">더보기</span><i class="dot"></i></div>
-    <div class="sb-foot"><span id="verLabel">v89</span></div>
+    <div class="sb-foot"><span id="verLabel">v90</span></div>
   </nav>
 
   <div class="content">
@@ -1898,6 +1981,11 @@ start();
     <div class="hc" id="emqSched"></div>
   </div>
 
+  <div class="panel" id="panel-outsrc">
+    <h1 class="page-title">외주 이력</h1>
+    <div class="hc" id="emqOuts"></div>
+  </div>
+
   <div class="panel" id="panel-more">
     <h1 class="page-title" data-i18n="tabMore">더보기</h1>
     <div class="more-list">
@@ -1930,7 +2018,7 @@ start();
       <section class="card wide">
         <h3 data-i18n="setAppH">앱 정보</h3>
         <div class="set-row" style="align-items:center">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v89</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-muted)" id="verLabel2">v90</span>
           <button id="updateBtn" class="update-btn" disabled title="업데이트 확인 중...">↻ 확인 중</button>
         </div>
       </section>
@@ -8895,12 +8983,12 @@ init();
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js?v=v89', { updateViaCache: 'none' }).catch(() => {});
+    navigator.serviceWorker.register('service-worker.js?v=v90', { updateViaCache: 'none' }).catch(() => {});
   });
 }
 
 const updateBtn = document.getElementById('updateBtn');
-const PAGE_CACHE = 'sulbi-jindan-v89';
+const PAGE_CACHE = 'sulbi-jindan-v90';
 
 function getActiveVersion(){
   return new Promise((resolve) => {
@@ -9630,13 +9718,13 @@ function chkInput(ev){
 function chkChange(ev){const t=ev.target;if(t.id==='hcCk')HC.cf.kind=t.value;else if(t.id==='hcCe')HC.cf.eq=t.value;else if(t.id==='hcCp')HC.cf.p=t.value;else return;refreshChk(true);}
 
 /* ---------- 좌측 메뉴 ---------- */
-const IC={cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',chat:'<path d="M3 12h4l3-8 4 16 3-8h4"/>',equip:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 20V9"/>',parts:'<path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',code:'<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/>',msds:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',register:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/>',pump:'<circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/>',inspect:'<path d="M9 3h6v3H9z"/><path d="M7 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1"/><path d="M9 14l2 2 4-4"/>',history:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',todo:'<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h5"/>',chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',monitor:'<rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0M17 5a3.5 3.5 0 0 1 0 7M22 20a7 7 0 0 0-4-6"/>',settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>'};
+const IC={cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',chat:'<path d="M3 12h4l3-8 4 16 3-8h4"/>',equip:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 20V9"/>',parts:'<path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',code:'<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/>',msds:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',register:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/>',pump:'<circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/>',inspect:'<path d="M9 3h6v3H9z"/><path d="M7 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1"/><path d="M9 14l2 2 4-4"/>',history:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',outs:'<circle cx="12" cy="12" r="9"/><path d="M8 8l2 8 2-6 2 6 2-8M7 11.5h10M7 14h10"/>',todo:'<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h5"/>',chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',monitor:'<rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0M17 5a3.5 3.5 0 0 1 0 7M22 20a7 7 0 0 0-4-6"/>',settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>'};
 const ic=k=>'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[k]+'</svg>';
 function menuDef(){const P=PP;return [
   {items:[{id:'home',t:P('홈','Home'),i:'home'}]},
   {label:P('진단·조회','DIAGNOSE · LOOKUP'),items:[{id:'chat',t:P('진단하기','Diagnose'),i:'chat'},{id:'equip',t:P('설비 사양','Equipment'),i:'equip'},{id:'parts',t:P('부품 조회','Parts'),i:'parts'},{id:'codesearch',t:P('에러코드','Error codes'),i:'code',ko:1},{id:'msds',t:'MSDS',i:'msds'}]},
   {label:P('등록·수리','REGISTER · REPAIR'),items:[{id:'register',t:P('부품 입출고','Parts in/out'),i:'register',lv:2},{id:'pump',t:(document.body.getAttribute('data-team')==='other'?P('펌프 부품 재고','Pump part stock'):P('펌프 수리 (A2VK)','Pump repair (A2VK)')),i:'pump',lv:(document.body.getAttribute('data-team')==='other'?1:2)}]},
-  {label:P('점검·이력','INSPECT · HISTORY'),items:[{id:'check',t:P('점검','Inspection'),i:'inspect'},{id:'hist',t:P('설비 이력','Equipment history'),i:'history'}]},
+  {label:P('점검·이력','INSPECT · HISTORY'),items:[{id:'check',t:P('점검','Inspection'),i:'inspect'},{id:'hist',t:P('설비 이력','Equipment history'),i:'history'},{id:'outsrc',t:P('외주 이력','Outsourcing'),i:'outs',lv:2,main:1,ko:1}]},
   {label:P('업무','WORK'),items:[{id:'sched',t:P('일정 · 할 일','Schedule · To-do'),i:'cal',main:1}]},
   {label:P('관리','ADMIN'),items:[{id:'chkadmin',t:'점검 항목 관리',i:'inspect',lv:3},{id:'users',t:'사용자 관리',i:'users',lv:4}]},
   {items:[{id:'account',t:'내 계정',i:'user'},{id:'settings',t:P('설정','Settings'),i:'settings'}]}];}
@@ -9688,6 +9776,7 @@ window.hcOnPanel=function(name){
   curPanel=name;setDrawer(false);
   if(name==='hist'){if(window.EMQ&&!EMQ.can(2)&&HC.tabH==='new')HC.tabH='list';refreshHistInit();if(!HC.W)newW();refreshHist();loadHist(!HC.histOk);loadHitems();loadXtabs();if(!partsData.length)loadPartsFromSheet().catch(()=>{});}
   if(name==='check'){chkInit();refreshChk();loadChk(true);if(!equipRows.length)loadEquip();}
+  if(name==='outsrc')osOnPanel();
 };
 function init(){
   const tb=document.querySelector('.topbar .tb-brand')||document.querySelector('.topbar');
@@ -9714,12 +9803,12 @@ function init(){
 
 /* ---------- 로그인·권한 ---------- */
 window.emqToast=toast;
-const LV_NEED={register:2,users:4,chkadmin:3};
+const LV_NEED={register:2,users:4,chkadmin:3,outsrc:2};
 function emqGuard(name){
   const E0=window.EMQ;if(!E0)return false;
-  if(LV_NEED[name]&&!E0.can(LV_NEED[name])){toast(name==='users'?'마스터만 사용할 수 있습니다.':name==='chkadmin'?'관리자 이상만 사용할 수 있습니다.':'조회 권한 계정은 등록 화면을 사용할 수 없습니다.');showPanel('home');return true;}
+  if(LV_NEED[name]&&!E0.can(LV_NEED[name])){toast(name==='users'?'마스터만 사용할 수 있습니다.':name==='chkadmin'?'관리자 이상만 사용할 수 있습니다.':name==='outsrc'?'점검자 이상만 사용할 수 있습니다.':'조회 권한 계정은 등록 화면을 사용할 수 없습니다.');showPanel('home');return true;}
   if(name==='pump'){const oth=document.body.getAttribute('data-team')==='other';if(oth){renderPumpStockOnly();return false;}if(!E0.can(2)){toast('조회 권한 계정은 펌프 수리 화면을 사용할 수 없습니다.');showPanel('home');return true;}}
-  if((name==='todo'||name==='sched')&&document.body.getAttribute('data-team')==='other'){toast('생산기술팀 전용 메뉴입니다.');showPanel('home');return true;}
+  if((name==='todo'||name==='sched'||name==='outsrc')&&document.body.getAttribute('data-team')==='other'){toast('생산기술팀 전용 메뉴입니다.');showPanel('home');return true;}
   if(name==='chkadmin'){loadItems();loadHitems();renderAdm();if(!equipRows.length&&typeof loadEquip==='function'){try{Promise.resolve(loadEquip()).then(renderAdm);}catch(e){}}}
   if(name==='account'){renderAcc();}
   if(name==='users'){loadUsers();}
@@ -11508,6 +11597,7 @@ function hxEqCard(no){
 }
 /* ===== v79 (1): 업데이트 내용 · 표기 보정 · 부위 자동 인식 ===== */
 const CHANGELOG=[
+ {v:'v90',d:'2026-11-25',items:['외주 이력 메뉴 추가(점검·이력): 위하고 결재 PDF를 불러와 업체·금액·문서번호 자동 입력, 업체별 월·연 사용 금액 집계, 엑셀 내보내기 (점검자 이상, 수정·삭제는 관리자 이상)','새 버전 첫 접속 때 이번 업데이트 내용을 그림과 함께 보여주는 안내 창 추가 ("이 버전은 다시 보지 않기" 선택 가능)']},
  {v:'v89',d:'2026-11-25',items:['할 일: 카드를 "진행 중 / 완료" 탭으로 나눠 완료한 할 일을 달별로 확인','할 일 추가 카드를 접고 펼 수 있게 함 (평소엔 접힘, 수정할 땐 자동으로 펼침)']},
  {v:'v88',d:'2026-11-20',items:['설비 일괄 정리(관리자): 대상 목록의 글자가 세로로 한 글자씩 나오던 표시 수정']},
  {v:'v87',d:'2026-11-20',items:['설비 선택을 단계마다 화면이 바뀌도록 변경: 고른 칩은 위쪽 경로로 남고 다음 칩만 표시 (이력 등록, 빠른 등록)','뒤로(‹)로 한 단계씩 되돌아가기']},
@@ -11563,6 +11653,327 @@ function clMount(){
 }
 document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('[data-clopen]'))clOpen();});
 setTimeout(clMount,0);setTimeout(clMount,1500);
+
+/* ===== v90: 외주 이력 (점검자 이상 조회·등록 / 관리자 이상 수정·삭제) ===== */
+const OS={rows:[],ok:false,loading:false,per:'m',cur:'',kind:'전체',vendor:'',eq:'전체',err:'',f:null,busy:false};
+window.emqOS=OS;window.emqOsRender=()=>osRender();
+const OS_KINDS=['수리','공사','구매','PLC·프로그램'];
+const OS_EQS=['1F-1','1F-2','1F-3','2F-1','2F-2','2F-3','프레스','트리밍프레스','칠러','경주공장'];
+const OS_ERR={dup_no:'이미 등록된 문서번호입니다.',bad_date:'일자를 확인하세요.',no_vendor:'업체를 입력하세요.',no_what:'내용을 입력하세요.',no_eq:'설비를 선택하세요.',bad_kind:'구분을 선택하세요.',bad_amt:'금액은 0 이상의 숫자(원)로 입력하세요.',bad_no:'문서번호 형식이 올바르지 않습니다. (예: 20261125-00004)',forbidden:'권한이 없습니다.',forbidden_team:'생산기술팀만 사용할 수 있습니다.',not_found:'이미 삭제되었거나 찾을 수 없는 건입니다.',rate:'요청이 너무 많습니다. 잠시 후 다시 시도하세요.'};
+const osWon=n=>Number(n||0).toLocaleString('ko-KR')+'원';
+function osCurK(){if(!OS.cur){const n=new Date();OS.cur=n.getFullYear()+'-'+pad(n.getMonth()+1);}return OS.cur;}
+function osLabel(){const c=osCurK();return OS.per==='m'?c.slice(0,4)+'년 '+Number(c.slice(5))+'월':c.slice(0,4)+'년';}
+function osInPer(d){const c=osCurK();return OS.per==='m'?String(d).slice(0,7)===c:String(d).slice(0,4)===c.slice(0,4);}
+function osNav(dir){let y=Number(osCurK().slice(0,4)),m=Number(OS.cur.slice(5));if(OS.per==='y')y+=dir;else{m+=dir;if(m<1){m=12;y--;}if(m>12){m=1;y++;}}OS.cur=y+'-'+pad(m);}
+const osBase=()=>OS.rows.filter(r=>osInPer(r.date)&&(OS.kind==='전체'||r.kind===OS.kind));
+const osView=()=>osBase().filter(r=>(!OS.vendor||r.vendor===OS.vendor)&&(OS.eq==='전체'||r.eq===OS.eq)).sort((a,b)=>String(b.date).localeCompare(String(a.date))||String(b.id).localeCompare(String(a.id)));
+
+/* 설비·구분은 제목과 사유의 단어로 '추천'만 한다 (고르는 건 사람) */
+function osGuess(t){
+  t=String(t||'');const m=t.match(/([12])\s*[Ff층]\s*-?\s*(\d)/);
+  if(m)return m[1]+'F-'+m[2];
+  if(/트리밍/.test(t))return '트리밍프레스';if(/칠러/.test(t))return '칠러';if(/경주/.test(t))return '경주공장';if(/프레스/.test(t))return '프레스';
+  return '';
+}
+function osGuessKind(title){
+  title=String(title||'');
+  if(/PLC|프로그램/i.test(title))return 'PLC·프로그램';
+  if(/수리|보수/.test(title))return '수리';
+  if(/설치|시운전|공사/.test(title))return '공사';
+  if(/견적|구매|발주/.test(title))return '구매';
+  return '';
+}
+
+/* ---- 서버 ---- */
+async function osLoad(force){
+  if(OS.loading)return;if(OS.ok&&!force)return;
+  OS.loading=true;OS.err='';osRender();
+  try{
+    if(!(await srvAtLeast(24))){OS.err='srv';OS.loading=false;osRender();return;}
+    const r=await hcGet('outsrc');
+    if(r&&r.ok){OS.rows=r.rows||[];OS.ok=true;}
+    else OS.err=(r&&r.error)||'load';
+  }catch(e){OS.err='net';}
+  OS.loading=false;osRender();
+}
+/* ---- 화면 ---- */
+function osAggHtml(){
+  const rows=osBase(),by={},cnt={};let tot=0;
+  rows.forEach(r=>{by[r.vendor]=(by[r.vendor]||0)+(r.amt||0);cnt[r.vendor]=(cnt[r.vendor]||0)+1;tot+=r.amt||0;});
+  const names=Object.keys(by).sort((a,b)=>by[b]-by[a]),mx=Math.max.apply(null,names.map(n=>by[n]).concat([1]));
+  let h='<div class="hc-card"><h3>업체별 사용 금액</h3><div class="os-per"><span class="os-seg"><button type="button" data-os="per" data-v="m" aria-pressed="'+(OS.per==='m')+'">월</button><button type="button" data-os="per" data-v="y" aria-pressed="'+(OS.per==='y')+'">연</button></span>'
+   +'<span class="os-nav"><button type="button" data-os="nav" data-v="-1" aria-label="이전">◀</button><span class="os-lab">'+E(osLabel())+'</span><button type="button" data-os="nav" data-v="1" aria-label="다음">▶</button></span></div>'
+   +'<div class="os-chips" style="margin-bottom:8px">'+['전체'].concat(OS_KINDS).map(k=>'<button type="button" data-os="kind" data-v="'+A(k)+'" aria-pressed="'+(OS.kind===k)+'">'+E(k)+'</button>').join('')+'</div>';
+  if(!names.length)h+='<div class="os-empty">이 기간에 등록된 외주 건이 없습니다.</div>';
+  names.forEach(n=>{h+='<button type="button" class="os-vr" data-os="vendor" data-v="'+A(n)+'" aria-pressed="'+(OS.vendor===n)+'"><b>'+E(n)+'</b><span class="os-amt">'+osWon(by[n])+'</span><small>'+cnt[n]+'건</small><span class="os-meter" style="width:'+Math.max(4,Math.round(by[n]/mx*100))+'%"></span></button>';});
+  if(names.length)h+='<div class="os-tot"><span>합계 '+rows.length+'건</span><span class="os-amt">'+osWon(tot)+'</span></div>';
+  return h+'</div>';
+}
+function osListHtml(){
+  const eqs=['전체'];OS.rows.forEach(r=>{if(r.eq&&eqs.indexOf(r.eq)<0)eqs.push(r.eq);});
+  const rows=osView();
+  let h='<div class="hc-card"><h3>이력 목록 <span class="os-tag">'+rows.length+'건</span></h3><div class="os-fl"><label for="osEqf">설비</label><select id="osEqf" data-os="eqf">'+eqs.map(e=>'<option'+(OS.eq===e?' selected':'')+'>'+E(e)+'</option>').join('')+'</select>';
+  if(OS.vendor)h+='<span class="os-x">'+E(OS.vendor)+'<button type="button" data-os="vendor" data-v="'+A(OS.vendor)+'" aria-label="업체 필터 해제">×</button></span>';
+  h+='<button type="button" class="hc-btn ghost sm" data-os="xl" style="margin-left:auto"'+(rows.length?'':' disabled')+'>엑셀로 받기</button></div>';
+  if(!rows.length)h+='<div class="os-empty">조건에 맞는 이력이 없습니다.</div>';
+  rows.forEach(r=>{h+='<button type="button" class="os-rw" data-os="row" data-id="'+A(r.id)+'"><span class="t">'+E(r.what)+'</span><span class="os-amt">'+osWon(r.amt)+'</span><span class="m"><span>'+E(r.date)+'</span><span>'+E(r.vendor)+'</span><span>'+E(r.eq)+'</span><span class="os-tag k">'+E(r.kind)+'</span>'+(r.no?'<span class="os-no">'+E(r.no)+'</span>':'')+'</span>'+(r.note?'<span class="n">메모: '+E(r.note)+'</span>':'')+'</button>';});
+  return h+'</div>';
+}
+function osRender(){
+  const box=$('emqOuts');if(!box)return;
+  let h='<div class="os-hd"><button type="button" class="hc-btn" data-os="pdf">+ 결재 PDF 불러오기</button><button type="button" class="hc-btn ghost" data-os="manual">직접 입력</button><input type="file" id="osFile" accept="application/pdf,.pdf" hidden></div>';
+  if(OS.err==='srv')h+='<div class="hc-card"><p class="hc-hint" style="margin:0">외주 이력은 서버(Apps Script)를 v24로 업데이트한 뒤 사용할 수 있습니다.</p></div>';
+  else if(OS.err)h+='<div class="hc-card"><p class="hc-hint" style="margin:0 0 8px">'+(OS.err==='forbidden'?'점검자 이상만 볼 수 있습니다.':OS.err==='forbidden_team'?'생산기술팀만 사용할 수 있습니다.':'외주 이력을 불러오지 못했습니다. 인터넷 연결을 확인하세요.')+'</p><button type="button" class="hc-btn ghost sm" data-os="retry">다시 불러오기</button></div>';
+  else if(OS.loading&&!OS.ok)h+='<div class="hc-card"><p class="hc-hint" style="margin:0">불러오는 중…</p></div>';
+  else h+=osAggHtml()+osListHtml();
+  box.innerHTML=h;
+}
+function osOnPanel(){osCurK();osRender();osLoad(true);}
+
+/* ---- 입력 창 ---- */
+function osChips(list,cur,act,rec){return '<div class="os-chips">'+list.map(x=>'<button type="button" data-os="'+act+'" data-v="'+A(x)+'" aria-pressed="'+(cur===x)+'"'+(rec===x?' class="rec"':'')+'>'+E(x)+'</button>').join('')+'</div>';}
+function osNew(src){return Object.assign({id:'',mode:'new',no:'',date:todayK(),vendor:'',what:'',detail:'',eq:'',kind:'',amt:'',note:'',rec:{eq:'',kind:''},src:'',miss:[]},src||{});}
+function osOpenForm(f){
+  OS.f=f;const ro=f.mode==='view',ed=f.mode==='edit';
+  const eqIn=f.eq&&OS_EQS.indexOf(f.eq)<0;
+  const fld=(k,lab,inner,note)=>'<label class="os-l"><span class="os-lt">'+lab+(f.miss.indexOf(k)>=0?' <i class="os-miss">못 읽음 · 직접 입력</i>':(f.src==='pdf'&&f.auto&&f.auto.indexOf(k)>=0?' <i class="os-auto">자동</i>':''))+'</span>'+inner+(note||'')+'</label>';
+  const dis=ro?' disabled':'';
+  const h='<h3>'+(ro?'외주 이력':ed?'외주 이력 수정':f.src==='pdf'?'결재 PDF에서 읽은 내용':'외주 이력 직접 입력')+'</h3>'
+   +(f.src==='pdf'?'<p class="hc-hint" style="margin:0 0 8px">읽은 값을 확인하고, 설비와 구분을 고른 뒤 저장하세요. 띄어쓰기가 어색하면 고쳐 쓰세요.</p>':'')
+   +'<div class="os-form">'
+   +fld('no','문서번호','<input class="hc-in" data-osf="no" inputmode="numeric" maxlength="14" placeholder="예: 20261125-00004 (없으면 비움)" value="'+A(f.no)+'"'+dis+'>')
+   +fld('date','일자','<input class="hc-in" type="date" data-osf="date" value="'+A(f.date)+'"'+dis+'>')
+   +fld('vendor','업체','<input class="hc-in" data-osf="vendor" maxlength="40" value="'+A(f.vendor)+'"'+dis+'>')
+   +fld('what','내용','<input class="hc-in" data-osf="what" maxlength="100" value="'+A(f.what)+'"'+dis+'>')
+   +fld('amt','금액 (원)','<input class="hc-in" data-osf="amt" inputmode="numeric" placeholder="예: 600000" value="'+A(f.amt)+'"'+dis+'>')
+   +fld('detail','상세 (구매 사유)','<textarea class="hc-in" data-osf="detail" rows="3" maxlength="300"'+dis+'>'+E(f.detail)+'</textarea>')
+   +fld('note','메모 (특기사항)','<textarea class="hc-in" data-osf="note" rows="2" maxlength="300"'+dis+'>'+E(f.note)+'</textarea>')
+   +'<div class="os-l"><span class="os-lt">설비 <i class="os-req">필수</i></span>'+(ro?'<div>'+E(f.eq)+'</div>':osChips(OS_EQS,f.eq,'peq',f.rec.eq)+'<input class="hc-in" data-osf="eqx" maxlength="30" placeholder="목록에 없으면 직접 입력" value="'+A(eqIn?f.eq:'')+'" style="margin-top:6px">')+'</div>'
+   +'<div class="os-l"><span class="os-lt">구분 <i class="os-req">필수</i></span>'+(ro?'<div>'+E(f.kind)+'</div>':osChips(OS_KINDS,f.kind,'pkd',f.rec.kind))+'</div>'
+   +(f.by?'<p class="hc-hint" style="margin:0">등록: '+E(f.by)+' · '+E(f.at||'')+'</p>':'')
+   +'</div><p class="os-err" id="osErr" role="alert"></p>'
+   +'<div class="hm-fa" style="flex-wrap:wrap">'+(ro?'':'<button type="button" class="hc-btn" data-os="save" id="osSave">저장</button>')+(ed&&lvOk(3)?'<button type="button" class="hc-btn bad" data-os="del">삭제</button>':'')+'<button type="button" class="hc-btn ghost" data-os="close">'+(ro?'닫기':'취소')+'</button></div>';
+  const ov=hxModal(h,'os-pop wide');
+  ov.addEventListener('click',osModalClick);ov.addEventListener('input',osModalInput);
+  osFormCheck();
+}
+function osFormVal(){
+  const f=OS.f,amtRaw=String(f.amt==null?'':f.amt).replace(/[,\s원]/g,'');
+  const amtOk=amtRaw!==''&&/^\d+$/.test(amtRaw);
+  const noOk=!f.no||/^\d{8}-\d{5}$/.test(f.no);
+  return {amt:amtRaw,ok:!!(f.date&&String(f.vendor).trim()&&String(f.what).trim()&&f.eq&&f.kind&&amtOk&&noOk),amtOk:amtOk,noOk:noOk};
+}
+function osFormCheck(){const b=$('osSave');if(!b||!OS.f)return;const v=osFormVal();b.disabled=!v.ok||OS.busy;}
+function osModalInput(e){
+  const t=e.target.closest('[data-osf]');if(!t||!OS.f)return;const k=t.dataset.osf;
+  if(k==='eqx'){OS.f.eq=t.value.trim();document.querySelectorAll('.os-pop [data-os=peq]').forEach(b=>b.setAttribute('aria-pressed','false'));}
+  else OS.f[k]=t.value;
+  const er=$('osErr');if(er)er.textContent='';osFormCheck();
+}
+async function osModalClick(e){
+  const t=e.target.closest('[data-os]');if(!t||!OS.f)return;const a=t.dataset.os,f=OS.f;
+  if(a==='peq'){f.eq=t.dataset.v;const x=document.querySelector('.os-pop [data-osf=eqx]');if(x)x.value='';document.querySelectorAll('.os-pop [data-os=peq]').forEach(b=>b.setAttribute('aria-pressed',String(b===t)));osFormCheck();}
+  else if(a==='pkd'){f.kind=t.dataset.v;document.querySelectorAll('.os-pop [data-os=pkd]').forEach(b=>b.setAttribute('aria-pressed',String(b===t)));osFormCheck();}
+  else if(a==='close'){OS.f=null;hxClose();}
+  else if(a==='save')osSave();
+  else if(a==='del')osDelete();
+}
+async function osSave(){
+  const f=OS.f,v=osFormVal(),er=$('osErr');if(!v.ok||OS.busy)return;
+  if(f.no){const d=OS.rows.find(r=>r.no===f.no&&r.id!==f.id);if(d){er.textContent='이미 등록된 문서번호입니다. ('+d.date+' · '+d.vendor+' · '+d.what+')';return;}}
+  OS.busy=true;osFormCheck();er.textContent='';
+  try{
+    const p={type:f.id?'outsrc_update':'outsrc_add',date:f.date,no:f.no,vendor:String(f.vendor).trim(),what:String(f.what).trim(),detail:String(f.detail).trim(),eq:String(f.eq).trim(),kind:f.kind,amt:Number(v.amt),note:String(f.note).trim()};
+    if(f.id)p.id=f.id;
+    const r=await hcPost(p);
+    if(r&&r.ok){OS.f=null;hxClose();toast(f.id?'수정했습니다.':'저장했습니다. 목록과 집계에 반영되었습니다.');OS.cur=f.date.slice(0,7);OS.vendor='';OS.eq='전체';OS.kind='전체';OS.ok=false;await osLoad(true);}
+    else er.textContent=OS_ERR[r&&r.error]||'저장하지 못했습니다. 잠시 후 다시 시도하세요.';
+  }catch(e){er.textContent='저장하지 못했습니다. 인터넷 연결을 확인하세요.';}
+  OS.busy=false;osFormCheck();
+}
+async function osDelete(){
+  const f=OS.f;if(!f||!f.id||OS.busy)return;
+  const ok=await emqAsk('이 외주 이력을 삭제할까요?','<b>'+E(f.vendor)+'</b> · '+E(f.what)+'<br>'+osWon(Number(String(f.amt).replace(/,/g,'')))+'<br><small>삭제하면 목록과 집계에서 빠집니다.</small>','삭제','취소');
+  if(!ok)return;
+  OS.busy=true;
+  try{const r=await hcPost({type:'outsrc_del',id:f.id});
+    if(r&&r.ok){OS.f=null;hxClose();toast('삭제했습니다.');OS.ok=false;await osLoad(true);}
+    else{const er=$('osErr');if(er)er.textContent=OS_ERR[r&&r.error]||'삭제하지 못했습니다.';}
+  }catch(e){const er=$('osErr');if(er)er.textContent='삭제하지 못했습니다. 인터넷 연결을 확인하세요.';}
+  OS.busy=false;
+}
+
+/* ---- 결재 PDF 읽기 (pdf.js 를 처음 쓸 때만 내려받아 기기에 보관) ---- */
+const OS_PDF_URL='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',OS_PDFW_URL='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+let osPdfP=null;
+function osBlobOf(url){
+  return (async()=>{
+    let cache=null;try{cache=await caches.open('emq-libs');}catch(e){}
+    if(cache){try{const hit=await cache.match(url);if(hit)return await hit.blob();}catch(e){}}
+    const r=await fetch(url);if(!r.ok)throw new Error('net');
+    if(cache){try{await cache.put(url,r.clone());}catch(e){}}
+    return await r.blob();
+  })();
+}
+function osPdfLoad(){
+  if(window.pdfjsLib&&window.pdfjsLib.GlobalWorkerOptions.workerSrc)return Promise.resolve(window.pdfjsLib);
+  if(osPdfP)return osPdfP;
+  return osPdfP=(async()=>{
+    const [b1,b2]=await Promise.all([osBlobOf(OS_PDF_URL),osBlobOf(OS_PDFW_URL)]);
+    await new Promise((ok,no)=>{const s=document.createElement('script');s.src=URL.createObjectURL(b1);s.onload=ok;s.onerror=()=>no(new Error('net'));document.head.appendChild(s);});
+    if(!window.pdfjsLib)throw new Error('net');
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc=URL.createObjectURL(b2);return window.pdfjsLib;
+  })().catch(e=>{osPdfP=null;throw e;});
+}
+async function osPdfLines(file){
+  const lib=await osPdfLoad(),doc=await lib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise,out=[];
+  for(let p=1;p<=Math.min(doc.numPages,3);p++){
+    const tc=await (await doc.getPage(p)).getTextContent();
+    const its=tc.items.filter(i=>i.str&&i.str.trim()).map(i=>({x:i.transform[4],y:i.transform[5],w:i.width,s:i.str,h:Math.abs(i.transform[3])||10}));
+    const rows=[];its.sort((a,b)=>b.y-a.y||a.x-b.x).forEach(it=>{const r=rows.find(r=>Math.abs(r.y-it.y)<3);if(r)r.items.push(it);else rows.push({y:it.y,items:[it]});});
+    rows.sort((a,b)=>b.y-a.y).forEach(r=>{r.items.sort((a,b)=>a.x-b.x);let t='',px=null;r.items.forEach(it=>{if(px!==null&&it.x-px>it.h*0.25)t+=' ';t+=it.s;px=it.x+it.w;});out.push(t.trim());});
+  }
+  return out;
+}
+/* 위하고 구매품의서(구매·수리·공사 공통 양식)에서 값을 뽑는다. 못 읽은 항목은 빈칸으로 두고 직접 입력하게 한다 */
+function osParse(lines){
+  const T=lines.join('\n'),L=w=>w.split('').join('\\s*');   // 글자 사이 띄어쓰기가 있어도 읽히게
+  if(!new RegExp(L('구매품의서')).test(T)&&!new RegExp(L('문서번호')).test(T))return null;
+  const g=(re)=>{const m=T.match(re);return m?m[1].trim():'';};
+  const no=g(new RegExp(L('문서번호')+'\\s*(\\d{8}-\\d{5})')),dm=T.match(new RegExp(L('작성일자')+'\\s*(\\d{4})\\.(\\d{2})\\.(\\d{2})')),title=g(new RegExp('^'+L('문서제목')+'\\s*(.+)$','m'));
+  let vendor='',what=title;const bm=title.match(/^\s*\[([^\]]+)\]\s*(.*)$/);
+  if(bm){vendor=bm[1].trim();what=bm[2].trim();}else vendor=g(new RegExp(L('납품자')+'\\s*(.*?)\\s*'+L('연락처')));
+  const am=T.match(new RegExp(L('합계금액')+'\\s*([\\d,]+)'));
+  const tidy=x=>x.replace(/\(\s+/g,'(').replace(/\s+\)/g,')').replace(/\s+,/g,',').replace(/\s{2,}/g,' ').trim();
+  const between=(a,b)=>{const i=lines.findIndex(l=>l.replace(/\s/g,'')===a);if(i<0)return '';const o=[];for(let k=i+1;k<lines.length;k++){if(lines[k].replace(/\s/g,'')===b)break;o.push(lines[k]);}return tidy(o.join(' / '));};
+  return {no:no,date:dm?dm[1]+'-'+dm[2]+'-'+dm[3]:'',vendor:vendor,what:what,amt:am?String(Number(am[1].replace(/,/g,''))):'',detail:between('구매사유','특기사항'),note:between('특기사항','근거')};
+}
+async function osPickPdf(file){
+  if(!file)return;
+  if(file.size>10*1024*1024){toast('PDF가 너무 큽니다. (10MB 이하)');return;}
+  toast('결재 PDF를 읽는 중…');
+  let lines;
+  try{lines=await osPdfLines(file);}catch(e){toast(e&&e.message==='net'?'PDF 읽기 도구를 불러오지 못했습니다. 인터넷 연결을 확인하세요.':'PDF를 읽지 못했습니다. 다른 파일을 골라 주세요.');return;}
+  document.querySelectorAll('.hc-toast').forEach(x=>x.remove());
+  const p=lines.length?osParse(lines):null;
+  if(!p){toast('위하고 구매품의서 PDF가 아닌 것 같습니다. 직접 입력을 이용하세요.');return;}
+  const auto=[],miss=[];['no','date','vendor','what','amt','detail','note'].forEach(k=>{(p[k]?auto:miss).push(k);});
+  const miss2=miss.filter(k=>k!=='note'&&k!=='detail'&&k!=='no');
+  const dup=p.no&&OS.rows.find(r=>r.no===p.no);
+  if(dup){toast('이미 등록된 문서번호입니다. ('+dup.date+' · '+dup.vendor+')');return;}
+  const rec={eq:osGuess(p.what+' '+p.detail),kind:osGuessKind(p.what)};
+  osOpenForm(osNew(Object.assign({},p,{src:'pdf',auto:auto,miss:miss2,rec:rec,date:p.date||todayK(),amt:p.amt?Number(p.amt).toLocaleString('ko-KR'):''})));
+}
+
+/* ---- 엑셀 ---- */
+async function osExcel(){
+  const rows=osView();if(!rows.length)return;
+  let wb;try{const E1=await xlLoad();wb=new E1.Workbook();}catch(e){toast('엑셀 도구를 불러오지 못했습니다. 인터넷 연결을 확인하세요.');return;}
+  wb.creator='EMQ';wb.created=new Date();
+  const ws=wb.addWorksheet('외주 이력',{views:[{state:'frozen',ySplit:3}]});
+  const H=['일자','문서번호','업체','내용','상세(구매 사유)','설비','구분','금액(원)','메모(특기사항)','등록자'],W=[11,16,16,30,38,13,13,14,28,10];
+  W.forEach((w,i)=>{ws.getColumn(i+1).width=w;});
+  const filt=[osLabel(),OS.kind!=='전체'?OS.kind:'',OS.vendor,OS.eq!=='전체'?OS.eq:''].filter(Boolean).join(' · ');
+  xMerge(ws,1,1,1,H.length,'외주 이력 · '+filt,{font:{bold:true,size:14},al:{horizontal:'left'},bd:false});
+  xMerge(ws,2,1,2,H.length,'출력 '+xNow()+' · '+rows.length+'건',{font:{color:{argb:XC.mut}},al:{horizontal:'left'},bd:false});
+  H.forEach((h,i)=>xCell(ws,3,i+1,h,{font:{bold:true,color:{argb:XC.w}},fill:XC.teal,al:{horizontal:'center'}}));
+  rows.forEach((r,i)=>{const y=4+i,v=[r.date,r.no,r.vendor,r.what,r.detail,r.eq,r.kind,r.amt,r.note,r.by];
+    v.forEach((x,c)=>{const cell=xCell(ws,y,c+1,x,{al:{horizontal:c===7?'right':c<3||c===5||c===6||c===9?'center':'left',vertical:'top'}});if(c===7)cell.numFmt='#,##0';if(c===1)cell.numFmt='@';});});
+  const last=3+rows.length,tr=last+1;
+  xMerge(ws,tr,1,tr,7,'합계',{font:{bold:true},fill:XC.grey,al:{horizontal:'center'}});
+  const tot=rows.reduce((s,r)=>s+(r.amt||0),0);
+  const tc=xCell(ws,tr,8,{formula:'SUBTOTAL(109,H4:H'+last+')',result:tot},{font:{bold:true},fill:XC.grey,al:{horizontal:'right'}});tc.numFmt='#,##0';
+  xMerge(ws,tr,9,tr,10,'',{fill:XC.grey});
+  ws.autoFilter={from:{row:3,column:1},to:{row:last,column:H.length}};
+  xPrint(ws,{land:true,titles:'3:3',area:'A1:J'+tr});
+  const ag=wb.addWorksheet('업체별 집계',{views:[{state:'frozen',ySplit:3}]});
+  [22,10,16,10].forEach((w,i)=>{ag.getColumn(i+1).width=w;});
+  xMerge(ag,1,1,1,4,'업체별 사용 금액 · '+filt,{font:{bold:true,size:14},al:{horizontal:'left'},bd:false});
+  xMerge(ag,2,1,2,4,'출력 '+xNow(),{font:{color:{argb:XC.mut}},al:{horizontal:'left'},bd:false});
+  ['업체','건수','금액(원)','비율'].forEach((h,i)=>xCell(ag,3,i+1,h,{font:{bold:true,color:{argb:XC.w}},fill:XC.teal,al:{horizontal:'center'}}));
+  const by={},cn={};rows.forEach(r=>{by[r.vendor]=(by[r.vendor]||0)+(r.amt||0);cn[r.vendor]=(cn[r.vendor]||0)+1;});
+  const nm=Object.keys(by).sort((a,b)=>by[b]-by[a]);
+  nm.forEach((n,i)=>{const y=4+i;xCell(ag,y,1,n,{});xCell(ag,y,2,cn[n],{al:{horizontal:'center'}});const c3=xCell(ag,y,3,by[n],{al:{horizontal:'right'}});c3.numFmt='#,##0';
+    const c4=xCell(ag,y,4,{formula:'IF($C$'+(4+nm.length)+'=0,0,C'+y+'/$C$'+(4+nm.length)+')',result:tot?by[n]/tot:0},{al:{horizontal:'right'}});c4.numFmt='0.0%';});
+  const ar=4+nm.length;xCell(ag,ar,1,'합계',{font:{bold:true},fill:XC.grey,al:{horizontal:'center'}});
+  xCell(ag,ar,2,{formula:'SUM(B4:B'+(ar-1)+')',result:rows.length},{font:{bold:true},fill:XC.grey,al:{horizontal:'center'}});
+  const c3=xCell(ag,ar,3,{formula:'SUM(C4:C'+(ar-1)+')',result:tot},{font:{bold:true},fill:XC.grey,al:{horizontal:'right'}});c3.numFmt='#,##0';
+  xCell(ag,ar,4,'',{fill:XC.grey});
+  xPrint(ag,{titles:'3:3',area:'A1:D'+ar});
+  try{
+    const blob=await xBlob(wb),name='EMQ_외주이력_'+(OS.per==='m'?osCurK():osCurK().slice(0,4))+'.xlsx';
+    const res=await docDeliver(blob,name,'외주 이력','xlsx','L');
+    if(res.mode==='link')docLinkDialog({name:res.name,info:rows.length+'건',url:res.url});else toast('엑셀 파일을 받았습니다.');
+  }catch(e){toast(e&&e.message?e.message:'엑셀을 만들지 못했습니다.');}
+}
+
+/* ---- 패널 이벤트 ---- */
+document.addEventListener('click',e=>{
+  const t=e.target.closest&&e.target.closest('#emqOuts [data-os]');if(!t)return;const a=t.dataset.os,v=t.dataset.v;
+  if(a==='per'){OS.per=v;}else if(a==='nav')osNav(Number(v));else if(a==='kind')OS.kind=v;
+  else if(a==='vendor')OS.vendor=OS.vendor===v?'':v;
+  else if(a==='retry'){OS.ok=false;osLoad(true);return;}
+  else if(a==='pdf'){const f=$('osFile');if(f){f.value='';f.click();}return;}
+  else if(a==='manual'){osOpenForm(osNew());return;}
+  else if(a==='xl'){osExcel();return;}
+  else if(a==='row'){const r=OS.rows.find(x=>x.id===t.dataset.id);if(r)osOpenForm(osNew(Object.assign({},r,{mode:lvOk(3)?'edit':'view',amt:Number(r.amt||0).toLocaleString('ko-KR'),miss:[],rec:{eq:'',kind:''}})));return;}
+  else return;
+  osRender();
+});
+document.addEventListener('change',e=>{
+  const t=e.target;if(!t||!t.closest||!t.closest('#emqOuts'))return;
+  if(t.id==='osFile'){osPickPdf(t.files&&t.files[0]);return;}
+  if(t.dataset&&t.dataset.os==='eqf'){OS.eq=t.value;osRender();}
+});
+
+/* ===== v90: 새 버전 첫 접속 시 '이번 업데이트' 팝업 (이미지 + 설명). 매 업데이트마다 UPDATE_POP 을 새 버전 내용으로 교체한다 ===== */
+const UPDATE_POP={v:'v90',items:[
+ {tag:'신규',title:'외주 이력',sub:'업체별 금액과 외주 작업 기록',hl:'점검·이력 › 외주 이력',img:'updates/v90-outsrc',alt:'외주 이력 화면: 업체별 사용 금액과 이력 목록',
+  lines:['위하고 결재 PDF를 올리면 업체·금액·문서번호가 자동으로 채워집니다.','설비와 구분만 고르면 저장됩니다.','업체별 월·연 사용 금액을 한눈에 볼 수 있고, 엑셀로 받을 수 있습니다.','점검자 이상만 볼 수 있습니다.']},
+ {tag:'개선',title:'할 일 완료 내역 확인',sub:'완료한 할 일을 달별로 조회',hl:'일정·할 일 › 할 일',img:'updates/v89-todo',alt:'할 일 화면: 진행 중 / 완료 탭과 달 선택',
+  lines:['목록 위 "진행 중 / 완료" 탭으로 바꿔 봅니다.','완료한 달을 골라 지난 기록을 확인합니다.','"할 일 추가"는 평소 접혀 있어 목록이 바로 보입니다.']},
+ {tag:'개선',title:'프레스 설비 선택',sub:'라인별로 고르기',hl:'설비 이력 › 프레스',img:'updates/v87-press',alt:'프레스 설비 선택 화면: 라인별 선택',
+  lines:['프레스를 라인별로 고른 뒤 해당 라인의 설비를 고릅니다.','고른 단계는 위쪽에 요약되고, 뒤로(‹)로 한 단계씩 돌아갑니다.']}
+]};
+const CL_SKIP='emq-cl-skip',CL2={i:0};
+const clSkipGet=()=>{try{return localStorage.getItem(CL_SKIP)||'';}catch(e){return '';}};
+function cl2Det(){
+  const it=UPDATE_POP.items[CL2.i],n=UPDATE_POP.items.length,box=document.getElementById('cl2Det');if(!box)return;
+  box.innerHTML='<div class="cl2-shot"><span class="cl2-hl">'+E(it.hl)+'</span><picture><source media="(min-width:721px)" srcset="'+A(it.img)+'-pc.png"><img src="'+A(it.img)+'-mo.png" alt="'+A(it.alt)+'" decoding="async"></picture></div>'
+   +'<h4><span class="cl2-tag '+(it.tag==='신규'?'n':'')+'">'+E(it.tag)+'</span>'+E(it.title)+'</h4><ul>'+it.lines.map(l=>'<li>'+E(l)+'</li>').join('')+'</ul>'
+   +'<div class="cl2-ctl"><div class="cl2-dots" aria-hidden="true">'+UPDATE_POP.items.map((x,k)=>'<i class="'+(k===CL2.i?'on':'')+'"></i>').join('')+'</div>'
+   +'<div class="cl2-nv"><button type="button" class="hc-btn ghost" data-cl2="prev"'+(CL2.i===0?' disabled':'')+'>이전</button><button type="button" class="hc-btn ghost" data-cl2="next"'+(CL2.i===n-1?' disabled':'')+'>다음</button></div></div>';
+  document.querySelectorAll('.cl2-list [data-cl2=go]').forEach((b,k)=>b.setAttribute('aria-pressed',String(k===CL2.i)));
+}
+function clPop(){
+  CL2.i=0;try{localStorage.setItem(CL_KEY,clVer());}catch(e){}
+  document.querySelectorAll('.cl-link i').forEach(i=>i.remove());
+  const ov=document.createElement('div');ov.className='cl-ov cl2-ov';
+  ov.innerHTML='<div class="cl2" role="dialog" aria-modal="true" aria-label="업데이트 내용"><div class="cl2-h"><h3>업데이트 내용</h3><span class="cl2-v">새 버전 '+E(UPDATE_POP.v)+'</span></div>'
+   +'<div class="cl2-b"><div class="cl2-list">'+UPDATE_POP.items.map((x,k)=>'<button type="button" data-cl2="go" data-k="'+k+'" aria-pressed="'+(k===0)+'"><b><span class="cl2-tag '+(x.tag==='신규'?'n':'')+'">'+E(x.tag)+'</span>'+E(x.title)+'</b><small>'+E(x.sub)+'</small></button>').join('')+'</div><div class="cl2-det" id="cl2Det"></div></div>'
+   +'<div class="cl2-f"><label><input type="checkbox" id="cl2Skip"> 이 버전은 다시 보지 않기</label><button type="button" class="hc-btn" data-cl2="x">닫기</button></div></div>';
+  const close=()=>{const c=document.getElementById('cl2Skip');if(c&&c.checked){try{localStorage.setItem(CL_SKIP,UPDATE_POP.v);}catch(e){}}ov.remove();document.removeEventListener('keydown',kd);};
+  const kd=e=>{if(e.key==='Escape')close();};
+  ov.addEventListener('click',e=>{
+    const b=e.target.closest('[data-cl2]');
+    if(!b){if(e.target===ov)close();return;}
+    const a=b.dataset.cl2;
+    if(a==='x')close();else if(a==='go'){CL2.i=Number(b.dataset.k);cl2Det();}
+    else if(a==='prev'&&CL2.i>0){CL2.i--;cl2Det();}
+    else if(a==='next'&&CL2.i<UPDATE_POP.items.length-1){CL2.i++;cl2Det();}
+  });
+  document.addEventListener('keydown',kd);
+  document.body.appendChild(ov);cl2Det();
+  const x=ov.querySelector('[data-cl2=x]');if(x)x.focus();
+}
+function clAuto(){
+  if(window.__clShown||UPDATE_POP.v!==clVer()||clSkipGet()===UPDATE_POP.v)return;
+  if(!(window.EMQ&&EMQ.user)||document.querySelector('.cl-ov,.hx-ov,.emq-lock:not([hidden])'))return;
+  window.__clShown=1;clPop();
+}
+(function(){const go=()=>setTimeout(clAuto,900);try{(window.EMQ&&EMQ.ready?EMQ.ready:Promise.resolve()).then(go);}catch(e){go();}})();
+window.emqClAuto=clAuto;
+
 
 /* 제목 속 호기 표기를 2F-2호기 형태로 고침 */
 function eqRewrite(txt){
@@ -11669,7 +12080,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 
 /* ===== v80: 화면 코드와 서비스워커 버전이 다르면 캐시를 정리하고 한 번만 새로고침 ===== */
-const APP_VER='v89';
+const APP_VER='v90';
 (function(){
   const KEY='emq-vfix-'+APP_VER;
   function swVer(){return new Promise(res=>{try{
